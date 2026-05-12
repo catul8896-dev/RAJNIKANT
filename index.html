@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Past Perfect Negative – Active to Passive Worksheet</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #e8edf2;
+  font-family: 'Georgia', serif;
+  padding: 30px 16px 60px;
+  color: #111;
+}
+
+/* ── A4 PAGE ── */
+.page {
+  background: #fff;
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto 40px;
+  padding: 18mm 18mm 20mm;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+  border-radius: 4px;
+  position: relative;
+}
+
+/* ── SCHOOL HEADER ── */
+.school-header {
+  text-align: center;
+  border-bottom: 3px double #111;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+.school-name {
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.school-tagline {
+  font-size: 13px;
+  color: #555;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+.worksheet-title {
+  font-size: 19px;
+  font-weight: bold;
+  background: #7b1e1e;
+  color: #fff;
+  display: inline-block;
+  padding: 5px 28px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  margin-top: 6px;
+}
+
+/* ── META GRID ── */
+.meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 30px;
+  margin: 16px 0 20px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.meta-grid .field {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  border-bottom: 1.5px solid #555;
+  padding-bottom: 3px;
+}
+.meta-grid .label { white-space: nowrap; color: #333; }
+.meta-grid .value { flex: 1; min-width: 60px; }
+
+/* ── INSTRUCTIONS ── */
+.instructions {
+  background: #fff5f5;
+  border-left: 5px solid #7b1e1e;
+  padding: 10px 16px;
+  font-size: 15px;
+  color: #222;
+  margin-bottom: 18px;
+  border-radius: 0 4px 4px 0;
+  line-height: 1.8;
+}
+.instructions strong { color: #7b1e1e; }
+
+/* ── FORMULA BOX ── */
+.formula-box {
+  border: 2px solid #7b1e1e;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  margin-bottom: 24px;
+  background: #fffafa;
+  line-height: 2;
+}
+.formula-box .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.formula-box span { font-weight: bold; color: #7b1e1e; }
+.formula-box .arrow { font-size: 20px; color: #7b1e1e; }
+
+/* ── QUESTION BLOCK ── */
+.q-block { margin-bottom: 22px; page-break-inside: avoid; }
+
+.q-row { display: flex; align-items: flex-start; gap: 10px; }
+
+.q-num {
+  font-size: 40px;
+  font-weight: bold;
+  min-width: 54px;
+  color: #7b1e1e;
+  line-height: 1.2;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+/* 40px bold sentence */
+.q-sentence {
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 1.35;
+  color: #111;
+  flex: 1;
+}
+
+/* highlight "had not" */
+.q-sentence .neg {
+  color: #c0392b;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-underline-offset: 4px;
+}
+
+/* answer lines */
+.ans-lines { margin-top: 8px; margin-left: 64px; }
+.ans-line {
+  display: block;
+  border-bottom: 1.5px solid #bbb;
+  margin-bottom: 8px;
+  height: 20px;
+  width: 100%;
+}
+
+/* ── ANSWER REVEAL ── */
+.answer-box {
+  display: none;
+  margin-top: 8px;
+  margin-left: 64px;
+  background: #fff0f0;
+  border-left: 4px solid #c0392b;
+  padding: 8px 14px;
+  border-radius: 0 6px 6px 0;
+  animation: slideDown 0.28s ease;
+}
+.answer-box .ans-label {
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #00ff22;
+  margin-bottom: 3px;
+}
+.answer-box .ans-text {
+  font-size: 22px;
+  font-weight: bold;
+  color: #00ff04;
+  line-height: 1.4;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* divider */
+.q-divider { border: none; border-top: 1px dashed #ddd; margin: 4px 0 0; }
+
+/* ── FIXED HINT BAR ── */
+.enter-hint-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: #02f30e;
+  color: #fff;
+  text-align: center;
+  padding: 12px;
+  font-size: 16px;
+  font-family: Georgia, serif;
+  z-index: 200;
+  letter-spacing: 0.4px;
+}
+.enter-hint-bar .key {
+  background: #2bff00;
+  color: #00ff37;
+  font-weight: bold;
+  padding: 2px 10px;
+  border-radius: 5px;
+  margin: 0 4px;
+  font-family: monospace;
+  font-size: 15px;
+}
+.score-pill {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 2px 14px;
+  margin-left: 18px;
+  font-size: 15px;
+}
+
+/* ── PRINT ── */
+@media print {
+  body { background: #fff; padding: 0; }
+  .page { box-shadow: none; margin: 0; padding: 14mm 16mm 16mm; width: 100%; min-height: auto; }
+  .enter-hint-bar { display: none !important; }
+  .answer-box { display: none !important; }
+  .ans-line { border-bottom: 1.5px solid #888; }
+  .q-block { page-break-inside: avoid; }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 650px) {
+  .page { width: 100%; padding: 14px 12px 20px; }
+  .q-sentence, .q-num { font-size: 26px; }
+  .meta-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="page" id="worksheet">
+
+  <!-- HEADER -->
+  <div class="school-header">
+    <div class="school-name">Bright Future School</div>
+    <div class="school-tagline">Knowledge • Character • Excellence</div>
+    <div class="worksheet-title">Grammar Worksheet — Negative Sentences</div>
+  </div>
+
+  <!-- META -->
+  <div class="meta-grid">
+    <div class="field"><span class="label">Subject:</span><span class="value">English Grammar</span></div>
+    <div class="field"><span class="label">Class:</span><span class="value">_______________</span></div>
+    <div class="field"><span class="label">Topic:</span><span class="value">Past Perfect Negative – Active to Passive</span></div>
+    <div class="field"><span class="label">Name:</span><span class="value">___________________________</span></div>
+    <div class="field"><span class="label">Roll No.:</span><span class="value">_______________</span></div>
+    <div class="field"><span class="label">Date:</span><span class="value">_______________</span></div>
+  </div>
+
+  <!-- INSTRUCTIONS -->
+  <div class="instructions">
+    <strong>Instructions:</strong> All 50 sentences below are in <strong>Past Perfect Negative Active Voice</strong>.
+    Convert each sentence into <strong>Passive Voice (Negative)</strong> and write your answer on the lines given.
+    All sentences are brand new — different subjects, verbs, and objects.<br>
+    <strong>🖥️ Digital Mode:</strong> Press <strong>Enter</strong> on your keyboard to reveal each answer one by one.
+  </div>
+
+  <!-- FORMULA -->
+  <div class="formula-box">
+    <div class="row">
+      <div><span>Active (Negative)&nbsp;:</span> Subject + <span>had not</span> + V3 + Object</div>
+      <div class="arrow">→</div>
+      <div><span>Passive (Negative):</span> Object + <span>had not been</span> + V3 + by + Subject</div>
+    </div>
+  </div>
+
+  <!-- QUESTIONS INSERTED BY JS -->
+  <div id="q-list"></div>
+
+</div><!-- /page -->
+
+<!-- FIXED HINT BAR -->
+<div class="enter-hint-bar" id="hint-bar">
+  Press <span class="key">Enter</span> to reveal the next answer
+  <span class="score-pill" id="score-pill">0 / 50 revealed</span>
+</div>
+
+<script>
+// 50 BRAND NEW negative sentences — all different verbs, subjects, objects
+const data = [
+  // 1-10
+  { a: "The gardener had not trimmed the hedge.",         p: "The hedge had not been trimmed by the gardener." },
+  { a: "Rita had not posted the parcel.",                 p: "The parcel had not been posted by Rita." },
+  { a: "The carpenter had not finished the table.",       p: "The table had not been finished by the carpenter." },
+  { a: "The children had not fed the fish.",              p: "The fish had not been fed by the children." },
+  { a: "He had not returned the library book.",           p: "The library book had not been returned by him." },
+  { a: "The driver had not cleaned the bus.",             p: "The bus had not been cleaned by the driver." },
+  { a: "She had not packed her school bag.",              p: "Her school bag had not been packed by her." },
+  { a: "The cook had not boiled the eggs.",               p: "The eggs had not been boiled by the cook." },
+  { a: "The soldier had not saluted the officer.",        p: "The officer had not been saluted by the soldier." },
+  { a: "They had not mopped the floor.",                  p: "The floor had not been mopped by them." },
+  // 11-20
+  { a: "The watchman had not locked the gate.",           p: "The gate had not been locked by the watchman." },
+  { a: "Ravi had not submitted the fee.",                 p: "The fee had not been submitted by Ravi." },
+  { a: "The postman had not delivered the parcel.",       p: "The parcel had not been delivered by the postman." },
+  { a: "She had not folded the map.",                     p: "The map had not been folded by her." },
+  { a: "The students had not memorised the poem.",        p: "The poem had not been memorised by the students." },
+  { a: "The sweeper had not swept the corridor.",         p: "The corridor had not been swept by the sweeper." },
+  { a: "He had not charged his mobile phone.",            p: "His mobile phone had not been charged by him." },
+  { a: "The farmer had not sold the cattle.",             p: "The cattle had not been sold by the farmer." },
+  { a: "The baker had not sliced the bread.",             p: "The bread had not been sliced by the baker." },
+  { a: "They had not filled the water tank.",             p: "The water tank had not been filled by them." },
+  // 21-30
+  { a: "The mason had not plastered the wall.",           p: "The wall had not been plastered by the mason." },
+  { a: "Priya had not ironed her uniform.",               p: "Her uniform had not been ironed by Priya." },
+  { a: "The teacher had not distributed the papers.",     p: "The papers had not been distributed by the teacher." },
+  { a: "The shepherd had not counted the sheep.",         p: "The sheep had not been counted by the shepherd." },
+  { a: "He had not sharpened the pencil.",                p: "The pencil had not been sharpened by him." },
+  { a: "The fireman had not sprayed the water.",          p: "The water had not been sprayed by the fireman." },
+  { a: "The student had not revised the chapter.",        p: "The chapter had not been revised by the student." },
+  { a: "She had not watered the garden.",                 p: "The garden had not been watered by her." },
+  { a: "The clerk had not stamped the letter.",           p: "The letter had not been stamped by the clerk." },
+  { a: "The players had not practised the drill.",        p: "The drill had not been practised by the players." },
+  // 31-40
+  { a: "The plumber had not fixed the pipe.",             p: "The pipe had not been fixed by the plumber." },
+  { a: "Anita had not copied the notes.",                 p: "The notes had not been copied by Anita." },
+  { a: "The painter had not varnished the door.",         p: "The door had not been varnished by the painter." },
+  { a: "He had not uploaded the report.",                 p: "The report had not been uploaded by him." },
+  { a: "The nurse had not dressed the wound.",            p: "The wound had not been dressed by the nurse." },
+  { a: "The children had not coloured the chart.",        p: "The chart had not been coloured by the children." },
+  { a: "The watchman had not switched off the light.",    p: "The light had not been switched off by the watchman." },
+  { a: "She had not decorated the gift box.",             p: "The gift box had not been decorated by her." },
+  { a: "The driver had not parked the truck.",            p: "The truck had not been parked by the driver." },
+  { a: "They had not printed the invitation cards.",      p: "The invitation cards had not been printed by them." },
+  // 41-50
+  { a: "The teacher had not graded the test.",            p: "The test had not been graded by the teacher." },
+  { a: "The boy had not watered the vegetable patch.",    p: "The vegetable patch had not been watered by the boy." },
+  { a: "Rahul had not repaired the fence.",               p: "The fence had not been repaired by Rahul." },
+  { a: "She had not arranged the chairs.",                p: "The chairs had not been arranged by her." },
+  { a: "The journalist had not published the article.",   p: "The article had not been published by the journalist." },
+  { a: "The captain had not announced the team.",         p: "The team had not been announced by the captain." },
+  { a: "He had not returned the borrowed pen.",           p: "The borrowed pen had not been returned by him." },
+  { a: "The librarian had not renewed the membership.",   p: "The membership had not been renewed by the librarian." },
+  { a: "The electrician had not replaced the bulb.",      p: "The bulb had not been replaced by the electrician." },
+  { a: "They had not cleaned the swimming pool.",         p: "The swimming pool had not been cleaned by them." },
+];
+
+// Highlight "had not" in active sentence
+function markNeg(str) {
+  return str.replace(/had not/g, "<span class='neg'>had not</span>");
+}
+
+// Build DOM
+const list = document.getElementById('q-list');
+data.forEach((item, i) => {
+  const block = document.createElement('div');
+  block.className = 'q-block';
+  block.id = `q${i}`;
+  block.innerHTML = `
+    <div class="q-row">
+      <div class="q-num">${i + 1}.</div>
+      <div class="q-sentence">${markNeg(item.a)}</div>
+    </div>
+    <div class="ans-lines">
+      <span class="ans-line"></span>
+      <span class="ans-line"></span>
+    </div>
+    <div class="answer-box" id="ans${i}">
+      <div class="ans-label">✔ Passive Voice Answer</div>
+      <div class="ans-text">${item.p}</div>
+    </div>
+    ${i < data.length - 1 ? '<hr class="q-divider"/>' : ''}
+  `;
+  list.appendChild(block);
+});
+
+// Enter key logic
+let revealed = 0;
+const total = data.length;
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    if (revealed < total) {
+      const box = document.getElementById(`ans${revealed}`);
+      box.style.display = 'block';
+      box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      revealed++;
+      document.getElementById('score-pill').textContent = `${revealed} / ${total} revealed`;
+      if (revealed === total) {
+        document.getElementById('hint-bar').innerHTML =
+          '🎉 All 50 answers revealed! Great work! <span class="score-pill">50 / 50 ✅</span>';
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
