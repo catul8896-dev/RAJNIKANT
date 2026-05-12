@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Present Indefinite Tense – Hindi Guide + Worksheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&family=Georgia:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --ink:    #1a1a1a;
+  --muted:  #5a5a5a;
+  --faint:  #f0f0eb;
+  --border: #d8d4cc;
+  --gold:   #b87c1a;
+  --gold-bg:#fdf6e3;
+  --blue:   #1a4f8a;
+  --blue-bg:#eef4fc;
+  --green:  #1a6b3a;
+  --green-bg:#edf7f1;
+  --red:    #8a1a1a;
+  --red-bg: #fdf0f0;
+  --purple: #5a1a8a;
+  --purple-bg:#f5eeff;
+  --teal:   #0d6b6b;
+  --teal-bg:#e8f8f8;
+  --shadow: 0 2px 14px rgba(0,0,0,0.09);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #e9e4dc;
+  font-family: 'Hind', sans-serif;
+  color: var(--ink);
+  padding: 28px 16px 80px;
+  line-height: 1.7;
+}
+
+/* ── PAGE WRAPPER ── */
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ── CARD BASE ── */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* ── HERO HEADER ── */
+.hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #2a2a50 100%);
+  color: #fff;
+  padding: 36px 32px 28px;
+  text-align: center;
+}
+.hero .tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 20px;
+  padding: 3px 14px;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  color: #f4c261;
+}
+.hero h1 {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+.hero p { font-size: 15px; opacity: 0.75; }
+
+/* ── SECTION HEADER ── */
+.sec-head {
+  background: var(--faint);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sec-head .icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.sec-head h2 {
+  font-size: 16px; font-weight: 700;
+  color: var(--ink);
+  font-family: 'Noto Serif Devanagari', serif;
+}
+.sec-head small { font-size: 12px; color: var(--muted); margin-left: 6px; }
+
+/* ── CARD BODY ── */
+.cbody { padding: 20px 24px; }
+
+/* ── PARIBHASHA BOX ── */
+.paribhasha {
+  background: var(--gold-bg);
+  border: 1.5px solid #e8c97a;
+  border-left: 5px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #3d2800;
+}
+.paribhasha strong { color: var(--gold); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 6px; font-family: 'Hind', sans-serif; }
+
+/* ── PAHCHAAN BOX ── */
+.pahchaan {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 6px;
+}
+.ph-item {
+  background: #fffdf5;
+  border: 1px solid #e8d89a;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+}
+.ph-item .ph-label {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--gold); margin-bottom: 4px;
+}
+.ph-item .ph-ex { color: var(--muted); font-style: italic; font-size: 13px; margin-top: 3px; }
+
+/* ── FORMULA TABLE ── */
+.ftable { width: 100%; border-collapse: collapse; font-size: 14px; }
+.ftable th {
+  background: var(--faint);
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+.ftable td { padding: 11px 14px; border-bottom: 1px solid #f0ede8; vertical-align: top; }
+.ftable tr:last-child td { border-bottom: none; }
+.ftable tr:hover td { background: #fafaf7; }
+
+.type-badge {
+  display: inline-block;
+  padding: 2px 10px; border-radius: 20px;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.tb-pos { background: var(--green-bg); color: var(--green); }
+.tb-neg { background: var(--red-bg); color: var(--red); }
+.tb-int { background: var(--blue-bg); color: var(--blue); }
+
+.formula-cell {
+  font-family: 'Georgia', serif;
+  font-size: 13.5px;
+  color: #2a2a2a;
+  line-height: 1.7;
+}
+.formula-cell .f-hi { color: var(--blue); font-weight: 700; }
+.formula-cell .f-or { color: var(--red); font-weight: 700; }
+
+.ex-cell { font-size: 13px; color: var(--muted); font-style: italic; }
+.ex-cell span { color: var(--ink); font-weight: 600; font-style: normal; }
+
+/* ── S / ES RULE BOX ── */
+.rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.rule-box {
+  border-radius: 10px;
+  border: 1.5px solid;
+  overflow: hidden;
+}
+.rule-box .rh {
+  padding: 10px 16px 8px;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: 'Noto Serif Devanagari', serif;
+}
+.rule-box .rb { padding: 10px 16px 14px; font-size: 13.5px; line-height: 1.8; }
+
+.rb-s   { border-color: #a8d8a8; }
+.rh-s   { background: var(--green-bg); color: var(--green); }
+.rb-s .rb { background: #f6fdf8; color: #1d4a2a; }
+
+.rb-es  { border-color: #a8c4e8; }
+.rh-es  { background: var(--blue-bg); color: var(--blue); }
+.rb-es .rb { background: #f2f7fd; color: #162d50; }
+
+.rb-ies { border-color: #c8a8e8; }
+.rh-ies { background: var(--purple-bg); color: var(--purple); }
+.rb-ies .rb { background: #f8f3ff; color: #3a1260; }
+
+.rb-irr { border-color: #e8c8a8; }
+.rh-irr { background: #fff3e8; color: #7a3a00; }
+.rb-irr .rb { background: #fffaf4; color: #3a2010; }
+
+.word-list {
+  display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px;
+}
+.word-chip {
+  background: rgba(0,0,0,0.06);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-family: 'Georgia', serif;
+  font-weight: 700;
+}
+
+/* ── PRONOUN TABLE ── */
+.ptable { width: 100%; border-collapse: collapse; font-size: 14px; }
+.ptable th {
+  padding: 9px 12px; text-align: left;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  color: #fff; background: #2a2a50;
+  border-right: 1px solid rgba(255,255,255,0.15);
+}
+.ptable th:last-child { border-right: none; }
+.ptable td {
+  padding: 10px 12px; border-bottom: 1px solid #f0ede8;
+  border-right: 1px solid #f0ede8;
+  vertical-align: middle;
+}
+.ptable td:last-child { border-right: none; }
+.ptable tr:last-child td { border-bottom: none; }
+.ptable tr:hover td { background: #fafaf7; }
+.pro-name { font-weight: 700; font-size: 14px; }
+.verb-s  { color: var(--green); font-weight: 700; }
+.verb-s0 { color: var(--red);   font-weight: 700; }
+.badge-s  { background: var(--green-bg);  color: var(--green);  padding: 1px 8px; border-radius: 10px; font-size: 12px; font-weight: 700; }
+.badge-s0 { background: var(--red-bg);    color: var(--red);    padding: 1px 8px; border-radius: 10px; font-size: 12px; font-weight: 700; }
+
+/* ── TIP BOX ── */
+.tip-box {
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.8;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+.tip-box .tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.tip-box.tip-gold   { background: var(--gold-bg);   border: 1px solid #e8c97a; color: #3d2800; }
+.tip-box.tip-green  { background: var(--green-bg);  border: 1px solid #8dd4a8; color: #0f3d20; }
+.tip-box.tip-teal   { background: var(--teal-bg);   border: 1px solid #8dd4d4; color: #0a3838; }
+.tip-box.tip-purple { background: var(--purple-bg); border: 1px solid #c4a8e8; color: #2e0a5a; }
+
+/* ── WORKSHEET HEADER ── */
+.ws-header {
+  background: #1a2e1a;
+  padding: 24px 32px;
+  text-align: center;
+  color: #fff;
+}
+.ws-header h2 {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 20px; font-weight: 700;
+  color: #b0e0b0;
+  margin-bottom: 4px;
+}
+.ws-header p { font-size: 13px; opacity: 0.7; }
+
+/* META */
+.meta-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+  padding: 14px 24px;
+  background: #f8f8f5;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px; font-weight: 600;
+}
+.meta-row .mf {
+  display: flex; align-items: baseline; gap: 6px;
+  border-bottom: 1px solid #bbb; padding-bottom: 2px;
+}
+.meta-row .ml { color: #555; white-space: nowrap; }
+
+/* ── WS INSTRUCTIONS ── */
+.ws-instr {
+  background: #f0f7f0;
+  border-left: 5px solid var(--green);
+  padding: 10px 18px;
+  margin: 14px 24px;
+  font-size: 14px;
+  border-radius: 0 6px 6px 0;
+  color: #0f3a1f;
+  line-height: 1.8;
+}
+
+/* ── QUESTION BLOCK ── */
+.q-list { padding: 0 24px 24px; }
+
+.q-block { margin-bottom: 22px; }
+
+.q-row { display: flex; align-items: flex-start; gap: 10px; }
+
+.q-num {
+  font-size: 40px; font-weight: 700;
+  color: var(--green); min-width: 56px;
+  line-height: 1.2; flex-shrink: 0;
+  padding-top: 2px;
+  font-family: 'Georgia', serif;
+}
+
+.q-sent {
+  font-size: 40px; font-weight: 700;
+  line-height: 1.35; flex: 1;
+  color: #111;
+  font-family: 'Georgia', serif;
+}
+
+.ans-lines { margin-left: 66px; margin-top: 8px; }
+.ans-line {
+  display: block;
+  border-bottom: 1.5px solid #bbb;
+  height: 20px; margin-bottom: 8px;
+  width: 100%;
+}
+
+/* answer reveal */
+.answer-box {
+  display: none;
+  margin-top: 8px; margin-left: 66px;
+  background: #f0faf3;
+  border-left: 4px solid var(--green);
+  padding: 9px 14px;
+  border-radius: 0 8px 8px 0;
+  animation: slideIn .28s ease;
+}
+.answer-box .al { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: #1a6b3a; margin-bottom: 3px; }
+.answer-box .at { font-size: 21px; font-weight: 700; color: #145a2e; font-family: 'Georgia', serif; line-height: 1.4; }
+
+@keyframes slideIn { from { opacity:0; transform:translateY(-5px); } to { opacity:1; transform:none; } }
+
+.q-divider { border: none; border-top: 1px dashed #ddd; margin: 4px 0 0; }
+
+/* ── SCORE BAR ── */
+.score-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: #1a2e1a;
+  color: #fff;
+  text-align: center;
+  padding: 11px 16px;
+  font-size: 15px;
+  font-family: 'Hind', sans-serif;
+  z-index: 200;
+  letter-spacing: 0.3px;
+}
+.score-bar .key {
+  background: #f4c261; color: #1a2e1a;
+  font-weight: 700; padding: 2px 10px;
+  border-radius: 5px; margin: 0 4px;
+  font-family: monospace; font-size: 14px;
+}
+.pill {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px; padding: 2px 13px;
+  margin-left: 16px; font-size: 14px;
+}
+
+/* ── PRINT ── */
+@media print {
+  body { background: #fff; padding: 0; }
+  .score-bar { display: none !important; }
+  .answer-box { display: none !important; }
+  .card { box-shadow: none; }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 600px) {
+  .pahchaan { grid-template-columns: 1fr; }
+  .rules-grid { grid-template-columns: 1fr; }
+  .meta-row { grid-template-columns: 1fr; }
+  .q-sent, .q-num { font-size: 26px; }
+  .cbody { padding: 14px 14px; }
+  .q-list { padding: 0 14px 20px; }
+  .ans-lines, .answer-box { margin-left: 44px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+<div class="card">
+  <div class="hero">
+    <div class="tag">English Grammar</div>
+    <h1>Present Indefinite Tense<br>वर्तमान काल (सामान्य)</h1>
+    <p>पूरी हिंदी में परिभाषा, पहचान, सभी Formulas और S/ES/IES Rules</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ परिभाषा ══════════════════════════ -->
+<div class="card">
+  <div class="sec-head">
+    <div class="icon" style="background:#fdf6e3;">📖</div>
+    <h2>परिभाषा (Definition)</h2>
+    <small>Present Indefinite = Simple Present</small>
+  </div>
+  <div class="cbody">
+    <div class="paribhasha">
+      <strong>हिंदी परिभाषा</strong>
+      जब कोई कार्य <b>वर्तमान समय में सामान्य रूप से होता है</b>, या जो कार्य <b>हमेशा होता है, बार-बार होता है, या एक आदत है</b> — उसे Present Indefinite Tense (Simple Present Tense) कहते हैं।
+    </div>
+
+    <div class="tip-box tip-gold" style="margin-top:14px;">
+      <span class="tip-icon">🎯</span>
+      <div>
+        <b>आसान भाषा में:</b> जब हिंदी वाक्य के अंत में <b>"ता है, ती है, ते हैं, ता हूँ"</b> आए तो वह Present Indefinite Tense है।<br>
+        <span style="color:var(--muted); font-size:13px;">जैसे: वह <b>जाता है।</b> = He <b>goes.</b> &nbsp;|&nbsp; वे खेलते <b>हैं।</b> = They <b>play.</b></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ पहचान ══════════════════════════════ -->
+<div class="card">
+  <div class="sec-head">
+    <div class="icon" style="background:#eef4fc;">🔍</div>
+    <h2>पहचान (How to Identify)</h2>
+    <small>हिंदी वाक्य के अंत में क्या देखें?</small>
+  </div>
+  <div class="cbody">
+    <div class="pahchaan">
+      <div class="ph-item">
+        <div class="ph-label">✅ Positive पहचान</div>
+        <b>ता है / ती है / ते हैं / ता हूँ / ती हूँ</b>
+        <div class="ph-ex">वह <b>जाता है।</b> → He goes.<br>मैं <b>खाता हूँ।</b> → I eat.</div>
+      </div>
+      <div class="ph-item">
+        <div class="ph-label">❌ Negative पहचान</div>
+        <b>नहीं + ता है / ती है / ते हैं</b>
+        <div class="ph-ex">वह नहीं <b>जाता।</b> → He does not go.<br>वे नहीं <b>खेलते।</b> → They do not play.</div>
+      </div>
+      <div class="ph-item">
+        <div class="ph-label">❓ Interrogative पहचान</div>
+        <b>क्या… ता है? / ते हैं? / ती है?</b>
+        <div class="ph-ex">क्या वह <b>जाता है?</b> → Does he go?<br>क्या वे <b>खेलते हैं?</b> → Do they play?</div>
+      </div>
+      <div class="ph-item">
+        <div class="ph-label">💡 Special Uses</div>
+        <b>Universal Truth / Habit / Routine</b>
+        <div class="ph-ex">सूरज पूरब में <b>उगता है।</b><br>The sun rises in the east.</div>
+      </div>
+    </div>
+
+    <div class="tip-box tip-teal" style="margin-top:14px;">
+      <span class="tip-icon">💡</span>
+      <div><b>Short Trick:</b> हिंदी वाक्य को अंत से पढ़ो — अगर <b>ता/ती/ते + है/हैं/हूँ/हो</b> दिखे तो Simple Present है।</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ ALL FORMULAS ══════════════════════ -->
+<div class="card">
+  <div class="sec-head">
+    <div class="icon" style="background:#edf7f1;">📐</div>
+    <h2>सभी Formulas (All Formulas)</h2>
+    <small>Positive · Negative · Interrogative · Neg-Int</small>
+  </div>
+  <div class="cbody" style="padding-top:0; padding-left:0; padding-right:0;">
+    <table class="ftable">
+      <thead>
+        <tr>
+          <th style="width:100px">प्रकार</th>
+          <th>Formula</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="type-badge tb-pos">Positive</span></td>
+          <td class="formula-cell">
+            <b>He/She/It/Name</b> → Sub + <span class="f-hi">V1 + s/es</span> + Obj.<br>
+            <b>I/We/You/They</b> → Sub + <span class="f-hi">V1</span> + Obj.
+          </td>
+          <td class="ex-cell"><span>She reads a book.</span><br><span>They play cricket.</span></td>
+        </tr>
+        <tr>
+          <td><span class="type-badge tb-neg">Negative</span></td>
+          <td class="formula-cell">
+            <b>He/She/It</b> → Sub + <span class="f-or">does not</span> + V1 + Obj.<br>
+            <b>I/We/You/They</b> → Sub + <span class="f-or">do not</span> + V1 + Obj.
+          </td>
+          <td class="ex-cell"><span>She does not read.</span><br><span>They do not play.</span></td>
+        </tr>
+        <tr>
+          <td><span class="type-badge tb-int">Yes/No ?</span></td>
+          <td class="formula-cell">
+            <b>He/She/It</b> → <span class="f-hi">Does</span> + Sub + V1 + Obj + ?<br>
+            <b>I/We/You/They</b> → <span class="f-hi">Do</span> + Sub + V1 + Obj + ?
+          </td>
+          <td class="ex-cell"><span>Does she read a book?</span><br><span>Do they play cricket?</span></td>
+        </tr>
+        <tr>
+          <td><span class="type-badge tb-int">Neg-Int ?</span></td>
+          <td class="formula-cell">
+            <b>He/She/It</b> → <span class="f-hi">Does</span> + Sub + <span class="f-or">not</span> + V1 + Obj + ?<br>
+            <b>I/We/You/They</b> → <span class="f-hi">Do</span> + Sub + <span class="f-or">not</span> + V1 + Obj + ?
+          </td>
+          <td class="ex-cell"><span>Does she not read?</span><br><span>Do they not play?</span></td>
+        </tr>
+        <tr>
+          <td><span class="type-badge" style="background:#fff3e8;color:#7a3a00;">WH ?</span></td>
+          <td class="formula-cell">
+            <b>He/She/It</b> → <span class="f-hi">WH + does</span> + Sub + V1 + ?<br>
+            <b>I/We/You/They</b> → <span class="f-hi">WH + do</span> + Sub + V1 + ?
+          </td>
+          <td class="ex-cell"><span>Where does she go?</span><br><span>What do they eat?</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ S / ES / IES RULES ════════════════ -->
+<div class="card">
+  <div class="sec-head">
+    <div class="icon" style="background:#edf7f1;">📏</div>
+    <h2>S / ES / IES कब लगाएँ? (Third Person Singular)</h2>
+    <small>He / She / It / Name के साथ</small>
+  </div>
+  <div class="cbody">
+
+    <div class="tip-box tip-gold" style="margin-bottom:14px;">
+      <span class="tip-icon">⭐</span>
+      <div><b>याद रखो:</b> S / ES / IES सिर्फ <b>He, She, It</b> और किसी एक <b>नाम</b> (जैसे Ram, Priya) के साथ Positive Sentence में लगता है। बाकी सभी (I, We, You, They) के साथ Verb बिना S के आती है।</div>
+    </div>
+
+    <div class="rules-grid">
+
+      <!-- ONLY S -->
+      <div class="rule-box rb-s">
+        <div class="rh rh-s">✅ सिर्फ S लगाओ</div>
+        <div class="rb">
+          <b>कब?</b> जब Verb के अंत में कोई भी Consonant + Vowel हो, या verb normal हो।<br><br>
+          <b>नियम:</b> Verb + <b style="color:var(--green)">s</b>
+          <div class="word-list">
+            <span class="word-chip">play→plays</span>
+            <span class="word-chip">eat→eats</span>
+            <span class="word-chip">run→runs</span>
+            <span class="word-chip">read→reads</span>
+            <span class="word-chip">write→writes</span>
+            <span class="word-chip">jump→jumps</span>
+            <span class="word-chip">work→works</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ES -->
+      <div class="rule-box rb-es">
+        <div class="rh rh-es">📌 ES लगाओ</div>
+        <div class="rb">
+          <b>कब?</b> जब Verb के अंत में हो: <b>s, ss, sh, ch, x, o, z</b><br><br>
+          <b>नियम:</b> Verb + <b style="color:var(--blue)">es</b>
+          <div class="word-list">
+            <span class="word-chip">go→goes</span>
+            <span class="word-chip">do→does</span>
+            <span class="word-chip">wash→washes</span>
+            <span class="word-chip">watch→watches</span>
+            <span class="word-chip">fix→fixes</span>
+            <span class="word-chip">buzz→buzzes</span>
+            <span class="word-chip">pass→passes</span>
+            <span class="word-chip">kiss→kisses</span>
+            <span class="word-chip">push→pushes</span>
+            <span class="word-chip">catch→catches</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- IES -->
+      <div class="rule-box rb-ies">
+        <div class="rh rh-ies">🔄 Y हटाओ + IES लगाओ</div>
+        <div class="rb">
+          <b>कब?</b> जब Verb के अंत में <b>Consonant + Y</b> हो<br>
+          <b>Y हटाओ और IES लगाओ</b><br><br>
+          <div class="word-list">
+            <span class="word-chip">cry→cries</span>
+            <span class="word-chip">fly→flies</span>
+            <span class="word-chip">try→tries</span>
+            <span class="word-chip">carry→carries</span>
+            <span class="word-chip">study→studies</span>
+            <span class="word-chip">marry→marries</span>
+            <span class="word-chip">hurry→hurries</span>
+          </div>
+          <div style="margin-top:8px;font-size:13px;color:#5a3a7a;"><b>⚠ ध्यान दो:</b> अगर Y से पहले Vowel (a,e,i,o,u) है तो सिर्फ S लगाओ।<br>जैसे: play → <b>plays</b>, stay → <b>stays</b></div>
+        </div>
+      </div>
+
+      <!-- IRREGULAR -->
+      <div class="rule-box rb-irr">
+        <div class="rh rh-irr">⚡ Special Verbs (अपवाद)</div>
+        <div class="rb">
+          कुछ Verbs के अपने खास रूप होते हैं:<br><br>
+          <div class="word-list">
+            <span class="word-chip">have→has</span>
+            <span class="word-chip">be→is</span>
+            <span class="word-chip">do→does</span>
+            <span class="word-chip">go→goes</span>
+          </div>
+          <div style="margin-top:8px;font-size:13px;color:#5a3a00;">
+            <b>याद रखो:</b><br>
+            I am / He is / They are<br>
+            I have / He has / They have
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ PRONOUN TABLE ═══════════════════════ -->
+<div class="card">
+  <div class="sec-head">
+    <div class="icon" style="background:#f5eeff;">📋</div>
+    <h2>Subject के अनुसार Verb Chart</h2>
+    <small>कौन से Subject के साथ क्या लगेगा?</small>
+  </div>
+  <div class="cbody" style="padding:0;">
+    <table class="ptable">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Positive</th>
+          <th>Negative</th>
+          <th>Interrogative</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="pro-name">I</span></td>
+          <td><span class="verb-s0">V1</span> (no s)</td>
+          <td>do not + V1</td>
+          <td>Do I + V1?</td>
+          <td><span class="badge-s0">No S</span></td>
+        </tr>
+        <tr>
+          <td><span class="pro-name">He / She / It / Name</span></td>
+          <td><span class="verb-s">V1 + s/es/ies</span></td>
+          <td>does not + V1</td>
+          <td>Does + Sub + V1?</td>
+          <td><span class="badge-s">+S/ES/IES</span></td>
+        </tr>
+        <tr>
+          <td><span class="pro-name">We</span></td>
+          <td><span class="verb-s0">V1</span> (no s)</td>
+          <td>do not + V1</td>
+          <td>Do we + V1?</td>
+          <td><span class="badge-s0">No S</span></td>
+        </tr>
+        <tr>
+          <td><span class="pro-name">You</span></td>
+          <td><span class="verb-s0">V1</span> (no s)</td>
+          <td>do not + V1</td>
+          <td>Do you + V1?</td>
+          <td><span class="badge-s0">No S</span></td>
+        </tr>
+        <tr>
+          <td><span class="pro-name">They</span></td>
+          <td><span class="verb-s0">V1</span> (no s)</td>
+          <td>do not + V1</td>
+          <td>Do they + V1?</td>
+          <td><span class="badge-s0">No S</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ USES ═══════════════════════════════ -->
+<div class="card">
+  <div class="sec-head">
+    <div class="icon" style="background:#e8f8f8;">🌟</div>
+    <h2>Uses (कब इस्तेमाल करें?)</h2>
+  </div>
+  <div class="cbody">
+    <table class="ftable">
+      <thead><tr><th>Use</th><th>Description</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:700;color:var(--blue)">Habit</td><td style="font-size:13px;">रोज़ की आदत जो बार-बार होती है</td><td class="ex-cell"><span>She drinks tea every morning.</span></td></tr>
+        <tr><td style="font-weight:700;color:var(--green)">Universal Truth</td><td style="font-size:13px;">हमेशा सच रहने वाले तथ्य</td><td class="ex-cell"><span>The earth revolves around the sun.</span></td></tr>
+        <tr><td style="font-weight:700;color:var(--red)">Routine</td><td style="font-size:13px;">नियमित काम जो हर दिन होता है</td><td class="ex-cell"><span>He goes to school daily.</span></td></tr>
+        <tr><td style="font-weight:700;color:var(--purple)">General Fact</td><td style="font-size:13px;">सामान्य सत्य जो हर जगह लागू होते हैं</td><td class="ex-cell"><span>Ice melts in heat.</span></td></tr>
+        <tr><td style="font-weight:700;color:#7a5a00">Schedule</td><td style="font-size:13px;">Fixed schedule/timetable के लिए</td><td class="ex-cell"><span>The train leaves at 9 AM.</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ WORKSHEET ══════════════════════════ -->
+<div class="card">
+  <div class="ws-header">
+    <h2>📝 Practice Worksheet</h2>
+    <p>Present Indefinite Tense — हिंदी से English बनाओ (Positive Sentences)</p>
+  </div>
+
+  <div class="meta-row">
+    <div class="mf"><span class="ml">Subject:</span><span>English Grammar</span></div>
+    <div class="mf"><span class="ml">Class:</span><span>_______________</span></div>
+    <div class="mf"><span class="ml">Topic:</span><span>Present Indefinite (Simple Present)</span></div>
+    <div class="mf"><span class="ml">Name:</span><span>___________________________</span></div>
+    <div class="mf"><span class="ml">Roll No.:</span><span>_______________</span></div>
+    <div class="mf"><span class="ml">Date:</span><span>_______________</span></div>
+  </div>
+
+  <div class="ws-instr">
+    <b>निर्देश (Instructions):</b> नीचे दिए गए हिंदी वाक्यों को <b>Simple Present Tense</b> में अंग्रेज़ी में बदलो।
+    सही S/ES/IES का ध्यान रखो।<br>
+    <b>🖥️ Digital:</b> हर प्रश्न का उत्तर देखने के लिए <b>Enter</b> दबाओ।
+  </div>
+
+  <div class="q-list" id="q-list"></div>
+</div>
+
+</div><!-- /page -->
+
+<!-- SCORE BAR -->
+<div class="score-bar" id="score-bar">
+  Press <span class="key">Enter</span> to reveal next answer
+  <span class="pill" id="pill">0 / 50 revealed</span>
+</div>
+
+<script>
+const qs = [
+  // Positive sentences — Hindi sentence shown, English answer revealed on Enter
+  { h: "वह हर रोज़ स्कूल जाता है।",              e: "He goes to school every day." },
+  { h: "मेरी माँ सुबह चाय बनाती है।",              e: "My mother makes tea in the morning." },
+  { h: "बच्चे मैदान में खेलते हैं।",               e: "Children play in the ground." },
+  { h: "राम रोज़ समाचार पत्र पढ़ता है।",           e: "Ram reads a newspaper every day." },
+  { h: "सूरज पूरब में उगता है।",                  e: "The sun rises in the east." },
+  { h: "गाय घास खाती है।",                        e: "A cow eats grass." },
+  { h: "मैं रोज़ सुबह दौड़ता हूँ।",                e: "I run every morning." },
+  { h: "वे अंग्रेज़ी पढ़ते हैं।",                  e: "They study English." },
+  { h: "प्रिया हर शाम गाना गाती है।",              e: "Priya sings a song every evening." },
+  { h: "हम क्रिकेट खेलते हैं।",                   e: "We play cricket." },
+  { h: "वह अपना काम समय पर करता है।",             e: "He does his work on time." },
+  { h: "मछलियाँ पानी में तैरती हैं।",              e: "Fish swim in water." },
+  { h: "तुम बहुत तेज़ बोलते हो।",                 e: "You speak very fast." },
+  { h: "वह रोज़ मंदिर जाती है।",                  e: "She goes to the temple every day." },
+  { h: "अध्यापक छात्रों को पढ़ाते हैं।",           e: "Teachers teach the students." },
+  { h: "कुत्ता भौंकता है।",                        e: "The dog barks." },
+  { h: "मैं दूध पीता हूँ।",                        e: "I drink milk." },
+  { h: "वह रोज़ योग करता है।",                     e: "He does yoga every day." },
+  { h: "पक्षी पेड़ पर बैठते हैं।",                 e: "Birds sit on trees." },
+  { h: "नेहा रोज़ नृत्य सीखती है।",               e: "Neha learns dance every day." },
+  { h: "बादल बारिश लाते हैं।",                    e: "Clouds bring rain." },
+  { h: "वह अपने दोस्तों की मदद करता है।",         e: "He helps his friends." },
+  { h: "मेरा भाई फुटबॉल खेलता है।",               e: "My brother plays football." },
+  { h: "तुम हर रात देर से सोते हो।",               e: "You sleep late every night." },
+  { h: "रोहन साइकिल चलाता है।",                   e: "Rohan rides a bicycle." },
+  { h: "हम खाना साथ में खाते हैं।",               e: "We eat food together." },
+  { h: "वह पत्र लिखती है।",                        e: "She writes a letter." },
+  { h: "किसान खेत में काम करता है।",              e: "The farmer works in the field." },
+  { h: "बच्चे मिठाई पसंद करते हैं।",              e: "Children like sweets." },
+  { h: "मैं संगीत सुनता हूँ।",                    e: "I listen to music." },
+  { h: "वह रोज़ बाज़ार जाती है।",                  e: "She goes to the market every day." },
+  { h: "नदी समुद्र में मिलती है।",                 e: "The river meets the sea." },
+  { h: "हम मिलकर काम करते हैं।",                  e: "We work together." },
+  { h: "तुम बहुत अच्छा गाते हो।",                 e: "You sing very well." },
+  { h: "वह हर हफ्ते पुस्तकालय जाता है।",          e: "He goes to the library every week." },
+  { h: "बिल्ली चूहे को पकड़ती है।",               e: "The cat catches the mouse." },
+  { h: "हवा तेज़ चलती है।",                        e: "The wind blows fast." },
+  { h: "वे मिलकर गाना गाते हैं।",                 e: "They sing together." },
+  { h: "मेरी बहन रोज़ व्यायाम करती है।",          e: "My sister exercises every day." },
+  { h: "सेब पेड़ से गिरता है।",                    e: "An apple falls from the tree." },
+  { h: "वह अपनी दादी की सेवा करता है।",           e: "He serves his grandmother." },
+  { h: "मैं हिंदी और अंग्रेज़ी बोलता हूँ।",       e: "I speak Hindi and English." },
+  { h: "छात्र परीक्षा की तैयारी करते हैं।",       e: "Students prepare for the exam." },
+  { h: "तुम बहुत कठिन परिश्रम करते हो।",          e: "You work very hard." },
+  { h: "वह रोज़ खाना पकाती है।",                   e: "She cooks food every day." },
+  { h: "शेर जंगल में रहता है।",                   e: "The lion lives in the jungle." },
+  { h: "हम नई चीज़ें सीखते हैं।",                 e: "We learn new things." },
+  { h: "वह रोज़ अपने माता-पिता को फोन करता है।", e: "He calls his parents every day." },
+  { h: "पौधे सूरज की रोशनी में बढ़ते हैं।",      e: "Plants grow in sunlight." },
+  { h: "मैं अपनी पुस्तकें संभाल कर रखता हूँ।",  e: "I keep my books carefully." },
+];
+
+const list = document.getElementById('q-list');
+qs.forEach((item, i) => {
+  const block = document.createElement('div');
+  block.className = 'q-block';
+  block.innerHTML = `
+    <div class="q-row">
+      <div class="q-num">${i+1}.</div>
+      <div class="q-sent">${item.h}</div>
+    </div>
+    <div class="ans-lines">
+      <span class="ans-line"></span><span class="ans-line"></span>
+    </div>
+    <div class="answer-box" id="ans${i}">
+      <div class="al">✔ English Answer</div>
+      <div class="at">${item.e}</div>
+    </div>
+    ${i < qs.length-1 ? '<hr class="q-divider"/>' : ''}
+  `;
+  list.appendChild(block);
+});
+
+let revealed = 0;
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  e.preventDefault();
+  if (revealed < qs.length) {
+    const box = document.getElementById('ans' + revealed);
+    box.style.display = 'block';
+    box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    revealed++;
+    document.getElementById('pill').textContent = `${revealed} / ${qs.length} revealed`;
+    if (revealed === qs.length) {
+      document.getElementById('score-bar').innerHTML =
+        '🎉 सभी 50 उत्तर आ गए! बहुत बढ़िया! <span class="pill">50 / 50 ✅</span>';
+    }
+  }
+});
+</script>
+</body>
+</html>
