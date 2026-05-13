@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 8 English - Maa Sharda Classes</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: white;
+        }
+
+        /* Branding Header */
+        .header {
+            background-color: #111;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            border-bottom: 3px solid #ffcc00;
+            margin-bottom: 40px;
+        }
+
+        .back-btn {
+            color: #ffcc00;
+            text-decoration: none;
+            margin-right: 25px;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .header-title h1 {
+            margin: 0;
+            font-size: 32px;
+            color: #ffcc00;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Interface Layout */
+        .interface-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* Folder Button Styling */
+        .folder-card {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 2px solid #333;
+            border-radius: 20px;
+            padding: 60px 20px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .folder-card:hover {
+            border-color: #ffcc00;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 204, 0, 0.1);
+        }
+
+        .folder-card i {
+            color: #ffcc00;
+            width: 90px;
+            height: 90px;
+            margin-bottom: 25px;
+        }
+
+        .folder-card span {
+            font-size: 40px; /* Large bold font */
+            font-weight: 900;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* "Add New" Special Button */
+        .add-new-card {
+            background: rgba(255, 204, 0, 0.05);
+            border: 2px dashed #ffcc00;
+            border-radius: 20px;
+            padding: 60px 20px;
+            text-decoration: none;
+            color: #ffcc00;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .add-new-card:hover {
+            background: rgba(255, 204, 0, 0.1);
+            transform: scale(1.02);
+        }
+
+        .add-new-card i {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        .add-new-card span {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .folder-card span { font-size: 30px; }
+            .header { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <a href="class8_main.html" class="back-btn">
+        <i data-lucide="chevron-left"></i> BACK
+    </a>
+    <div class="header-title">
+        <h1>CLASS 8: ENGLISH</h1>
+    </div>
+</header>
+
+<div class="container">
+    <div class="interface-grid">
+        
+        <!-- ACTIVE & PASSIVE VOICE FOLDER -->
+        <a href="av_pv_details.html" class="folder-card" target="_self">
+            <i data-lucide="folder-lock"></i>
+            <span>ACTIVE VOICE<br>PASSIVE VOICE</span>
+        </a>
+
+        <!--new topics-->
+        <a href="av_pv_details.html" class="folder-card" target="_self">
+            <i data-lucide="folder-lock"></i>
+            <span>TENSE<br>काल </span>
+        </a>
+
+        <!-- ADD NEW CONTENT BUTTON -->
+        <a href="create_new_topic.html" class="add-new-card">
+            <i data-lucide="plus-circle"></i>
+            <span>ADD NEW TOPIC</span>
+        </a>
+
+    </div>
+</div>
+
+<script>
+    // Initializes the icons
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
