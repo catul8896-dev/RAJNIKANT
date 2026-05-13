@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 8th - Maa Sharda Classes</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: white;
+        }
+
+        /* Branding Header */
+        .header {
+            background-color: #111;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 3px solid #ffcc00;
+            margin-bottom: 30px;
+        }
+
+        .back-btn {
+            color: #ffcc00;
+            text-decoration: none;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .title-section h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #ffcc00;
+        }
+
+        /* Subject Grid */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .subject-card {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 2px solid #333;
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .subject-card:hover {
+            border-color: #ffcc00;
+            transform: translateY(-10px);
+            background: #222;
+        }
+
+        /* Icon Styling */
+        .subject-card i {
+            color: #ffcc00;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        /* Subject Text Styling */
+        .subject-card span {
+            font-size: 40px; /* As per your request */
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        /* Footer info */
+        .footer-note {
+            text-align: center;
+            margin-top: 50px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .subject-card span { font-size: 30px; }
+            .grid-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <a href="index.html" class="back-btn">
+        <i data-lucide="chevron-left"></i> BACK
+    </a>
+    <div class="title-section">
+        <h1>CLASS 8th SUBJECTS</h1>
+    </div>
+</header>
+
+<div class="container">
+    <div class="grid-container">
+        
+        <!-- English -->
+        <a href="english_8.html" class="subject-card" target="_blank">
+            <i data-lucide="folder-type"></i>
+            <span>ENGLISH</span>
+        </a>
+
+        <!-- Maths -->
+        <a href="maths_8.html" class="subject-card" target="_blank">
+            <i data-lucide="folder-type"></i>
+            <span>MATHS</span>
+        </a>
+
+        <!-- Science -->
+        <a href="science_8.html" class="subject-card" target="_blank">
+            <i data-lucide="folder-type"></i>
+            <span>SCIENCE</span>
+        </a>
+
+        <!-- GS (General Studies) -->
+        <a href="gs_8.html" class="subject-card" target="_blank">
+            <i data-lucide="folder-type"></i>
+            <span>GS</span>
+        </a>
+
+        <!-- GK -->
+        <a href="gk_8.html" class="subject-card" target="_blank">
+            <i data-lucide="folder-type"></i>
+            <span>GK</span>
+        </a>
+
+        <!-- Reasoning -->
+        <a href="reasoning_8.html" class="subject-card" target="_blank">
+            <i data-lucide="folder-type"></i>
+            <span>REASONING</span>
+        </a>
+
+    </div>
+    
+    <div class="footer-note">
+        Maa Sharda Classes - Educational Portal
+    </div>
+</div>
+
+<script>
+    // This script activates the icons
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
