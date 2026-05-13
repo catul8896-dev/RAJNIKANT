@@ -1,1 +1,189 @@
-rajni
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active & Passive Voice - Class 8</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+        }
+
+        /* Branding Header */
+        .header {
+            background-color: #111;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid #ffcc00;
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .header-title h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #ffcc00;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* The "Add New" Button Section */
+        .admin-actions {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .add-folder-btn {
+            background: #ffcc00;
+            color: #000;
+            padding: 20px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .add-folder-btn:hover {
+            transform: scale(1.05);
+            background: #e6b800;
+        }
+
+        /* Daily Update Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .date-folder {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .date-folder:hover {
+            border-color: #ffcc00;
+            background: #222;
+        }
+
+        .date-folder i {
+            color: #ffcc00;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .folder-date {
+            font-size: 18px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .folder-title {
+            font-size: 40px; /* Large bold font as requested */
+            font-weight: bold;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .folder-title { font-size: 28px; }
+            .grid-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <a href="english_8.html" class="back-link">
+        <i data-lucide="arrow-left"></i> ENGLISH
+    </a>
+    <div class="header-title">
+        <h1>Active & Passive Voice</h1>
+    </div>
+    <div style="width: 80px;"></div> <!-- Spacer -->
+</header>
+
+<div class="container">
+    
+    <!-- ADD NEW BUTTON -->
+    <div class="admin-actions">
+        <a href="add_new_content.html" class="add-folder-btn">
+            <i data-lucide="folder-plus"></i>
+            ADD NEW TOPIC
+        </a>
+    </div>
+
+    <!-- DAILY CONTENT FOLDERS -->
+    <div class="grid-container">
+        
+        <!-- Folder 1: Example Today -->
+        <a href="voice_update_may13.html" class="date-folder">
+            <i data-lucide="folder-clock"></i>
+            <span class="folder-date">13 MAY 2026</span>
+            <span class="folder-title">PRESENT TENSE</span>
+        </a>
+
+        <!-- Folder 2: Example Yesterday -->
+        <a href="pastavpvmain.html" class="date-folder" target="_self">
+            <i data-lucide="folder-clock"></i>
+            <span class="folder-date">12 MAY 2026</span>
+            <span class="folder-title">PAST TENSE</span>
+        </a>
+
+        <!-- Folder 3 -->
+        <a href="voice_update_may11.html" class="date-folder">
+            <i data-lucide="folder-clock"></i>
+            <span class="folder-date">11 MAY 2026</span>
+            <span class="folder-title">FUTURE TENSE</span>
+        </a>
+
+        <!-- Folder 4 -->
+        <a href="voice_rules.html" class="date-folder">
+            <i data-lucide="folder-clock"></i>
+            <span class="folder-date">10 MAY 2026</span>
+            <span class="folder-title">BASIC RULES</span>
+        </a>
+
+    </div>
+</div>
+
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
