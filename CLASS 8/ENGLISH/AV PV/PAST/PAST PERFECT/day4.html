@@ -1,1 +1,642 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Past Perfect – WH-Family Active to Passive (50 Q)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0c1520;
+  --surface:#131f2e;
+  --card:#192840;
+  --border:rgba(140,180,255,.12);
+  --gold:#e8b84b;
+  --gold2:#f5d080;
+  --teal:#3ecfb2;
+  --rose:#f06292;
+  --violet:#b39ddb;
+  --sky:#64b5f6;
+  --text:#dce8f8;
+  --muted:#7a9ab8;
+  --faint:rgba(100,181,246,.06);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--bg);
+  font-family:'Source Serif 4',serif;
+  color:var(--text);
+  padding:0 0 90px;
+}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(160deg,#0c1520 0%,#0d2540 50%,#0c1a30 100%);
+  padding:48px 24px 36px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(100,181,246,.08),transparent);
+  pointer-events:none;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(232,184,75,.12);border:1px solid rgba(232,184,75,.3);
+  border-radius:24px;padding:4px 16px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gold);margin-bottom:18px;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.9rem,5vw,3rem);
+  color:#fff;line-height:1.2;margin-bottom:10px;
+}
+.hero h1 em{color:var(--gold);font-style:normal;}
+.hero p{color:var(--muted);font-size:15px;max-width:600px;margin:0 auto;}
+
+/* score strip */
+.score-strip{
+  display:flex;justify-content:center;gap:32px;
+  padding:14px 24px;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  flex-wrap:wrap;gap:16px 32px;
+}
+.sc-item{display:flex;align-items:center;gap:8px;}
+.sc-dot{width:8px;height:8px;border-radius:50%;}
+.sc-dot.all{background:var(--gold);}
+.sc-dot.done{background:var(--teal);}
+.sc-dot.left{background:var(--muted);}
+.sc-val{font-size:18px;font-weight:500;}
+
+/* ── FORMULA SECTION ── */
+.formula-wrap{
+  max-width:900px;margin:28px auto 0;padding:0 20px;
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+}
+.f-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px 20px;
+}
+.f-card .f-title{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.f-card .f-title::before{content:'';display:block;width:20px;height:2px;border-radius:1px;}
+.fc-av .f-title{color:var(--sky);}
+.fc-av .f-title::before{background:var(--sky);}
+.fc-pv .f-title{color:var(--teal);}
+.fc-pv .f-title::before{background:var(--teal);}
+.fc-who .f-title{color:var(--rose);}
+.fc-who .f-title::before{background:var(--rose);}
+.fc-whom .f-title{color:var(--violet);}
+.fc-whom .f-title::before{background:var(--violet);}
+
+.f-line{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;line-height:1.9;color:var(--text);
+}
+.f-line .hl-sky{color:var(--sky);font-weight:500;}
+.f-line .hl-teal{color:var(--teal);font-weight:500;}
+.f-line .hl-gold{color:var(--gold);font-weight:500;}
+.f-line .hl-rose{color:var(--rose);font-weight:500;}
+.f-line .hl-violet{color:var(--violet);font-weight:500;}
+
+/* ── WH TYPES LEGEND ── */
+.wh-legend{
+  max-width:900px;margin:16px auto 0;padding:0 20px;
+}
+.wh-grid{
+  display:flex;flex-wrap:wrap;gap:8px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:14px 18px;
+}
+.wh-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;border-radius:20px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;
+}
+
+/* ── QUESTION LIST ── */
+.q-wrap{max-width:900px;margin:24px auto 0;padding:0 20px;}
+
+.q-block{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  margin-bottom:18px;
+  overflow:hidden;
+  transition:border-color .3s,box-shadow .3s;
+}
+.q-block.revealed{
+  border-color:rgba(62,207,178,.25);
+  box-shadow:0 0 20px rgba(62,207,178,.06);
+}
+
+/* question header */
+.q-head{
+  display:flex;align-items:flex-start;gap:0;
+  padding:20px 24px 16px;
+}
+.q-num{
+  font-family:'Playfair Display',serif;
+  font-size:36px;font-weight:700;
+  color:rgba(232,184,75,.35);
+  min-width:56px;flex-shrink:0;
+  line-height:1.1;
+  padding-top:4px;
+}
+.q-right{flex:1;}
+.wh-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 10px;border-radius:20px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;font-weight:500;letter-spacing:.5px;
+  margin-bottom:8px;
+}
+
+/* 40px bold sentence */
+.q-sent{
+  font-size:40px;font-weight:700;
+  line-height:1.3;color:#fff;
+  font-family:'Playfair Display',serif;
+}
+.q-sent .wh-hl{text-decoration:underline;text-decoration-style:wavy;text-underline-offset:5px;}
+
+/* who/whom special note */
+.who-note{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  margin-top:6px;
+  padding:5px 10px;
+  border-radius:6px;
+  display:inline-block;
+}
+
+/* answer lines */
+.ans-lines{
+  padding:0 24px 16px 80px;
+}
+.ans-line{
+  display:block;
+  border-bottom:1px solid rgba(140,180,255,.2);
+  height:18px;margin-bottom:10px;
+}
+
+/* answer reveal */
+.ans-reveal{
+  display:none;
+  border-top:1px solid var(--border);
+  padding:14px 24px 18px 80px;
+  animation:fadeUp .28s ease;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
+
+.ans-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--teal);margin-bottom:6px;
+}
+.ans-text{
+  font-size:22px;font-weight:600;
+  color:var(--teal);
+  font-family:'Source Serif 4',serif;
+  line-height:1.4;
+}
+
+/* who→whom or whom→who note in answer */
+.conversion-note{
+  margin-top:8px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  color:var(--gold);
+  background:rgba(232,184,75,.08);
+  border:1px solid rgba(232,184,75,.2);
+  border-radius:6px;
+  padding:6px 12px;
+  display:inline-block;
+}
+
+/* ── FIXED BOTTOM BAR ── */
+.bottom-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(12,21,32,.96);
+  backdrop-filter:blur(12px);
+  border-top:1px solid var(--border);
+  padding:12px 24px;
+  display:flex;align-items:center;justify-content:center;gap:20px;
+  flex-wrap:wrap;
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  z-index:200;
+}
+.key-badge{
+  background:rgba(232,184,75,.15);
+  border:1px solid rgba(232,184,75,.4);
+  color:var(--gold);
+  border-radius:6px;padding:3px 12px;
+  font-size:12px;font-weight:500;
+}
+.progress-bar-wrap{
+  flex:1;max-width:240px;
+  height:4px;background:rgba(255,255,255,.08);
+  border-radius:2px;overflow:hidden;
+}
+.progress-bar{
+  height:100%;background:linear-gradient(90deg,var(--teal),var(--sky));
+  border-radius:2px;width:0%;
+  transition:width .4s ease;
+}
+#bar-label{color:var(--muted);}
+
+/* WH color map */
+.wh-what    {background:rgba(100,181,246,.12);color:var(--sky);border:1px solid rgba(100,181,246,.25);}
+.wh-who     {background:rgba(240, 98,146,.12);color:var(--rose);border:1px solid rgba(240, 98,146,.25);}
+.wh-whom    {background:rgba(179,157,219,.12);color:var(--violet);border:1px solid rgba(179,157,219,.25);}
+.wh-where   {background:rgba(129,199,132,.12);color:#81c784;border:1px solid rgba(129,199,132,.25);}
+.wh-when    {background:rgba(255,183, 77,.12);color:#ffb74d;border:1px solid rgba(255,183, 77,.25);}
+.wh-why     {background:rgba(255,138,101,.12);color:#ff8a65;border:1px solid rgba(255,138,101,.25);}
+.wh-how     {background:rgba(77,182,172,.12);color:#4db6ac;border:1px solid rgba(77,182,172,.25);}
+.wh-which   {background:rgba(240,196, 25,.12);color:#f0c419;border:1px solid rgba(240,196, 25,.25);}
+
+/* sentence WH highlights */
+.hl-what{color:var(--sky);}
+.hl-who{color:var(--rose);}
+.hl-whom{color:var(--violet);}
+.hl-where{color:#81c784;}
+.hl-when{color:#ffb74d;}
+.hl-why{color:#ff8a65;}
+.hl-how{color:#4db6ac;}
+.hl-which{color:#f0c419;}
+
+/* print */
+@media print{
+  body{background:#fff;color:#111;}
+  .bottom-bar,.hero::before{display:none!important;}
+  .hero{background:#fff;color:#111;}
+  .q-block{background:#fff;border:1px solid #ccc;break-inside:avoid;}
+  .q-sent,.q-num{color:#111;}
+  .ans-reveal{display:none!important;}
+  .ans-line{border-bottom:1px solid #888;}
+}
+@media(max-width:600px){
+  .formula-wrap{grid-template-columns:1fr;}
+  .q-sent{font-size:26px;}
+  .q-num{font-size:28px;min-width:44px;}
+  .ans-lines,.ans-reveal{padding-left:54px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">📝 Grammar Worksheet</div>
+  <h1>Past Perfect Tense<br><em>WH-Family</em> · Active → Passive</h1>
+  <p>50 Questions · What · Who · Whom · Where · When · Why · How · Which<br>Including <strong>Who → By Whom</strong> &amp; <strong>Whom → Who</strong> conversions</p>
+</div>
+
+<!-- SCORE STRIP -->
+<div class="score-strip">
+  <div class="sc-item"><span class="sc-dot all"></span><span>Total</span><span class="sc-val">50</span></div>
+  <div class="sc-item"><span class="sc-dot done"></span><span>Revealed</span><span class="sc-val" id="revealed-count">0</span></div>
+  <div class="sc-item"><span class="sc-dot left"></span><span>Remaining</span><span class="sc-val" id="remain-count">50</span></div>
+</div>
+
+<!-- FORMULAS -->
+<div class="formula-wrap">
+  <div class="f-card fc-av">
+    <div class="f-title">WH Active Voice</div>
+    <div class="f-line">
+      <span class="hl-gold">WH-word</span> + <span class="hl-sky">had</span> + Subject<br>
+      + Past Participle (V3) + Object + ?
+    </div>
+  </div>
+  <div class="f-card fc-pv">
+    <div class="f-title">WH Passive Voice</div>
+    <div class="f-line">
+      <span class="hl-gold">WH-word</span> + <span class="hl-teal">had</span> + Object<br>
+      + <span class="hl-teal">been</span> + V3 + by + Subject + ?
+    </div>
+  </div>
+  <div class="f-card fc-who">
+    <div class="f-title">Who → By Whom (Subject becomes Object)</div>
+    <div class="f-line">
+      Active:&nbsp; <span class="hl-rose">Who</span> had + V3 + Object ?<br>
+      Passive: <span class="hl-rose">By whom</span> + had + Object<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ been + V3 ?
+    </div>
+  </div>
+  <div class="f-card fc-whom">
+    <div class="f-title">Whom → Who (Object becomes Subject)</div>
+    <div class="f-line">
+      Active:&nbsp; <span class="hl-violet">Whom</span> had Subject + V3 ?<br>
+      Passive: <span class="hl-violet">Who</span> had been + V3<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ by + Subject ?
+    </div>
+  </div>
+</div>
+
+<!-- WH LEGEND -->
+<div class="wh-legend">
+  <div class="wh-grid">
+    <span class="wh-chip wh-what">What — क्या</span>
+    <span class="wh-chip wh-who">Who → By whom</span>
+    <span class="wh-chip wh-whom">Whom → Who</span>
+    <span class="wh-chip wh-where">Where — कहाँ</span>
+    <span class="wh-chip wh-when">When — कब</span>
+    <span class="wh-chip wh-why">Why — क्यों</span>
+    <span class="wh-chip wh-how">How — कैसे</span>
+    <span class="wh-chip wh-which">Which — कौन</span>
+  </div>
+</div>
+
+<!-- QUESTIONS -->
+<div class="q-wrap" id="q-list"></div>
+
+<!-- BOTTOM BAR -->
+<div class="bottom-bar">
+  <span>Press</span>
+  <span class="key-badge">Enter ↵</span>
+  <span>to reveal answer</span>
+  <div class="progress-bar-wrap"><div class="progress-bar" id="prog"></div></div>
+  <span id="bar-label">0 / 50</span>
+</div>
+
+<script>
+/* ─────────────────────────────────────────────────────
+   DATA — 50 WH-family sentences
+   type: what | who | whom | where | when | why | how | which
+   note (optional): conversion note for who/whom
+───────────────────────────────────────────────────── */
+const data = [
+  // ── WHAT (10) ──
+  {type:"what",
+   a:"What had the carpenter <span class='hl-what'>made</span> in the workshop?",
+   p:"What had been made by the carpenter in the workshop?"},
+  {type:"what",
+   a:"What had the scientist <span class='hl-what'>discovered</span> in the lab?",
+   p:"What had been discovered by the scientist in the lab?"},
+  {type:"what",
+   a:"What had the students <span class='hl-what'>prepared</span> for the competition?",
+   p:"What had been prepared by the students for the competition?"},
+  {type:"what",
+   a:"What had the chef <span class='hl-what'>cooked</span> for the guests?",
+   p:"What had been cooked by the chef for the guests?"},
+  {type:"what",
+   a:"What had the painter <span class='hl-what'>drawn</span> on the canvas?",
+   p:"What had been drawn by the painter on the canvas?"},
+  {type:"what",
+   a:"What had the manager <span class='hl-what'>decided</span> at the meeting?",
+   p:"What had been decided by the manager at the meeting?"},
+  {type:"what",
+   a:"What had the engineer <span class='hl-what'>designed</span> for the project?",
+   p:"What had been designed by the engineer for the project?"},
+  {type:"what",
+   a:"What had the reporter <span class='hl-what'>written</span> in the newspaper?",
+   p:"What had been written by the reporter in the newspaper?"},
+  {type:"what",
+   a:"What had the farmer <span class='hl-what'>planted</span> in the field?",
+   p:"What had been planted by the farmer in the field?"},
+  {type:"what",
+   a:"What had the boy <span class='hl-what'>brought</span> from the market?",
+   p:"What had been brought by the boy from the market?"},
+
+  // ── WHO → BY WHOM (8) ──
+  {type:"who",
+   a:"<span class='hl-who'>Who</span> had stolen the diamond ring?",
+   p:"By whom had the diamond ring been stolen?",
+   note:"✦ Who (subject) → By whom (in passive)"},
+  {type:"who",
+   a:"<span class='hl-who'>Who</span> had broken the classroom window?",
+   p:"By whom had the classroom window been broken?",
+   note:"✦ Who → By whom"},
+  {type:"who",
+   a:"<span class='hl-who'>Who</span> had written this beautiful poem?",
+   p:"By whom had this beautiful poem been written?",
+   note:"✦ Who → By whom"},
+  {type:"who",
+   a:"<span class='hl-who'>Who</span> had painted the ancient temple walls?",
+   p:"By whom had the ancient temple walls been painted?",
+   note:"✦ Who → By whom"},
+  {type:"who",
+   a:"<span class='hl-who'>Who</span> had discovered this rare mineral?",
+   p:"By whom had this rare mineral been discovered?",
+   note:"✦ Who → By whom"},
+  {type:"who",
+   a:"<span class='hl-who'>Who</span> had repaired the old clock tower?",
+   p:"By whom had the old clock tower been repaired?",
+   note:"✦ Who → By whom"},
+  {type:"who",
+   a:"<span class='hl-who'>Who</span> had delivered the important message?",
+   p:"By whom had the important message been delivered?",
+   note:"✦ Who → By whom"},
+  {type:"who",
+   a:"<span class='hl-who'>Who</span> had planted the mango trees in the garden?",
+   p:"By whom had the mango trees been planted in the garden?",
+   note:"✦ Who → By whom"},
+
+  // ── WHOM → WHO (7) ──
+  {type:"whom",
+   a:"<span class='hl-whom'>Whom</span> had the principal punished?",
+   p:"Who had been punished by the principal?",
+   note:"✦ Whom (object) → Who (new subject in passive)"},
+  {type:"whom",
+   a:"<span class='hl-whom'>Whom</span> had the coach selected for the team?",
+   p:"Who had been selected for the team by the coach?",
+   note:"✦ Whom → Who"},
+  {type:"whom",
+   a:"<span class='hl-whom'>Whom</span> had the king rewarded with gold?",
+   p:"Who had been rewarded with gold by the king?",
+   note:"✦ Whom → Who"},
+  {type:"whom",
+   a:"<span class='hl-whom'>Whom</span> had the manager appointed as leader?",
+   p:"Who had been appointed as leader by the manager?",
+   note:"✦ Whom → Who"},
+  {type:"whom",
+   a:"<span class='hl-whom'>Whom</span> had the judge released from prison?",
+   p:"Who had been released from prison by the judge?",
+   note:"✦ Whom → Who"},
+  {type:"whom",
+   a:"<span class='hl-whom'>Whom</span> had the officer arrested at the station?",
+   p:"Who had been arrested at the station by the officer?",
+   note:"✦ Whom → Who"},
+  {type:"whom",
+   a:"<span class='hl-whom'>Whom</span> had the teacher praised in front of the class?",
+   p:"Who had been praised in front of the class by the teacher?",
+   note:"✦ Whom → Who"},
+
+  // ── WHERE (5) ──
+  {type:"where",
+   a:"<span class='hl-where'>Where</span> had the workers built the new bridge?",
+   p:"Where had the new bridge been built by the workers?"},
+  {type:"where",
+   a:"<span class='hl-where'>Where</span> had the archaeologists found the old coins?",
+   p:"Where had the old coins been found by the archaeologists?"},
+  {type:"where",
+   a:"<span class='hl-where'>Where</span> had the authorities planted the new saplings?",
+   p:"Where had the new saplings been planted by the authorities?"},
+  {type:"where",
+   a:"<span class='hl-where'>Where</span> had the artist exhibited the paintings?",
+   p:"Where had the paintings been exhibited by the artist?"},
+  {type:"where",
+   a:"<span class='hl-where'>Where</span> had the students organized the annual function?",
+   p:"Where had the annual function been organized by the students?"},
+
+  // ── WHEN (5) ──
+  {type:"when",
+   a:"<span class='hl-when'>When</span> had the doctor examined the patient?",
+   p:"When had the patient been examined by the doctor?"},
+  {type:"when",
+   a:"<span class='hl-when'>When</span> had the committee announced the result?",
+   p:"When had the result been announced by the committee?"},
+  {type:"when",
+   a:"<span class='hl-when'>When</span> had the pilot landed the aircraft?",
+   p:"When had the aircraft been landed by the pilot?"},
+  {type:"when",
+   a:"<span class='hl-when'>When</span> had the government passed the new law?",
+   p:"When had the new law been passed by the government?"},
+  {type:"when",
+   a:"<span class='hl-when'>When</span> had the soldiers captured the fort?",
+   p:"When had the fort been captured by the soldiers?"},
+
+  // ── WHY (4) ──
+  {type:"why",
+   a:"<span class='hl-why'>Why</span> had the watchman locked the main gate?",
+   p:"Why had the main gate been locked by the watchman?"},
+  {type:"why",
+   a:"<span class='hl-why'>Why</span> had the nurse given the injection early?",
+   p:"Why had the injection been given early by the nurse?"},
+  {type:"why",
+   a:"<span class='hl-why'>Why</span> had the council cancelled the programme?",
+   p:"Why had the programme been cancelled by the council?"},
+  {type:"why",
+   a:"<span class='hl-why'>Why</span> had the mechanic removed the engine?",
+   p:"Why had the engine been removed by the mechanic?"},
+
+  // ── HOW (6) ──
+  {type:"how",
+   a:"<span class='hl-how'>How</span> had the tailor stitched the wedding gown?",
+   p:"How had the wedding gown been stitched by the tailor?"},
+  {type:"how",
+   a:"<span class='hl-how'>How</span> had the baker baked the birthday cake?",
+   p:"How had the birthday cake been baked by the baker?"},
+  {type:"how",
+   a:"<span class='hl-how'>How</span> had the captain trained the football team?",
+   p:"How had the football team been trained by the captain?"},
+  {type:"how",
+   a:"<span class='hl-how'>How</span> had the plumber fixed the leaking pipe?",
+   p:"How had the leaking pipe been fixed by the plumber?"},
+  {type:"how",
+   a:"<span class='hl-how'>How</span> had the detective solved the mystery?",
+   p:"How had the mystery been solved by the detective?"},
+  {type:"how",
+   a:"<span class='hl-how'>How</span> had the sculptor shaped the marble statue?",
+   p:"How had the marble statue been shaped by the sculptor?"},
+
+  // ── WHICH (5) ──
+  {type:"which",
+   a:"<span class='hl-which'>Which</span> book had the librarian recommended to the students?",
+   p:"Which book had been recommended to the students by the librarian?"},
+  {type:"which",
+   a:"<span class='hl-which'>Which</span> route had the driver selected for the journey?",
+   p:"Which route had been selected for the journey by the driver?"},
+  {type:"which",
+   a:"<span class='hl-which'>Which</span> player had the coach dropped from the team?",
+   p:"Which player had been dropped from the team by the coach?"},
+  {type:"which",
+   a:"<span class='hl-which'>Which</span> poem had the teacher assigned for homework?",
+   p:"Which poem had been assigned for homework by the teacher?"},
+  {type:"which",
+   a:"<span class='hl-which'>Which</span> design had the architect approved for the building?",
+   p:"Which design had been approved for the building by the architect?"},
+];
+
+// badge label + css class map
+const typeMap = {
+  what:  {label:"What",   cls:"wh-what"},
+  who:   {label:"Who → By Whom", cls:"wh-who"},
+  whom:  {label:"Whom → Who",    cls:"wh-whom"},
+  where: {label:"Where",  cls:"wh-where"},
+  when:  {label:"When",   cls:"wh-when"},
+  why:   {label:"Why",    cls:"wh-why"},
+  how:   {label:"How",    cls:"wh-how"},
+  which: {label:"Which",  cls:"wh-which"},
+};
+
+// BUILD CARDS
+const list = document.getElementById('q-list');
+data.forEach((item, i) => {
+  const tm = typeMap[item.type];
+  const block = document.createElement('div');
+  block.className = 'q-block';
+  block.id = `q${i}`;
+  block.innerHTML = `
+    <div class="q-head">
+      <div class="q-num">${String(i+1).padStart(2,'0')}</div>
+      <div class="q-right">
+        <div class="wh-badge ${tm.cls}">${tm.label}</div>
+        <div class="q-sent">${item.a}</div>
+        ${item.note ? `<div class="who-note ${tm.cls}">${item.note}</div>` : ''}
+      </div>
+    </div>
+    <div class="ans-lines">
+      <span class="ans-line"></span>
+      <span class="ans-line"></span>
+    </div>
+    <div class="ans-reveal" id="ans${i}">
+      <div class="ans-label">✔ Passive Voice Answer</div>
+      <div class="ans-text">${item.p}</div>
+      ${item.note ? `<div class="conversion-note">${item.note}</div>` : ''}
+    </div>
+  `;
+  list.appendChild(block);
+});
+
+// ENTER KEY LOGIC
+let revealed = 0;
+const total = data.length;
+
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  e.preventDefault();
+  if (revealed >= total) return;
+
+  const box   = document.getElementById('ans' + revealed);
+  const block = document.getElementById('q' + revealed);
+
+  box.style.display = 'block';
+  block.classList.add('revealed');
+  block.scrollIntoView({behavior:'smooth', block:'center'});
+
+  revealed++;
+  document.getElementById('revealed-count').textContent = revealed;
+  document.getElementById('remain-count').textContent = total - revealed;
+  document.getElementById('bar-label').textContent = `${revealed} / ${total}`;
+  document.getElementById('prog').style.width = (revealed/total*100) + '%';
+
+  if (revealed === total) {
+    document.querySelector('.bottom-bar').innerHTML =
+      `<span style="color:var(--teal);font-family:'JetBrains Mono',monospace;font-size:14px;">
+        🎉 All 50 answers revealed! Excellent mastery of WH-Passive!
+        <span style="background:rgba(62,207,178,.15);border:1px solid rgba(62,207,178,.3);
+        border-radius:20px;padding:2px 14px;margin-left:12px;">50 / 50 ✅</span>
+      </span>`;
+  }
+});
+</script>
+</body>
+</html>
