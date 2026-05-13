@@ -1,1 +1,424 @@
 
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Past Perfect Interrogative – Active to Passive Worksheet</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #e8f0ee;
+  font-family: 'Georgia', serif;
+  padding: 30px 16px 60px;
+  color: #111;
+}
+
+/* ── A4 PAGE ── */
+.page {
+  background: #fff;
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto 40px;
+  padding: 18mm 18mm 20mm;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+  border-radius: 4px;
+}
+
+/* ── SCHOOL HEADER ── */
+.school-header {
+  text-align: center;
+  border-bottom: 3px double #111;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+.school-name {
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.school-tagline {
+  font-size: 13px;
+  color: #555;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+.worksheet-title {
+  font-size: 18px;
+  font-weight: bold;
+  background: #145a3c;
+  color: #fff;
+  display: inline-block;
+  padding: 5px 28px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  margin-top: 6px;
+}
+
+/* ── META GRID ── */
+.meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 30px;
+  margin: 16px 0 20px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.meta-grid .field {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  border-bottom: 1.5px solid #555;
+  padding-bottom: 3px;
+}
+.meta-grid .label { white-space: nowrap; color: #333; }
+.meta-grid .value { flex: 1; min-width: 60px; }
+
+/* ── INSTRUCTIONS ── */
+.instructions {
+  background: #f0faf5;
+  border-left: 5px solid #145a3c;
+  padding: 10px 16px;
+  font-size: 15px;
+  color: #222;
+  margin-bottom: 18px;
+  border-radius: 0 4px 4px 0;
+  line-height: 1.8;
+}
+.instructions strong { color: #145a3c; }
+
+/* ── FORMULA BOX ── */
+.formula-box {
+  border: 2px solid #145a3c;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 13.5px;
+  margin-bottom: 24px;
+  background: #f6fdf9;
+  line-height: 2;
+}
+.formula-box .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 2px; }
+.formula-box span { font-weight: bold; color: #145a3c; }
+.formula-box .arrow { font-size: 18px; color: #145a3c; }
+
+/* ── QUESTION BLOCK ── */
+.q-block { margin-bottom: 22px; page-break-inside: avoid; }
+.q-row { display: flex; align-items: flex-start; gap: 10px; }
+
+.q-num {
+  font-size: 40px;
+  font-weight: bold;
+  min-width: 54px;
+  color: #145a3c;
+  line-height: 1.2;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+/* 40px bold sentence */
+.q-sentence {
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 1.35;
+  color: #111;
+  flex: 1;
+}
+
+/* highlight "Had" at start */
+.q-sentence .had-hl {
+  color: #145a3c;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-underline-offset: 4px;
+}
+
+/* answer lines */
+.ans-lines { margin-top: 8px; margin-left: 64px; }
+.ans-line {
+  display: block;
+  border-bottom: 1.5px solid #bbb;
+  margin-bottom: 8px;
+  height: 20px;
+  width: 100%;
+}
+
+/* ── ANSWER REVEAL ── */
+.answer-box {
+  display: none;
+  margin-top: 8px;
+  margin-left: 64px;
+  background: #f0faf5;
+  border-left: 4px solid #1e8449;
+  padding: 8px 14px;
+  border-radius: 0 6px 6px 0;
+  animation: slideDown 0.28s ease;
+}
+.answer-box .ans-label {
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #145a3c;
+  margin-bottom: 3px;
+}
+.answer-box .ans-text {
+  font-size: 22px;
+  font-weight: bold;
+  color: #145a3c;
+  line-height: 1.45;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.q-divider { border: none; border-top: 1px dashed #ccc; margin: 4px 0 0; }
+
+/* ── FIXED HINT BAR ── */
+.enter-hint-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: #145a3c;
+  color: #fff;
+  text-align: center;
+  padding: 12px;
+  font-size: 16px;
+  font-family: Georgia, serif;
+  z-index: 200;
+  letter-spacing: 0.4px;
+}
+.enter-hint-bar .key {
+  background: #f4c261;
+  color: #145a3c;
+  font-weight: bold;
+  padding: 2px 10px;
+  border-radius: 5px;
+  margin: 0 4px;
+  font-family: monospace;
+  font-size: 15px;
+}
+.score-pill {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 2px 14px;
+  margin-left: 18px;
+  font-size: 15px;
+}
+
+/* ── PRINT ── */
+@media print {
+  body { background: #fff; padding: 0; }
+  .page { box-shadow: none; margin: 0; padding: 14mm 16mm 16mm; width: 100%; min-height: auto; }
+  .enter-hint-bar { display: none !important; }
+  .answer-box { display: none !important; }
+  .ans-line { border-bottom: 1.5px solid #888; }
+  .q-block { page-break-inside: avoid; }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 650px) {
+  .page { width: 100%; padding: 14px 12px 20px; }
+  .q-sentence, .q-num { font-size: 26px; }
+  .meta-grid { grid-template-columns: 1fr; }
+}
+
+/* Navigation Button Style */
+.nav-container {
+  text-align: right;
+  max-width: 210mm;
+  margin: 0 auto 10px;
+}
+
+.btn-other-page {
+  display: inline-block;
+  background: #f4c261;
+  color: #145a3c;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 2px solid #145a3c;
+  transition: all 0.3s ease;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.btn-other-page:hover {
+  background: #145a3c;
+  color: #fff;
+
+
+</style>
+</head>
+<body>
+
+
+
+<body>
+
+
+
+
+<div class="page" id="worksheet">
+
+  <!-- HEADER -->
+  <div class="school-header">
+    <div class="school-name">MAA SHARDA CLASSES</div>
+    <div class="school-tagline">Knowledge • Character • Excellence</div>
+    <div class="worksheet-title">Grammar Worksheet — Interrogative Sentences (Yes / No)</div>
+  </div>
+
+  <!-- META -->
+  
+
+  <!-- INSTRUCTIONS -->
+
+  <!-- FORMULA -->
+  <div class="formula-box">
+    <div class="row">
+      <div><span>Active&nbsp;&nbsp;:</span> <span>Had</span> + Subject + V3 + Object + ?</div>
+      <div class="arrow">→</div>
+      <div><span>Passive :</span> <span>Had</span> + Object + <span>been</span> + V3 + by + Subject + ?</div>
+    </div>
+    <div style="font-size:13px; color:#555; margin-top:6px;">
+      Example — Active: <em>Had the boy caught the butterfly?</em> &nbsp;→&nbsp;
+      Passive: <em>Had the butterfly been caught by the boy?</em>
+    </div>
+  </div>
+
+  <!-- QUESTIONS INSERTED BY JS -->
+  <div id="q-list"></div>
+
+</div><!-- /page -->
+
+<!-- FIXED HINT BAR -->
+<div class="enter-hint-bar" id="hint-bar">
+  Press <span class="key">Enter</span> to reveal the next answer
+  <span class="score-pill" id="score-pill">0 / 50 revealed</span>
+</div>
+
+<script>
+// 50 BRAND NEW Yes/No interrogative sentences
+// All subjects, verbs, objects completely different from positive and negative worksheets
+const data = [
+  // 1-10
+  { a: "Had the monkey stolen the bananas?",             p: "Had the bananas been stolen by the monkey?" },
+  { a: "Had the cobbler mended the shoes?",              p: "Had the shoes been mended by the cobbler?" },
+  { a: "Had the astronaut launched the rocket?",         p: "Had the rocket been launched by the astronaut?" },
+  { a: "Had the dhobi washed the bedsheets?",            p: "Had the bedsheets been washed by the dhobi?" },
+  { a: "Had the jeweller polished the ring?",            p: "Had the ring been polished by the jeweller?" },
+  { a: "Had the hunter trapped the fox?",                p: "Had the fox been trapped by the hunter?" },
+  { a: "Had the decorator hung the curtains?",           p: "Had the curtains been hung by the decorator?" },
+  { a: "Had the referee blown the whistle?",             p: "Had the whistle been blown by the referee?" },
+  { a: "Had the spy photographed the map?",              p: "Had the map been photographed by the spy?" },
+  { a: "Had the weaver dyed the cloth?",                 p: "Had the cloth been dyed by the weaver?" },
+  // 11-20
+  { a: "Had the barber shaved the beard?",               p: "Had the beard been shaved by the barber?" },
+  { a: "Had the fisherman mended the net?",              p: "Had the net been mended by the fisherman?" },
+  { a: "Had the sculptor chiselled the statue?",         p: "Had the statue been chiselled by the sculptor?" },
+  { a: "Had the porter carried the luggage?",            p: "Had the luggage been carried by the porter?" },
+  { a: "Had the veterinarian treated the horse?",        p: "Had the horse been treated by the veterinarian?" },
+  { a: "Had the pharmacist prepared the syrup?",         p: "Had the syrup been prepared by the pharmacist?" },
+  { a: "Had the typist typed the application?",          p: "Had the application been typed by the typist?" },
+  { a: "Had the florist arranged the bouquet?",          p: "Had the bouquet been arranged by the florist?" },
+  { a: "Had the navigator charted the route?",           p: "Had the route been charted by the navigator?" },
+  { a: "Had the diver explored the cave?",               p: "Had the cave been explored by the diver?" },
+  // 21-30
+  { a: "Had the inventor tested the machine?",           p: "Had the machine been tested by the inventor?" },
+  { a: "Had the collector framed the painting?",         p: "Had the painting been framed by the collector?" },
+  { a: "Had the ranger patrolled the forest?",           p: "Had the forest been patrolled by the ranger?" },
+  { a: "Had the smuggler hidden the diamonds?",          p: "Had the diamonds been hidden by the smuggler?" },
+  { a: "Had the monk rung the bell?",                    p: "Had the bell been rung by the monk?" },
+  { a: "Had the guard inspected the luggage?",           p: "Had the luggage been inspected by the guard?" },
+  { a: "Had the chemist mixed the solution?",            p: "Had the solution been mixed by the chemist?" },
+  { a: "Had the programmer coded the app?",              p: "Had the app been coded by the programmer?" },
+  { a: "Had the storekeeper stocked the shelves?",       p: "Had the shelves been stocked by the storekeeper?" },
+  { a: "Had the dressmaker sewn the gown?",              p: "Had the gown been sewn by the dressmaker?" },
+  // 31-40
+  { a: "Had the architect approved the design?",         p: "Had the design been approved by the architect?" },
+  { a: "Had the zookeeper fed the elephant?",            p: "Had the elephant been fed by the zookeeper?" },
+  { a: "Had the astronomer observed the comet?",         p: "Had the comet been observed by the astronomer?" },
+  { a: "Had the locksmith opened the safe?",             p: "Had the safe been opened by the locksmith?" },
+  { a: "Had the musician composed the tune?",            p: "Had the tune been composed by the musician?" },
+  { a: "Had the umpire cancelled the match?",            p: "Had the match been cancelled by the umpire?" },
+  { a: "Had the jockey trained the horse?",              p: "Had the horse been trained by the jockey?" },
+  { a: "Had the geologist examined the rock?",           p: "Had the rock been examined by the geologist?" },
+  { a: "Had the warden registered the complaint?",       p: "Had the complaint been registered by the warden?" },
+  { a: "Had the navigator steered the ship?",            p: "Had the ship been steered by the navigator?" },
+  // 41-50
+  { a: "Had the glassblower shaped the vase?",           p: "Had the vase been shaped by the glassblower?" },
+  { a: "Had the accountant audited the records?",        p: "Had the records been audited by the accountant?" },
+  { a: "Had the woodcutter chopped the branches?",       p: "Had the branches been chopped by the woodcutter?" },
+  { a: "Had the surveyor measured the land?",            p: "Had the land been measured by the surveyor?" },
+  { a: "Had the lifeguard rescued the swimmer?",         p: "Had the swimmer been rescued by the lifeguard?" },
+  { a: "Had the printer reproduced the poster?",         p: "Had the poster been reproduced by the printer?" },
+  { a: "Had the blacksmith forged the sword?",           p: "Had the sword been forged by the blacksmith?" },
+  { a: "Had the botanist classified the plant?",         p: "Had the plant been classified by the botanist?" },
+  { a: "Had the translator interpreted the speech?",     p: "Had the speech been interpreted by the translator?" },
+  { a: "Had the detective solved the mystery?",          p: "Had the mystery been solved by the detective?" },
+];
+
+// Highlight opening "Had"
+function markHad(str) {
+  return str.replace(/^Had/, "<span class='had-hl'>Had</span>");
+}
+
+// Build DOM
+const list = document.getElementById('q-list');
+data.forEach((item, i) => {
+  const block = document.createElement('div');
+  block.className = 'q-block';
+  block.id = `q${i}`;
+  block.innerHTML = `
+    <div class="q-row">
+      <div class="q-num">${i + 1}.</div>
+      <div class="q-sentence">${markHad(item.a)}</div>
+    </div>
+    <div class="ans-lines">
+      <span class="ans-line"></span>
+      <span class="ans-line"></span>
+    </div>
+    <div class="answer-box" id="ans${i}">
+      <div class="ans-label">✔ Passive Voice Answer</div>
+      <div class="ans-text">${item.p}</div>
+    </div>
+    ${i < data.length - 1 ? '<hr class="q-divider"/>' : ''}
+  `;
+  list.appendChild(block);
+});
+
+// Enter key logic
+let revealed = 0;
+const total = data.length;
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    if (revealed < total) {
+      const box = document.getElementById(`ans${revealed}`);
+      box.style.display = 'block';
+      box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      revealed++;
+      document.getElementById('score-pill').textContent = `${revealed} / ${total} revealed`;
+      if (revealed === total) {
+        document.getElementById('hint-bar').innerHTML =
+          '🎉 All 50 answers revealed! Excellent work! <span class="score-pill">50 / 50 ✅</span>';
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
+ 
