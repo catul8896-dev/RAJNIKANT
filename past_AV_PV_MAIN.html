@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Tense AV/PV - Maa Sharda Classes</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: white;
+        }
+
+        /* Branding Header */
+        .header {
+            background-color: #111;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            border-bottom: 3px solid #ffcc00;
+            margin-bottom: 40px;
+        }
+
+        .back-btn {
+            color: #ffcc00;
+            text-decoration: none;
+            margin-right: 25px;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .header-title h1 {
+            margin: 0;
+            font-size: 32px;
+            color: #ffcc00;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Folder Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .folder-card {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 2px solid #333;
+            border-radius: 20px;
+            padding: 50px 20px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+        }
+
+        .folder-card:hover {
+            border-color: #ffcc00;
+            transform: translateY(-8px);
+            background: #1e1e1e;
+        }
+
+        .folder-card i {
+            color: #ffcc00;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        .folder-card span {
+            font-size: 40px; /* Your requested font size */
+            font-weight: 800;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        /* Footer Branding */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #444;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .folder-card span { font-size: 28px; }
+            .header-title h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <a href="av_pv_main.html" class="back-btn">
+        <i data-lucide="chevron-left"></i> BACK
+    </a>
+    <div class="header-title">
+        <h1>PAST TENSE: AV & PV</h1>
+    </div>
+</header>
+
+<div class="container">
+    <div class="grid-container">
+        
+        <!-- Past Indefinite -->
+        <a href="past_indefinite.html" class="folder-card" target="_self">
+            <i data-lucide="folder-search"></i>
+            <span>PAST INDEFINITE</span>
+        </a>
+
+        <!-- Past Continuous -->
+        <a href="past_continuous.html" class="folder-card" target="_self">
+            <i data-lucide="folder-sync"></i>
+            <span>PAST CONTINUOUS</span>
+        </a>
+
+        <!-- Past Perfect -->
+        <a href="past_perfect.html" class="folder-card" target="_self">
+            <i data-lucide="folder-check"></i>
+            <span>PAST PERFECT</span>
+        </a>
+
+        <!-- Other (Modals, Imperative, etc.) -->
+        <a href="past_other.html" class="folder-card" target="_self">
+            <i data-lucide="folder-plus"></i>
+            <span>OTHER RULES</span>
+        </a>
+
+    </div>
+
+    <div class="footer">
+        MAA SHARDA CLASSES
+    </div>
+</div>
+
+<script>
+    // Activate icons
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
