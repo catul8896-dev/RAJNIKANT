@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Lessons - Maa Sharda Classes</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: white;
+        }
+
+        /* Top Header Navigation */
+        .header {
+            background-color: #111;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            border-bottom: 3px solid #ffcc00;
+            margin-bottom: 40px;
+        }
+
+        .back-btn {
+            color: #ffcc00;
+            text-decoration: none;
+            margin-right: 25px;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .header-title h1 {
+            margin: 0;
+            font-size: 32px;
+            color: #ffcc00;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Folder Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .day-folder {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 2px solid #333;
+            border-radius: 20px;
+            padding: 50px 20px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+        }
+
+        .day-folder:hover {
+            border-color: #ffcc00;
+            transform: translateY(-8px);
+            background: #1e1e1e;
+        }
+
+        .day-folder i {
+            color: #ffcc00;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        .day-folder span {
+            font-size: 40px; /* 40px Bold Font as requested */
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .date-label {
+            font-size: 16px;
+            color: #888;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Bottom Branding */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-bottom: 40px;
+            color: #ffcc00;
+            font-weight: bold;
+            letter-spacing: 3px;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            .day-folder span { font-size: 30px; }
+            .header-title h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <a href="past_tense_main.html" class="back-btn">
+        <i data-lucide="chevron-left"></i> BACK
+    </a>
+    <div class="header-title">
+        <h1>PAST PERFECT TENSE: DAILY UPDATES</h1>
+    </div>
+</header>
+
+<div class="container">
+    <div class="grid-container">
+        
+        <!-- Day 1 Folder -->
+        <a href="day1_content.html" class="day-folder" target="_self">
+            <i data-lucide="folder-dot"></i>
+            <span>DAY 1</span>
+            <span class="date-label">Basics of Past Perfect Tense</span>
+        </a>
+
+        <!-- Day 2 Folder -->
+        <a href="day2_content.html" class="day-folder" target="_self">
+            <i data-lucide="folder-dot"></i>
+            <span>DAY 2</span>
+            <span class="date-label">AV to PV Rules</span>
+        </a>
+
+        <!-- Day 3 Folder -->
+        <a href="day3_content.html" class="day-folder" target="_self">
+            <i data-lucide="folder-dot"></i>
+            <span>DAY 3</span>
+            <span class="date-label">Practice Session</span>
+        </a>
+
+        <!-- Day 4 Folder -->
+        <a href="day4_content.html" class="day-folder" target="_self">
+            <i data-lucide="folder-dot"></i>
+            <span>DAY x</span>
+            <span class="date-label">Test & Revision</span>
+        </a>
+
+    </div>
+
+    <div class="footer">
+        MAA SHARDA CLASSES
+    </div>
+</div>
+
+<script>
+    // Initialize icons
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
