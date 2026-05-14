@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Past Perfect WH-Family · Active → Passive · v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#faf7f2;
+  --ink:#1a1410;
+  --muted:#7a6e64;
+  --border:#e0d8ce;
+  --surface:#fff;
+  --warm:#f5ede0;
+
+  --c-what:#c0392b;   --c-what-bg:#fdf0ee;   --c-what-bd:#f5c6c2;
+  --c-who:#1a5276;    --c-who-bg:#eaf2fb;    --c-who-bd:#a9cce3;
+  --c-whom:#6c3483;   --c-whom-bg:#f5eef8;   --c-whom-bd:#d2b4de;
+  --c-where:#1e6644;  --c-where-bg:#eafaf1;  --c-where-bd:#a9dfbf;
+  --c-when:#784212;   --c-when-bg:#fef9e7;   --c-when-bd:#f9e79f;
+  --c-why:#6e2f1a;    --c-why-bg:#fdf2ec;    --c-why-bd:#f0b27a;
+  --c-how:#154360;    --c-how-bg:#eaf4fb;    --c-how-bd:#aed6f1;
+  --c-which:#1a5e20;  --c-which-bg:#eafaf1;  --c-which-bd:#a9dfbf;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--bg);
+  font-family:'Outfit',sans-serif;
+  color:var(--ink);
+  padding:0 0 100px;
+  min-height:100vh;
+}
+
+/* ─── MASTHEAD ─── */
+.masthead{
+  background:var(--ink);
+  padding:0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:220px;
+  overflow:hidden;
+  position:relative;
+}
+.masthead-left{
+  padding:44px 40px 40px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;z-index:2;
+}
+.masthead-tag{
+  font-family:'DM Mono',monospace;
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin-bottom:16px;
+  display:flex;align-items:center;gap:8px;
+}
+.masthead-tag::before{content:'';width:24px;height:1px;background:rgba(255,255,255,.3);}
+.masthead h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:700;color:#fff;line-height:1.15;
+}
+.masthead h1 .accent{color:#e8c97a;}
+.masthead-sub{
+  margin-top:12px;font-size:13px;
+  color:rgba(255,255,255,.5);line-height:1.7;
+}
+
+.masthead-right{
+  background:linear-gradient(135deg,#2c1a0e 0%,#1a1410 100%);
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:flex-start;
+  padding:30px 36px;gap:10px;
+  border-left:1px solid rgba(255,255,255,.06);
+}
+.meta-field{
+  width:100%;display:flex;align-items:baseline;gap:10px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  padding-bottom:7px;
+}
+.meta-field label{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.35);white-space:nowrap;min-width:70px;
+}
+.meta-field .mval{
+  flex:1;font-size:13px;color:rgba(255,255,255,.65);
+}
+
+/* ─── FORMULA STRIP ─── */
+.formula-strip{
+  background:#fff;
+  border-bottom:2px solid var(--border);
+  padding:22px 32px;
+  display:grid;grid-template-columns:1fr 1fr 1fr 1fr;
+  gap:16px;
+  max-width:1100px;margin:0 auto;width:100%;
+}
+.f-block{
+  padding:14px 16px;
+  border-radius:10px;
+  border:1.5px solid;
+}
+.f-block-av{border-color:#d6e8f7;background:#f0f7fd;}
+.f-block-pv{border-color:#c9eedd;background:#eef8f3;}
+.f-block-who{border-color:#c9d9ee;background:#ecf3fa;}
+.f-block-whom{border-color:#dcc9ee;background:#f5eef9;}
+
+.f-block-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:8px;font-weight:500;
+}
+.f-block-av .f-block-label{color:#1a5276;}
+.f-block-pv .f-block-label{color:#1e6644;}
+.f-block-who .f-block-label{color:#1a5276;}
+.f-block-whom .f-block-label{color:#6c3483;}
+
+.f-text{font-size:12px;line-height:1.9;color:var(--ink);font-family:'DM Mono',monospace;}
+.f-text b{font-weight:600;}
+.f-text .kw{padding:0 3px;border-radius:3px;font-weight:600;}
+.kw-av{background:#d6e8f7;color:#1a5276;}
+.kw-pv{background:#c9eedd;color:#1e6644;}
+.kw-who{background:#e8d2f5;color:#6c3483;}
+
+/* ─── WH CHIPS ─── */
+.wh-bar{
+  max-width:1100px;margin:0 auto;
+  padding:16px 32px;
+  display:flex;flex-wrap:wrap;gap:8px;
+  background:var(--bg);
+  border-bottom:1px solid var(--border);
+}
+.wh-chip{
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
+  padding:5px 14px;border-radius:6px;border:1.5px solid;
+  cursor:default;letter-spacing:.3px;
+}
+
+/* ─── MAIN CONTENT ─── */
+.main{max-width:1100px;margin:0 auto;padding:28px 24px 0;}
+
+/* section dividers */
+.sec-divider{
+  display:flex;align-items:center;gap:14px;
+  margin:32px 0 20px;
+}
+.sec-divider-line{flex:1;height:1px;background:var(--border);}
+.sec-divider-label{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap;
+  display:flex;align-items:center;gap:8px;
+}
+.sec-count{
+  background:var(--warm);border:1px solid var(--border);
+  border-radius:20px;padding:2px 10px;font-size:10px;
+  color:var(--muted);
+}
+
+/* ─── QUESTION CARD ─── */
+.q-card{
+  background:var(--surface);
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  margin-bottom:14px;
+  overflow:hidden;
+  transition:border-color .25s,box-shadow .25s;
+  position:relative;
+}
+.q-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:3px;border-radius:3px 0 0 3px;
+  transition:opacity .25s;
+}
+.q-card.done{box-shadow:0 2px 16px rgba(0,0,0,.06);}
+.q-card.done::before{opacity:1!important;}
+
+/* type-specific accent */
+.q-card.t-what::before{background:var(--c-what);}
+.q-card.t-who::before{background:var(--c-who);}
+.q-card.t-whom::before{background:var(--c-whom);}
+.q-card.t-where::before{background:var(--c-where);}
+.q-card.t-when::before{background:var(--c-when);}
+.q-card.t-why::before{background:var(--c-why);}
+.q-card.t-how::before{background:var(--c-how);}
+.q-card.t-which::before{background:var(--c-which);}
+
+/* card top */
+.q-top{
+  padding:18px 22px 14px 26px;
+  display:flex;align-items:flex-start;gap:14px;
+}
+.q-index{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;font-weight:700;
+  color:var(--border);
+  min-width:48px;flex-shrink:0;
+  line-height:1;padding-top:6px;
+  transition:color .25s;
+}
+.q-card.done .q-index{color:var(--border);}
+
+.q-body{flex:1;}
+.q-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 10px;border-radius:5px;
+  font-family:'DM Mono',monospace;font-size:10px;font-weight:500;
+  letter-spacing:.5px;margin-bottom:10px;border:1.5px solid;
+}
+
+/* 40px bold sentence */
+.q-sentence{
+  font-family:'Cormorant Garamond',serif;
+  font-size:40px;font-weight:600;
+  line-height:1.3;color:var(--ink);
+}
+
+/* WH word highlight */
+.whl{font-weight:700;border-bottom:2px solid;padding-bottom:1px;}
+.whl-what{color:var(--c-what);border-color:var(--c-what);}
+.whl-who{color:var(--c-who);border-color:var(--c-who);}
+.whl-whom{color:var(--c-whom);border-color:var(--c-whom);}
+.whl-where{color:var(--c-where);border-color:var(--c-where);}
+.whl-when{color:var(--c-when);border-color:var(--c-when);}
+.whl-why{color:var(--c-why);border-color:var(--c-why);}
+.whl-how{color:var(--c-how);border-color:var(--c-how);}
+.whl-which{color:var(--c-which);border-color:var(--c-which);}
+
+.conv-note{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:8px;
+  font-family:'DM Mono',monospace;font-size:10px;
+  padding:4px 10px;border-radius:5px;
+}
+
+/* write lines */
+.q-lines{
+  padding:0 22px 14px 88px;
+  display:flex;flex-direction:column;gap:9px;
+}
+.q-line{
+  height:1px;background:linear-gradient(90deg,var(--border) 0%,transparent 100%);
+  position:relative;
+}
+.q-line::after{
+  content:'Write passive voice here';
+  position:absolute;right:0;top:-9px;
+  font-family:'DM Mono',monospace;font-size:9px;
+  color:var(--border);letter-spacing:1px;text-transform:uppercase;
+}
+
+/* answer panel */
+.ans-panel{
+  display:none;
+  border-top:1.5px dashed var(--border);
+  padding:14px 22px 16px 88px;
+  animation:revealAns .3s ease;
+}
+@keyframes revealAns{
+  from{opacity:0;transform:translateY(-8px);}
+  to{opacity:1;transform:none;}
+}
+.ans-panel-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:6px;
+}
+.ans-panel-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:600;
+  line-height:1.4;
+}
+.conv-box{
+  margin-top:8px;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 12px;border-radius:7px;
+  font-family:'DM Mono',monospace;font-size:10px;font-weight:500;
+  letter-spacing:.4px;
+}
+
+/* ─── BOTTOM HUD ─── */
+.hud{
+  position:fixed;bottom:0;left:0;right:0;
+  background:var(--ink);
+  padding:0;height:56px;
+  display:flex;align-items:stretch;
+  font-family:'DM Mono',monospace;
+  z-index:300;
+}
+.hud-seg{
+  display:flex;align-items:center;justify-content:center;
+  gap:8px;padding:0 24px;font-size:12px;
+  color:rgba(255,255,255,.5);
+  border-right:1px solid rgba(255,255,255,.08);
+}
+.hud-seg:last-child{border-right:none;}
+.hud-key{
+  background:rgba(232,201,122,.15);border:1px solid rgba(232,201,122,.35);
+  color:#e8c97a;border-radius:5px;padding:2px 10px;font-size:11px;
+}
+.hud-num{font-size:22px;font-weight:500;color:#fff;}
+.hud-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;}
+.hud-prog{
+  flex:1;display:flex;align-items:center;padding:0 24px;
+}
+.hud-bar-wrap{
+  flex:1;height:3px;background:rgba(255,255,255,.1);
+  border-radius:2px;overflow:hidden;
+}
+.hud-bar{
+  height:100%;
+  background:linear-gradient(90deg,#e8c97a,#a8e6cf);
+  width:0%;transition:width .5s cubic-bezier(.4,0,.2,1);
+}
+.hud-pct{font-size:11px;color:rgba(255,255,255,.4);margin-left:12px;}
+
+/* print */
+@media print{
+  body{background:#fff;}
+  .hud{display:none!important;}
+  .masthead{background:#fff;color:#000;border-bottom:2px solid #000;}
+  .masthead h1{color:#000;} .masthead h1 .accent{color:#000;}
+  .masthead-sub,.masthead-tag{color:#555;}
+  .masthead-right{background:#fff;}
+  .meta-field label,.meta-field .mval{color:#333;}
+  .meta-field{border-color:#bbb;}
+  .q-card{break-inside:avoid;border:1px solid #ccc;}
+  .ans-panel{display:none!important;}
+  .q-line{background:#aaa;}
+  .q-line::after{display:none;}
+}
+@media(max-width:700px){
+  .masthead{grid-template-columns:1fr;}
+  .masthead-right{display:none;}
+  .formula-strip{grid-template-columns:1fr 1fr;padding:16px;}
+  .q-sentence{font-size:28px;}
+  .q-lines,.ans-panel{padding-left:62px;}
+  .main{padding:20px 14px 0;}
+  .wh-bar{padding:12px 16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ MASTHEAD ═══ -->
+<div class="masthead">
+  <div class="masthead-left">
+    <div class="masthead-tag">Grammar Worksheet · Version 2</div>
+    <h1>Past Perfect<br><span class="accent">WH-Family</span><br>Active → Passive</h1>
+    <div class="masthead-sub">
+      50 brand-new sentences · What · Who · Whom · Where · When · Why · How · Which<br>
+      <strong style="color:rgba(255,255,255,.7)">Who → By Whom &amp; Whom → Who conversions included</strong>
+    </div>
+  </div>
+  <div class="masthead-right">
+    <div class="meta-field"><label>School</label><span class="mval">Bright Future School</span></div>
+    <div class="meta-field"><label>Subject</label><span class="mval">English Grammar</span></div>
+    <div class="meta-field"><label>Name</label><span class="mval">_______________________</span></div>
+    <div class="meta-field"><label>Class</label><span class="mval">_______________</span></div>
+    <div class="meta-field"><label>Roll No.</label><span class="mval">_______________</span></div>
+    <div class="meta-field"><label>Date</label><span class="mval">_______________</span></div>
+  </div>
+</div>
+
+<!-- ═══ FORMULAS ═══ -->
+<div style="background:#fff;border-bottom:1px solid var(--border);">
+<div class="formula-strip">
+  <div class="f-block f-block-av">
+    <div class="f-block-label">WH · Active Voice</div>
+    <div class="f-text">
+      <b class="kw kw-av">WH</b> + <b class="kw kw-av">had</b> + Sub<br>
+      + V3 + Object + ?
+    </div>
+  </div>
+  <div class="f-block f-block-pv">
+    <div class="f-block-label">WH · Passive Voice</div>
+    <div class="f-text">
+      <b class="kw kw-pv">WH</b> + <b class="kw kw-pv">had</b> + Obj<br>
+      + <b class="kw kw-pv">been</b> + V3 + by + Sub + ?
+    </div>
+  </div>
+  <div class="f-block f-block-who">
+    <div class="f-block-label">Who → By Whom</div>
+    <div class="f-text">
+      Active:&nbsp; <b>Who</b> had + V3 + Obj ?<br>
+      Passive: <b>By whom</b> had + Obj<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ been + V3 ?
+    </div>
+  </div>
+  <div class="f-block f-block-whom">
+    <div class="f-block-label">Whom → Who</div>
+    <div class="f-text">
+      Active:&nbsp; <b>Whom</b> had Sub + V3 ?<br>
+      Passive: <b>Who</b> had been + V3<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ by + Sub ?
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ WH CHIPS ═══ -->
+<div class="wh-bar">
+  <span class="wh-chip" style="color:var(--c-what);background:var(--c-what-bg);border-color:var(--c-what-bd);">What — क्या</span>
+  <span class="wh-chip" style="color:var(--c-who);background:var(--c-who-bg);border-color:var(--c-who-bd);">Who → By Whom</span>
+  <span class="wh-chip" style="color:var(--c-whom);background:var(--c-whom-bg);border-color:var(--c-whom-bd);">Whom → Who</span>
+  <span class="wh-chip" style="color:var(--c-where);background:var(--c-where-bg);border-color:var(--c-where-bd);">Where — कहाँ</span>
+  <span class="wh-chip" style="color:var(--c-when);background:var(--c-when-bg);border-color:var(--c-when-bd);">When — कब</span>
+  <span class="wh-chip" style="color:var(--c-why);background:var(--c-why-bg);border-color:var(--c-why-bd);">Why — क्यों</span>
+  <span class="wh-chip" style="color:var(--c-how);background:var(--c-how-bg);border-color:var(--c-how-bd);">How — कैसे</span>
+  <span class="wh-chip" style="color:var(--c-which);background:var(--c-which-bg);border-color:var(--c-which-bd);">Which — कौन सा</span>
+</div>
+
+<!-- ═══ QUESTIONS ═══ -->
+<div class="main" id="qlist"></div>
+
+<!-- ═══ HUD ═══ -->
+<div class="hud">
+  <div class="hud-seg">
+    <span>Press</span><span class="hud-key">Enter ↵</span><span>to reveal</span>
+  </div>
+  <div class="hud-seg">
+    <div>
+      <div class="hud-num" id="hud-done">0</div>
+      <div class="hud-label">Revealed</div>
+    </div>
+  </div>
+  <div class="hud-seg">
+    <div>
+      <div class="hud-num" id="hud-left">50</div>
+      <div class="hud-label">Remaining</div>
+    </div>
+  </div>
+  <div class="hud-prog">
+    <div class="hud-bar-wrap"><div class="hud-bar" id="hud-bar"></div></div>
+    <span class="hud-pct" id="hud-pct">0%</span>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════
+   50 BRAND NEW WH sentences — all different from v1
+   types: what | who | whom | where | when | why | how | which
+══════════════════════════════════════════════ */
+const DATA = [
+
+  /* ── WHAT × 10 ── */
+  {t:"what",
+   a:"<span class='whl whl-what'>What</span> had the goldsmith crafted from the silver ore?",
+   p:"What had been crafted from the silver ore by the goldsmith?"},
+  {t:"what",
+   a:"<span class='whl whl-what'>What</span> had the general ordered his troops to do?",
+   p:"What had been ordered by the general for his troops?"},
+  {t:"what",
+   a:"<span class='whl whl-what'>What</span> had the weaver woven on the giant loom?",
+   p:"What had been woven on the giant loom by the weaver?"},
+  {t:"what",
+   a:"<span class='whl whl-what'>What</span> had the historian recorded in the ancient manuscript?",
+   p:"What had been recorded in the ancient manuscript by the historian?"},
+  {t:"what",
+   a:"<span class='whl whl-what'>What</span> had the astronaut carried to the space station?",
+   p:"What had been carried to the space station by the astronaut?"},
+  {t:"what",
+   a:"<span class='whl whl-what'>What</span> had the diver recovered from the sunken ship?",
+   p:"What had been recovered from the sunken ship by the diver?"},
+  {t:"what",
+   a:"<span class='whl whl-what'>What</span> had the woodcutter carved out of the oak tree?",
+   p:"What had been carved out of the oak tree by the woodcutter?"},
+  {t:"what",
+   a:"<span class='whl whl-what'>What</span> had the chemist synthesised in the laboratory?",
+   p:"What had been synthesised in the laboratory by the chemist?"},
+  {t:"what",
+   a:"<span class='whl whl-what'>What</span> had the governor announced for the flood victims?",
+   p:"What had been announced for the flood victims by the governor?"},
+  {t:"what",
+   a:"<span class='whl whl-what'>What</span> had the tailor sewn for the royal banquet?",
+   p:"What had been sewn for the royal banquet by the tailor?"},
+
+  /* ── WHO → BY WHOM × 8 ── */
+  {t:"who",
+   a:"<span class='whl whl-who'>Who</span> had forged the iron weapons in the armory?",
+   p:"By whom had the iron weapons been forged in the armory?",
+   conv:"Who → By whom"},
+  {t:"who",
+   a:"<span class='whl whl-who'>Who</span> had composed the national anthem for the ceremony?",
+   p:"By whom had the national anthem been composed for the ceremony?",
+   conv:"Who → By whom"},
+  {t:"who",
+   a:"<span class='whl whl-who'>Who</span> had published the controversial magazine article?",
+   p:"By whom had the controversial magazine article been published?",
+   conv:"Who → By whom"},
+  {t:"who",
+   a:"<span class='whl whl-who'>Who</span> had carved the stone idol in the old temple?",
+   p:"By whom had the stone idol been carved in the old temple?",
+   conv:"Who → By whom"},
+  {t:"who",
+   a:"<span class='whl whl-who'>Who</span> had smuggled the rare artefacts across the border?",
+   p:"By whom had the rare artefacts been smuggled across the border?",
+   conv:"Who → By whom"},
+  {t:"who",
+   a:"<span class='whl whl-who'>Who</span> had typed the official resignation letter?",
+   p:"By whom had the official resignation letter been typed?",
+   conv:"Who → By whom"},
+  {t:"who",
+   a:"<span class='whl whl-who'>Who</span> had translated the foreign document into Hindi?",
+   p:"By whom had the foreign document been translated into Hindi?",
+   conv:"Who → By whom"},
+  {t:"who",
+   a:"<span class='whl whl-who'>Who</span> had embroidered the silk curtains for the palace?",
+   p:"By whom had the silk curtains been embroidered for the palace?",
+   conv:"Who → By whom"},
+
+  /* ── WHOM → WHO × 7 ── */
+  {t:"whom",
+   a:"<span class='whl whl-whom'>Whom</span> had the warden expelled from the hostel?",
+   p:"Who had been expelled from the hostel by the warden?",
+   conv:"Whom → Who"},
+  {t:"whom",
+   a:"<span class='whl whl-whom'>Whom</span> had the committee nominated for the award?",
+   p:"Who had been nominated for the award by the committee?",
+   conv:"Whom → Who"},
+  {t:"whom",
+   a:"<span class='whl whl-whom'>Whom</span> had the director cast in the leading role?",
+   p:"Who had been cast in the leading role by the director?",
+   conv:"Whom → Who"},
+  {t:"whom",
+   a:"<span class='whl whl-whom'>Whom</span> had the army promoted to the rank of colonel?",
+   p:"Who had been promoted to the rank of colonel by the army?",
+   conv:"Whom → Who"},
+  {t:"whom",
+   a:"<span class='whl whl-whom'>Whom</span> had the board dismissed for misconduct?",
+   p:"Who had been dismissed for misconduct by the board?",
+   conv:"Whom → Who"},
+  {t:"whom",
+   a:"<span class='whl whl-whom'>Whom</span> had the villagers elected as their new leader?",
+   p:"Who had been elected as their new leader by the villagers?",
+   conv:"Whom → Who"},
+  {t:"whom",
+   a:"<span class='whl whl-whom'>Whom</span> had the headmaster transferred to another school?",
+   p:"Who had been transferred to another school by the headmaster?",
+   conv:"Whom → Who"},
+
+  /* ── WHERE × 5 ── */
+  {t:"where",
+   a:"<span class='whl whl-where'>Where</span> had the pirates buried the stolen treasure?",
+   p:"Where had the stolen treasure been buried by the pirates?"},
+  {t:"where",
+   a:"<span class='whl whl-where'>Where</span> had the scientist stored the radioactive samples?",
+   p:"Where had the radioactive samples been stored by the scientist?"},
+  {t:"where",
+   a:"<span class='whl whl-where'>Where</span> had the committee displayed the final rankings?",
+   p:"Where had the final rankings been displayed by the committee?"},
+  {t:"where",
+   a:"<span class='whl whl-where'>Where</span> had the craftsmen assembled the wooden furniture?",
+   p:"Where had the wooden furniture been assembled by the craftsmen?"},
+  {t:"where",
+   a:"<span class='whl whl-where'>Where</span> had the rebels hidden the stolen firearms?",
+   p:"Where had the stolen firearms been hidden by the rebels?"},
+
+  /* ── WHEN × 5 ── */
+  {t:"when",
+   a:"<span class='whl whl-when'>When</span> had the surgeon performed the critical operation?",
+   p:"When had the critical operation been performed by the surgeon?"},
+  {t:"when",
+   a:"<span class='whl whl-when'>When</span> had the director released the final film?",
+   p:"When had the final film been released by the director?"},
+  {t:"when",
+   a:"<span class='whl whl-when'>When</span> had the council approved the construction plan?",
+   p:"When had the construction plan been approved by the council?"},
+  {t:"when",
+   a:"<span class='whl whl-when'>When</span> had the astronomer first spotted the comet?",
+   p:"When had the comet first been spotted by the astronomer?"},
+  {t:"when",
+   a:"<span class='whl whl-when'>When</span> had the miners excavated the gold deposits?",
+   p:"When had the gold deposits been excavated by the miners?"},
+
+  /* ── WHY × 4 ── */
+  {t:"why",
+   a:"<span class='whl whl-why'>Why</span> had the emperor demolished the ancient palace?",
+   p:"Why had the ancient palace been demolished by the emperor?"},
+  {t:"why",
+   a:"<span class='whl whl-why'>Why</span> had the magistrate sealed the factory premises?",
+   p:"Why had the factory premises been sealed by the magistrate?"},
+  {t:"why",
+   a:"<span class='whl whl-why'>Why</span> had the sailor abandoned the damaged vessel?",
+   p:"Why had the damaged vessel been abandoned by the sailor?"},
+  {t:"why",
+   a:"<span class='whl whl-why'>Why</span> had the librarian restricted the rare manuscripts?",
+   p:"Why had the rare manuscripts been restricted by the librarian?"},
+
+  /* ── HOW × 6 ── */
+  {t:"how",
+   a:"<span class='whl whl-how'>How</span> had the jeweller polished the rough gemstone?",
+   p:"How had the rough gemstone been polished by the jeweller?"},
+  {t:"how",
+   a:"<span class='whl whl-how'>How</span> had the ranger tracked the injured leopard?",
+   p:"How had the injured leopard been tracked by the ranger?"},
+  {t:"how",
+   a:"<span class='whl whl-how'>How</span> had the engineer reinforced the cracked dam?",
+   p:"How had the cracked dam been reinforced by the engineer?"},
+  {t:"how",
+   a:"<span class='whl whl-how'>How</span> had the chef marinated the roast lamb?",
+   p:"How had the roast lamb been marinated by the chef?"},
+  {t:"how",
+   a:"<span class='whl whl-how'>How</span> had the climber scaled the treacherous mountain?",
+   p:"How had the treacherous mountain been scaled by the climber?"},
+  {t:"how",
+   a:"<span class='whl whl-how'>How</span> had the spy decoded the secret message?",
+   p:"How had the secret message been decoded by the spy?"},
+
+  /* ── WHICH × 5 ── */
+  {t:"which",
+   a:"<span class='whl whl-which'>Which</span> language had the diplomat chosen for the summit?",
+   p:"Which language had been chosen for the summit by the diplomat?"},
+  {t:"which",
+   a:"<span class='whl whl-which'>Which</span> satellite had the agency launched into orbit?",
+   p:"Which satellite had been launched into orbit by the agency?"},
+  {t:"which",
+   a:"<span class='whl whl-which'>Which</span> medicine had the pharmacist prescribed for the patient?",
+   p:"Which medicine had been prescribed for the patient by the pharmacist?"},
+  {t:"which",
+   a:"<span class='whl whl-which'>Which</span> trophy had the academy awarded to the veteran actor?",
+   p:"Which trophy had been awarded to the veteran actor by the academy?"},
+  {t:"which",
+   a:"<span class='whl whl-which'>Which</span> bridge had the government condemned as unsafe?",
+   p:"Which bridge had been condemned as unsafe by the government?"},
+];
+
+/* colour config per type */
+const CFG = {
+  what:  {label:"What",          bg:"var(--c-what-bg)",  color:"var(--c-what)",  bd:"var(--c-what-bd)"},
+  who:   {label:"Who → By Whom", bg:"var(--c-who-bg)",   color:"var(--c-who)",   bd:"var(--c-who-bd)"},
+  whom:  {label:"Whom → Who",    bg:"var(--c-whom-bg)",  color:"var(--c-whom)",  bd:"var(--c-whom-bd)"},
+  where: {label:"Where",         bg:"var(--c-where-bg)", color:"var(--c-where)", bd:"var(--c-where-bd)"},
+  when:  {label:"When",          bg:"var(--c-when-bg)",  color:"var(--c-when)",  bd:"var(--c-when-bd)"},
+  why:   {label:"Why",           bg:"var(--c-why-bg)",   color:"var(--c-why)",   bd:"var(--c-why-bd)"},
+  how:   {label:"How",           bg:"var(--c-how-bg)",   color:"var(--c-how)",   bd:"var(--c-how-bd)"},
+  which: {label:"Which",         bg:"var(--c-which-bg)", color:"var(--c-which)", bd:"var(--c-which-bd)"},
+};
+
+/* section groupings */
+const SECTIONS = [
+  {key:"what",  title:"What Questions",         range:[0,9]},
+  {key:"who",   title:"Who → By Whom",          range:[10,17]},
+  {key:"whom",  title:"Whom → Who",             range:[18,24]},
+  {key:"where", title:"Where Questions",        range:[25,29]},
+  {key:"when",  title:"When Questions",         range:[30,34]},
+  {key:"why",   title:"Why Questions",          range:[35,38]},
+  {key:"how",   title:"How Questions",          range:[39,44]},
+  {key:"which", title:"Which Questions",        range:[45,49]},
+];
+
+/* build DOM */
+const root = document.getElementById('qlist');
+
+DATA.forEach((item,i) => {
+  const cfg = CFG[item.t];
+
+  /* section divider */
+  const sec = SECTIONS.find(s => s.range[0] === i);
+  if(sec){
+    const div = document.createElement('div');
+    div.className = 'sec-divider';
+    div.innerHTML = `
+      <div class="sec-divider-line"></div>
+      <div class="sec-divider-label" style="color:${cfg.color}">
+        ${sec.title}
+        <span class="sec-count">${sec.range[1]-sec.range[0]+1} questions</span>
+      </div>
+      <div class="sec-divider-line"></div>`;
+    root.appendChild(div);
+  }
+
+  const card = document.createElement('div');
+  card.className = `q-card t-${item.t}`;
+  card.id = `qc${i}`;
+  card.style.cssText = `--ac:${cfg.color};--ac-bg:${cfg.bg};--ac-bd:${cfg.bd};`;
+
+  card.innerHTML = `
+    <div class="q-top">
+      <div class="q-index">${String(i+1).padStart(2,'0')}</div>
+      <div class="q-body">
+        <div class="q-badge" style="background:${cfg.bg};color:${cfg.color};border-color:${cfg.bd};">
+          ${cfg.label}
+        </div>
+        <div class="q-sentence">${item.a}</div>
+        ${item.conv ? `<div class="conv-note" style="background:${cfg.bg};color:${cfg.color};border:1px solid ${cfg.bd};">⇄ ${item.conv}</div>` : ''}
+      </div>
+    </div>
+    <div class="q-lines">
+      <div class="q-line"></div>
+      <div class="q-line"></div>
+    </div>
+    <div class="ans-panel" id="ap${i}">
+      <div class="ans-panel-label" style="color:${cfg.color};">✔ Passive Voice Answer</div>
+      <div class="ans-panel-text" style="color:${cfg.color};">${item.p}</div>
+      ${item.conv ? `<div class="conv-box" style="background:${cfg.bg};color:${cfg.color};border:1.5px solid ${cfg.bd};">⇄ ${item.conv}</div>` : ''}
+    </div>
+  `;
+  root.appendChild(card);
+});
+
+/* enter key */
+let revealed = 0;
+const total = DATA.length;
+
+document.addEventListener('keydown', e => {
+  if(e.key !== 'Enter') return;
+  e.preventDefault();
+  if(revealed >= total) return;
+
+  const panel = document.getElementById('ap'+revealed);
+  const card  = document.getElementById('qc'+revealed);
+  panel.style.display = 'block';
+  card.classList.add('done');
+  panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+
+  revealed++;
+  const pct = Math.round(revealed/total*100);
+  document.getElementById('hud-done').textContent = revealed;
+  document.getElementById('hud-left').textContent = total - revealed;
+  document.getElementById('hud-bar').style.width  = pct+'%';
+  document.getElementById('hud-pct').textContent  = pct+'%';
+
+  if(revealed === total){
+    document.querySelector('.hud').innerHTML = `
+      <div style="width:100%;display:flex;align-items:center;justify-content:center;gap:16px;
+        font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,.7);">
+        🎉 All 50 answers revealed — WH-Passive mastered!
+        <span style="background:rgba(168,230,207,.15);border:1px solid rgba(168,230,207,.3);
+          color:#a8e6cf;border-radius:20px;padding:3px 16px;">50 / 50 ✅</span>
+      </div>`;
+  }
+});
+</script>
+</body>
+</html>
