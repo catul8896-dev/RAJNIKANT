@@ -11,6 +11,7 @@
         --gold: #ffcc00;
         --white: #ffffff;
         --green: #28a745;
+        --gray: #444444;
     }
 
     body {
@@ -42,25 +43,26 @@
     /* बटन ग्रिड लेआउट */
     .grid-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 30px;
         max-width: 1200px;
         margin: 0 auto;
     }
 
-    /* एंकर टैग को बटन जैसा स्टाइल दिया गया है */
+    /* डायनेमिक एंकर टैग स्टाइल - 40px फ़ॉन्ट और बोल्ड */
     .day-link {
         display: block;
         background-color: var(--card-bg);
         color: var(--white);
-        text-decoration: none; /* अंडरलाइन हटाने के लिए */
-        font-size: 40px; /* आपकी मांग के अनुसार बड़ा साइज़ */
+        text-decoration: none; 
+        font-size: 40px; 
         font-weight: bold;
         padding: 40px 20px;
         border: 4px solid var(--gold);
         border-radius: 20px;
         transition: all 0.3s ease;
         box-shadow: 0 10px 0px #000;
+        cursor: pointer;
     }
 
     .day-link:hover {
@@ -70,17 +72,14 @@
         border-color: var(--white);
     }
 
-    .day-link:active {
-        transform: translateY(5px);
-        box-shadow: 0 0px 0px #000;
-    }
-
-    footer {
-        margin-top: 80px;
-        font-size: 28px;
-        border-top: 2px solid #333;
-        padding-top: 20px;
-        color: var(--gold);
+    /* जो टेस्ट अभी लॉक हैं, उनका स्टाइल (धुंधला और बिना क्लिक वाला) */
+    .day-link.locked {
+        background-color: var(--gray) !important;
+        border-color: #666 !important;
+        color: #aaa !important;
+        box-shadow: none !important;
+        transform: none !important;
+        opacity: 0.6;
     }
 </style>
 </head>
@@ -88,25 +87,71 @@
 
     <header>
         <h1>माँ शारदा क्लासेस</h1>
-        <p class="subtitle">सामान्य ज्ञान (GK) डेली प्रैक्टिस पोर्टल</p>
+        <p class="subtitle">सामान्य ज्ञान (GK) डेली प्रैक्टिस पोर्टल (तारीख बदलते ही ऑटो-अनलॉक)</p>
     </header>
 
-    <div class="grid-container">
-        <!-- सभी लिंक को DAYS-GK फोल्डर में सही path के साथ अपडेट किया गया है -->
-        <a href="DAYS-GK/day1x.html" class="day-link">DAY 1 GK <br>14.05.2026</a>
-        <a href="DAYS-GK/day2x.html" class="day-link">DAY 2 GK<br>15.05.2026</a>
-        <a href="DAYS-GK/day3.html" class="day-link">DAY 3 GK</a>
-        <a href="DAYS-GK/day4.html" class="day-link">DAY 4 GK</a>
-        <a href="DAYS-GK/day5.html" class="day-link">DAY 5 GK</a>
-        <a href="DAYS-GK/day6.html" class="day-link">DAY 6 GK</a>
-        <a href="DAYS-GK/day7.html" class="day-link">DAY 7 GK</a>
-        <a href="DAYS-GK/day8.html" class="day-link">DAY 8 GK</a>
-        <a href="DAYS-GK/day9.html" class="day-link">DAY 9 GK</a>
-    </div>
+    <div class="grid-container" id="quiz-dashboard"></div>
 
     <footer>
         स्थान: टुनटुन मोड़ मार्केट | शिक्षा के प्रति समर्पित
     </footer>
+
+    <script>
+        // ================= CONFIGURATION (सिर्फ यहाँ बदलें) =================
+        const START_DATE = "2026-05-14"; // DAY 1 किस तारीख से शुरू हो रहा है, यहाँ डालें
+        const TOTAL_DAYS = 9;            // आपको कुल कितने दिन के बटन बनाने हैं (जैसे 9, 15 या 30)
+        const FOLDER_NAME = "DAYS-GK";   // आपके फोल्डर का नाम
+        // ===================================================================
+
+        // 1. आज की तारीख सेट करें (YYYY-MM-DD फॉर्मेट में)
+        const today = new Date();
+        const currentDateStr = today.getFullYear() + '-' + 
+                               String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                               String(today.getDate()).padStart(2, '0');
+
+        const container = document.getElementById('quiz-dashboard');
+
+        // 2. लूप चलाकर ऑटोमैटिक बटन तैयार करना
+        for (let i = 1; i <= TOTAL_DAYS; i++) {
+            
+            // हर DAY के लिए सही तारीख का कैलकुलेशन करना
+            let targetDate = new Date(START_DATE);
+            targetDate.setDate(targetDate.getDate() + (i - 1));
+            
+            let yyyy = targetDate.getFullYear();
+            let mm = String(targetDate.getMonth() + 1).padStart(2, '0');
+            let dd = String(targetDate.getDate()).padStart(2, '0');
+            
+            let targetDateStr = `${yyyy}-${mm}-${dd}`;       // तुलना के लिए फॉर्मेट: 2026-05-14
+            let displayDateStr = `${dd}.${mm}.${yyyy}`;      // स्क्रीन पर दिखाने के लिए: 14.05.2026
+
+            // फाइल का नाम ऑटोमैटिक सेट करना (day1.html, day2.html आदि)
+            // नोट: आपके कोड के अनुसार day1 और day2 में 'x' है, उसे भी हैंडल किया गया है
+            let fileName = (i === 1 || i === 2) ? `day${i}x.html` : `day${i}.html`;
+            let finalHref = `${FOLDER_NAME}/${fileName}`;
+
+            // नया <a> टैग (बटन) बनाना
+            let aTag = document.createElement('a');
+            aTag.className = 'day-link';
+            aTag.innerHTML = `DAY ${i} GK <br><span style="font-size:25px; color:#ffcc00;">${displayDateStr}</span>`;
+
+            // 3. तारीख चेक करके लॉक या अनलॉक करना
+            if (currentDateStr >= targetDateStr) {
+                // अगर तारीख आ गई या बीत गई तो लिंक एक्टिव कर दें
+                aTag.href = finalHref;
+            } else {
+                // अगर तारीख अभी नहीं आई है तो बटन को लॉक कर दें
+                aTag.classList.add('locked');
+                aTag.onclick = function(e) {
+                    e.preventDefault(); // लिंक को खुलने से रोकना
+                    alert(`यह टेस्ट अभी चालू नहीं हुआ है! कृपया ${displayDateStr} को आइएगा।`);
+                };
+            }
+
+            // बटन को स्क्रीन पर जोड़ें
+            container.appendChild(aTag);
+        }
+    </script>
 
 </body>
 </html>
