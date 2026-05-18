@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Past Perfect – Mixed AV → PV · 50 Questions</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+body{
+  background:#0a0f1a;
+  font-family:'Playfair Display',serif;
+  color:#e8f0ff;
+  padding:0 0 100px;
+}
+
+/* ══ HEADER ══ */
+.header{
+  background:linear-gradient(135deg,#050d1f 0%,#0a1a35 60%,#050d1f 100%);
+  border-bottom:2px solid rgba(60,130,255,.2);
+  padding:40px 28px 32px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.header::after{
+  content:'';position:absolute;
+  bottom:0;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(60,130,255,.5),transparent);
+}
+.header-tag{
+  font-family:'DM Mono',monospace;
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(100,160,255,.5);margin-bottom:16px;
+}
+.header h1{
+  font-size:clamp(2rem,5vw,3.2rem);
+  font-weight:900;color:#fff;line-height:1.2;margin-bottom:10px;
+}
+.header h1 .pos{color:#3c82ff;}
+.header h1 .neg{color:#ff4d6d;}
+.header h1 .int{color:#ffd700;}
+.header p{
+  font-family:'DM Mono',monospace;
+  font-size:12px;color:rgba(255,255,255,.35);
+  letter-spacing:1.5px;
+}
+
+/* meta strip */
+.meta{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:0;
+  background:#080d18;border-bottom:1px solid rgba(60,130,255,.12);
+}
+.mf{
+  padding:14px 20px;
+  border-right:1px solid rgba(60,130,255,.1);
+  font-family:'DM Mono',monospace;font-size:11px;
+  display:flex;flex-direction:column;gap:3px;
+}
+.mf:last-child{border-right:none;}
+.mf label{color:rgba(255,255,255,.25);letter-spacing:1.5px;text-transform:uppercase;font-size:9px;}
+.mf span{color:rgba(255,255,255,.55);}
+
+/* ══ FORMULA ══ */
+.formula-row{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:12px;max-width:960px;margin:24px auto 0;padding:0 20px;
+}
+.fc{
+  border-radius:10px;padding:14px 18px;
+  font-family:'DM Mono',monospace;font-size:12px;line-height:1.9;
+}
+.fc-av{background:rgba(60,130,255,.08);border:1px solid rgba(60,130,255,.2);}
+.fc-pv{background:rgba(0,200,120,.08);border:1px solid rgba(0,200,120,.2);}
+.fc .fc-title{
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:8px;font-weight:500;
+}
+.fc-av .fc-title{color:#3c82ff;}
+.fc-pv .fc-title{color:#00c878;}
+.fc-av .kw{color:#3c82ff;font-weight:500;}
+.fc-pv .kw{color:#00c878;font-weight:500;}
+
+/* ══ TYPE LEGEND ══ */
+.legend{
+  max-width:960px;margin:14px auto 0;padding:0 20px;
+  display:flex;gap:10px;flex-wrap:wrap;
+}
+.leg-chip{
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
+  padding:5px 14px;border-radius:6px;
+  display:flex;align-items:center;gap:6px;
+}
+.leg-pos{background:rgba(60,130,255,.1);color:#3c82ff;border:1px solid rgba(60,130,255,.25);}
+.leg-neg{background:rgba(255,77,109,.1);color:#ff4d6d;border:1px solid rgba(255,77,109,.25);}
+.leg-int{background:rgba(255,215,0,.1);color:#ffd700;border:1px solid rgba(255,215,0,.25);}
+
+/* ══ SCORE BAR ══ */
+.scorebar{
+  max-width:960px;margin:16px auto 4px;padding:0 20px;
+  display:flex;align-items:center;gap:20px;
+  font-family:'DM Mono',monospace;font-size:12px;
+  color:rgba(255,255,255,.35);
+}
+.sb-num{font-size:22px;font-weight:500;color:#fff;margin:0 2px;}
+
+/* ══ MAIN LIST ══ */
+.qlist{max-width:960px;margin:16px auto 0;padding:0 20px;display:flex;flex-direction:column;gap:16px;}
+
+/* ══ QUESTION CARD ══ */
+.qcard{
+  border-radius:14px;
+  overflow:hidden;
+  border:1.5px solid rgba(60,130,255,.18);
+  transition:border-color .3s;
+}
+.qcard.done{border-color:rgba(0,200,120,.25);}
+
+/* question area — BLUE theme */
+.q-area{
+  background:linear-gradient(135deg,#050f2a 0%,#071535 100%);
+  padding:22px 26px 18px;
+  display:flex;align-items:flex-start;gap:14px;
+  border-bottom:1px solid rgba(60,130,255,.1);
+}
+.q-num{
+  font-size:50px;font-weight:900;
+  color:rgba(60,130,255,.25);
+  min-width:64px;flex-shrink:0;
+  line-height:1;padding-top:4px;
+  font-family:'Playfair Display',serif;
+}
+.qcard.done .q-num{color:rgba(0,200,120,.25);}
+
+.q-right{flex:1;}
+.type-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 11px;border-radius:5px;
+  font-family:'DM Mono',monospace;font-size:10px;font-weight:500;
+  letter-spacing:.5px;margin-bottom:10px;
+}
+.tb-pos{background:rgba(60,130,255,.12);color:#3c82ff;border:1px solid rgba(60,130,255,.25);}
+.tb-neg{background:rgba(255,77,109,.12);color:#ff4d6d;border:1px solid rgba(255,77,109,.25);}
+.tb-int{background:rgba(255,215,0,.12);color:#ffd700;border:1px solid rgba(255,215,0,.25);}
+
+/* 50px bold BLUE sentence */
+.q-sent{
+  font-size:50px;
+  font-weight:700;
+  line-height:1.3;
+  color:#4d9fff;
+  font-family:'Playfair Display',serif;
+}
+.q-sent .neg-hl{color:#ff7096;text-decoration:underline;text-decoration-style:wavy;text-underline-offset:4px;}
+.q-sent .int-hl{color:#ffd700;}
+
+/* write lines */
+.write-lines{
+  background:#040b1a;
+  padding:14px 26px 14px 104px;
+  display:flex;flex-direction:column;gap:10px;
+  border-bottom:1px solid rgba(60,130,255,.08);
+}
+.wline{
+  height:2px;
+  background:linear-gradient(90deg,rgba(60,130,255,.15) 0%,transparent 100%);
+  border-radius:1px;
+  position:relative;
+}
+.wline::after{
+  content:'passive voice →';
+  position:absolute;right:0;top:-9px;
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(60,130,255,.15);
+}
+
+/* ══ ANSWER AREA — BLACK bg, GREEN text ══ */
+.ans-area{
+  display:none;
+  background:#000;
+  padding:16px 26px 18px 104px;
+  animation:slideIn .3s ease;
+}
+@keyframes slideIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+
+.ans-label{
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(0,200,120,.5);margin-bottom:8px;
+  display:flex;align-items:center;gap:8px;
+}
+.ans-label::before{content:'';width:16px;height:1px;background:rgba(0,200,120,.3);}
+
+/* 50px bold GREEN answer */
+.ans-text{
+  font-size:50px;
+  font-weight:700;
+  color:#00e88a;
+  font-family:'Playfair Display',serif;
+  line-height:1.3;
+}
+
+/* ══ BOTTOM HUD ══ */
+.hud{
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(5,10,22,.97);
+  backdrop-filter:blur(16px);
+  border-top:1px solid rgba(60,130,255,.15);
+  height:58px;
+  display:flex;align-items:center;
+  font-family:'DM Mono',monospace;
+  z-index:300;
+  padding:0 28px;
+  gap:24px;
+}
+.hud-hint{font-size:13px;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:8px;}
+.hud-key{
+  background:rgba(255,215,0,.12);border:1px solid rgba(255,215,0,.3);
+  color:#ffd700;border-radius:5px;padding:2px 10px;font-size:11px;
+}
+.hud-stats{display:flex;gap:20px;margin-left:auto;}
+.hud-stat{display:flex;flex-direction:column;align-items:center;}
+.hud-val{font-size:18px;font-weight:500;color:#fff;line-height:1;}
+.hud-lbl{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:2px;}
+.hud-prog-wrap{flex:1;max-width:200px;height:3px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;}
+.hud-prog{height:100%;background:linear-gradient(90deg,#3c82ff,#00e88a);width:0%;transition:width .5s ease;}
+
+/* print */
+@media print{
+  body{background:#fff;color:#000;}
+  .hud{display:none!important;}
+  .header{background:#fff;border-bottom:2px solid #000;}
+  .header h1{color:#000;} .header h1 .pos,.header h1 .neg,.header h1 .int{color:#000;}
+  .q-area,.write-lines{background:#fff;}
+  .q-sent{color:#000;}
+  .q-num{color:#ccc;}
+  .ans-area{display:none!important;}
+  .wline{background:#bbb;}
+  .qcard{border:1px solid #ccc;break-inside:avoid;}
+}
+@media(max-width:600px){
+  .q-sent,.ans-text{font-size:30px;}
+  .q-num{font-size:34px;min-width:46px;}
+  .write-lines,.ans-area{padding-left:60px;}
+  .formula-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-tag">Past Perfect Tense · Active → Passive · 50 Questions</div>
+  <h1>
+    <span class="pos">Positive</span> ·
+    <span class="neg">Negative</span> ·
+    <span class="int">Interrogative</span>
+  </h1>
+  <p>Random Mix · सकारात्मक · नकारात्मक · प्रश्नवाचक · AV → PV</p>
+</div>
+
+<!-- META -->
+<div class="meta">
+  <div class="mf"><label>School</label><span>Bright Future School</span></div>
+  <div class="mf"><label>Subject</label><span>English Grammar</span></div>
+  <div class="mf"><label>Topic</label><span>Past Perfect AV → PV</span></div>
+  <div class="mf"><label>Name</label><span>_____________________</span></div>
+  <div class="mf"><label>Class</label><span>____________</span></div>
+  <div class="mf"><label>Date</label><span>____________</span></div>
+</div>
+
+<!-- FORMULAS -->
+<div class="formula-row">
+  <div class="fc fc-av">
+    <div class="fc-title">Active Voice Formulas</div>
+    <span class="kw">Pos:</span> Sub + <span class="kw">had</span> + V3 + Obj.<br>
+    <span class="kw">Neg:</span> Sub + <span class="kw">had not</span> + V3 + Obj.<br>
+    <span class="kw">Int:</span> <span class="kw">Had</span> + Sub + V3 + Obj + ?
+  </div>
+  <div class="fc fc-pv">
+    <div class="fc-title">Passive Voice Formulas</div>
+    <span class="kw">Pos:</span> Obj + <span class="kw">had been</span> + V3 + by Sub.<br>
+    <span class="kw">Neg:</span> Obj + <span class="kw">had not been</span> + V3 + by Sub.<br>
+    <span class="kw">Int:</span> <span class="kw">Had</span> + Obj + <span class="kw">been</span> + V3 + by Sub + ?
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="leg-chip leg-pos">● Positive — सकारात्मक</div>
+  <div class="leg-chip leg-neg">● Negative — नकारात्मक</div>
+  <div class="leg-chip leg-int">● Interrogative — प्रश्नवाचक</div>
+</div>
+
+<!-- SCORE -->
+<div class="scorebar">
+  Revealed: <span class="sb-num" id="sc-rev">0</span> / 50 &nbsp;|&nbsp;
+  Remaining: <span class="sb-num" id="sc-rem">50</span>
+</div>
+
+<!-- QUESTIONS -->
+<div class="qlist" id="qlist"></div>
+
+<!-- HUD -->
+<div class="hud">
+  <div class="hud-hint">Press <span class="hud-key">Enter ↵</span> to reveal answer</div>
+  <div class="hud-prog-wrap"><div class="hud-prog" id="hprog"></div></div>
+  <div class="hud-stats">
+    <div class="hud-stat"><div class="hud-val" id="hv-done">0</div><div class="hud-lbl">Done</div></div>
+    <div class="hud-stat"><div class="hud-val" id="hv-left">50</div><div class="hud-lbl">Left</div></div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════
+   50 RANDOM MIXED sentences — Positive / Negative / Interrogative
+   type: pos | neg | int
+══════════════════════════════════════════════════════ */
+const DATA = [
+  // 1
+  {t:"pos",
+   a:"The blacksmith had <b>forged</b> a sharp sword.",
+   p:"A sharp sword <b>had been forged</b> by the blacksmith."},
+  // 2
+  {t:"neg",
+   a:"The gardener <span class='neg-hl'>had not</span> trimmed the rose bushes.",
+   p:"The rose bushes <b>had not been trimmed</b> by the gardener."},
+  // 3
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the scientist discovered a new vaccine?",
+   p:"<b>Had</b> a new vaccine <b>been discovered</b> by the scientist?"},
+  // 4
+  {t:"pos",
+   a:"The astronaut had <b>assembled</b> the satellite in orbit.",
+   p:"The satellite <b>had been assembled</b> in orbit by the astronaut."},
+  // 5
+  {t:"neg",
+   a:"The lawyer <span class='neg-hl'>had not</span> filed the important documents.",
+   p:"The important documents <b>had not been filed</b> by the lawyer."},
+  // 6
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the sculptor carved the marble statue?",
+   p:"<b>Had</b> the marble statue <b>been carved</b> by the sculptor?"},
+  // 7
+  {t:"pos",
+   a:"The historian had <b>written</b> a detailed account of the war.",
+   p:"A detailed account of the war <b>had been written</b> by the historian."},
+  // 8
+  {t:"neg",
+   a:"The mechanic <span class='neg-hl'>had not</span> replaced the engine parts.",
+   p:"The engine parts <b>had not been replaced</b> by the mechanic."},
+  // 9
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the pilot landed the aircraft safely?",
+   p:"<b>Had</b> the aircraft <b>been landed</b> safely by the pilot?"},
+  // 10
+  {t:"pos",
+   a:"The weaver had <b>dyed</b> the cloth in bright colours.",
+   p:"The cloth <b>had been dyed</b> in bright colours by the weaver."},
+  // 11
+  {t:"neg",
+   a:"The architect <span class='neg-hl'>had not</span> approved the building plan.",
+   p:"The building plan <b>had not been approved</b> by the architect."},
+  // 12
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the detective solved the mysterious case?",
+   p:"<b>Had</b> the mysterious case <b>been solved</b> by the detective?"},
+  // 13
+  {t:"pos",
+   a:"The chef had <b>prepared</b> a grand feast for the king.",
+   p:"A grand feast <b>had been prepared</b> for the king by the chef."},
+  // 14
+  {t:"neg",
+   a:"The postman <span class='neg-hl'>had not</span> delivered the urgent parcel.",
+   p:"The urgent parcel <b>had not been delivered</b> by the postman."},
+  // 15
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the composer written the symphony before the concert?",
+   p:"<b>Had</b> the symphony <b>been written</b> before the concert by the composer?"},
+  // 16
+  {t:"pos",
+   a:"The zookeeper had <b>fed</b> all the wild animals.",
+   p:"All the wild animals <b>had been fed</b> by the zookeeper."},
+  // 17
+  {t:"neg",
+   a:"The carpenter <span class='neg-hl'>had not</span> polished the wooden chairs.",
+   p:"The wooden chairs <b>had not been polished</b> by the carpenter."},
+  // 18
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the sailor navigated the stormy sea?",
+   p:"<b>Had</b> the stormy sea <b>been navigated</b> by the sailor?"},
+  // 19
+  {t:"pos",
+   a:"The journalist had <b>published</b> an explosive report.",
+   p:"An explosive report <b>had been published</b> by the journalist."},
+  // 20
+  {t:"neg",
+   a:"The judge <span class='neg-hl'>had not</span> announced the final verdict.",
+   p:"The final verdict <b>had not been announced</b> by the judge."},
+  // 21
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the rangers tracked the injured tiger?",
+   p:"<b>Had</b> the injured tiger <b>been tracked</b> by the rangers?"},
+  // 22
+  {t:"pos",
+   a:"The dressmaker had <b>sewn</b> a beautiful wedding gown.",
+   p:"A beautiful wedding gown <b>had been sewn</b> by the dressmaker."},
+  // 23
+  {t:"neg",
+   a:"The electrician <span class='neg-hl'>had not</span> installed the new circuit board.",
+   p:"The new circuit board <b>had not been installed</b> by the electrician."},
+  // 24
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the miners excavated the gold deposits?",
+   p:"<b>Had</b> the gold deposits <b>been excavated</b> by the miners?"},
+  // 25
+  {t:"pos",
+   a:"The director had <b>filmed</b> the final scene at dawn.",
+   p:"The final scene <b>had been filmed</b> at dawn by the director."},
+  // 26
+  {t:"neg",
+   a:"The librarian <span class='neg-hl'>had not</span> catalogued the new arrivals.",
+   p:"The new arrivals <b>had not been catalogued</b> by the librarian."},
+  // 27
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the army captured the enemy stronghold?",
+   p:"<b>Had</b> the enemy stronghold <b>been captured</b> by the army?"},
+  // 28
+  {t:"pos",
+   a:"The florist had <b>arranged</b> hundreds of roses for the ceremony.",
+   p:"Hundreds of roses <b>had been arranged</b> for the ceremony by the florist."},
+  // 29
+  {t:"neg",
+   a:"The pharmacist <span class='neg-hl'>had not</span> prepared the prescribed medicine.",
+   p:"The prescribed medicine <b>had not been prepared</b> by the pharmacist."},
+  // 30
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the committee selected the winning design?",
+   p:"<b>Had</b> the winning design <b>been selected</b> by the committee?"},
+  // 31
+  {t:"pos",
+   a:"The spy had <b>decoded</b> the secret message.",
+   p:"The secret message <b>had been decoded</b> by the spy."},
+  // 32
+  {t:"neg",
+   a:"The council <span class='neg-hl'>had not</span> passed the new education bill.",
+   p:"The new education bill <b>had not been passed</b> by the council."},
+  // 33
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the goldsmith crafted the royal necklace?",
+   p:"<b>Had</b> the royal necklace <b>been crafted</b> by the goldsmith?"},
+  // 34
+  {t:"pos",
+   a:"The surgeon had <b>performed</b> the complicated operation.",
+   p:"The complicated operation <b>had been performed</b> by the surgeon."},
+  // 35
+  {t:"neg",
+   a:"The manager <span class='neg-hl'>had not</span> reviewed the quarterly report.",
+   p:"The quarterly report <b>had not been reviewed</b> by the manager."},
+  // 36
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the ambassador signed the peace treaty?",
+   p:"<b>Had</b> the peace treaty <b>been signed</b> by the ambassador?"},
+  // 37
+  {t:"pos",
+   a:"The professor had <b>submitted</b> the research paper on time.",
+   p:"The research paper <b>had been submitted</b> on time by the professor."},
+  // 38
+  {t:"neg",
+   a:"The driver <span class='neg-hl'>had not</span> refuelled the tanker truck.",
+   p:"The tanker truck <b>had not been refuelled</b> by the driver."},
+  // 39
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the jeweller polished the rough diamond?",
+   p:"<b>Had</b> the rough diamond <b>been polished</b> by the jeweller?"},
+  // 40
+  {t:"pos",
+   a:"The mason had <b>constructed</b> a strong boundary wall.",
+   p:"A strong boundary wall <b>had been constructed</b> by the mason."},
+  // 41
+  {t:"neg",
+   a:"The coach <span class='neg-hl'>had not</span> announced the final squad.",
+   p:"The final squad <b>had not been announced</b> by the coach."},
+  // 42
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the warden registered the new complaint?",
+   p:"<b>Had</b> the new complaint <b>been registered</b> by the warden?"},
+  // 43
+  {t:"pos",
+   a:"The ranger had <b>patrolled</b> the entire national park.",
+   p:"The entire national park <b>had been patrolled</b> by the ranger."},
+  // 44
+  {t:"neg",
+   a:"The engineer <span class='neg-hl'>had not</span> tested the new software.",
+   p:"The new software <b>had not been tested</b> by the engineer."},
+  // 45
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the potter shaped the clay vase on the wheel?",
+   p:"<b>Had</b> the clay vase <b>been shaped</b> on the wheel by the potter?"},
+  // 46
+  {t:"pos",
+   a:"The botanist had <b>classified</b> fifty new plant species.",
+   p:"Fifty new plant species <b>had been classified</b> by the botanist."},
+  // 47
+  {t:"neg",
+   a:"The principal <span class='neg-hl'>had not</span> issued the transfer certificate.",
+   p:"The transfer certificate <b>had not been issued</b> by the principal."},
+  // 48
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the climber reached the summit before sunset?",
+   p:"<b>Had</b> the summit <b>been reached</b> before sunset by the climber?"},
+  // 49
+  {t:"pos",
+   a:"The accountant had <b>audited</b> all the financial records.",
+   p:"All the financial records <b>had been audited</b> by the accountant."},
+  // 50
+  {t:"int",
+   a:"<span class='int-hl'>Had</span> the translator interpreted the foreign speech?",
+   p:"<b>Had</b> the foreign speech <b>been interpreted</b> by the translator?"},
+];
+
+const TYPE = {
+  pos:{label:"✦ Positive — सकारात्मक",  cls:"tb-pos"},
+  neg:{label:"✦ Negative — नकारात्मक",  cls:"tb-neg"},
+  int:{label:"✦ Interrogative — प्रश्नवाचक", cls:"tb-int"},
+};
+
+/* BUILD */
+const root = document.getElementById('qlist');
+DATA.forEach((item,i)=>{
+  const tc = TYPE[item.t];
+  const card = document.createElement('div');
+  card.className='qcard';
+  card.id=`qc${i}`;
+  card.innerHTML=`
+    <div class="q-area">
+      <div class="q-num">${String(i+1).padStart(2,'0')}</div>
+      <div class="q-right">
+        <div class="type-badge ${tc.cls}">${tc.label}</div>
+        <div class="q-sent">${item.a}</div>
+      </div>
+    </div>
+    <div class="write-lines">
+      <div class="wline"></div>
+      <div class="wline"></div>
+    </div>
+    <div class="ans-area" id="aa${i}">
+      <div class="ans-label">Passive Voice Answer</div>
+      <div class="ans-text">${item.p}</div>
+    </div>
+  `;
+  root.appendChild(card);
+});
+
+/* ENTER KEY */
+let rev=0;const tot=DATA.length;
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Enter')return;
+  e.preventDefault();
+  if(rev>=tot)return;
+  const aa=document.getElementById('aa'+rev);
+  const qc=document.getElementById('qc'+rev);
+  aa.style.display='block';
+  qc.classList.add('done');
+  aa.scrollIntoView({behavior:'smooth',block:'nearest'});
+  rev++;
+  const pct=Math.round(rev/tot*100);
+  document.getElementById('sc-rev').textContent=rev;
+  document.getElementById('sc-rem').textContent=tot-rev;
+  document.getElementById('hv-done').textContent=rev;
+  document.getElementById('hv-left').textContent=tot-rev;
+  document.getElementById('hprog').style.width=pct+'%';
+  if(rev===tot){
+    document.querySelector('.hud').innerHTML=`
+      <div style="width:100%;text-align:center;font-family:'DM Mono',monospace;font-size:13px;
+        color:#00e88a;letter-spacing:1px;">
+        🎉 All 50 Answered! Past Perfect Passive Mastered!
+        <span style="background:rgba(0,232,138,.12);border:1px solid rgba(0,232,138,.3);
+          border-radius:20px;padding:3px 16px;margin-left:12px;font-size:12px;">50/50 ✅</span>
+      </div>`;
+  }
+});
+</script>
+</body>
+</html>
