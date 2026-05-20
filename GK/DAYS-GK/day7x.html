@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>विज्ञान प्रमुख खोजें क्विज़ - माँ शारदा क्लासेस</title>
+<style>
+    /* ब्लैक बैकग्राउंड और फॉन्ट सेटिंग */
+    body {
+        font-family: 'Arial Black', sans-serif;
+        background-color: #000000; /* ब्लैक बैकग्राउंड */
+        color: #ffffff;
+        padding: 30px;
+    }
+    
+    /* मुख्य स्टाइलिंग: 40px साइज़ और 900 (Extra Bold) वेट */
+    ol {
+        font-size: 40px;
+        font-weight: 900; 
+        line-height: 1.8;
+        padding: 20px;
+        margin-left: 2%;
+        list-style: none; /* डिफ़ॉल्ट नंबर हटाकर ब्लू करने के लिए */
+        counter-reset: my-counter;
+    }
+
+    li {
+        margin-bottom: 50px;
+        background: #111111; /* हल्का ब्लैक कार्ड इफ़ेक्ट */
+        padding: 30px;
+        border-radius: 15px;
+        border-left: 15px solid #0056b3; 
+        box-shadow: 0 4px 15px rgba(255,255,255,0.05);
+        counter-increment: my-counter;
+    }
+
+    /* ब्लू सीरियल नंबर (Blue Serials) */
+    li::before {
+        content: counter(my-counter) ". ";
+        color: #00bcff; /* चमकीला ब्लू रंग */
+        font-weight: 900;
+    }
+
+    /* रेड प्रश्न (Red Questions) */
+    .question {
+        color: #ff3333; /* चमकीला रेड रंग */
+        display: inline;
+    }
+
+    /* ग्रीन उत्तर (Green Answers) */
+    .answer {
+        color: #00ff66; /* चमकीला ग्रीन रंग */
+        display: block;
+        margin-top: 20px;
+        font-weight: bold;
+        border-top: 2px dashed #333;
+        padding-top: 15px;
+    }
+</style>
+</head>
+<body>
+
+    <h1 style="text-align: center; font-size: 55px; color: #ffcc00; margin-bottom: 5px;">माँ शारदा क्लासेस</h1>
+    <h2 style="text-align: center; font-size: 35px; color: #aaaaaa; margin-top: 0;">विज्ञान की महत्वपूर्ण खोजें और आविष्कार | दिनांक: 20-05-2026</h2>
+
+    <ol>
+        <li><span class="question">इलेक्ट्रॉन की खोज किसने और कब की थी?</span>
+            <span class="answer">उत्तर: जे. जे. थॉमसन ने, सन 1897 में</span>
+        </li>
+        
+        <li><span class="question">प्रोटॉन की खोज किसने और कब की थी?</span>
+            <span class="answer">उत्तर: ई. गोल्डस्टीन ने सन 1886 में (नामकरण रदरफोर्ड ने 1919 में किया)</span>
+        </li>
+        
+        <li><span class="question">न्यूट्रॉन की खोज किसने और कब की थी?</span>
+            <span class="answer">उत्तर: जेम्स चैडविक ने, सन 1932 में</span>
+        </li>
+        
+        <li><span class="question">विटामिन की खोज किसने की थी?</span>
+            <span class="answer">उत्तर: एन. आई. लूनिन ने (नामकरण सी. फंक ने 1912 में किया)</span>
+        </li>
+        
+        <li><span class="question">डीएनए (DNA) की खोज सबसे पहले किसने की थी?</span>
+            <span class="answer">उत्तर: फ्रेडरिक मिशर ने सन 1869 में (डबल हेलिक्स मॉडल वाटसन और क्रिक ने 1953 में दिया)</span>
+        </li>
+        
+        <li><span class="question">डीएनए फिंगरप्रिंटिंग (DNA Fingerprinting) की खोज किसने की थी?</span>
+            <span class="answer">उत्तर: सर एलेक जेफ्रीज ने (भारत में: डॉ. लालजी सिंह)</span>
+        </li>
+        
+        <li><span class="question">जीन (Gene) शब्द की खोज या नामकरण किसने किया था?</span>
+            <span class="answer">उत्तर: विल्हेम जोहानसन ने, सन 1909 में</span>
+        </li>
+        
+        <li><span class="question">एक्स-रे (X-Ray) किरणों की खोज किसने की थी?</span>
+            <span class="answer">उत्तर: विल्हेम रॉन्टगन ने, सन 1895 में</span>
+        </li>
+        
+        <li><span class="question">एसी (AC) विद्युत मोटर का आविष्कार किसने किया था?</span>
+            <span class="answer">उत्तर: निकोला टेस्ला ने, सन 1887 में</span>
+        </li>
+        
+        <li><span class="question">एसी (AC) ट्रांसफार्मर का आविष्कार किसने किया था?</span>
+            <span class="answer">उत्तर: विलियम स्टेनली ने (मूल सिद्धांत माइकल फैराडे ने दिया)</span>
+        </li>
+    </ol>
+
+</body>
+</html>
