@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maa Sharda Classes - Main Portal</title>
-    
-    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
         /* [GLOBAL STRUCTURAL STYLES] */
@@ -107,10 +105,21 @@
         }
 
         /* आइकन की स्टाइलिंग */
-        .subject-card svg {
-            color: #ffcc00;
+        .subject-card .icon {
             width: 90px;
             height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .subject-card svg {
+            color: #ffcc00;
+            width: 100%;
+            height: 100%;
+            stroke: #ffcc00;
+            stroke-width: 2;
+            fill: none;
         }
 
         /* विषय के नाम की स्टाइलिंग */
@@ -154,7 +163,7 @@
                 padding: 35px 20px;
             }
             .subject-card span { font-size: 32px; }
-            .subject-card svg { width: 70px; height: 70px; }
+            .subject-card .icon { width: 70px; height: 70px; }
         }
     </style>
 </head>
@@ -170,32 +179,71 @@
         <div class="subject-grid">
             
             <a href="./SCIENCE/Science-ui.html" class="subject-card">
-                <i data-lucide="atom"></i>
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="1" fill="#ffcc00"/>
+                        <circle cx="19" cy="12" r="1" fill="#ffcc00"/>
+                        <circle cx="5" cy="12" r="1" fill="#ffcc00"/>
+                        <line x1="12" y1="3" x2="12" y2="9"/>
+                        <line x1="12" y1="15" x2="12" y2="21"/>
+                        <line x1="6.22" y1="6.22" x2="10.46" y2="10.46"/>
+                        <line x1="13.54" y1="13.54" x2="17.78" y2="17.78"/>
+                        <line x1="6.22" y1="17.78" x2="10.46" y2="13.54"/>
+                        <line x1="13.54" y1="10.46" x2="17.78" y2="6.22"/>
+                    </svg>
+                </div>
                 <span>SCIENCE</span>
             </a>
 
             <a href="maths_10.html" class="subject-card">
-                <i data-lucide="binary"></i>
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="3" width="8" height="8"/>
+                        <rect x="13" y="3" width="8" height="8"/>
+                        <rect x="3" y="13" width="8" height="8"/>
+                        <rect x="13" y="13" width="8" height="8"/>
+                    </svg>
+                </div>
                 <span>MATHS</span>
             </a>
 
             <a href="english_10.html" class="subject-card">
-                <i data-lucide="languages"></i>
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 4h16v16H4z" fill="none" stroke-width="2"/>
+                        <path d="M9 9c1 0 1-1 2-1s1 1 2 1-1 2-2 2-2-2-2-2z"/>
+                        <path d="M14 15c0-1 1-2 2-2s2 1 2 2-1 2-2 2-2-1-2-2z"/>
+                    </svg>
+                </div>
                 <span>ENGLISH</span>
             </a>
 
             <a href="gs_10.html" class="subject-card">
-                <i data-lucide="zap"></i>
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                </div>
                 <span>GS SERIES</span>
             </a>
 
             <a href="gk_10.html" class="subject-card">
-                <i data-lucide="globe"></i>
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
                 <span>GK PORTAL</span>
             </a>
 
             <a href="reasoning_10.html" class="subject-card">
-                <i data-lucide="brain-circuit"></i>
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.5 2A6.5 6.5 0 0116 8.5c0 1.92-.755 3.662-1.977 4.912A6.5 6.5 0 019.5 20a6.5 6.5 0 010-13A6.48 6.48 0 0112 8"/>
+                        <circle cx="12" cy="14" r="1" fill="#ffcc00"/>
+                    </svg>
+                </div>
                 <span>REASONING</span>
             </a>
 
@@ -205,11 +253,6 @@
     <div class="footer-credit">
         Maa Sharda Classes © 2026 • Designed for High-Performance TV & Mobile Screens
     </div>
-
-    <script>
-        /* Lucide लाइब्रेरी के सभी वेक्टर्स और आइकन्स को एक्टिवेट करने के लिए कॉल */
-        lucide.createIcons();
-    </script>
 
 </body>
 </html>
