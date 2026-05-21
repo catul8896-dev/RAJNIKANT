@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 10 - English Book Portal</title>
+    
+    <style>
+        /* [GLOBAL RESURRECT STYLES] */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-weight: bold; /* टीवी स्क्रीन पर अक्षरों को कड़क दिखाने के लिए */
+        }
+
+        body {
+            background-color: #000000; /* शुद्ध ब्लैक थीम */
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #ffffff;
+            font-size: 35px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        /* [TOP NAVIGATION BAR] */
+        .top-nav {
+            border-bottom: 4px solid #ffcc00; /* माँ शारदा क्लासेस पीली पट्टी */
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* बैक बटन */
+        .back-btn {
+            background-color: #111111;
+            color: #ffcc00;
+            border: 2px solid #ffcc00;
+            padding: 8px 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 28px;
+            text-transform: uppercase;
+            transition: 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #ffcc00;
+            color: #000000;
+        }
+
+        .nav-title {
+            font-size: 45px;
+            color: #ffcc00;
+            text-transform: uppercase;
+        }
+
+        /* [WORKSPACE GRID CONTAINER] */
+        .portal-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* सेक्शन हेडर (किताबों के नाम के लिए) */
+        .section-heading {
+            font-size: 38px;
+            color: #ffcc00;
+            margin: 30px 0 15px 10px;
+            text-transform: uppercase;
+            border-left: 6px solid #ff0055; /* पिंक/रेड कड़क सिंबल */
+            padding-left: 15px;
+        }
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* [DYNAMIC BOOK BUTTON CARDS] */
+        .subject-card {
+            background: linear-gradient(145deg, #1c1c1c, #0a0a0a);
+            border: 3px solid #333333;
+            border-radius: 20px;
+            padding: 45px 25px;
+            text-decoration: none;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: all 0.25s ease-in-out;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        /* होवर इफ़ेक्ट */
+        .subject-card:hover {
+            border-color: #ffcc00;
+            background: #222222;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(255, 204, 0, 0.2);
+        }
+
+        /* इन-बिल्ट क्लीन SVG आइकन्स */
+        .subject-card svg {
+            stroke: #ffcc00;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            width: 80px;
+            height: 80px;
+        }
+
+        .subject-card span {
+            font-size: 34px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* हिंदी उपशीर्षक */
+        .subject-card span em {
+            display: block;
+            font-size: 24px;
+            color: #aaaaaa;
+            font-style: normal;
+            margin-top: 5px;
+        }
+
+        /* विशेष क्विक यूटिलिटी बटन (जैसे टेस्ट या महत्वपूर्ण प्रश्न) */
+        .utility-card {
+            border: 3px solid #ff0055;
+        }
+        .utility-card svg {
+            stroke: #ff0055;
+        }
+
+        .footer-credit {
+            text-align: center;
+            margin-top: 50px;
+            color: #555555;
+            font-size: 24px;
+            border-top: 2px solid #111111;
+            padding-top: 20px;
+        }
+
+        /* 📱 मोबाइल रिस्पॉन्सिव सेटिंग */
+        @media (max-width: 768px) {
+            body { font-size: 28px; padding: 10px; }
+            .nav-title { font-size: 30px; }
+            .section-heading { font-size: 28px; }
+            .back-btn { font-size: 20px; padding: 6px 12px; }
+            .subject-grid { grid-template-columns: 1fr; gap: 20px; }
+            .subject-card { padding: 30px 15px; }
+            .subject-card span { font-size: 26px; }
+            .subject-card span em { font-size: 20px; }
+            .subject-card svg { width: 65px; height: 65px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="english_10.html" class="back-btn">❮ Back</a>
+        <div class="nav-title">CLASS 10: ENGLISH TEXT BOOK PORTAL</div>
+    </div>
+
+    <div class="portal-container">
+        
+        <div class="section-heading">Book 1: First Flight (Prose & Poetry)</div>
+        <div class="subject-grid">
+            
+            <a href="english/first_flight/a_letter_to_god.html" class="subject-card">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>A Letter to God<em>चैप्टर - 1 (Prose)</em></span>
+            </a>
+
+            <a href="english/first_flight/nelson_mandela.html" class="subject-card">
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span>Long Walk to Freedom<em>चैप्टर - 2 (Prose)</em></span>
+            </a>
+
+            <a href="english/first_flight/dust_of_snow.html" class="subject-card">
+                <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <span>Dust of Snow<em>कविता - 1 (Poetry)</em></span>
+            </a>
+
+            <a href="english/first_flight/fire_and_ice.html" class="subject-card">
+                <svg viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                <span>Fire and Ice<em>कविता - 2 (Poetry)</em></span>
+            </a>
+
+        </div>
+
+        <div class="section-heading">Book 2: Footprints Without Feet (Supplementary)</div>
+        <div class="subject-grid">
+            
+            <a href="english/footprints/triumph_of_surgery.html" class="subject-card">
+                <svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2.5 3.19-2.5 5.5h20c0-2.31-1-4.24-2.5-5.5"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                <span>A Triumph of Surgery<em>चैप्टर - 1</em></span>
+            </a>
+
+            <a href="english/footprints/the_thief_story.html" class="subject-card">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>The Thief's Story<em>चैप्टर - 2</em></span>
+            </a>
+
+        </div>
+
+        <div class="section-heading">Quick Shortcuts</div>
+        <div class="subject-grid">
+            
+            <a href="english/important_questions.html" class="subject-card utility-card">
+                <svg viewBox="0 0 24 24"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <span>Most Important Imp Q&A<em>बोर्ड परीक्षा स्पेशल</em></span>
+            </a>
+
+            <a href="english/daily_passage.html" class="subject-card utility-card">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>Unseen Passages<em>अपठित गद्यांश</em></span>
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-credit">
+        Maa Sharda Classes • Digital Learning Module by RAJNIKANT CHAUHAN SIR
+    </div>
+
+</body>
+</html>
