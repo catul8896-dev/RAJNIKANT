@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maa Sharda Classes - Science Digital Portal</title>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+
+    <style>
+        /* [GLOBAL RESETS & CORE TYPOGRAPHY] */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-weight: bold; /* टीवी स्क्रीन पर अक्षरों को धुंधला होने से बचाने के लिए */
+        }
+
+        body {
+            background-color: #000000; /* माँ शारदा क्लासेस की सिग्नेचर प्योर ब्लैक थीम */
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #ffffff;
+            font-size: 35px; /* टीवी विजिबिलिटी के लिए कड़क 35px बेस फ़ॉन्ट */
+            padding: 15px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* [TOP BAR / HEADER SECTION] */
+        .header {
+            background-color: #111111;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            border-bottom: 4px solid #ffcc00; /* हेडर के नीचे पीली पट्टी */
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            color: #ffcc00;
+            text-decoration: none;
+            margin-right: 25px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 32px;
+        }
+
+        .back-btn svg {
+            width: 40px;
+            height: 40px;
+            margin-right: 8px;
+        }
+
+        .title-section h1 {
+            font-size: 42px;
+            color: #ffcc00;
+        }
+
+        /* [TWIN PANEL WORKSPACE GRID] */
+        /* डेस्कटॉप और स्मार्ट टीवी पर यह दो भागों में बंटा रहेगा (Left & Right) */
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1.9fr; /* बायाँ पैनल थोड़ा छोटा, दायाँ बड़ा */
+            gap: 20px;
+            flex: 1;
+            height: calc(100vh - 140px);
+            overflow: hidden;
+        }
+
+        /* [LEFT PANEL: NAVIGATION SIDEBAR] */
+        .navigation-sidebar {
+            background-color: #111111;
+            border: 3px solid #222222;
+            border-radius: 16px;
+            padding: 15px;
+            overflow-y: auto; /* लंबा कंटेंट होने पर साइडबार में स्क्रॉल बार आ जाएगा */
+        }
+
+        .category-heading {
+            color: #ffcc00;
+            font-size: 36px;
+            border-bottom: 3px solid #ffcc00;
+            margin: 20px 0 12px 0;
+            padding-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .category-heading:first-child { margin-top: 0; }
+        .category-heading svg { width: 34px; height: 34px; }
+
+        /* [LEFT MENU BUTTON CARDS] */
+        .nav-item-card {
+            background: linear-gradient(145deg, #1c1c1c, #0c0c0c);
+            border: 2px solid #333333;
+            border-radius: 12px;
+            padding: 18px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 32px;
+        }
+
+        /* माउस ले जाने पर या एक्टिव (चयनित) होने पर पीला बॉर्डर आएगा */
+        .nav-item-card:hover, .nav-item-card.active {
+            border-color: #ffcc00;
+            background: #222222;
+        }
+        
+        .nav-item-card.active {
+            box-shadow: inset 0 0 12px rgba(255, 204, 0, 0.25);
+        }
+
+        /* [RIGHT PANEL: DYNAMIC CONTENT FRAME] */
+        .content-display-frame {
+            background-color: #111111;
+            border: 4px solid #ffcc00; /* मुख्य डिस्प्ले फ्रेम का पीला बॉर्डर */
+            border-radius: 16px;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .active-view-title {
+            color: #ffcc00;
+            font-size: 45px;
+            border-bottom: 3px solid #222222;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+        }
+
+        /* [TASK CARDS LAYOUT] */
+        .task-cards-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .day-block-row {
+            background-color: #000000;
+            border: 3px solid #333333;
+            border-radius: 14px;
+            padding: 22px;
+        }
+
+        .day-block-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #ffea00;
+            font-size: 34px;
+            margin-bottom: 15px;
+            border-bottom: 2px dashed #222222;
+            padding-bottom: 8px;
+        }
+
+        /* [ACTION BUTTON LINKS (ANCHOR TAGS)] */
+        .action-button-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* प्रैक्टिस शीट बटन (पिंक/रेड कलर) */
+        .anchor-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #ff0055; 
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 30px;
+            border: 2px solid #ffffff;
+            transition: 0.15s ease-in-out;
+        }
+
+        .anchor-action-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* आंसर की बटन (विशेष हरा रंग) */
+        .anchor-action-btn.solution-btn {
+            background-color: #00ff66; 
+            color: #000000;
+            border-color: #000000;
+        }
+
+        .anchor-action-btn.solution-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* 📱 [RESPONSIVE MEDIA QUERY - MOBILE & TABLET LAYOUT] */
+        /* जैसे ही मोबाइल स्क्रीन पर खुलेगा, यह कोड दोनों पैनल को एक सिंगल वर्टिकल लाइन में सेट कर देगा */
+        @media (max-width: 900px) {
+            body {
+                overflow: auto;
+                height: auto;
+                font-size: 26px;
+            }
+            .workspace-grid {
+                grid-template-columns: 1fr; /* सिंगल कॉलम लेआउट */
+                height: auto;
+                overflow: visible;
+            }
+            .navigation-sidebar, .content-display-frame {
+                height: auto;
+                overflow: visible;
+            }
+            .anchor-action-btn {
+                font-size: 24px;
+                padding: 12px 20px;
+                width: 100%; /* मोबाइल स्क्रीन पर अंगूठे से दबाने के लिए फुल-विड्थ बटन्स */
+                justify-content: center;
+            }
+            .title-section h1 { font-size: 32px; }
+            .back-btn { font-size: 26px; }
+        }
+
+        /* स्क्रॉल बार कस्टमाइजेशन */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #000000; }
+        ::-webkit-scrollbar-thumb { background: #333333; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="back-btn" onclick="goToHome()">
+        <i data-lucide="chevron-left"></i> BACK
+    </div>
+    <div class="title-section">
+        <h1 id="main-portal-title">SCIENCE PORTAL - CLASS 10th</h1>
+    </div>
+</header>
+
+<div class="workspace-grid">
+    
+    <div class="navigation-sidebar" id="sidebar-navigation">
+        
+        <div class="category-heading"><i data-lucide="book-open"></i> CHAPTERS</div>
+        <div class="nav-item-card active" data-id="ch1" data-title="CHAPTER 1: Chemical Reactions">
+            <span>CHAPTER 1</span><i data-lucide="chevron-right"></i>
+        </div>
+        <div class="nav-item-card" data-id="ch2" data-title="CHAPTER 2: Acids, Bases & Salts">
+            <span>CHAPTER 2</span><i data-lucide="chevron-right"></i>
+        </div>
+        <div class="nav-item-card" data-id="ch3" data-title="CHAPTER 3: Metals & Non-Metals">
+            <span>CHAPTER 3</span><i data-lucide="chevron-right"></i>
+        </div>
+        <div class="nav-item-card" data-id="ch4" data-title="CHAPTER 4: Carbon & its Compounds">
+            <span>CHAPTER 4</span><i data-lucide="chevron-right"></i>
+        </div>
+
+        <div class="category-heading"><i data-lucide="file-check"></i> TEST SERIES</div>
+        <div class="nav-item-card" data-id="ts1" data-title="WEEKLY TEST 01: Chemistry Foundation">
+            <span>WEEKLY TEST 01</span><i data-lucide="chevron-right"></i>
+        </div>
+        <div class="nav-item-card" data-id="ts2" data-title="MONTHLY MEGA EXAM: Full Science">
+            <span>MEGA TEST 02</span><i data-lucide="chevron-right"></i>
+        </div>
+
+        <div class="category-heading"><i data-lucide="help-circle"></i> QUIZ MCQs SERIES</div>
+        <div class="nav-item-card" data-id="qz1" data-title="LIVE BOOSTER: Target Board 2026">
+            <span>OBJECTIVE QUIZ 01</span><i data-lucide="chevron-right"></i>
+        </div>
+
+        <div class="category-heading"><i data-lucide="zap"></i> GS CORE BOOSTER</div>
+        <div class="nav-item-card" data-id="gs1" data-title="GENERAL SCIENCE: Static Core Notes">
+            <span>GS SERIES 01</span><i data-lucide="chevron-right"></i>
+        </div>
+    </div>
+
+    <div class="content-display-frame">
+        <h2 class="active-view-title" id="frame-view-title">CHAPTER 1: Chemical Reactions</h2>
+        
+        <div class="task-cards-stack" id="frame-links-injector">
+            
+            <div class="day-block-row">
+                <div class="day-block-meta">
+                    <span>DAY 1: Equations Balancing</span>
+                    <span>DATE: 21/05/2026</span>
+                </div>
+                <div class="action-button-links">
+                    <a href="science/ch1/day1_sheet.html" class="anchor-action-btn"><i data-lucide="file-text"></i> Practice Worksheet</a>
+                    <a href="science/ch1/day1_sol.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> Answer Key</a>
+                </div>
+            </div>
+
+            <div class="day-block-row">
+                <div class="day-block-meta">
+                    <span>DAY 2: Types of Reactions</span>
+                    <span>DATE: 22/05/2026</span>
+                </div>
+                <div class="action-button-links">
+                    <a href="science/ch1/day2_sheet.html" class="anchor-action-btn"><i data-lucide="file-text"></i> Practice Worksheet</a>
+                    <a href="science/ch1/day2_sol.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> Answer Key</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Lucide वैक्टर आइकन्स को रेंडर/एक्टिवेट करने के लिए कॉल
+    lucide.createIcons();
+
+    // ==========================================
+    // [CENTRALIZED DATA REPOSITORY (DATABASE)]
+    // ==========================================
+    // बाएँ साइडबार में किसी भी आइटम पर क्लिक करने पर जो HTML लोड कराना है, वो इसी ऑब्जेक्ट के अंदर स्टोर है।
+    // आप यहीं पर आसानी से href, डेट या टेक्स्ट बदल सकते हैं।
+    const scienceUIRepository = {
+        ch1: `
+            <div class="day-block-row">
+                <div class="day-block-meta"><span>DAY 1: Equations Balancing</span><span>DATE: 21/05/2026</span></div>
+                <div class="action-button-links">
+                    <a href="science/ch1/day1_sheet.html" class="anchor-action-btn"><i data-lucide="file-text"></i> Practice Worksheet</a>
+                    <a href="science/ch1/day1_sol.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> Answer Key</a>
+                </div>
+            </div>
+            <div class="day-block-row">
+                <div class="day-block-meta"><span>DAY 2: Types of Reactions</span><span>DATE: 22/05/2026</span></div>
+                <div class="action-button-links">
+                    <a href="science/ch1/day2_sheet.html" class="anchor-action-btn"><i data-lucide="file-text"></i> Practice Worksheet</a>
+                    <a href="science/ch1/day2_sol.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> Answer Key</a>
+                </div>
+            </div>`,
+        ch2: `
+            <div class="day-block-row">
+                <div class="day-block-meta"><span>DAY 1: pH Scale Indicators</span><span>DATE: 23/05/2026</span></div>
+                <div class="action-button-links">
+                    <a href="science/ch2/day1_indicators.html" class="anchor-action-btn"><i data-lucide="file-text"></i> Open Worksheet</a>
+                    <a href="science/ch2/day1_key.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> Answer Key</a>
+                </div>
+            </div>`,
+        ch3: `
+            <div class="day-block-row">
+                <div class="day-block-meta"><span>DAY 1: Extraction of Metals</span><span>DATE: 24/05/2026</span></div>
+                <div class="action-button-links">
+                    <a href="science/ch3/metallurgy.html" class="anchor-action-btn"><i data-lucide="file-text"></i> Metallurgy Notes</a>
+                    <a href="science/ch3/metallurgy_key.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> Answer Key</a>
+                </div>
+            </div>`,
+        ch4: `
+            <div class="day-block-row">
+                <div class="day-block-meta"><span>DAY 1: नामकरण </span><span>DATE: 21/05/2026</span></div>
+                <div class="action-button-links">
+                    <a href="science/ch4/day1_alkanes.html" class="anchor-action-btn"><i data-lucide="file-text"></i>MAIN CONTENT</a>
+                    <a href="science/ch4/day1_alkanes_key.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i>ETC</a>
+                </div>
+            </div>
+            <div class="day-block-row">
+                <div class="day-block-meta"><span>DAY 2: Functional Groups Nomenclature</span><span>DATE: 26/05/2026</span></div>
+                <div class="action-button-links">
+                    <a href="science/ch4/day2_functional.html" class="anchor-action-btn"><i data-lucide="file-text"></i> Open Practice Sheet</a>
+                    <a href="science/ch4/day2_functional_key.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> Answer Key</a>
+                </div>
+            </div>`,
+        ts1: `
+            <div class="day-block-row">
+                <div class="day-block-meta"><span>CHEMISTRY UNIT TEST</span><span style="color:#00ff66;">MARKS: 30</span></div>
+                <div class="action-button-links">
+                    <a href="test/ts1_question.html" class="anchor-action-btn" style="background-color:#ffcc00; color:#000;"><i data-lucide="file-text"></i> View Exam Paper</a>
+                    <a href="test/ts1_solution.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> View Solutions</a>
+                </div>
+            </div>`,
+        ts2: `
+            <div class="day-block-row">
+                <div class="day-block-meta"><span>SCIENCE HALF YEARLY MOCK</span><span style="color:#00ff66;">MARKS: 80</span></div>
+                <div class="action-button-links">
+                    <a href="test/ts2_mock.html" class="anchor-action-btn" style="background-color:#ffcc00; color:#000;"><i data-lucide="file-text"></i> Download Full Mock Paper</a>
+                    <a href="test/ts2_solution.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> View Solutions</a>
+                </div>
+            </div>`,
+        qz1: `
+            <div class="day-block-row">
+                <div class="day-block-meta"><span>CHAPTERS 1-4 COMPILATION</span><span>50 Objective Questions</span></div>
+                <div class="action-button-links">
+                    <a href="quiz/science_board_mcq.html" class="anchor-action-btn" style="background-color:#00eaff; color:#000;"><i data-lucide="play-circle"></i> Launch Live MCQ Screen</a>
+                </div>
+            </div>`,
+        gs1: `
+            <div class="day-block-row">
+                <div class="day-block-meta"><span>COMPETITIVE REVIEWS</span><span>General Knowledge</span></div>
+                <div class="action-button-links">
+                    <a href="gs/booster_sheet1.html" class="anchor-action-btn"><i data-lucide="bookmark-check"></i> Open Static GK Sheet</a>
+                </div>
+            </div>`
+    };
+
+    // DOM का सिलेक्शन ताकि उनपर डायनेमिक एक्शन किया जा सके
+    const sidebarContainer = document.getElementById('sidebar-navigation');
+    const viewTitleElement = document.getElementById('frame-view-title');
+    const linksOutputTarget = document.getElementById('frame-links-injector');
+
+    // ==========================================
+    // [MASTER JAVASCRIPT EVENT LISTENER]
+    // ==========================================
+    // यह लिस्नर साइडबार पर किसी भी बटन क्लिक को ट्रैक करता है और बिना पेज रीलोड किए दाएँ फ्रेम का कंटेंट बदलता है।
+    sidebarContainer.addEventListener('click', (e) => {
+        // यह चेक करता है कि यूजर ने किस 'nav-item-card' पर क्लिक किया है
+        const itemClicked = e.target.closest('.nav-item-card');
+        
+        if (itemClicked) {
+            // पहले से सिलेक्टेड बटन में से एक्टिव क्लास (बॉर्डर हाईलाइट) हटाओ
+            document.querySelectorAll('.nav-item-card').forEach(el => el.classList.remove('active'));
+            
+            // वर्तमान में क्लिक किए गए बटन को हाईलाइट करो
+            itemClicked.classList.add('active');
+            
+            // बटन के अंदर से 'data-id' और 'data-title' की वैल्यू निकालो
+            const currentSelectedId = itemClicked.getAttribute('data-id');
+            const currentSelectedTitle = itemClicked.getAttribute('data-title');
+            
+            // दाएँ पैनल के टाइटल को अपडेट करो
+            viewTitleElement.innerText = currentSelectedTitle;
+            
+            // डेटाबेस ऑब्जेक्ट (scienceUIRepository) से सही डेटा निकालकर राइट फ्रेम में इन्जेक्ट (Inject) करो
+            linksOutputTarget.innerHTML = scienceUIRepository[currentSelectedId] || `<p style="padding:15px; color:#555;">No worksheets found.</p>`;
+            
+            // नए लोड हुए कंटेंट के वेक्टर आइकन्स को रिफ्रेश और रेंडर करो
+            lucide.createIcons();
+            
+            // यदि वर्कशीट या नोट्स में कोई केमिस्ट्री/फिजिक्स का समीकरण ($..$) मौजूद है, तो MathJax उसे रेंडर करेगा
+            if (window.MathJax && MathJax.typesetPromise) {
+                MathJax.typesetPromise();
+            }
+        }
+    });
+
+    // बैक बटन दबाने पर मुख्य विषय सूची (Home Index) पर रीडायरेक्ट करने का फंक्शन
+    function goToHome() {
+        window.location.href = "index.html";
+    }
+</script>
+
+</body>
+</html>
