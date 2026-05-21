@@ -209,7 +209,7 @@
         }
 
         /* 📱 [RESPONSIVE MEDIA QUERY - MOBILE & TABLET LAYOUT] */
-        /* जैसे ही मोबाइल स्क्रीन पर खुलेगा, यह कोड दोनों पैनल को एक सिंगल वर्टिकल लाइन में सेट कर देगा */
+        /* जैसे ही मोबाइल स्क्रीन पर खुलेगा, यह कोड दोनों पैनल को एक सिंगल वर्टिकल ल[...]
         @media (max-width: 900px) {
             body {
                 overflow: auto;
@@ -328,7 +328,7 @@
     // ==========================================
     // [CENTRALIZED DATA REPOSITORY (DATABASE)]
     // ==========================================
-    // बाएँ साइडबार में किसी भी आइटम पर क्लिक करने पर जो HTML लोड कराना है, वो इसी ऑब्जेक्ट के अंदर स्टोर है।
+    // बाएँ साइडबार में किसी भी आइटम पर क्लिक करने पर जो HTML लोड कराना है, वो इसी ऑब्[...]
     // आप यहीं पर आसानी से href, डेट या टेक्स्ट बदल सकते हैं।
     const scienceUIRepository = {
         ch1: `
@@ -366,7 +366,7 @@
             <div class="day-block-row">
                 <div class="day-block-meta"><span>DAY 1: नामकरण </span><span>DATE: 21/05/2026</span></div>
                 <div class="action-button-links">
-                    <a href="CLASS10/SCIENCE/CHAPTERS/CHAPTER4/day1x.html" class="anchor-action-btn"><i data-lucide="file-text"></i>MAIN CONTENT</a>
+                    <a href="CHAPTERS/CHAPTER4/day1x.html" class="anchor-action-btn"><i data-lucide="file-text"></i>MAIN CONTENT</a>
                     <a href="science/ch4/day1_alkanes_key.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i>ETC</a>
                 </div>
             </div>
@@ -417,13 +417,13 @@
     // ==========================================
     // [MASTER JAVASCRIPT EVENT LISTENER]
     // ==========================================
-    // यह लिस्नर साइडबार पर किसी भी बटन क्लिक को ट्रैक करता है और बिना पेज रीलोड किए दाएँ फ्रेम का कंटेंट बदलता है।
+    // यह लिस्नर साइडबार पर किसी भी बटन क्लिक को ट्रैक करता है और बिना पेज रीलोड क[...]
     sidebarContainer.addEventListener('click', (e) => {
         // यह चेक करता है कि यूजर ने किस 'nav-item-card' पर क्लिक किया है
         const itemClicked = e.target.closest('.nav-item-card');
         
         if (itemClicked) {
-            // पहले से सिलेक्टेड बटन में से एक्टिव क्लास (बॉर्डर हाईलाइट) हटाओ
+            // प���ले से सिलेक्टेड बटन में से एक्टिव क्लास (बॉर्डर हाईलाइट) हटाओ
             document.querySelectorAll('.nav-item-card').forEach(el => el.classList.remove('active'));
             
             // वर्तमान में क्लिक किए गए बटन को हाईलाइट करो
@@ -436,13 +436,13 @@
             // दाएँ पैनल के टाइटल को अपडेट करो
             viewTitleElement.innerText = currentSelectedTitle;
             
-            // डेटाबेस ऑब्जेक्ट (scienceUIRepository) से सही डेटा निकालकर राइट फ्रेम में इन्जेक्ट (Inject) करो
+            // डेटाबेस ऑब्जेक्ट (scienceUIRepository) से सही डेटा निकालकर राइट फ्रेम में इन्जेक्ट [...]
             linksOutputTarget.innerHTML = scienceUIRepository[currentSelectedId] || `<p style="padding:15px; color:#555;">No worksheets found.</p>`;
             
             // नए लोड हुए कंटेंट के वेक्टर आइकन्स को रिफ्रेश और रेंडर करो
             lucide.createIcons();
             
-            // यदि वर्कशीट या नोट्स में कोई केमिस्ट्री/फिजिक्स का समीकरण ($..$) मौजूद है, तो MathJax उसे रेंडर करेगा
+            // यदि वर्कशीट या नोट्स में कोई केमिस्ट्री/फिजिक्स का समीकरण ($..$) मौजूद है, [...]
             if (window.MathJax && MathJax.typesetPromise) {
                 MathJax.typesetPromise();
             }
