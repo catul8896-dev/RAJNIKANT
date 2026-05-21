@@ -189,7 +189,6 @@
             font-size: 30px;
             border: 2px solid #ffffff;
             transition: 0.15s ease-in-out;
-            cursor: pointer;
         }
 
         .anchor-action-btn:hover {
@@ -210,6 +209,7 @@
         }
 
         /* 📱 [RESPONSIVE MEDIA QUERY - MOBILE & TABLET LAYOUT] */
+        /* जैसे ही मोबाइल स्क्रीन पर खुलेगा, यह कोड दोनों पैनल को एक सिंगल वर्टिकल लाइन में सेट कर देगा */
         @media (max-width: 900px) {
             body {
                 overflow: auto;
@@ -300,8 +300,8 @@
                     <span>DATE: 21/05/2026</span>
                 </div>
                 <div class="action-button-links">
-                    <button class="anchor-action-btn" onclick="showAlert('Practice Worksheet for Day 1')"><i data-lucide="file-text"></i> Practice Worksheet</button>
-                    <button class="anchor-action-btn solution-btn" onclick="showAlert('Answer Key for Day 1')"><i data-lucide="key-round"></i> Answer Key</button>
+                    <a href="science/ch1/day1_sheet.html" class="anchor-action-btn"><i data-lucide="file-text"></i> Practice Worksheet</a>
+                    <a href="science/ch1/day1_sol.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> Answer Key</a>
                 </div>
             </div>
 
@@ -311,8 +311,8 @@
                     <span>DATE: 22/05/2026</span>
                 </div>
                 <div class="action-button-links">
-                    <button class="anchor-action-btn" onclick="showAlert('Practice Worksheet for Day 2')"><i data-lucide="file-text"></i> Practice Worksheet</button>
-                    <button class="anchor-action-btn solution-btn" onclick="showAlert('Answer Key for Day 2')"><i data-lucide="key-round"></i> Answer Key</button>
+                    <a href="science/ch1/day2_sheet.html" class="anchor-action-btn"><i data-lucide="file-text"></i> Practice Worksheet</a>
+                    <a href="science/ch1/day2_sol.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> Answer Key</a>
                 </div>
             </div>
             
@@ -328,81 +328,83 @@
     // ==========================================
     // [CENTRALIZED DATA REPOSITORY (DATABASE)]
     // ==========================================
+    // बाएँ साइडबार में किसी भी आइटम पर क्लिक करने पर जो HTML लोड कराना है, वो इसी ऑब्जेक्ट के अंदर स्टोर है।
+    // आप यहीं पर आसानी से href, डेट या टेक्स्ट बदल सकते हैं।
     const scienceUIRepository = {
         ch1: `
             <div class="day-block-row">
                 <div class="day-block-meta"><span>DAY 1: Equations Balancing</span><span>DATE: 21/05/2026</span></div>
                 <div class="action-button-links">
-                    <button class="anchor-action-btn" onclick="showAlert('Practice Worksheet for Day 1 - Chemical Equations')"><i data-lucide="file-text"></i> Practice Worksheet</button>
-                    <button class="anchor-action-btn solution-btn" onclick="showAlert('Answer Key for Day 1')"><i data-lucide="key-round"></i> Answer Key</button>
+                    <a href="science/ch1/day1_sheet.html" class="anchor-action-btn"><i data-lucide="file-text"></i> Practice Worksheet</a>
+                    <a href="science/ch1/day1_sol.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> Answer Key</a>
                 </div>
             </div>
             <div class="day-block-row">
                 <div class="day-block-meta"><span>DAY 2: Types of Reactions</span><span>DATE: 22/05/2026</span></div>
                 <div class="action-button-links">
-                    <button class="anchor-action-btn" onclick="showAlert('Practice Worksheet for Day 2 - Types of Reactions')"><i data-lucide="file-text"></i> Practice Worksheet</button>
-                    <button class="anchor-action-btn solution-btn" onclick="showAlert('Answer Key for Day 2')"><i data-lucide="key-round"></i> Answer Key</button>
+                    <a href="science/ch1/day2_sheet.html" class="anchor-action-btn"><i data-lucide="file-text"></i> Practice Worksheet</a>
+                    <a href="science/ch1/day2_sol.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> Answer Key</a>
                 </div>
             </div>`,
         ch2: `
             <div class="day-block-row">
                 <div class="day-block-meta"><span>DAY 1: pH Scale Indicators</span><span>DATE: 23/05/2026</span></div>
                 <div class="action-button-links">
-                    <button class="anchor-action-btn" onclick="showAlert('Worksheet on pH Scale and Indicators')"><i data-lucide="file-text"></i> Open Worksheet</button>
-                    <button class="anchor-action-btn solution-btn" onclick="showAlert('Answer Key for pH Scale')"><i data-lucide="key-round"></i> Answer Key</button>
+                    <a href="science/ch2/day1_indicators.html" class="anchor-action-btn"><i data-lucide="file-text"></i> Open Worksheet</a>
+                    <a href="science/ch2/day1_key.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> Answer Key</a>
                 </div>
             </div>`,
         ch3: `
             <div class="day-block-row">
                 <div class="day-block-meta"><span>DAY 1: Extraction of Metals</span><span>DATE: 24/05/2026</span></div>
                 <div class="action-button-links">
-                    <button class="anchor-action-btn" onclick="showAlert('Metallurgy Notes - Extraction of Metals')"><i data-lucide="file-text"></i> Metallurgy Notes</button>
-                    <button class="anchor-action-btn solution-btn" onclick="showAlert('Answer Key for Metallurgy')"><i data-lucide="key-round"></i> Answer Key</button>
+                    <a href="science/ch3/metallurgy.html" class="anchor-action-btn"><i data-lucide="file-text"></i> Metallurgy Notes</a>
+                    <a href="science/ch3/metallurgy_key.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> Answer Key</a>
                 </div>
             </div>`,
         ch4: `
             <div class="day-block-row">
-                <div class="day-block-meta"><span>DAY 1: नामकरण (Nomenclature)</span><span>DATE: 21/05/2026</span></div>
+                <div class="day-block-meta"><span>DAY 1: नामकरण </span><span>DATE: 21/05/2026</span></div>
                 <div class="action-button-links">
-                    <button class="anchor-action-btn" onclick="showAlert('Main Content - Carbon Nomenclature')"><i data-lucide="file-text"></i> MAIN CONTENT</button>
-                    <button class="anchor-action-btn solution-btn" onclick="showAlert('Answer Key for Nomenclature')"><i data-lucide="key-round"></i> SOLUTIONS</button>
+                    <a href="./CHAPTERS/CHAPTER4/day1x.html" class="anchor-action-btn"><i data-lucide="file-text"></i>MAIN CONTENT</a>
+                    <a href="science/ch4/day1_alkanes_key.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i>ETC</a>
                 </div>
             </div>
             <div class="day-block-row">
                 <div class="day-block-meta"><span>DAY 2: Functional Groups Nomenclature</span><span>DATE: 26/05/2026</span></div>
                 <div class="action-button-links">
-                    <button class="anchor-action-btn" onclick="showAlert('Practice Sheet - Functional Groups')"><i data-lucide="file-text"></i> Open Practice Sheet</button>
-                    <button class="anchor-action-btn solution-btn" onclick="showAlert('Answer Key for Functional Groups')"><i data-lucide="key-round"></i> Answer Key</button>
+                    <a href="science/ch4/day2_functional.html" class="anchor-action-btn"><i data-lucide="file-text"></i> Open Practice Sheet</a>
+                    <a href="science/ch4/day2_functional_key.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> Answer Key</a>
                 </div>
             </div>`,
         ts1: `
             <div class="day-block-row">
                 <div class="day-block-meta"><span>CHEMISTRY UNIT TEST</span><span style="color:#00ff66;">MARKS: 30</span></div>
                 <div class="action-button-links">
-                    <button class="anchor-action-btn" style="background-color:#ffcc00; color:#000;" onclick="showAlert('Chemistry Unit Test Question Paper')"><i data-lucide="file-text"></i> View Exam Paper</button>
-                    <button class="anchor-action-btn solution-btn" onclick="showAlert('Chemistry Unit Test Solutions')"><i data-lucide="key-round"></i> View Solutions</button>
+                    <a href="test/ts1_question.html" class="anchor-action-btn" style="background-color:#ffcc00; color:#000;"><i data-lucide="file-text"></i> View Exam Paper</a>
+                    <a href="test/ts1_solution.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> View Solutions</a>
                 </div>
             </div>`,
         ts2: `
             <div class="day-block-row">
                 <div class="day-block-meta"><span>SCIENCE HALF YEARLY MOCK</span><span style="color:#00ff66;">MARKS: 80</span></div>
                 <div class="action-button-links">
-                    <button class="anchor-action-btn" style="background-color:#ffcc00; color:#000;" onclick="showAlert('Full Science Mock Paper - 80 Marks')"><i data-lucide="file-text"></i> Download Full Mock Paper</button>
-                    <button class="anchor-action-btn solution-btn" onclick="showAlert('Science Mock Paper Solutions')"><i data-lucide="key-round"></i> View Solutions</button>
+                    <a href="test/ts2_mock.html" class="anchor-action-btn" style="background-color:#ffcc00; color:#000;"><i data-lucide="file-text"></i> Download Full Mock Paper</a>
+                    <a href="test/ts2_solution.html" class="anchor-action-btn solution-btn"><i data-lucide="key-round"></i> View Solutions</a>
                 </div>
             </div>`,
         qz1: `
             <div class="day-block-row">
                 <div class="day-block-meta"><span>CHAPTERS 1-4 COMPILATION</span><span>50 Objective Questions</span></div>
                 <div class="action-button-links">
-                    <button class="anchor-action-btn" style="background-color:#00eaff; color:#000;" onclick="showAlert('Live MCQ Quiz Screen - 50 Questions on Chapters 1-4')"><i data-lucide="play-circle"></i> Launch Live MCQ Screen</button>
+                    <a href="quiz/science_board_mcq.html" class="anchor-action-btn" style="background-color:#00eaff; color:#000;"><i data-lucide="play-circle"></i> Launch Live MCQ Screen</a>
                 </div>
             </div>`,
         gs1: `
             <div class="day-block-row">
                 <div class="day-block-meta"><span>COMPETITIVE REVIEWS</span><span>General Knowledge</span></div>
                 <div class="action-button-links">
-                    <button class="anchor-action-btn" onclick="showAlert('Static GK Sheet - General Knowledge Booster')"><i data-lucide="bookmark-check"></i> Open Static GK Sheet</button>
+                    <a href="gs/booster_sheet1.html" class="anchor-action-btn"><i data-lucide="bookmark-check"></i> Open Static GK Sheet</a>
                 </div>
             </div>`
     };
@@ -415,21 +417,32 @@
     // ==========================================
     // [MASTER JAVASCRIPT EVENT LISTENER]
     // ==========================================
+    // यह लिस्नर साइडबार पर किसी भी बटन क्लिक को ट्रैक करता है और बिना पेज रीलोड किए दाएँ फ्रेम का कंटेंट बदलता है।
     sidebarContainer.addEventListener('click', (e) => {
+        // यह चेक करता है कि यूजर ने किस 'nav-item-card' पर क्लिक किया है
         const itemClicked = e.target.closest('.nav-item-card');
         
         if (itemClicked) {
+            // पहले से सिलेक्टेड बटन में से एक्टिव क्लास (बॉर्डर हाईलाइट) हटाओ
             document.querySelectorAll('.nav-item-card').forEach(el => el.classList.remove('active'));
+            
+            // वर्तमान में क्लिक किए गए बटन को हाईलाइट करो
             itemClicked.classList.add('active');
             
+            // बटन के अंदर से 'data-id' और 'data-title' की वैल्यू निकालो
             const currentSelectedId = itemClicked.getAttribute('data-id');
             const currentSelectedTitle = itemClicked.getAttribute('data-title');
             
+            // दाएँ पैनल के टाइटल को अपडेट करो
             viewTitleElement.innerText = currentSelectedTitle;
+            
+            // डेटाबेस ऑब्जेक्ट (scienceUIRepository) से सही डेटा निकालकर राइट फ्रेम में इन्जेक्ट (Inject) करो
             linksOutputTarget.innerHTML = scienceUIRepository[currentSelectedId] || `<p style="padding:15px; color:#555;">No worksheets found.</p>`;
             
+            // नए लोड हुए कंटेंट के वेक्टर आइकन्स को रिफ्रेश और रेंडर करो
             lucide.createIcons();
             
+            // यदि वर्कशीट या नोट्स में कोई केमिस्ट्री/फिजिक्स का समीकरण ($..$) मौजूद है, तो MathJax उसे रेंडर करेगा
             if (window.MathJax && MathJax.typesetPromise) {
                 MathJax.typesetPromise();
             }
@@ -438,12 +451,7 @@
 
     // बैक बटन दबाने पर मुख्य विषय सूची (Home Index) पर रीडायरेक्ट करने का फंक्शन
     function goToHome() {
-        window.location.href = "../../index.html";
-    }
-
-    // Alert function for button clicks
-    function showAlert(message) {
-        alert(message + '\n\n(Create the corresponding HTML file to enable this feature)');
+        window.location.href = "index.html";
     }
 </script>
 
