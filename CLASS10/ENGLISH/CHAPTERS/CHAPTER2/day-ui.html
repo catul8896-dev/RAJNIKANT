@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1 - Learning Mode Only</title>
+
+    <style>
+        /* [CORE STYLES - HIGH CONTRAST] */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-weight: bold; /* बड़ी टीवी स्क्रीन पर स्पष्टता के लिए */
+        }
+
+        body {
+            background-color: #000000; /* सिग्नेचर प्योर ब्लैक बैकग्राउंड */
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #ffffff;
+            font-size: 35px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        /* TOP NAVIGATION BAR */
+        .top-nav {
+            border-bottom: 4px solid #ffcc00;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .back-btn {
+            background-color: #111111;
+            color: #ffcc00;
+            border: 2px solid #ffcc00;
+            padding: 8px 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 28px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            background-color: #ffcc00;
+            color: #000000;
+        }
+
+        .nav-title {
+            font-size: 42px;
+            color: #ffcc00;
+            text-transform: uppercase;
+        }
+
+        /* WORKSPACE DISPLAY AREA */
+        .portal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* 🎯 SINGLE ROW SINGLE BUTTON CONTROL */
+        .single-button-row {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* कड़क Day 1 एक्शन बटन */
+        .day-action-button {
+            background: linear-gradient(145deg, #1c1c1c, #0a0a0a);
+            border: 4px solid #ff0055; /* हाइकॉन्ट्रास्ट पिंक/रेड बॉर्डर */
+            border-radius: 20px;
+            padding: 30px 50px;
+            width: 100%;
+            max-width: 800px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+        }
+
+        .day-action-button:hover, .day-action-button.active {
+            border-color: #ffcc00; /* क्लिक होने पर पीला बॉर्डर */
+            background: #111111;
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(255, 204, 0, 0.2);
+        }
+
+        .btn-left-content {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            text-align: left;
+        }
+
+        .day-badge {
+            font-size: 45px;
+            color: #ffcc00;
+        }
+
+        .date-badge {
+            font-size: 28px;
+            color: #aaaaaa;
+        }
+
+        /* लोकल SVG बुक आइकॉन */
+        .day-action-button svg {
+            stroke: #ffcc00;
+            fill: none;
+            stroke-width: 2;
+            width: 70px;
+            height: 70px;
+        }
+
+        /* 📖 DISPLAY BOARD: LEARNING CONTENT PANEL */
+        /* यह पैनल डिफ़ॉल्ट रूप से छुपा रहेगा, बटन दबते ही खुलेगा */
+        .learning-display-board {
+            display: none; 
+            background-color: #111111;
+            border: 4px solid #ffcc00;
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 20px;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .board-header {
+            font-size: 45px;
+            color: #ffcc00;
+            border-bottom: 3px solid #ff0055;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        /* डिजिटल बोर्ड पर नोट्स की स्टाइलिंग */
+        .notes-text-area {
+            font-size: 36px;
+            line-height: 1.6;
+            color: #ffffff;
+        }
+
+        .notes-text-area ul {
+            margin-left: 40px;
+            margin-top: 15px;
+        }
+
+        .notes-text-area li {
+            margin-bottom: 12px;
+            color: #00ff66; /* पॉइंट्स के लिए कड़क हरा रंग */
+        }
+
+        /* एनीमेशन इफ़ेक्ट */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 📱 मोबाइल रिस्पॉन्सिव */
+        @media (max-width: 768px) {
+            body { font-size: 26px; padding: 10px; }
+            .nav-title { font-size: 30px; }
+            .day-badge { font-size: 34px; }
+            .date-badge { font-size: 22px; }
+            .day-action-button svg { width: 50px; height: 50px; }
+            .board-header { font-size: 32px; }
+            .notes-text-area { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="english-days-ui.html" class="back-btn">❮ Back</a>
+        <div class="nav-title">English Portal - Classroom Learning Mode</div>
+    </div>
+
+    <div class="portal-container">
+        
+        <div class="single-button-row">
+            <div class="day-action-button" id="day1-btn" onclick="toggleLearningBoard()">
+                <div class="btn-left-content">
+                    <span class="day-badge">DAY 1: START LEARNING</span>
+                    <span class="date-badge">Date: 21/05/2026 • English Grammar</span>
+                </div>
+                <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+        </div>
+
+        <div class="learning-display-board" id="learning-board">
+            <h2 class="board-header">Day 1 Notes: Active & Passive Voice (Assertive Rules)</h2>
+            <div class="notes-text-area">
+                <p style="color: #ffcc00; margin-bottom: 15px;">★ सामान्य नियम (General Formula):</p>
+                <p style="background-color: #222; padding: 15px; border-radius: 8px; font-family: monospace;">
+                    Active: Subject + Verb + Object <br>
+                    Passive: Object + Helping Verb + V3 + by + Subject
+                </p>
+                
+                <ul type="square">
+                    <li>नियम 1: Active Voice के Object को Passive में Subject बना देते हैं।</li>
+                    <li>नियम 2: हमेशा मुख्य क्रिया की 3rd Form (V3) का ही प्रयोग होता है।</li>
+                    <li>नियम 3: नए Subject से पहले सामान्यतः 'by' का प्रयोग किया जाता है।</li>
+                    <li>उदाहरण: "He writes a letter" बदलकर "A letter is written by him" हो जाएगा।</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // बिना पेज रीलोड किए नोट्स बोर्ड को दिखाने या छुपाने का जावास्क्रिप्ट फंक्शन
+        function toggleLearningBoard() {
+            const board = document.getElementById('learning-board');
+            const button = document.getElementById('day1-btn');
+            
+            if (board.style.display === "block") {
+                board.style.display = "none";
+                button.classList.remove('active');
+            } else {
+                board.style.display = "block";
+                button.classList.add('active');
+                // स्क्रीन को धीरे से नीचे स्क्रॉल करने के लिए ताकि टीवी पर नोट्स पूरे दिखें
+                board.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+
+</body>
+</html>
