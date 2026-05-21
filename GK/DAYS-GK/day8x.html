@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>जीके एवं तापमान पैमाना क्विज़ - माँ शारदा क्लासेस</title>
+<style>
+    /* ब्लैक बैकग्राउंड और फॉन्ट सेटिंग */
+    body {
+        font-family: 'Arial Black', sans-serif;
+        background-color: #000000; /* ब्लैक बैकग्राउंड */
+        color: #ffffff;
+        padding: 30px;
+    }
+    
+    /* मुख्य स्टाइलिंग: 40px साइज़ और 900 (Extra Bold) वेट */
+    ol {
+        font-size: 40px;
+        font-weight: 900; 
+        line-height: 1.8;
+        padding: 20px;
+        margin-left: 2%;
+        list-style: none; /* डिफ़ॉल्ट नंबर हटाकर ब्लू करने के लिए */
+        counter-reset: my-counter;
+    }
+
+    li {
+        margin-bottom: 50px;
+        background: #111111; /* हल्का ब्लैक कार्ड इफ़ेक्ट */
+        padding: 30px;
+        border-radius: 15px;
+        border-left: 15px solid #0056b3; 
+        box-shadow: 0 4px 15px rgba(255,255,255,0.05);
+        counter-increment: my-counter;
+    }
+
+    /* ब्लू सीरियल नंबर (Blue Serials) */
+    li::before {
+        content: counter(my-counter) ". ";
+        color: #00bcff; /* चमकीला ब्लू रंग */
+        font-weight: 900;
+    }
+
+    /* रेड प्रश्न (Red Questions) */
+    .question {
+        color: #ff3333; /* चमकीला रेड रंग */
+        display: inline;
+    }
+
+    /* ग्रीन उत्तर (Green Answers) */
+    .answer {
+        color: #00ff66; /* चमकीला ग्रीन रंग */
+        display: block;
+        margin-top: 20px;
+        font-weight: bold;
+        border-top: 2px dashed #333;
+        padding-top: 15px;
+    }
+</style>
+</head>
+<body>
+
+    <h1 style="text-align: center; font-size: 55px; color: #ffcc00; margin-bottom: 5px;">माँ शारदा क्लासेस</h1>
+    <h2 style="text-align: center; font-size: 35px; color: #aaaaaa; margin-top: 0;">सामान्य ज्ञान एवं तापमान पैमाना टेस्ट | दिनांक: 21-05-2026</h2>
+
+    <ol>
+        <li><span class="question">बिहार की राजधानी कहाँ है?</span>
+            <span class="answer">उत्तर: पटना</span>
+        </li>
+        
+        <li><span class="question">श्रीलंका की राजधानी कहाँ है?</span>
+            <span class="answer">उत्तर: श्री जयवर्धनेपुरा कोट्टे (पुरानी राजधानी: कोलंबो)</span>
+        </li>
+        
+        <li><span class="question">भूटान की राजधानी कहाँ है?</span>
+            <span class="answer">उत्तर: थिम्पु</span>
+        </li>
+        
+        <li><span class="question">चीन की मुद्रा (Currency) का क्या नाम है?</span>
+            <span class="answer">उत्तर: रेन्मिन्बी (मुख्य इकाई: युआन)</span>
+        </li>
+        
+        <li><span class="question">सेल्सियस (°C) पैमाने की खोज किसने की थी?</span>
+            <span class="answer">उत्तर: एंडर्स सेल्सियस ने, सन 1742 में</span>
+        </li>
+        
+        <li><span class="question">फारेनहाइट (°F) पैमाने की खोज किसने की थी?</span>
+            <span class="answer">उत्तर: डैनियल गेब्रियल फारेनहाइट ने, सन 1724 में</span>
+        </li>
+        
+        <li><span class="question">डिग्री सेल्सियस से फारेनहाइट में बदलने के लिए क्या किया जाता है?</span>
+            <span class="answer">उत्तर: सेल्सियस मान को 9/5 से गुणा करके उसमें 32 जोड़ते हैं। सूत्र: °F = (°C × 9/5) + 32</span>
+        </li>
+        
+        <li><span class="question">फारेनहाइट से डिग्री सेल्सियस में बदलने के लिए क्या किया जाता है?</span>
+            <span class="answer">उत्तर: फारेनहाइट मान में से 32 घटाकर उसे 5/9 से गुणा करते हैं। सूत्र: °C = (°F - 32) × 5/9</span>
+        </li>
+        
+        <li><span class="question">केल्विन (K) से डिग्री सेल्सियस में बदलने के लिए क्या किया जाता है?</span>
+            <span class="answer">उत्तर: केल्विन के मान में से 273.15 घटा दिया जाता है। सूत्र: °C = K - 273.15</span>
+        </li>
+        
+        <li><span class="question">डिग्री सेल्सियस से केल्विन (K) में बदलने के लिए क्या किया जाता है?</span>
+            <span class="answer">उत्तर: सेल्सियस के मान में 273.15 जोड़ दिया जाता है। सूत्र: K = °C + 273.15</span>
+        </li>
+    </ol>
+
+</body>
+</html>
