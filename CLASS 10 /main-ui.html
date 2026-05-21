@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maa Sharda Classes - Main Portal</title>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* [GLOBAL STRUCTURAL STYLES] */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-weight: bold; /* टीवी स्क्रीन पर बेहतर विजिबिलिटी के लिए सब बोल्ड */
+        }
+
+        body {
+            background-color: #000000; /* सिग्नेचर प्योर ब्लैक बैकग्राउंड */
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #ffffff;
+            font-size: 35px; /* कड़क 35px बेस फॉन्ट */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        /* [HERO / WELCOME BANNER SECTION] */
+        .welcome-container {
+            background: linear-gradient(145deg, #111111, #1a1a1a);
+            border: 4px solid #ffcc00; /* माँ शारदा क्लासेस की पीली ब्रांडिंग लाइन */
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+        }
+
+        .welcome-container h1 {
+            font-size: 55px; /* टीवी के लिए बड़ा फॉन्ट */
+            color: #ffcc00;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .welcome-container p {
+            font-size: 38px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        /* शिक्षक के नाम की विशेष ब्रांडिंग पट्टी */
+        .teacher-badge {
+            display: inline-block;
+            background-color: #ff0055; /* हाई-कॉन्ट्रास्ट पिंक/रेड एक्सेंट */
+            color: #ffffff;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-size: 34px;
+            border: 2px solid #ffffff;
+        }
+
+        /* [SUBJECT GRID SYSTEM - SINGLE ROW/COLUMN CONFIGURATION] */
+        .portal-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        .subject-grid {
+            display: grid;
+            /* डेस्कटॉप/टीवी पर 3 कॉलम और मोबाइल पर अपने आप 1 कॉलम में बदलेगा */
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            padding: 10px;
+        }
+
+        /* [DYNAMIC SUBJECT CARD BUTTONS] */
+        .subject-card {
+            background: linear-gradient(145deg, #1c1c1c, #0a0a0a);
+            border: 3px solid #333333;
+            border-radius: 20px;
+            padding: 50px 30px;
+            text-decoration: none;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            transition: all 0.25s ease-in-out;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            cursor: pointer;
+        }
+
+        /* कार्ड पर माउस जाने या उंगली से टैप करने पर पीला बॉर्डर चमकेगा */
+        .subject-card:hover {
+            border-color: #ffcc00;
+            background: #222222;
+            transform: translateY(-8px); /* हल्का सा ऊपर उठेगा */
+            box-shadow: 0 15px 30px rgba(255, 204, 0, 0.2);
+        }
+
+        /* आइकन की स्टाइलिंग */
+        .subject-card svg {
+            color: #ffcc00;
+            width: 90px;
+            height: 90px;
+        }
+
+        /* विषय के नाम की स्टाइलिंग */
+        .subject-card span {
+            font-size: 42px;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* [FOOTER UTILITIES] */
+        .footer-credit {
+            text-align: center;
+            margin-top: 50px;
+            color: #555555;
+            font-size: 24px;
+            border-top: 2px solid #111111;
+            padding-top: 20px;
+        }
+
+        /* 📱 [RESPONSIVE CODE FOR SMARTPHONES] */
+        @media (max-width: 768px) {
+            body {
+                font-size: 28px;
+                padding: 10px;
+            }
+            .welcome-container {
+                padding: 25px 15px;
+                margin-bottom: 25px;
+            }
+            .welcome-container h1 { font-size: 36px; }
+            .welcome-container p { font-size: 28px; }
+            .teacher-badge { font-size: 26px; padding: 8px 20px; }
+            
+            /* मोबाइल पर बटन्स पूरी चौड़ाई में एक के नीचे एक (Single Column Grid) सेट हो जाएंगे */
+            .subject-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .subject-card {
+                padding: 35px 20px;
+            }
+            .subject-card span { font-size: 32px; }
+            .subject-card svg { width: 70px; height: 70px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="welcome-container">
+        <h1>Welcome to Maa Sharda Classes Science Portal</h1>
+        <p>Class 10th Digital Learning Dashboard</p>
+        <div class="teacher-badge">By: RAJNIKANT CHAUHAN SIR</div>
+    </div>
+
+    <div class="portal-container">
+        <div class="subject-grid">
+            
+            <a href="science_ui_class_10.html" class="subject-card">
+                <i data-lucide="atom"></i>
+                <span>SCIENCE</span>
+            </a>
+
+            <a href="maths_10.html" class="subject-card">
+                <i data-lucide="binary"></i>
+                <span>MATHS</span>
+            </a>
+
+            <a href="english_10.html" class="subject-card">
+                <i data-lucide="languages"></i>
+                <span>ENGLISH</span>
+            </a>
+
+            <a href="gs_10.html" class="subject-card">
+                <i data-lucide="zap"></i>
+                <span>GS SERIES</span>
+            </a>
+
+            <a href="gk_10.html" class="subject-card">
+                <i data-lucide="globe"></i>
+                <span>GK PORTAL</span>
+            </a>
+
+            <a href="reasoning_10.html" class="subject-card">
+                <i data-lucide="brain-circuit"></i>
+                <span>REASONING</span>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="footer-credit">
+        Maa Sharda Classes © 2026 • Designed for High-Performance TV & Mobile Screens
+    </div>
+
+    <script>
+        /* Lucide लाइब्रेरी के सभी वेक्टर्स और आइकन्स को एक्टिवेट करने के लिए कॉल */
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>
