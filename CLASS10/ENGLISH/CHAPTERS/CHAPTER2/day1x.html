@@ -1,1 +1,402 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nelson Mandela - Combined Interactive Sheets</title>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            padding: 30px;
+            margin: 0;
+        }
+
+        /* ─── CONTAINER ──────────────────────────────────────────── */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 80px; /* FIX: uniform spacing for ALL containers (was missing on container3 and inconsistent in 2nd HTML) */
+        }
+
+        /* ─── SENTENCE BOXES ─────────────────────────────────────── */
+        /* BUG FIX #7: unified class name so sentence-mode CSS works on both box types */
+        .top-custom-sentence,
+        .master-sentence-box {
+            background-color: #111111;
+            border: 4px solid #00ffcc;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            font-size: 50px;
+            font-weight: bold;
+            line-height: 1.8;
+            word-wrap: break-word;
+        }
+
+        /* Master box gets extra glow styling */
+        .master-sentence-box {
+            border-width: 5px;
+            padding: 40px;
+            font-size: 52px;
+            line-height: 1.9;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+        }
+
+        /* ─── TEXT COLORS ────────────────────────────────────────── */
+        .txt-eng   { color: #00ff00; transition: all 0.3s ease; }
+        .txt-hin   { color: #ff0000; transition: all 0.3s ease; }
+        .txt-white { color: #ffffff; transition: all 0.3s ease; }
+
+        /* ─── SENTENCE MODE ──────────────────────────────────────── */
+        /* BUG FIX #7: single unified selector covers BOTH sentence box types */
+        .sentence-mode .txt-hin,
+        .sentence-mode .top-custom-sentence .txt-white,
+        .sentence-mode .master-sentence-box .txt-white {
+            display: none;
+        }
+        .sentence-mode .txt-eng {
+            color: #00ffcc;
+        }
+
+        /* ─── BUTTONS ────────────────────────────────────────────── */
+        .btn-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* BUG FIX #5: unified button styles (was 32px / 35px conflict between both HTMLs) */
+        .action-btn {
+            background-color: #00ffcc;
+            color: #000000;
+            font-size: 32px;
+            font-weight: bold;
+            padding: 15px 40px;
+            border: 3px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 255, 204, 0.3);
+        }
+        .action-btn:hover {
+            background-color: #000000;
+            color: #00ffcc;
+            border-color: #00ffcc;
+        }
+        .action-btn.active-mode {
+            background-color: #ff00ff;
+            color: #ffffff;
+            border-color: #ff00ff;
+            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4);
+        }
+
+        /* ─── TABLE COLLAPSE ANIMATION ───────────────────────────── */
+        .table-wrapper {
+            max-height: 2500px;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out;
+            opacity: 1;
+        }
+        .table-wrapper.collapsed {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        /* ─── TABLE STYLES ───────────────────────────────────────── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th {
+            border-bottom: 4px solid #ffffff;
+            font-size: 35px;
+            font-weight: bold;
+            padding: 15px;
+            text-align: left;
+        }
+        th.lbl-eng { color: #00ffcc; width: 45%; }
+        th.lbl-hin { color: #ff00ff; width: 55%; }
+
+        td {
+            border-bottom: 2px solid #222222;
+            padding: 20px 15px;
+            font-size: 50px;
+            font-weight: bold;
+            vertical-align: middle;
+            word-wrap: break-word;
+        }
+        .col-left  { color: #00ff00; }
+        .col-right { color: #ff0000; }
+        .bracket   { color: #ffffff; font-weight: bold; }
+
+        /* Hidden hindi words in test mode */
+        .hidden-hin { visibility: hidden; }
+
+        /* ─── DIVIDERS ───────────────────────────────────────────── */
+        .divider {
+            border: 0;
+            height: 4px;
+            background: #ff00ff;
+            margin: 60px 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SECTION 1: "A few moments … in awe"
+     ══════════════════════════════════════════════════════════════════ -->
+<div class="container" id="mainContainer1">
+
+    <div class="top-custom-sentence">
+        <span class="txt-eng">A few moments</span> <span class="txt-white">( कुछ पल / क्षण )</span>
+        <span class="txt-eng">later</span> <span class="txt-white">(बाद मे )</span>
+        <span class="txt-eng">we all</span> <span class="txt-white">(हम सब ने )</span>
+        <span class="txt-eng">lifted our eyes</span> <span class="txt-white">(अपनी नजरे उठाई )</span>
+        <span class="txt-eng">in awe</span> <span class="txt-white">(विस्मय से / आश्चर्य से )</span>
+        <br>
+        <span class="txt-white">अर्थात - </span>
+        <span class="txt-hin">कुछ पल बाद हम सबने अपनी नजरे विस्मय से / विस्मय के साथ ऊपर उठाई</span>
+    </div>
+
+    <div class="btn-container">
+        <button class="action-btn" id="sentenceBtn1" onclick="makePerfectSentence(1)">Make Perfect Sentence</button>
+        <button class="action-btn" id="testBtn1"     onclick="toggleHindiTable(1)">Hide Hindi Meanings</button>
+        <button class="action-btn" id="collapseBtn1" onclick="toggleTableCollapse(1)">Hide Full Table</button>
+    </div>
+
+    <div class="table-wrapper" id="tableWrapper1">
+        <table>
+            <thead>
+                <tr>
+                    <th class="lbl-eng">शब्द (English)</th>
+                    <th class="lbl-hin">अर्थ (Hindi)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="col-left"><span class="bracket">(</span> A <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-1">एक</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> few <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-1">कुछ</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> moments <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-1">पल / क्षण</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> later <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-1">बाद मे</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> we <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-1">हम</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> all <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-1">सब / सभी</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> lifted <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-1">उठाया</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> our <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-1">हमारी</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> eyes <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-1">आँखें / नज़रें</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> in <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-1">में</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> awe <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-1">विस्मय से / आश्चर्य से</span> <span class="bracket">)</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</div><!-- /.container#mainContainer1 -->
+
+<!-- BUG FIX #8: divider was already here (correct) -->
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SECTION 2: "as a spectacular array … troop carriers"
+     ══════════════════════════════════════════════════════════════════ -->
+<div class="container" id="mainContainer2">
+
+    <div class="top-custom-sentence">
+        <span class="txt-eng">as</span> <span class="txt-white">( के रूप में )</span>
+        <span class="txt-eng">a spectacular array</span> <span class="txt-white">( एक भव्य / शानदार कतार )</span>
+        <span class="txt-eng">of South African jets,</span> <span class="txt-white">( दक्षिण अफ्रीकी जेट विमानों, )</span>
+        <span class="txt-eng">helicopters</span> <span class="txt-white">( हेलीकॉप्टरों )</span>
+        <span class="txt-eng">and troop carriers</span> <span class="txt-white">( और सैन्य वाहनों )</span>
+        <br>
+        <span class="txt-white">अर्थात - </span>
+        <span class="txt-hin">दक्षिण अफ्रीकी जेट विमानों, हेलीकॉप्टरों और सैन्य वाहनों की एक भव्य / शानदार कतार के रूप में</span>
+    </div>
+
+    <div class="btn-container">
+        <button class="action-btn" id="sentenceBtn2" onclick="makePerfectSentence(2)">Make Perfect Sentence</button>
+        <button class="action-btn" id="testBtn2"     onclick="toggleHindiTable(2)">Hide Hindi Meanings</button>
+        <button class="action-btn" id="collapseBtn2" onclick="toggleTableCollapse(2)">Hide Full Table</button>
+    </div>
+
+    <div class="table-wrapper" id="tableWrapper2">
+        <table>
+            <thead>
+                <tr>
+                    <th class="lbl-eng">शब्द (English)</th>
+                    <th class="lbl-hin">अर्थ (Hindi)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="col-left"><span class="bracket">(</span> as <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-2">के रूप में</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> a <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-2">एक</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> spectacular <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-2">भव्य / शानदार / दर्शनीय</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> array <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-2">कतार / प्रदर्शन / सरणी</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> of <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-2">का / की</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> South African <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-2">दक्षिण अफ्रीकी</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> jets <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-2">जेट विमानों</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> helicopters <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-2">हेलीकॉप्टरों</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> and <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-2">और</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> troop carriers <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-2">सैन्य वाहनों / सैनिक ले जाने वाले वाहनों</span> <span class="bracket">)</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</div><!-- /.container#mainContainer2  ← BUG FIX #2: this closing tag was completely missing -->
+
+<!-- BUG FIX #3: divider between section 2 and 3 was missing -->
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SECTION 3: "roared … Union Buildings"
+     ══════════════════════════════════════════════════════════════════ -->
+<div class="container" id="mainContainer3">
+
+    <div class="top-custom-sentence">
+        <span class="txt-eng">roared</span> <span class="txt-white">( दहाड़े / गरजना की )</span>
+        <span class="txt-eng">in perfect formation</span> <span class="txt-white">( सटीक कतार / आदर्श बनावट में )</span>
+        <span class="txt-eng">over the Union Buildings.</span> <span class="txt-white">( यूनियन बिल्डिंग्स के ऊपर। )</span>
+        <br>
+        <span class="txt-white">अर्थात - </span>
+        <span class="txt-hin">यूनियन बिल्डिंग्स के ऊपर सटीक कतार में दहाड़ते हुए निकले।</span>
+    </div>
+
+    <div class="btn-container">
+        <button class="action-btn" id="sentenceBtn3" onclick="makePerfectSentence(3)">Make Perfect Sentence</button>
+        <button class="action-btn" id="testBtn3"     onclick="toggleHindiTable(3)">Hide Hindi Meanings</button>
+        <button class="action-btn" id="collapseBtn3" onclick="toggleTableCollapse(3)">Hide Full Table</button>
+    </div>
+
+    <div class="table-wrapper" id="tableWrapper3">
+        <table>
+            <thead>
+                <tr>
+                    <th class="lbl-eng">शब्द (English)</th>
+                    <th class="lbl-hin">अर्थ (Hindi)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="col-left"><span class="bracket">(</span> roared <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-3">दहाड़े / गरजना की (तेज़ आवाज़ की)</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> in <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-3">में</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> perfect <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-3">सटीक / आदर्श / उत्तम</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> formation <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-3">बनावट / कतार / रूप</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> over <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-3">के ऊपर</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> the <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-3">विशेषता के लिए (निश्चित सूचक)</span> <span class="bracket">)</span></td></tr>
+                <tr><td class="col-left"><span class="bracket">(</span> Union Buildings <span class="bracket">)</span></td><td class="col-right"><span class="bracket">(</span> <span class="hin-word-3">यूनियन बिल्डिंग्स (प्रिटोरिया का सरकारी भवन)</span> <span class="bracket">)</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</div><!-- /.container#mainContainer3  ← BUG FIX #4: margin-bottom now applied via shared .container CSS -->
+
+<!-- BUG FIX #8: divider before master section was missing -->
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════════════════════════
+     MASTER SECTION: Full combined sentence with single toggle
+     (was a completely separate 2nd HTML document — BUG FIX #1)
+     ══════════════════════════════════════════════════════════════════ -->
+<div class="container" id="masterContainer">
+
+    <!-- BUG FIX #6 & #7: .master-sentence-box now shares the sentence-mode CSS
+         that works for both box types via the unified selector -->
+    <div class="master-sentence-box">
+        <span class="txt-eng">A few moments</span> <span class="txt-white">( कुछ पल / क्षण )</span>
+        <span class="txt-eng">later</span> <span class="txt-white">(बाद मे )</span>
+        <span class="txt-eng">we all</span> <span class="txt-white">(हम सब ने )</span>
+        <span class="txt-eng">lifted our eyes</span> <span class="txt-white">(अपनी नजरे उठाई )</span>
+        <span class="txt-eng">in awe</span> <span class="txt-white">(विस्मय से / आश्चर्य से )</span>
+
+        <span class="txt-eng">as</span> <span class="txt-white">( के रूप में )</span>
+        <span class="txt-eng">a spectacular array</span> <span class="txt-white">( एक भव्य / शानदार कतार )</span>
+        <span class="txt-eng">of South African jets,</span> <span class="txt-white">( दक्षिण अफ्रीकी जेट विमानों, )</span>
+        <span class="txt-eng">helicopters</span> <span class="txt-white">( हेलीकॉप्टरों )</span>
+        <span class="txt-eng">and troop carriers</span> <span class="txt-white">( और सैन्य वाहनों )</span>
+
+        <span class="txt-eng">roared</span> <span class="txt-white">( दहाड़े / गरजना की )</span>
+        <span class="txt-eng">in perfect formation</span> <span class="txt-white">( सटीक कतार / आदर्श बनावट में )</span>
+        <span class="txt-eng">over the Union Buildings.</span> <span class="txt-white">( यूनियन बिल्डिंग्स के ऊपर। )</span>
+
+        <br><br>
+        <span class="txt-white">अर्थात - </span>
+        <span class="txt-hin">कुछ पल बाद हम सबने अपनी नजरे विस्मय के साथ ऊपर उठाई, क्योंकि दक्षिण अफ्रीकी जेट विमानों, हेलीकॉप्टरों और सैन्य वाहनों की एक भव्य कतार यूनियन बिल्डिंग्स के ऊपर सटीक तालमेल (बनावट) के साथ दहाड़ते हुए निकली।</span>
+    </div>
+
+    <div class="btn-container">
+        <button class="action-btn" id="actionBtn" onclick="togglePerfectSentence()">Make Perfect Sentence</button>
+    </div>
+
+</div><!-- /.container#masterContainer -->
+
+
+<script>
+    /* ── Button 1: Toggle sentence-only mode (hides Hindi) ────────── */
+    function makePerfectSentence(num) {
+        const container = document.getElementById('mainContainer' + num);
+        const btn       = document.getElementById('sentenceBtn' + num);
+        container.classList.toggle('sentence-mode');
+
+        if (container.classList.contains('sentence-mode')) {
+            btn.innerText = 'Show Full Breakdown';
+            btn.classList.add('active-mode');
+        } else {
+            btn.innerText = 'Make Perfect Sentence';
+            btn.classList.remove('active-mode');
+        }
+    }
+
+    /* ── Button 2: Hide/show Hindi meanings in the table ──────────── */
+    function toggleHindiTable(num) {
+        const hinWords = document.querySelectorAll('.hin-word-' + num);
+        const btn      = document.getElementById('testBtn' + num);
+
+        hinWords.forEach(word => word.classList.toggle('hidden-hin'));
+
+        if (hinWords[0] && hinWords[0].classList.contains('hidden-hin')) {
+            btn.innerText = 'Show Hindi Meanings';
+            btn.classList.add('active-mode');
+        } else {
+            btn.innerText = 'Hide Hindi Meanings';
+            btn.classList.remove('active-mode');
+        }
+    }
+
+    /* ── Button 3: Collapse/expand the full word table ────────────── */
+    function toggleTableCollapse(num) {
+        const wrapper = document.getElementById('tableWrapper' + num);
+        const btn     = document.getElementById('collapseBtn' + num);
+        wrapper.classList.toggle('collapsed');
+
+        if (wrapper.classList.contains('collapsed')) {
+            btn.innerText = 'Show Full Table';
+            btn.classList.add('active-mode');
+        } else {
+            btn.innerText = 'Hide Full Table';
+            btn.classList.remove('active-mode');
+        }
+    }
+
+    /* ── Master section toggle ─────────────────────────────────────── */
+    function togglePerfectSentence() {
+        const container = document.getElementById('masterContainer');
+        const btn       = document.getElementById('actionBtn');
+        container.classList.toggle('sentence-mode');
+
+        if (container.classList.contains('sentence-mode')) {
+            btn.innerText = 'Show Full Breakdown';
+            btn.classList.add('active-mode');
+        } else {
+            btn.innerText = 'Make Perfect Sentence';
+            btn.classList.remove('active-mode');
+        }
+    }
+</script>
+
+</body>
+</html>
