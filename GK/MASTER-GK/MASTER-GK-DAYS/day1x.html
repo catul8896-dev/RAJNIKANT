@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>माँ शारदा क्लासेस - 100 प्रश्न परीक्षा</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 20px;
+            opacity: 0.95;
+        }
+        .instructions {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid #2196F3;
+            font-size: 30px;
+        }
+
+        .info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 20px 30px;
+            border-bottom: 2px solid #667eea;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .info-item span {
+            color: #667eea;
+            font-size: 20px;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .content {
+            padding: 30px;
+            max-height: 1000px;
+            overflow-y: auto;
+        }
+
+        .question-block {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 40px;
+        }
+
+        .question-text {
+            font-size: 40px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .options-container {
+            display: grid;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            background: #f0f4ff;
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+
+        .option input[type="radio"] {
+            margin-right: 12px;
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #667eea;
+            flex-shrink: 0;
+        }
+
+        .option-text {
+            font-size: 40px;
+            color: #555;
+            flex: 1;
+            line-height: 1.4;
+        }
+
+        .option input[type="radio"]:checked + .option-text {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            padding: 20px 30px;
+            background: #f8f9fa;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 40px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-width: 180px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-reset {
+            background: #e0e0e0;
+            color: #333;
+            min-width: 130px;
+        }
+
+        .btn-reset:hover {
+            background: #d0d0d0;
+        }
+
+        .btn-print {
+            background: #4caf50;
+            color: white;
+            min-width: 130px;
+        }
+
+        .btn-print:hover {
+            background: #45a049;
+        }
+
+        .results {
+            display: none;
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            max-height: calc(100vh - 300px);
+            overflow-y: auto;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .score-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .score-percentage {
+            font-size: 60px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 15px 0;
+        }
+
+        .score-text {
+            font-size: 22px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .score-details {
+            font-size: 16px;
+            color: #666;
+            margin: 15px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .detail-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .feedback {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 5px solid #4caf50;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.incorrect {
+            border-left-color: #f44336;
+        }
+
+        .feedback-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .answer-explanation {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .correct-answer {
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .wrong-answer {
+            color: #f44336;
+            font-weight: bold;
+        }
+
+        .timer {
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .button-group, .info-bar {
+                display: none;
+            }
+            .content {
+                max-height: none;
+                overflow: visible;
+            }
+            .results {
+                max-height: none;
+                overflow: visible;
+            }
+        }
+
+        .instructions {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid #2196F3;
+        }
+
+        .instructions h3 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .instructions ul {
+            margin-left: 20px;
+            color: #333;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 4px;
+        }
+
+        .toggle-feedback {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .toggle-feedback button {
+            background: #2196F3;
+            color: white;
+            padding: 10px 25px;
+        }
+
+        .toggle-feedback button:hover {
+            background: #1976D2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>माँ शारदा क्लासेस</h1>
+            <p>व्यापक परीक्षा - 100 प्रश्न प्रश्नोत्तरी परीक्षण</p>
+        </div>
+
+        <div class="info-bar">
+            <div class="info-item">
+                <span id="totalQuestions">100</span>
+                <span>कुल प्रश्न</span>
+            </div>
+            <div class="info-item">
+                <span id="currentQuestion">1</span>
+                <span>वर्तमान प्रश्न</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+            </div>
+            <div class="info-item">
+                <span id="answeredQuestions">0</span>
+                <span>का जवाब दिया</span>
+            </div>
+            <div class="timer" id="timer">⏱️ 0 सेकंड</div>
+        </div>
+
+        <div id="quizView">
+            <div class="content">
+                <div class="instructions">
+                    <h3>📋 निर्देश:</h3>
+                    <ul>
+                        <li>कुल 100 प्रश्न हैं - प्रत्येक का एक सही उत्तर है</li>
+                        <li>सभी प्रश्नों के लिए विकल्प दिए गए हैं - सही विकल्प चुनें</li>
+                        <li>आप किसी भी समय "उत्तर जमा करें" दबा सकते हैं</li>
+                        <li>तुरंत विस्तृत परिणाम और प्रतिक्रिया मिलेगी</li>
+                    </ul>
+                </div>
+
+                <form id="quizForm">
+                    <div id="questionsContainer"></div>
+                </form>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn-submit" onclick="submitQuiz()">✓ उत्तर जमा करें</button>
+                <button type="button" class="btn-reset" onclick="resetQuiz()">↻ पुनः शुरू करें</button>
+                <button type="button" class="btn-print" onclick="window.print()">🖨️ प्रिंट करें</button>
+            </div>
+        </div>
+
+        <div id="resultsView" class="results">
+            <div class="score-card">
+                <div class="score-text">आपका अंतिम स्कोर</div>
+                <div class="score-percentage" id="scorePercentage">0%</div>
+                <div class="score-details">
+                    <div class="detail-box">
+                        <div style="color: #4caf50; font-weight: bold; font-size: 20px;" id="correctCount">0</div>
+                        <div style="color: #666;">सही उत्तर</div>
+                    </div>
+                    <div class="detail-box">
+                        <div style="color: #f44336; font-weight: bold; font-size: 20px;" id="wrongCount">0</div>
+                        <div style="color: #666;">गलत उत्तर</div>
+                    </div>
+                </div>
+                <div class="score-text" id="scoreMessage"></div>
+            </div>
+
+            <div class="toggle-feedback">
+                <button onclick="toggleFeedback()">📊 विस्तृत उत्तर दिखाएं/छिपाएं</button>
+            </div>
+
+            <div id="feedbackContainer"></div>
+
+            <div class="button-group">
+                <button type="button" class="btn-reset" onclick="resetQuiz()">↻ नया परीक्षण लें</button>
+                <button type="button" class="btn-print" onclick="window.print()">🖨️ प्रिंट करें</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            // Day 1 - General Knowledge (10 questions)
+            {question: "भारत की राजधानी क्या है?", correct: "नई दिल्ली", options: ["मुंबई", "नई दिल्ली", "कोलकाता", "चेन्नई"]},
+            {question: "हमारा राष्ट्रगान किसने लिखा था?", correct: "रवींद्रनाथ टैगोर", options: ["रवींद्रनाथ टैगोर", "बंकिम चंद्र चट्टोपाध्याय", "मोतीलाल नेहरू", "सुभाष चंद्र बोस"]},
+            {question: "विश्व का सबसे ऊँचा पर्वत कौन सा है?", correct: "माउंट एवरेस्ट", options: ["K2", "माउंट एवरेस्ट", "कंचनजंघा", "धौलागिरि"]},
+            {question: "क्षेत्रफल की दृष्टि से भारत का सबसे बड़ा राज्य कौन सा है?", correct: "राजस्थान", options: ["महाराष्ट्र", "राजस्थान", "मध्य प्रदेश", "गुजरात"]},
+            {question: "कंप्यूटर का मस्तिष्क किसे कहा जाता है?", correct: "CPU", options: ["GPU", "CPU", "RAM", "ROM"]},
+            {question: "भारत का राष्ट्रीय पक्षी कौन सा है?", correct: "मोर", options: ["कबूतर", "उल्लू", "मोर", "गौरैया"]},
+            {question: "सौरमंडल का सबसे बड़ा ग्रह कौन सा है?", correct: "बृहस्पति (Jupiter)", options: ["शनि", "बृहस्पति (Jupiter)", "नेप्च्यून", "मंगल"]},
+            {question: "स्वतंत्र भारत के प्रथम प्रधानमंत्री कौन थे?", correct: "पंडित जवाहरलाल नेहरू", options: ["सरदार पटेल", "पंडित जवाहरलाल नेहरू", "राजेंद्र प्रसाद", "अबुल कलाम आजाद"]},
+            {question: "किस विटामिन की कमी से रतौंधी होती है?", correct: "विटामिन A", options: ["विटामिन B", "विटामिन C", "विटामिन A", "विटामिन D"]},
+            {question: "एक साल में कितने दिन होते हैं?", correct: "365 दिन (लीप वर्ष में 366)", options: ["360 दिन", "365 दिन (लीप वर्ष में 366)", "370 दिन", "355 दिन"]},
+
+            // Day 2 - Vitamins (10 questions)
+            {question: "विटामिन A (ए) का रासायनिक नाम क्या है?", correct: "रेटिनॉल (Retinol)", options: ["थायमीन", "राइबोफ्लेविन", "रेटिनॉल (Retinol)", "एस्कॉर्बिक एसिड"]},
+            {question: "विटामिन B1 (बी वन) का रासायनिक नाम क्या है?", correct: "थायमीन (Thiamine)", options: ["थायमीन (Thiamine)", "राइबोफ्लेविन", "नियासिन", "बायोटिन"]},
+            {question: "विटामिन B2 (बी टू) का रासायनिक नाम क्या है?", correct: "राइबोफ्लेविन (Riboflavin)", options: ["थायमीन", "राइबोफ्लेविन (Riboflavin)", "नियासिन", "फॉलिक एसिड"]},
+            {question: "विटामिन B3 (बी थ्री) का रासायनिक नाम क्या है?", correct: "नियासिन (Niacin)", options: ["थायमीन", "राइबोफ्लेविन", "नियासिन (Niacin)", "बायोटिन"]},
+            {question: "विटामिन B7 (बी सेवन) का रासायनिक नाम क्या है?", correct: "बायोटिन (Biotin)", options: ["थायमीन", "राइबोफ्लेविन", "नियासिन", "बायोटिन (Biotin)"]},
+            {question: "विटामिन B11 (बी ग्यारह) का रासायनिक नाम क्या है?", correct: "फॉलिक एसिड (Folic Acid)", options: ["नियासिन", "बायोटिन", "फॉलिक एसिड (Folic Acid)", "साइनोकोबालमीन"]},
+            {question: "विटामिन B12 (बी बारह) का रासायनिक नाम क्या है?", correct: "साइनोकोबालमीन (Cyanocobalamin)", options: ["थायमीन", "राइबोफ्लेविन", "साइनोकोबालमीन (Cyanocobalamin)", "फॉलिक एसिड"]},
+            {question: "विटामिन C (सी) का रासायनिक नाम क्या है?", correct: "एस्कॉर्बिक एसिड (Ascorbic Acid)", options: ["कैल्सीफेरोल", "टोकोफेरोल", "एस्कॉर्बिक एसिड (Ascorbic Acid)", "साइनोकोबालमीन"]},
+            {question: "विटामिन D (डी) का रासायनिक नाम क्या है?", correct: "कैल्सीफेरोल (Calciferol)", options: ["कैल्सीफेरोल (Calciferol)", "रेटिनॉल", "नियासिन", "बायोटिन"]},
+            {question: "विटामिन E (ई) का रासायनिक नाम क्या है?", correct: "टोकोफेरोल (Tocopherol)", options: ["कैल्सीफेरोल", "फिलोक्विनोन", "टोकोफेरोल (Tocopherol)", "रेटिनॉल"]},
+
+            // Day 3 - Scientific Names (10 questions)
+            {question: "मेढक का वैज्ञानिक नाम क्या है?", correct: "राना टिग्रिना (Rana tigrina)", options: ["पावो क्रिस्टेटस", "राना टिग्रिना (Rana tigrina)", "होमो सेपिअन्स", "फिकस रिलिजियोसा"]},
+            {question: "मनुष्य का वैज्ञानिक नाम क्या है?", correct: "होमो सेपिअन्स (Homo sapiens)", options: ["प्राइमेट सेपिअन्स", "होमो सेपिअन्स (Homo sapiens)", "होमिनिड स्पेशीज", "होमो नियोएनडरथेलेंसिस"]},
+            {question: "आम का वैज्ञानिक नाम क्या है?", correct: "मैग्नीफेरा इंडिका (Mangifera indica)", options: ["मैग्नीफेरा पमीला", "मैग्नीफेरा इंडिका (Mangifera indica)", "अनाकार्डियम ऑक्सिडेंटेल", "सपिंडस मुकोरोसी"]},
+            {question: "मोर का वैज्ञानिक नाम क्या है?", correct: "पावो क्रिस्टेटस (Pavo cristatus)", options: ["पावो क्रिस्टेटस (Pavo cristatus)", "गैलस गैलस", "आर्डिया ईरोडियस", "बुबुल बुबुल"]},
+            {question: "पीपल का वैज्ञानिक नाम क्या है?", correct: "फिकस रिलिजियोसा (Ficus religiosa)", options: ["फिकस बेंगलेंसिस", "फिकस रिलिजियोसा (Ficus religiosa)", "नीम टु इंडिका", "मैनिहॉट एस्क्यूलेंटा"]},
+            {question: "Teachers Day किसकी याद में मनाया जाता है?", correct: "डॉ. सर्वपल्ली राधाकृष्णन", options: ["राहुल गांधी", "डॉ. सर्वपल्ली राधाकृष्णन", "मोहनदास गांधी", "जवाहरलाल नेहरू"]},
+            {question: "दुनिया का सबसे बड़ा फूल कौन सा है?", correct: "रेफ्लेशिया (Rafflesia)", options: ["कमल", "गुलाब", "रेफ्लेशिया (Rafflesia)", "सूरजमुखी"]},
+            {question: "दुनिया की सबसे लंबी नदी कौन सी है?", correct: "नील नदी (Nile River)", options: ["गंगा नदी", "अमेज़न नदी", "नील नदी (Nile River)", "यांग्त्जे नदी"]},
+            {question: "दुनिया की सबसे चौड़ी नदी कौन सी है?", correct: "अमेज़न नदी (Amazon River)", options: ["नील नदी", "गंगा नदी", "अमेज़न नदी (Amazon River)", "मिसिसिपी नदी"]},
+            {question: "दुनिया का सबसे बड़ा नदी द्वीप कौन सा है?", correct: "माजुली द्वीप (असम, भारत)", options: ["शिवालिक द्वीप", "माजुली द्वीप (असम, भारत)", "जन्वे द्वीप", "भीड़ द्वीप"]},
+
+            // Day 4 - History (10 questions)
+            {question: "फ्रांसीसी क्रांति किस वर्ष हुई थी?", correct: "1789", options: ["1776", "1789", "1804", "1815"]},
+            {question: "वॉटरलू का युद्ध किस वर्ष लड़ा गया था?", correct: "1815", options: ["1805", "1815", "1825", "1835"]},
+            {question: "प्रथम विश्व युद्ध की शुरुआत किस वर्ष हुई थी?", correct: "1914", options: ["1910", "1914", "1918", "1920"]},
+            {question: "द्वितीय विश्व युद्ध किस वर्ष समाप्त हुआ था?", correct: "1945", options: ["1943", "1944", "1945", "1946"]},
+            {question: "रूस की क्रांति (बोल्शेविक क्रांति) किस वर्ष हुई थी?", correct: "1917", options: ["1910", "1915", "1917", "1920"]},
+            {question: "भारत का प्रथम स्वतंत्रता संग्राम (सिपाही विद्रोह) किस वर्ष लड़ा गया था?", correct: "1857", options: ["1847", "1857", "1867", "1877"]},
+            {question: "जलियाँवाला बाग हत्याकांड किस वर्ष हुआ था?", correct: "1919", options: ["1910", "1915", "1919", "1925"]},
+            {question: "महात्मा गांधी ने असहयोग आंदोलन किस वर्ष शुरू किया था?", correct: "1920", options: ["1915", "1920", "1925", "1930"]},
+            {question: "गांधी जी द्वारा दांडी मार्च किस वर्ष शुरू किया गया था?", correct: "1930", options: ["1925", "1930", "1935", "1940"]},
+            {question: "भारत छोड़ो आंदोलन किस वर्ष शुरू हुआ था?", correct: "1942", options: ["1935", "1940", "1942", "1945"]},
+
+            // Day 5 - Geography (10 questions)
+            {question: "विश्व का सर्वाधिक ऊंचा पठार कौन सा है?", correct: "तिब्बत का पठार", options: ["कोलोराडो पठार", "तिब्बत का पठार", "दक्कन पठार", "कुंडपा पठार"]},
+            {question: "विश्व का सबसे बड़ा गर्म मरुस्थल कौन सा है?", correct: "सहारा मरुस्थल", options: ["थार मरुस्थल", "गोबी मरुस्थल", "सहारा मरुस्थल", "कालहारी मरुस्थल"]},
+            {question: "भारत का सबसे बड़ा मरुस्थल कौन सा है?", correct: "थार मरुस्थल", options: ["गोबी मरुस्थल", "थार मरुस्थल", "राजस्थान मरुस्थल", "सिंधु मरुस्थल"]},
+            {question: "विश्व का सबसे बड़ा ठंडा मरुस्थल कौन सा है?", correct: "अंटार्कटिका मरुस्थल", options: ["गोबी मरुस्थल", "अंटार्कटिका मरुस्थल", "कालहारी मरुस्थल", "अरेबियन मरुस्थल"]},
+            {question: "विश्व की सबसे ऊंची नौगम्य झील कौन सी है?", correct: "टिटिकाका झील", options: ["बैकाल झील", "टिटिकाका झील", "मलावी झील", "तांगानिका झील"]},
+            {question: "विश्व की सबसे बड़ी खारे पानी की झील कौन सी है?", correct: "कैस्पियन सागर", options: ["मृत सागर", "कैस्पियन सागर", "काला सागर", "लाल सागर"]},
+            {question: "विश्व की सबसे पुरानी और गहरी झील कौन सी है?", correct: "बैकाल झील", options: ["बैकाल झील", "विक्टोरिया झील", "मलावी झील", "तांगानिका झील"]},
+            {question: "विश्व की सबसे बड़ी मीठे पानी की झील कौन सी है?", correct: "सुपीरियर झील", options: ["मिशिगन झील", "सुपीरियर झील", "बैकाल झील", "विक्टोरिया झील"]},
+            {question: "भारत की सबसे ऊंची झील कौन सी है?", correct: "चोलामू झील (सिक्किम)", options: ["पैंगोंग झील", "चोलामू झील (सिक्किम)", "शेषनाग झील", "मानसबल झील"]},
+            {question: "विश्व का सबसे बड़ा द्वीप कौन सा है?", correct: "ग्रीनलैंड", options: ["ऑस्ट्रेलिया", "बोर्नियो", "ग्रीनलैंड", "मेडागास्कर"]},
+
+            // Day 6 - Constitution and Courts (10 questions)
+            {question: "भारत में मोबाइल अदालत की अवधारणा का जनक किसे माना जाता है?", correct: "डॉ. ए. पी. जे. अब्दुल कलाम", options: ["डॉ. विक्रम साराभाई", "डॉ. ए. पी. जे. अब्दुल कलाम", "डॉ. सतीश धवन", "राजीव गांधी"]},
+            {question: "मोबाइल अदालत को अन्य किस नाम से जाना जाता है?", correct: "पहियों पर न्याय (जस्टिस ऑन व्हील्स)", options: ["चलते फिरते कोर्ट", "पहियों पर न्याय (जस्टिस ऑन व्हील्स)", "मोबाइल कोर्ट", "डिजिटल कोर्ट"]},
+            {question: "मोबाइल अदालत का प्रयोग भारत में सबसे पहले कब और कहाँ हुआ?", correct: "2007 में, मेवात (हरियाणा) में", options: ["2005 में, दिल्ली में", "2007 में, मेवात (हरियाणा) में", "2008 में, मुंबई में", "2006 में, बेंगलुरु में"]},
+            {question: "प्रत्येक राज्य के लिए एक उच्च न्यायालय का प्रावधान किस अनुच्छेद के अंतर्गत आता है?", correct: "अनुच्छेद 214", options: ["अनुच्छेद 212", "अनुच्छेद 214", "अनुच्छेद 216", "अनुच्छेद 218"]},
+            {question: "अपराधिक विषयों से जुड़ी अपील किस अनुच्छेद के अंतर्गत आता है?", correct: "अनुच्छेद 134", options: ["अनुच्छेद 132", "अनुच्छेद 134", "अनुच्छेद 136", "अनुच्छेद 138"]},
+            {question: "संवैधानिक विषय से जुड़ी अपील किस अनुच्छेद के अंतर्गत आता है?", correct: "अनुच्छेद 132", options: ["अनुच्छेद 130", "अनुच्छेद 132", "अनुच्छेद 134", "अनुच्छेद 136"]},
+            {question: "कौन सा अनुच्छेद सर्वोच्च न्यायालय को रिट (Writ) जारी करने की अधिकारिता प्रदान करता है?", correct: "अनुच्छेद 32", options: ["अनुच्छेद 30", "अनुच्छेद 32", "अनुच्छेद 34", "अनुच्छेद 36"]},
+            {question: "बंदी प्रत्यक्षीकरण (Habeas Corpus) क्या है?", correct: "गैर-कानूनी रूप से हिरासत में लिए गए व्यक्ति को सशरीर न्यायालय के सामने पेश करना", options: ["कानूनी दस्तावेज", "गैर-कानूनी रूप से हिरासत में लिए गए व्यक्ति को सशरीर न्यायालय के सामने पेश करना", "अदालत का आदेश", "कानूनी नोटिस"]},
+            {question: "बंदी प्रत्यक्षीकरण किस अनुच्छेद के अंतर्गत आता है?", correct: "अनुच्छेद 32", options: ["अनुच्छेद 30", "अनुच्छेद 32", "अनुच्छेद 34", "अनुच्छेद 36"]},
+            {question: "संविधान का अंतिम व्याख्याकार तथा मूल अधिकारों का संरक्षक कौन है?", correct: "सर्वोच्च न्यायालय (सुप्रीम कोर्ट)", options: ["राष्ट्रपति", "प्रधानमंत्री", "सर्वोच्च न्यायालय (सुप्रीम कोर्ट)", "संसद"]},
+
+            // Day 7 - Scientific Discoveries (10 questions)
+            {question: "इलेक्ट्रॉन की खोज किसने और कब की थी?", correct: "जे. जे. थॉमसन ने, सन 1897 में", options: ["रदरफोर्ड ने, 1911 में", "जे. जे. थॉमसन ने, सन 1897 में", "बोहर ने, 1913 में", "चैडविक ने, 1932 में"]},
+            {question: "प्रोटॉन की खोज किसने और कब की थी?", correct: "ई. गोल्डस्टीन ने सन 1886 में", options: ["रदरफोर्ड ने, 1919 में", "ई. गोल्डस्टीन ने सन 1886 में", "एलिस्टर कॉकक्रॉफ्ट ने, 1934 में", "ओटो हैन ने, 1938 में"]},
+            {question: "न्यूट्रॉन की खोज किसने और कब की थी?", correct: "जेम्स चैडविक ने, सन 1932 में", options: ["रदरफोर्ड ने, 1919 में", "जेम्स चैडविक ने, सन 1932 में", "एलिस्टर कॉकक्रॉफ्ट ने, 1934 में", "ओटो हैन ने, 1938 में"]},
+            {question: "विटामिन की खोज किसने की थी?", correct: "एन. आई. लूनिन ने", options: ["पॉलिंग", "एन. आई. लूनिन ने", "फंक", "वार्बर्ग"]},
+            {question: "डीएनए (DNA) की खोज सबसे पहले किसने की थी?", correct: "फ्रेडरिक मिशर ने सन 1869 में", options: ["फ्रेडरिक मिशर ने सन 1869 में", "वाटसन और क्रिक", "मेंडल", "हर्षे"]},
+            {question: "डीएनए फिंगरप्रिंटिंग (DNA Fingerprinting) की खोज किसने की थी?", correct: "सर एलेक जेफ्रीज ने", options: ["डॉ. लालजी सिंह", "सर एलेक जेफ्रीज ने", "रे व्हाइट", "काफी एली"]},
+            {question: "जीन (Gene) शब्द की खोज या नामकरण किसने किया था?", correct: "विल्हेम जोहानसन ने, सन 1909 में", options: ["मेंडल", "विल्हेम जोहानसन ने, सन 1909 में", "डार्विन", "हेक्सले"]},
+            {question: "एक्स-रे (X-Ray) किरणों की खोज किसने की थी?", correct: "विल्हेम रॉन्टगन ने, सन 1895 में", options: ["पीयर क्यूरी", "विल्हेम रॉन्टगन ने, सन 1895 में", "मेरी क्यूरी", "हेनरी बेकेरेल"]},
+            {question: "एसी (AC) विद्युत मोटर का आविष्कार किसने किया था?", correct: "निकोला टेस्ला ने, सन 1887 में", options: ["थॉमस एडिसन", "निकोला टेस्ला ने, सन 1887 में", "फैराडे", "ओह्म"]},
+            {question: "एसी (AC) ट्रांसफार्मर का आविष्कार किसने किया था?", correct: "विलियम स्टेनली ने", options: ["विलियम स्टेनली ने", "निकोला टेस्ला", "एडिसन", "बेल"]},
+
+            // Day 8 - Capitals and Temperature (10 questions)
+            {question: "बिहार की राजधानी कहाँ है?", correct: "पटना", options: ["भागलपुर", "पटना", "गया", "दरभंगा"]},
+            {question: "श्रीलंका की राजधानी कहाँ है?", correct: "श्री जयवर्धनेपुरा कोट्टे", options: ["श्री जयवर्धनेपुरा कोट्टे", "कोलंबो", "कांडी", "गाले"]},
+            {question: "भूटान की राजधानी कहाँ है?", correct: "थिम्पु", options: ["पारो", "थिम्पु", "पुनाखा", "वांगड़ी"]},
+            {question: "चीन की मुद्रा (Currency) का क्या नाम है?", correct: "रेन्मिन्बी (मुख्य इकाई: युआन)", options: ["युवान", "रेन्मिन्बी (मुख्य इकाई: युआन)", "युआन", "चीनी डॉलर"]},
+            {question: "सेल्सियस (°C) पैमाने की खोज किसने की थी?", correct: "एंडर्स सेल्सियस ने, सन 1742 में", options: ["फारेनहाइट", "एंडर्स सेल्सियस ने, सन 1742 में", "केल्विन", "गैलिलियो"]},
+            {question: "फारेनहाइट (°F) पैमाने की खोज किसने की थी?", correct: "डैनियल गेब्रियल फारेनहाइट ने, सन 1724 में", options: ["सेल्सियस", "डैनियल गेब्रियल फारेनहाइट ने, सन 1724 में", "केल्विन", "न्यूटन"]},
+            {question: "डिग्री सेल्सियस से फारेनहाइट में बदलने के लिए क्या किया जाता है?", correct: "°F = (°C × 9/5) + 32", options: ["°F = (°C × 5/9) - 32", "°F = (°C × 9/5) + 32", "°F = °C + 273", "°F = (°C × 2) + 32"]},
+            {question: "फारेनहाइट से डिग्री सेल्सियस में बदलने के लिए क्या किया जाता है?", correct: "°C = (°F - 32) × 5/9", options: ["°C = (°F × 5/9) - 32", "°C = (°F - 32) × 5/9", "°C = °F - 273", "°C = (°F × 2) - 32"]},
+            {question: "केल्विन (K) से डिग्री सेल्सियस में बदलने के लिए क्या किया जाता है?", correct: "°C = K - 273.15", options: ["°C = K + 273.15", "°C = K - 273.15", "°C = K × 2", "°C = K ÷ 2"]},
+            {question: "डिग्री सेल्सियस से केल्विन (K) में बदलने के लिए क्या किया जाता है?", correct: "K = °C + 273.15", options: ["K = °C - 273.15", "K = °C + 273.15", "K = °C × 2", "K = °C ÷ 2"]},
+
+            // Day 9 - Important Facts (10 questions)
+            {question: "क्षेत्रफल की दृष्टि से भारत का सबसे बड़ा केंद्र शासित प्रदेश (UT) कौन सा है?", correct: "लद्दाख", options: ["जम्मू-कश्मीर", "लद्दाख", "दिल्ली", "अंडमान निकोबार"]},
+            {question: "क्षेत्रफल की दृष्टि से भारत का सबसे छोटा राज्य कौन सा है?", correct: "गोवा", options: ["सिक्किम", "गोवा", "त्रिपुरा", "मणिपुर"]},
+            {question: "भारत का सर्वाधिक जनसंख्या वाला शहर (नगर निगम क्षेत्र) कौन सा है?", correct: "मुंबई", options: ["दिल्ली", "मुंबई", "बेंगलुरु", "चेन्नई"]},
+            {question: "क्षेत्रफल के मामले में भारत विश्व में किस स्थान पर है?", correct: "7वें स्थान पर", options: ["5वें स्थान पर", "6वें स्थान पर", "7वें स्थान पर", "8वें स्थान पर"]},
+            {question: "विश्व का सबसे बड़ा थोरियम भंडार किस देश में है?", correct: "भारत", options: ["ऑस्ट्रेलिया", "भारत", "कनाडा", "दक्षिण अफ्रीका"]},
+            {question: "भारत में जादूगोड़ा (झारखंड) किस लिए प्रसिद्ध है?", correct: "यूरेनियम की खदानों के लिए", options: ["सोने की खदानें", "यूरेनियम की खदानों के लिए", "हीरे की खदानें", "तांबे की खदानें"]},
+            {question: "भारत में लिथियम का सबसे बड़ा भंडार कहाँ पाया गया है?", correct: "रियासी जिला, जम्मू-कश्मीर", options: ["राजस्थान", "रियासी जिला, जम्मू-कश्मीर", "गुजरात", "महाराष्ट्र"]},
+            {question: "भारत की पहली एंटी-बैलिस्टिक मिसाइल (इंटरसेप्टर) का नाम क्या है?", correct: "पृथ्वी एयर डिफेंस (PAD)", options: ["आकाश", "पृथ्वी एयर डिफेंस (PAD)", "अग्नि", "ब्रह्मोस"]},
+            {question: "भारत का पहला परमाणु विद्युत संयंत्र कौन सा है?", correct: "तारापुर परमाणु विद्युत संयंत्र", options: ["काकरापार", "नरौरा", "तारापुर परमाणु विद्युत संयंत्र", "कुडनकुलम"]},
+            {question: "भारत का पहला अंतरिक्ष उपग्रह (Space Satellite) कौन सा था?", correct: "आर्यभट्ट", options: ["इंसैट", "आर्यभट्ट", "भास्कर", "GSAT"]},
+
+            // Day 10 - Nuclear Science (10 questions)
+            {question: "भारत का सबसे पुराना परमाणु विद्युत संयंत्र कौन सा है?", correct: "तारापुर परमाणु विद्युत संयंत्र", options: ["काकरापार", "तारापुर परमाणु विद्युत संयंत्र", "नरौरा", "कुडनकुलम"]},
+            {question: "भारत का सबसे पहला परमाणु परीक्षण किस स्थान पर हुआ था?", correct: "पोखरण, राजस्थान (18 मई 1974)", options: ["जैसलमेर", "पोखरण, राजस्थान (18 मई 1974)", "बीकानेर", "बाड़मेर"]},
+            {question: "भारत में परमाणु बम का जनक किसे कहा जाता है?", correct: "डॉ. होमी जहाँगीर भाभा", options: ["डॉ. विक्रम साराभाई", "डॉ. होमी जहाँगीर भाभा", "डॉ. सतीश धवन", "डॉ. राज रेड्डी"]},
+            {question: "विश्व में प्रथम परमाणु हथियार का जनक किसे कहा जाता है?", correct: "जे. रॉबर्ट ओपनहाइमर", options: ["अल्बर्ट आइंस्टीन", "जे. रॉबर्ट ओपनहाइमर", "एडवर्ड टेलर", "निल्स बोहर"]},
+            {question: "परमाणु हथियार किस सिद्धांत पर काम करते हैं?", correct: "नाभिकीय विखंडन (परमाणु बम) तथा नाभिकीय संलयन", options: ["नाभिकीय विखंडन", "नाभिकीय विखंडन (परमाणु बम) तथा नाभिकीय संलयन", "नाभिकीय संलयन", "विद्युत चुंबकीय बल"]},
+            {question: "बल (Force) का सूत्र क्या है?", correct: "F = m × a", options: ["F = m ÷ a", "F = m × a", "F = m + a", "F = m - a"]},
+            {question: "विद्युत धारा (Electric Current) का सूत्र क्या है?", correct: "I = Q/t", options: ["I = Q × t", "I = Q/t", "I = Q + t", "I = Q - t"]},
+            {question: "E = mc² समीकरण के जनक कौन हैं?", correct: "अल्बर्ट आइंस्टीन", options: ["निकोला टेस्ला", "अल्बर्ट आइंस्टीन", "प्लांक", "रदरफोर्ड"]},
+            {question: "विद्युत चुम्बकीय प्रेरण के सिद्धांत के जनक कौन हैं?", correct: "माइकल फैराडे", options: ["माइकल फैराडे", "कूलम्ब", "ओह्म", "एम्पीयर"]},
+            {question: "माइकल फैराडे को नोबेल पुरस्कार क्यों नहीं मिला?", correct: "नोबेल पुरस्कार 1901 में शुरू हुए; फैराडे 1867 में मर गए", options: ["उनका काम मान्य नहीं था", "नोबेल पुरस्कार 1901 में शुरू हुए; फैराडे 1867 में मर गए", "वह ब्रिटिश थे", "राजनीतिक कारण"]}
+        ];
+
+        let selectedAnswers = {};
+        let startTime = Date.now();
+        let timerInterval;
+
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById('questionsContainer');
+            const questions = quizData;
+            
+            questions.forEach((q, index) => {
+                const shuffledOptions = shuffleArray(q.options);
+                const questionBlock = document.createElement('div');
+                questionBlock.className = 'question-block';
+                
+                let optionsHTML = '';
+                shuffledOptions.forEach((option) => {
+                    optionsHTML += `
+                        <label class="option">
+                            <input type="radio" name="question${index}" value="${option}">
+                            <span class="option-text">${option}</span>
+                        </label>
+                    `;
+                });
+
+                questionBlock.innerHTML = `
+                    <div class="question-number">Q. ${index + 1}</div>
+                    <div class="question-text">${q.question}</div>
+                    <div class="options-container">
+                        ${optionsHTML}
+                    </div>
+                `;
+                
+                container.appendChild(questionBlock);
+                
+                // Add event listener to track answered questions
+                const radios = questionBlock.querySelectorAll('input[type="radio"]');
+                radios.forEach(radio => {
+                    radio.addEventListener('change', () => {
+                        selectedAnswers[index] = {
+                            selected: radio.value,
+                            correct: q.correct,
+                            question: q.question
+                        };
+                        updateAnsweredCount();
+                    });
+                });
+            });
+
+            window.quizQuestions = questions;
+        }
+
+        function updateAnsweredCount() {
+            const total = window.quizQuestions.length;
+            const answered = Object.keys(selectedAnswers).length;
+            document.getElementById('answeredQuestions').textContent = answered;
+            document.getElementById('currentQuestion').textContent = answered + 1;
+            const progress = (answered / total) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                const seconds = Math.floor((Date.now() - startTime) / 1000);
+                const hours = Math.floor(seconds / 3600);
+                const mins = Math.floor((seconds % 3600) / 60);
+                const secs = seconds % 60;
+                if (hours > 0) {
+                    document.getElementById('timer').innerHTML = `⏱️ ${hours}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+                } else if (mins > 0) {
+                    document.getElementById('timer').innerHTML = `⏱️ ${mins}:${String(secs).padStart(2, '0')}`;
+                } else {
+                    document.getElementById('timer').innerHTML = `⏱️ ${secs}s`;
+                }
+            }, 1000);
+        }
+
+        function submitQuiz() {
+            const questions = window.quizQuestions;
+            let correctCount = 0;
+            let wrongCount = 0;
+
+            questions.forEach((q, index) => {
+                const selectedAnswer = selectedAnswers[index];
+                
+                if (selectedAnswer) {
+                    const isCorrect = selectedAnswer.selected === q.correct;
+                    if (isCorrect) {
+                        correctCount++;
+                    } else {
+                        wrongCount++;
+                    }
+                } else {
+                    wrongCount++;
+                }
+            });
+
+            const percentage = Math.round((correctCount / questions.length) * 100);
+            let message = '';
+            if (percentage >= 90) message = '🏆 असाधारण! परफेक्ट प्रदर्शन!';
+            else if (percentage >= 80) message = '🎉 बहुत अच्छा! शानदार प्रदर्शन!';
+            else if (percentage >= 70) message = '👍 अच्छा प्रयास! आपको पास करें!';
+            else if (percentage >= 60) message = '💪 ठीक है, और भी मेहनत करें।';
+            else if (percentage >= 50) message = '📚 अभ्यास जारी रखें।';
+            else message = '🎓 अधिक अभ्यास की आवश्यकता है।';
+
+            document.getElementById('scorePercentage').textContent = percentage + '%';
+            document.getElementById('correctCount').textContent = correctCount;
+            document.getElementById('wrongCount').textContent = wrongCount;
+            document.getElementById('scoreMessage').textContent = message;
+
+            document.getElementById('quizView').style.display = 'none';
+            document.getElementById('resultsView').classList.add('show');
+
+            showFeedback();
+            clearInterval(timerInterval);
+        }
+
+        function showFeedback() {
+            const questions = window.quizQuestions;
+            const feedbackContainer = document.getElementById('feedbackContainer');
+
+            questions.forEach((q, index) => {
+                const selectedAnswer = selectedAnswers[index];
+                
+                const feedback = document.createElement('div');
+                if (selectedAnswer) {
+                    const isCorrect = selectedAnswer.selected === q.correct;
+                    feedback.className = isCorrect ? 'feedback show' : 'feedback incorrect show';
+                    feedback.innerHTML = `
+                        <div class="feedback-title">
+                            ${isCorrect ? '✓ सही' : '✗ गलत'} - प्रश्न ${index + 1}
+                        </div>
+                        <div class="answer-explanation">
+                            <strong>Q:</strong> ${q.question}<br>
+                            <strong>आपका:</strong> <span class="${isCorrect ? 'correct-answer' : 'wrong-answer'}">${selectedAnswer.selected}</span> | 
+                            <strong>सही:</strong> <span class="correct-answer">${q.correct}</span>
+                        </div>
+                    `;
+                } else {
+                    feedback.className = 'feedback incorrect show';
+                    feedback.innerHTML = `
+                        <div class="feedback-title">✗ उत्तर नहीं दिया - प्रश्न ${index + 1}</div>
+                        <div class="answer-explanation">
+                            <strong>Q:</strong> ${q.question}<br>
+                            <strong>सही उत्तर:</strong> <span class="correct-answer">${q.correct}</span>
+                        </div>
+                    `;
+                }
+                feedbackContainer.appendChild(feedback);
+            });
+        }
+
+        function toggleFeedback() {
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(f => {
+                f.style.display = f.style.display === 'none' ? 'block' : 'none';
+            });
+        }
+
+        function resetQuiz() {
+            selectedAnswers = {};
+            startTime = Date.now();
+            document.getElementById('questionsContainer').innerHTML = '';
+            document.getElementById('answeredQuestions').textContent = '0';
+            document.getElementById('currentQuestion').textContent = '1';
+            document.getElementById('progressBar').style.width = '0%';
+            document.getElementById('feedbackContainer').innerHTML = '';
+            document.getElementById('quizView').style.display = 'block';
+            document.getElementById('resultsView').classList.remove('show');
+            document.getElementById('resultsView').style.display = 'none';
+            renderQuestions();
+            clearInterval(timerInterval);
+            startTimer();
+        }
+
+        // Initialize quiz
+        window.addEventListener('load', () => {
+            renderQuestions();
+            startTimer();
+        });
+    </script>
+</body>
+</html>
