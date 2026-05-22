@@ -11,6 +11,7 @@
         --gold: #ffcc00;
         --white: #ffffff;
         --green: #28a745;
+        --red: #dc3545;
     }
 
     body {
@@ -28,16 +29,27 @@
         padding-bottom: 20px;
     }
 
-    h1 {
-        font-size: 70px;
-        color: var(--gold);
-        margin: 0;
+    h1 { font-size: 70px; color: var(--gold); margin: 0; }
+    p.subtitle { font-size: 30px; color: #ccc; }
+
+    /* मास्टर क्विज बटन स्टाइल */
+    .master-quiz-btn {
+        display: block;
+        width: 90%;
+        max-width: 1000px;
+        margin: 0 auto 50px auto;
+        background-color: var(--red);
+        color: var(--white);
+        text-decoration: none;
+        font-size: 45px;
+        font-weight: bold;
+        padding: 30px;
+        border: 6px solid var(--gold);
+        border-radius: 20px;
+        animation: pulse 2s infinite;
     }
 
-    p.subtitle {
-        font-size: 30px;
-        color: #ccc;
-    }
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
 
     .grid-container {
         display: grid;
@@ -65,7 +77,6 @@
     .day-link:hover {
         background-color: var(--green);
         transform: translateY(-5px);
-        box-shadow: 0 5px 0px #000;
         border-color: var(--white);
     }
 </style>
@@ -74,32 +85,25 @@
 
     <header>
         <h1>माँ शारदा क्लासेस</h1>
-        <p class="subtitle">सामान्य ज्ञान (GK) डेली टेस्ट  पोर्टल</p>
+        <p class="subtitle">सामान्य ज्ञान (GK) डेली टेस्ट पोर्टल</p>
     </header>
+
+    <a href="MASTER_QUIZ.html" class="master-quiz-btn">🔥 MASTER GK TEST (All Days) 🔥</a>
 
     <div class="grid-container" id="quiz-dashboard"></div>
 
-    <footer>
-        स्थान: टुनटुन मोड़ मार्केट | शिक्षा के प्रति समर्पित
-    </footer>
-
     <script>
-        // ================= CONFIGURATION =================
-        const START_DATE = "2026-05-14"; // DAY 1 की तारीख जहाँ से आपका बैच शुरू हुआ
-        const FOLDER_NAME = "DAYS-GK";   // आपके फोल्डर का नाम
-        // =================================================
-
-        const container = document.getElementById('quiz-dashboard');
+        // कॉन्फ़िगरेशन
+        const START_DATE = "2026-05-22"; 
+        const FOLDER_PATH = "MASTER-GK-DAYS"; // आपका फोल्डर नाम
         
-        // 1. आज की तारीख और शुरूआती तारीख का अंतर निकालकर कुल दिनों की संख्या पता करना
+        const container = document.getElementById('quiz-dashboard');
         const today = new Date();
         const start = new Date(START_DATE);
         
-        // समय के अंतर को दिनों में बदलना
         const timeDiff = today.getTime() - start.getTime();
         const daysPassed = Math.floor(timeDiff / (1000 * 3600 * 24)) + 1;
 
-        // 2. लूप केवल आज तक के दिनों के लिए चलेगा (1 से लेकर आज के दिन तक)
         if (daysPassed > 0) {
             for (let i = 1; i <= daysPassed; i++) {
                 
@@ -109,31 +113,22 @@
                 let mm = String(targetDate.getMonth() + 1).padStart(2, '0');
                 let dd = String(targetDate.getDate()).padStart(2, '0');
                 let yyyy = targetDate.getFullYear();
-                
                 let displayDateStr = `${dd}.${mm}.${yyyy}`;      
 
-                // आपकी सेटिंग के अनुसार हमेशा 'x' वाली फाइल को ढूंढेगा
-                let fileName = `day${i}x.html`; 
-                let finalHref = `${FOLDER_NAME}/${fileName}`;
+                // फाइल लोकेशन डायनामिक बना दी गई है
+                let finalHref = `${FOLDER_PATH}/day${i}x.html`;
 
-                // बटन बनाना
                 let aTag = document.createElement('a');
                 aTag.className = 'day-link';
                 aTag.href = finalHref;
                 
-                // आज वाले बटन पर "Today" का टैग लगाने के लिए
-                if (i === daysPassed) {
-                    aTag.innerHTML = `DAY ${i} GK (Today) <br><span style="font-size:25px; color:#ffcc00;">${displayDateStr}</span>`;
-                } else {
-                    aTag.innerHTML = `DAY ${i} GK <br><span style="font-size:25px; color:#ffcc00;">${displayDateStr}</span>`;
-                }
+                aTag.innerHTML = (i === daysPassed) ? 
+                    `DAY ${i} GK (TODAY) <br><span style="font-size:25px; color:#ffcc00;">${displayDateStr}</span>` : 
+                    `DAY ${i} GK <br><span style="font-size:25px; color:#ffcc00;">${displayDateStr}</span>`;
 
                 container.appendChild(aTag);
             }
-        } else {
-            container.innerHTML = `<p style="font-size:30px;">कोर्स अभी शुरू नहीं हुआ है। पहली तारीख ${START_DATE} है।</p>`;
         }
     </script>
-
 </body>
 </html>
