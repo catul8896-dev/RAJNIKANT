@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>क्लास 10 - कार्बन एवं उसके यौगिक (Complete Notes)</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2b6cb0;
+            --success-color: #2f855a;
+            --accent-color: #b7791f;
+            --danger-color: #c53030;
+            --bg-body: #f7fafc;
+            --bg-card: #ffffff;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.8;
+            padding: 30px 15px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-section {
+            text-align: center;
+            border-bottom: 4px solid var(--secondary-color);
+            padding-bottom: 25px;
+            margin-bottom: 40px;
+        }
+
+        .header-section h1 {
+            color: var(--primary-color);
+            font-size: 32px;
+            margin: 0 0 10px 0;
+        }
+
+        .header-section p {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 35px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .question-header {
+            background-color: #edf2f7;
+            padding: 18px 25px;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .answer-body {
+            padding: 25px;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .sub-heading {
+            color: var(--secondary-color);
+            font-size: 22px;
+            margin-top: 30px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+
+        .sub-title {
+            color: #4a5568;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .formula-badge {
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        /* SVG container styles for responsiveness */
+        .svg-wrapper {
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        .svg-wrapper svg {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Custom Information Boxes */
+        .fact-box {
+            background-color: #fefcbf;
+            border-left: 5px solid #d69e2e;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-size: 36px;
+        }
+
+        .concept-box {
+            background-color: #e6fffa;
+            border-left: 5px solid #319795;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-size: 36px;
+        }
+
+        .tip-box {
+            background-color: #edf2f7;
+            border-left: 5px solid #4a5568;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 36px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .tark-heading {
+            color: #dd6b20;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--text-muted);
+            font-size: 30px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header-section">
+        <h1>क्लास 10 - कार्बन एवं उसके यौगिक (Organic Chemistry)</h1>
+        <p>NCERT बोर्ड परीक्षा हेतु पूर्ण समाधान (High-Quality Interactive SVG Structures के साथ)</p>
+    </div>
+
+    <div class="card">
+        <div class="question-header">
+            प्रश्न 1: पेन्टेन के लिए आप कितने संरचनात्मक समावयवों का चित्रण कर सकते हैं?
+        </div>
+        <div class="answer-body">
+            <p><strong>उत्तर:</strong> पेन्टेन ($\text{C}_5\text{H}_{12}$) के लिए हम कुल <strong>3 संरचनात्मक समावयवों (Structural Isomers)</strong> का चित्रण कर सकते हैं। समावयव वे यौगिक होते हैं जिनका अणु सूत्र समान होता है, लेकिन उनकी संरचनाएँ भिन्न होती हैं।</p>
+            
+            <div class="sub-heading">1. n-पेन्टेन (n-Pentane / सामान्य पेन्टेन)</div>
+            <p>यह एक सीधी और सरल कार्बन श्रृंखला होती है।</p>
+            <p>
+                <span class="sub-title">संक्षिप्त सूत्र:</span> 
+                <span class="formula-badge">CH₃—CH₂—CH₂—CH₂—CH₃</span>
+            </p>
+            <p><span class="sub-title">पूर्ण आबंध संरचना (Full Structure):</span></p>
+            <div class="svg-wrapper">
+                <svg width="820" height="300" viewBox="0 0 420 150">
+                    <g font-family="sans-serif" font-size="32" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="#2d3748">
+                        <text x="70" y="75" fill="#2b6cb0">C</text>
+                        <text x="140" y="75" fill="#2b6cb0">C</text>
+                        <text x="210" y="75" fill="#2b6cb0">C</text>
+                        <text x="280" y="75" fill="#2b6cb0">C</text>
+                        <text x="350" y="75" fill="#2b6cb0">C</text>
+                        <text x="20" y="75" fill="#4a5568">H</text>
+                        <text x="400" y="75" fill="#4a5568">H</text>
+                        <text x="70" y="25" fill="#4a5568">H</text>
+                        <text x="140" y="25" fill="#4a5568">H</text>
+                        <text x="210" y="25" fill="#4a5568">H</text>
+                        <text x="280" y="25" fill="#4a5568">H</text>
+                        <text x="350" y="25" fill="#4a5568">H</text>
+                        <text x="70" y="125" fill="#4a5568">H</text>
+                        <text x="140" y="125" fill="#4a5568">H</text>
+                        <text x="210" y="125" fill="#4a5568">H</text>
+                        <text x="280" y="125" fill="#4a5568">H</text>
+                        <text x="350" y="125" fill="#4a5568">H</text>
+                        
+                        <line x1="35" y1="75" x2="55" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="85" y1="75" x2="125" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="155" y1="75" x2="195" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="225" y1="75" x2="265" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="295" y1="75" x2="335" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="365" y1="75" x2="385" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="70" y1="40" x2="70" y2="60" stroke="#718096" stroke-width="2"/>
+                        <line x1="140" y1="40" x2="140" y2="60" stroke="#718096" stroke-width="2"/>
+                        <line x1="210" y1="40" x2="210" y2="60" stroke="#718096" stroke-width="2"/>
+                        <line x1="280" y1="40" x2="280" y2="60" stroke="#718096" stroke-width="2"/>
+                        <line x1="350" y1="40" x2="350" y2="60" stroke="#718096" stroke-width="2"/>
+                        
+                        <line x1="70" y1="90" x2="70" y2="110" stroke="#718096" stroke-width="2"/>
+                        <line x1="140" y1="90" x2="140" y2="110" stroke="#718096" stroke-width="2"/>
+                        <line x1="210" y1="90" x2="210" y2="110" stroke="#718096" stroke-width="2"/>
+                        <line x1="280" y1="90" x2="280" y2="110" stroke="#718096" stroke-width="2"/>
+                        <line x1="350" y1="90" x2="350" y2="110" stroke="#718096" stroke-width="2"/>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="sub-heading">2. आइसोपेन्टेन (Isopentane / IUPAC: 2-मेथिलब्यूटेन)</div>
+            <p>इसमें 4 कार्बनों की मुख्य श्रृंखला होती है और दूसरे कार्बन पर एक मेथिल शाखा (-CH₃) जुड़ी होती है।</p>
+            <p>
+                <span class="sub-title">संक्षिप्त सूत्र:</span> 
+                <span class="formula-badge">CH₃—CH(CH₃)—CH₂—CH₃</span>
+            </p>
+            <p><span class="sub-title">पूर्ण आबंध संरचना (Full Structure):</span></p>
+            <div class="svg-wrapper">
+                <svg width="700" height="460" viewBox="0 0 350 230">
+                    <g font-family="sans-serif" font-size="24" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="#2d3748">
+                        <text x="70" y="75" fill="#2b6cb0">C</text>
+                        <text x="140" y="75" fill="#2b6cb0">C</text>
+                        <text x="210" y="75" fill="#2b6cb0">C</text>
+                        <text x="280" y="75" fill="#2b6cb0">C</text>
+                        <text x="140" y="150" fill="#2b6cb0">C</text>
+                        
+                        <text x="20" y="75" fill="#4a5568">H</text>
+                        <text x="330" y="75" fill="#4a5568">H</text>
+                        <text x="70" y="25" fill="#4a5568">H</text>
+                        <text x="140" y="25" fill="#4a5568">H</text>
+                        <text x="210" y="25" fill="#4a5568">H</text>
+                        <text x="280" y="25" fill="#4a5568">H</text>
+                        <text x="70" y="125" fill="#4a5568">H</text>
+                        <text x="210" y="125" fill="#4a5568">H</text>
+                        <text x="280" y="125" fill="#4a5568">H</text>
+                        <text x="90" y="150" fill="#4a5568">H</text>
+                        <text x="190" y="150" fill="#4a5568">H</text>
+                        <text x="140" y="205" fill="#4a5568">H</text>
+
+                        <line x1="35" y1="75" x2="55" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="85" y1="75" x2="125" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="155" y1="75" x2="195" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="225" y1="75" x2="265" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="295" y1="75" x2="315" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="70" y1="40" x2="70" y2="60" stroke="#718096" stroke-width="2"/>
+                        <line x1="140" y1="40" x2="140" y2="60" stroke="#718096" stroke-width="2"/>
+                        <line x1="210" y1="40" x2="210" y2="60" stroke="#718096" stroke-width="2"/>
+                        <line x1="280" y1="40" x2="280" y2="60" stroke="#718096" stroke-width="2"/>
+                        
+                        <line x1="70" y1="90" x2="70" y2="110" stroke="#718096" stroke-width="2"/>
+                        <line x1="210" y1="90" x2="210" y2="110" stroke="#718096" stroke-width="2"/>
+                        <line x1="280" y1="90" x2="280" y2="110" stroke="#718096" stroke-width="2"/>
+                        <line x1="140" y1="90" x2="140" y2="135" stroke="#718096" stroke-width="2"/>
+                        <line x1="110" y1="150" x2="125" y2="150" stroke="#718096" stroke-width="2"/>
+                        <line x1="155" y1="150" x2="175" y2="150" stroke="#718096" stroke-width="2"/>
+                        <line x1="140" y1="165" x2="140" y2="190" stroke="#718096" stroke-width="2"/>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="sub-heading">3. नियोपेन्टेन (Neopentane / IUPAC: 2,2-डाइमेथिलप्रोपेन)</div>
+            <p>इसमें बीच का कार्बन परमाणु चारों तरफ से अन्य 4 कार्बन (मेथिल समूहों) से घिरा होता है (प्लस $+$ या क्रॉस आकार)।</p>
+            <p>
+                <span class="sub-title">संक्षिप्त सूत्र:</span> 
+                <span class="formula-badge">C(CH₃)₄</span>
+            </p>
+            <p><span class="sub-title">पूर्ण आबंध संरचना (Full Structure):</span></p>
+            <div class="svg-wrapper" style="background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 25px; display: flex; justify-content: center; align-items: center; overflow-x: auto;">
+    <svg width="640" height="640" viewBox="0 0 320 320" style="max-width: 100%; height: auto; display: block;">
+        <g font-family="sans-serif" font-size="18" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="#2d3748">
+            
+            <text x="160" y="160" fill="#c53030" font-size="20">C</text>
+             
+            <text x="90" y="160" fill="#2b6cb0">C</text>  <text x="230" y="160" fill="#2b6cb0">C</text> <text x="160" y="80" fill="#2b6cb0">C</text>  <text x="160" y="250" fill="#2b6cb0">C</text> <line x1="105" y1="160" x2="145" y2="160" stroke="#4a5568" stroke-width="2.5"/> <line x1="175" y1="160" x2="215" y2="160" stroke="#4a5568" stroke-width="2.5"/> <line x1="160" y1="95" x2="160" y2="145" stroke="#4a5568" stroke-width="2.5"/> <line x1="160" y1="175" x2="160" y2="240" stroke="#4a5568" stroke-width="2.5"/> <text x="30" y="160" fill="#4a5568">H</text>   <text x="90" y="100" fill="#4a5568">H</text>   <text x="90" y="220" fill="#4a5568">H</text>   <line x1="45" y1="160" x2="75" y2="160" stroke="#718096" stroke-width="2"/>
+            <line x1="90" y1="115" x2="90" y2="145" stroke="#718096" stroke-width="2"/>
+            <line x1="90" y1="175" x2="90" y2="205" stroke="#718096" stroke-width="2"/>
+
+            <text x="290" y="160" fill="#4a5568">H</text>  <text x="230" y="100" fill="#4a5568">H</text>  <text x="230" y="220" fill="#4a5568">H</text>  <line x1="245" y1="160" x2="275" y2="160" stroke="#718096" stroke-width="2"/>
+            <line x1="230" y1="115" x2="230" y2="145" stroke="#718096" stroke-width="2"/>
+            <line x1="230" y1="175" x2="230" y2="205" stroke="#718096" stroke-width="2"/>
+
+            <text x="160" y="28" fill="#4a5568">H</text>   <text x="100" y="80" fill="#4a5568">H</text>   <text x="220" y="80" fill="#4a5568">H</text>   <line x1="160" y1="40" x2="160" y2="65" stroke="#718096" stroke-width="2"/>
+            <line x1="115" y1="80" x2="145" y2="80" stroke="#718096" stroke-width="2"/>
+            <line x1="175" y1="80" x2="205" y2="80" stroke="#718096" stroke-width="2"/>
+
+            <text x="160" y="310" fill="#4a5568">H</text>  <text x="100" y="250" fill="#4a5568">H</text>  <text x="220" y="250" fill="#4a5568">H</text>  <line x1="160" y1="260" x2="160" y2="300" stroke="#718096" stroke-width="2"/>
+            <line x1="115" y1="250" x2="145" y2="250" stroke="#718096" stroke-width="2"/>
+            <line x1="175" y1="250" x2="205" y2="250" stroke="#718096" stroke-width="2"/>
+
+        </g>
+    </svg>
+</div>
+            <div class="tip-box">
+                <strong>शब्दावली का नियम (Common Naming Trick):</strong><br>
+                • <strong>नॉर्मल (n-):</strong> बिल्कुल सीधी कार्बन श्रृंखला।<br>
+                • <strong>आइसो (Iso-):</strong> श्रृंखला के अंत से दूसरे कार्बन पर 'Y' या 'V' आकार की एक शाखा।<br>
+                • <strong>नियो (Neo-):</strong> बीच में एक ऐसा कार्बन जो चारों ओर से अन्य 4 कार्बनों से घिरा हो।
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="question-header">
+            प्रश्न 2: कार्बन के दो गुणधर्म कौन से हैं जिनके कारण हमारे चारों ओर कार्बन यौगिकों की विशाल संख्या दिखाई देती है?
+        </div>
+        <div class="answer-body">
+            <p><strong>उत्तर:</strong> हमारे चारों ओर लाखों की संख्या में कार्बन यौगिकों के होने के पीछे कार्बन के निम्नलिखित <strong>दो अद्वितीय गुणधर्म</strong> हैं:</p>
+            
+            <h3>1. शृंखलन (Catenation)</h3>
+            <ul>
+                <li>कार्बन परमाणुओं में आपस में ही सहसंयोजक आबंध (C—C) बनाकर लंबी श्रृंखलाएँ बनाने की क्षमता होती है।</li>
+                <li>ये श्रृंखलाएँ <strong>सीधी (Straight)</strong>, <strong>शाखित (Branched)</strong> या <strong>वलय (Ring/Chamber)</strong> के आकार की हो सकती हैं।</li>
+                <li>कार्बन-कार्बन बंध अत्यधिक मजबूत और स्थिर होता है, जिससे ये यौगिक बहुत टिकाऊ होते हैं।</li>
+            </ul>
+            <div class="fact-box">
+                <strong>अद्भुत तथ्य:</strong> शृंखलन की शक्ति के कारण सिर्फ 20 कार्बनों वाले एल्केन ($\text{C}_{20}\text{H}_{42}$) के ही लगभग <strong>3,66,319 समावयव</strong> बन सकते हैं! जैसे-जैसे कार्बनों की संख्या बढ़ती है, यौगिकों की संख्या अरबों में पहुँच जाती है।
+            </div>
+
+            <h3>2. चतुःसंयोजकता (Tetravalency)</h3>
+            <ul>
+                <li>कार्बन की संयोजकता <strong>4</strong> होती है (बाहरी कक्ष में 4 इलेक्ट्रॉन)।</li>
+                <li>इस कारण कार्बन परमाणु एक साथ अन्य चार कार्बन परमाणुओं या विभिन्न तत्वों जैसे—<strong>हाइड्रोजन, ऑक्सीजन, नाइट्रोजन, हैलोजन (Cl, Br) और सल्फर</strong> के साथ मजबूत सहसंयोजक बंध बना सकता है। तत्वों के बदलने से नए गुणधर्म वाले यौगिक प्राप्त होते हैं।</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="question-header">
+            प्रश्न 3: साइक्लोपेन्टेन का सूत्र तथा इलेक्ट्रॉन बिंदु संरचना क्या होंगे?
+        </div>
+        <div class="answer-body">
+            <p><strong>1. रासायनिक सूत्र:</strong> <span class="formula-badge">C₅H₁₀</span> (यह एक बंद श्रृंखला वाला साइक्लोएल्केन है, जिसका सामान्य सूत्र $\text{C}_n\text{H}_{2n}$ होता है)।</p>
+            <p><strong>2. कुल सहसंयोजक आबंध:</strong> साइक्लोपेन्टेन में कुल <strong>15 सहसंयोजक आबंध</strong> होते हैं (5 आबंध $\text{C}-\text{C}$ के बीच तथा 10 आबंध $\text{C}-\text{H}$ के बीच)।</p>
+            
+            <p><span class="sub-title">A. साइक्लोपेन्टेन की ज्यामितीय/वलय संरचना:</span></p>
+            <div class="svg-wrapper">
+                <svg width="480" height="480" viewBox="0 0 300 300">
+                    <g font-family="sans-serif" font-size="32" font-weight="bold" text-anchor="middle" dominant-baseline="central" stroke-width="2" fill="#2d3748">
+                        <text x="150" y="60" fill="#2b6cb0" stroke="none">C</text>
+                        <text x="240" y="125" fill="#2b6cb0" stroke="none">C</text>
+                        <text x="205" y="220" fill="#2b6cb0" stroke="none">C</text>
+                        <text x="95" y="220" fill="#2b6cb0" stroke="none">C</text>
+                        <text x="60" y="125" fill="#2b6cb0" stroke="none">C</text>
+
+                        <line x1="165" y1="65" x2="225" y2="115" stroke="#2b6cb0"/>
+                        <line x1="235" y1="140" x2="210" y2="205" stroke="#2b6cb0"/>
+                        <line x1="190" y1="220" x2="110" y2="220" stroke="#2b6cb0"/>
+                        <line x1="90" y1="205" x2="65" y2="140" stroke="#2b6cb0"/>
+                        <line x1="75" y1="115" x2="135" y2="65" stroke="#2b6cb0"/>
+
+                        <text x="120" y="20" stroke="none">H</text><line x1="140" y1="50" x2="125" y2="30" stroke="#718096"/>
+                        <text x="180" y="20" stroke="none">H</text><line x1="160" y1="50" x2="175" y2="30" stroke="#718096"/>
+                        <text x="285" y="105" stroke="none">H</text><line x1="255" y1="120" x2="275" y2="110" stroke="#718096"/>
+                        <text x="285" y="145" stroke="none">H</text><line x1="255" y1="130" x2="275" y2="140" stroke="#718096"/>
+                        <text x="245" y="255" stroke="none">H</text><line x1="215" y1="230" x2="235" y2="245" stroke="#718096"/>
+                        <text x="205" y="265" stroke="none">H</text><line x1="205" y1="235" x2="205" y2="250" stroke="#718096"/>
+                        <text x="55" y="255" stroke="none">H</text><line x1="85" y1="230" x2="65" y2="245" stroke="#718096"/>
+                        <text x="95" y="265" stroke="none">H</text><line x1="95" y1="235" x2="95" y2="250" stroke="#718096"/>
+                        <text x="15" y="105" stroke="none">H</text><line x1="45" y1="120" x2="25" y2="110" stroke="#718096"/>
+                        <text x="15" y="145" stroke="none">H</text><line x1="45" y1="130" x2="25" y2="140" stroke="#718096"/>
+                    </g>
+                </svg>
+            </div>
+
+            <p><span class="sub-title">B. साइक्लोपेन्टेन की इलेक्ट्रॉन बिंदु संरचना (Electron Dot Structure):</span></p>
+            <p style="font-size: 28px; color: var(--text-muted);">कार्बन के इलेक्ट्रॉन को (<span style="color:#00FF00; font-weight:bold;">✕</span>) और हाइड्रोजन के इलेक्ट्रॉन को लाल डॉट (<span style="color:#FF0000; font-weight:bold;">●</span>) द्वारा दर्शाया गया है:</p>
+            <div class="svg-wrapper" style="background-color: #121212;">
+                <svg viewBox="0 0 900 900" width="900" height="900">
+                    <circle cx="450" cy="280" r="160" stroke="#00FF00" stroke-width="4" fill="none" />
+                    <circle cx="640" cy="410" r="160" stroke="#00FF00" stroke-width="4" fill="none" />
+                    <circle cx="570" cy="630" r="160" stroke="#00FF00" stroke-width="4" fill="none" />
+                    <circle cx="330" cy="630" r="160" stroke="#00FF00" stroke-width="4" fill="none" />
+                    <circle cx="260" cy="410" r="160" stroke="#00FF00" stroke-width="4" fill="none" />
+
+                    <circle cx="373" cy="151" r="75" stroke="#FFA500" stroke-width="3" fill="none" />
+                    <circle cx="558" cy="172" r="75" stroke="#FFA500" stroke-width="3" fill="none" />
+                    <circle cx="729" cy="295" r="75" stroke="#FFA500" stroke-width="3" fill="none" />
+                    <circle cx="773" cy="466" r="75" stroke="#FFA500" stroke-width="3" fill="none" />
+                    <circle cx="726" cy="682" r="75" stroke="#FFA500" stroke-width="3" fill="none" />
+                    <circle cx="555" cy="770" r="75" stroke="#FFA500" stroke-width="3" fill="none" />
+                    <circle cx="343" cy="784" r="75" stroke="#FFA500" stroke-width="3" fill="none" />
+                    <circle cx="186" cy="678" r="75" stroke="#FFA500" stroke-width="3" fill="none" />
+                    <circle cx="111" cy="474" r="75" stroke="#FFA500" stroke-width="3" fill="none" />
+                    <circle cx="162" cy="296" r="75" stroke="#FFA500" stroke-width="3" fill="none" />
+
+                    <text x="450" y="280" font-size="36px" font-weight="bold" fill="#00FF00" text-anchor="middle" dominant-baseline="central">C</text>
+                    <text x="640" y="410" font-size="36px" font-weight="bold" fill="#00FF00" text-anchor="middle" dominant-baseline="central">C</text>
+                    <text x="570" y="630" font-size="36px" font-weight="bold" fill="#00FF00" text-anchor="middle" dominant-baseline="central">C</text>
+                    <text x="330" y="630" font-size="36px" font-weight="bold" fill="#00FF00" text-anchor="middle" dominant-baseline="central">C</text>
+                    <text x="260" y="410" font-size="36px" font-weight="bold" fill="#00FF00" text-anchor="middle" dominant-baseline="central">C</text>
+                    
+                    <text x="346" y="116" font-size="26px" font-weight="bold" fill="#FFA500" text-anchor="middle" dominant-baseline="central">H</text>
+                    <text x="572" y="140" font-size="26px" font-weight="bold" fill="#FFA500" text-anchor="middle" dominant-baseline="central">H</text>
+                    <text x="746" y="262" font-size="26px" font-weight="bold" fill="#FFA500" text-anchor="middle" dominant-baseline="central">H</text>
+                    <text x="821" y="477" font-size="26px" font-weight="bold" fill="#FFA500" text-anchor="middle" dominant-baseline="central">H</text>
+                    <text x="759" y="684" font-size="26px" font-weight="bold" fill="#FFA500" text-anchor="middle" dominant-baseline="central">H</text>
+                    <text x="551" y="815" font-size="26px" font-weight="bold" fill="#FFA500" text-anchor="middle" dominant-baseline="central">H</text>
+                    <text x="333" y="818" font-size="26px" font-weight="bold" fill="#FFA500" text-anchor="middle" dominant-baseline="central">H</text>
+                    <text x="157" y="694" font-size="26px" font-weight="bold" fill="#FFA500" text-anchor="middle" dominant-baseline="central">H</text>
+                    <text x="83" y="466" font-size="26px" font-weight="bold" fill="#FFA500" text-anchor="middle" dominant-baseline="central">H</text>
+                    <text x="140" y="255" font-size="26px" font-weight="bold" fill="#FFA500" text-anchor="middle" dominant-baseline="central">H</text>
+
+                    <g fill="#00FF00" font-size="24px" font-weight="bold" text-anchor="middle" dominant-baseline="central">
+                        <text x="551" y="322">✕</text> <text x="371" y="188">✕</text>
+                        <text x="527" y="367">✕</text> <text x="563" y="214">✕</text>
+                        <text x="636" y="527">✕</text> <text x="694" y="292">✕</text>
+                        <text x="576" y="503">✕</text> <text x="743" y="475">✕</text>
+                        <text x="450" y="666">✕</text> <text x="696" y="651">✕</text>
+                        <text x="450" y="600">✕</text> <text x="534" y="737">✕</text>
+                        <text x="336" y="505">✕</text> <text x="363" y="750">✕</text>
+                        <text x="275" y="530">✕</text> <text x="209" y="643">✕</text>
+                        <text x="372" y="372">✕</text> <text x="157" y="486">✕</text>
+                        <text x="335" y="315">✕</text> <text x="206" y="301">✕</text>
+                    </g>
+
+                    <g fill="#FF0000">
+                        <circle cx="418" cy="166" r="9" /> <circle cx="530" cy="180" r="9" />
+                        <circle cx="733" cy="327" r="9" /> <circle cx="757" cy="434" r="9" />
+                        <circle cx="686" cy="693" r="9" /> <circle cx="582" cy="742" r="9" />
+                        <circle cx="323" cy="754" r="9" /> <circle cx="226" cy="693" r="9" />
+                        <circle cx="139" cy="437" r="9" /> <circle cx="170" cy="336" r="9" />
+                    </g>
+                </svg>
+            </div>
+
+            <div class="concept-box">
+                <strong>शंका समाधान (Doubt Clearance): "साइक्लोपेन्टेन एकल बंध वाला एल्केन है, फिर इसका सूत्र $C_5H_{10}$ ($C_nH_{2n}$) क्यों है?"</strong><br>
+                खुली श्रृंखला वाले सामान्य एल्केन का सूत्र $C_nH_{2n+2}$ होता है (जैसे नॉर्मल पेन्टेन = $C_5H_{12}$)। लेकिन जब हम श्रृंखला को मोड़कर एक <strong>बंद वलय (रिंग)</strong> बनाते हैं, तो दोनों किनारों के कार्बन परमाणुओं को आपस में जुड़ने के लिए अपने <strong>एक-एक हाइड्रोजन परमाणु की कुर्बानी देनी पड़ती है।</strong> इसी कारण चक्रीय एल्केन में खुली श्रृंखला से हमेशा 2 हाइड्रोजन कम होते हैं।
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="question-header">
+            प्रश्न 4: निम्नलिखित यौगिकों की संरचनाएँ चित्रित कीजिए:
+        </div>
+        <div class="answer-body">
+            
+            <div class="sub-heading">(i) एथेनॉइक अम्ल (Ethanoic Acid / Acetic Acid)</div>
+            <p>अणु सूत्र: $\text{CH}_3\text{COOH}$ या $\text{C}_2\text{H}_4\text{O}_2$ (इसमें —COOH कार्बोक्सिलिक अम्ल समूह उपस्थित है)।</p>
+            <div class="svg-wrapper">
+                <svg width="520" height="300" viewBox="0 0 260 150">
+                    <g font-family="sans-serif" font-size="32" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="#2d3748">
+                        <text x="60" y="80" fill="#2b6cb0">C</text>
+                        <text x="130" y="80" fill="#2b6cb0">C</text>
+                        <text x="130" y="25" fill="#c53030">O</text>
+                        <text x="195" y="80" fill="#c53030">O</text>
+                        <text x="245" y="80" fill="#4a5568">H</text>
+                        
+                        <text x="15" y="80" fill="#4a5568">H</text>
+                        <text x="60" y="25" fill="#4a5568">H</text>
+                        <text x="60" y="135" fill="#4a5568">H</text>
+
+                        <line x1="30" y1="80" x2="45" y2="80" stroke="#718096" stroke-width="2"/>
+                        <line x1="60" y1="40" x2="60" y2="65" stroke="#718096" stroke-width="2"/>
+                        <line x1="60" y1="95" x2="60" y2="120" stroke="#718096" stroke-width="2"/>
+                        <line x1="75" y1="80" x2="115" y2="80" stroke="#718096" stroke-width="2"/>
+                        <line x1="145" y1="80" x2="180" y2="80" stroke="#718096" stroke-width="2"/>
+                        <line x1="210" y1="80" x2="230" y2="80" stroke="#718096" stroke-width="2"/>
+                        <line x1="125" y1="40" x2="125" y2="65" stroke="#c53030" stroke-width="2"/>
+                        <line x1="135" y1="40" x2="135" y2="65" stroke="#c53030" stroke-width="2"/>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="sub-heading">(ii) ब्रोमोपेन्टेन (Bromopentane)</div>
+            <p>अणु सूत्र: $\text{C}_5\text{H}_{11}\text{Br}$ (5 कार्बन की सीधी श्रृंखला के अंत में ब्रोमीन परमाणु जुड़ा है)।</p>
+            <div class="svg-wrapper">
+                <svg width="840" height="300" viewBox="0 0 420 150">
+                    <g font-family="sans-serif" font-size="32" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="#2d3748">
+                        <text x="60" y="75" fill="#2b6cb0">C</text>
+                        <text x="120" y="75" fill="#2b6cb0">C</text>
+                        <text x="180" y="75" fill="#2b6cb0">C</text>
+                        <text x="240" y="75" fill="#2b6cb0">C</text>
+                        <text x="300" y="75" fill="#2b6cb0">C</text>
+                        <text x="365" y="75" fill="#dd6b20">Br</text>
+                        
+                        <text x="15" y="75" fill="#4a5568">H</text>
+                        <text x="60" y="25" fill="#4a5568">H</text><text x="120" y="25" fill="#4a5568">H</text>
+                        <text x="180" y="25" fill="#4a5568">H</text><text x="240" y="25" fill="#4a5568">H</text>
+                        <text x="300" y="25" fill="#4a5568">H</text>
+                        <text x="60" y="125" fill="#4a5568">H</text><text x="120" y="125" fill="#4a5568">H</text>
+                        <text x="180" y="125" fill="#4a5568">H</text><text x="240" y="125" fill="#4a5568">H</text>
+                        <text x="300" y="125" fill="#4a5568">H</text>
+
+                        <line x1="30" y1="75" x2="45" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="75" y1="75" x2="105" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="135" y1="75" x2="165" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="195" y1="75" x2="225" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="255" y1="75" x2="285" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="315" y1="75" x2="345" y2="75" stroke="#718096" stroke-width="2"/>
+                        
+                        <g stroke="#718096" stroke-width="2">
+                            <line x1="60" y1="40" x2="60" y2="55"/><line x1="120" y1="40" x2="120" y2="55"/>
+                            <line x1="180" y1="40" x2="180" y2="55"/><line x1="240" y1="40" x2="240" y2="55"/>
+                            <line x1="300" y1="40" x2="300" y2="55"/>
+                            <line x1="60" y1="95" x2="60" y2="110"/><line x1="120" y1="95" x2="120" y2="110"/>
+                            <line x1="180" y1="95" x2="180" y2="110"/><line x1="240" y1="95" x2="240" y2="110"/>
+                            <line x1="300" y1="95" x2="300" y2="110"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="sub-heading">(iii) ब्यूटेनोन (Butanone)</div>
+            <p>अणु सूत्र: $\text{C}_4\text{H}_8\text{O}$ (4 कार्बन श्रृंखला में दूसरे स्थान पर कीटोन कार्यात्मक समूह —CO— उपस्थित है)।</p>
+            <div class="svg-wrapper">
+                <svg width="600" height="300" viewBox="0 0 300 150">
+                    <g font-family="sans-serif" font-size="32" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="#2d3748">
+                        <text x="60" y="75" fill="#2b6cb0">C</text>
+                        <text x="120" y="75" fill="#2b6cb0">C</text>
+                        <text x="180" y="75" fill="#2b6cb0">C</text>
+                        <text x="240" y="75" fill="#2b6cb0">C</text>
+                        <text x="120" y="25" fill="#c53030">O</text>
+                        
+                        <text x="15" y="75" fill="#4a5568">H</text>
+                        <text x="285" y="75" fill="#4a5568">H</text>
+                        <text x="60" y="25" fill="#4a5568">H</text><text x="180" y="25" fill="#4a5568">H</text><text x="240" y="25" fill="#4a5568">H</text>
+                        <text x="60" y="125" fill="#4a5568">H</text><text x="180" y="125" fill="#4a5568">H</text><text x="240" y="125" fill="#4a5568">H</text>
+
+                        <line x1="30" y1="75" x2="45" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="75" y1="75" x2="105" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="135" y1="75" x2="165" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="195" y1="75" x2="225" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="255" y1="75" x2="270" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="115" y1="40" x2="115" y2="60" stroke="#c53030" stroke-width="2"/>
+                        <line x1="125" y1="40" x2="125" y2="60" stroke="#c53030" stroke-width="2"/>
+                        <g stroke="#718096" stroke-width="2">
+                            <line x1="60" y1="40" x2="60" y2="55"/><line x1="180" y1="40" x2="180" y2="55"/><line x1="240" y1="40" x2="240" y2="55"/>
+                            <line x1="60" y1="95" x2="60" y2="110"/><line x1="180" y1="95" x2="180" y2="110"/><line x1="240" y1="95" x2="240" y2="110"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="sub-heading">(iv) हेक्सेनैल (Hexanal)</div>
+            <p>अणु सूत्र: $\text{C}_6\text{H}_{12}\text{O}$ (6 कार्बन श्रृंखला के अंतिम छोर पर एल्डिहाइड समूह —CHO उपस्थित है)।</p>
+            <div class="svg-wrapper">
+                <svg width="900" height="300" viewBox="0 0 450 150">
+                    <g font-family="sans-serif" font-size="32" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="#2d3748">
+                        <text x="50" y="75" fill="#2b6cb0">C</text>
+                        <text x="110" y="75" fill="#2b6cb0">C</text>
+                        <text x="170" y="75" fill="#2b6cb0">C</text>
+                        <text x="230" y="75" fill="#2b6cb0">C</text>
+                        <text x="290" y="75" fill="#2b6cb0">C</text>
+                        <text x="350" y="75" fill="#2b6cb0">C</text>
+                        <text x="350" y="25" fill="#c53030">O</text>
+                        
+                        <text x="15" y="75" fill="#4a5568">H</text>
+                        <text x="395" y="75" fill="#4a5568">H</text>
+                        <text x="50" y="25" fill="#4a5568">H</text><text x="110" y="25" fill="#4a5568">H</text>
+                        <text x="170" y="25" fill="#4a5568">H</text><text x="230" y="25" fill="#4a5568">H</text>
+                        <text x="290" y="25" fill="#4a5568">H</text>
+                        <text x="50" y="125" fill="#4a5568">H</text><text x="110" y="125" fill="#4a5568">H</text>
+                        <text x="170" y="125" fill="#4a5568">H</text><text x="230" y="125" fill="#4a5568">H</text>
+                        <text x="290" y="125" fill="#4a5568">H</text>
+
+                        <line x1="25" y1="75" x2="35" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="65" y1="75" x2="95" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="125" y1="75" x2="155" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="185" y1="75" x2="215" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="245" y1="75" x2="275" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="305" y1="75" x2="335" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="365" y1="75" x2="380" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="345" y1="40" x2="345" y2="60" stroke="#c53030" stroke-width="2"/>
+                        <line x1="355" y1="40" x2="355" y2="60" stroke="#c53030" stroke-width="2"/>
+                        <g stroke="#718096" stroke-width="2">
+                            <line x1="50" y1="40" x2="50" y2="55"/><line x1="110" y1="40" x2="110" y2="55"/><line x1="170" y1="40" x2="170" y2="55"/><line x1="230" y1="40" x2="230" y2="55"/><line x1="290" y1="40" x2="290" y2="55"/>
+                            <line x1="50" y1="95" x2="50" y2="110"/><line x1="110" y1="95" x2="110" y2="110"/><line x1="170" y1="95" x2="170" y2="110"/><line x1="230" y1="95" x2="230" y2="110"/><line x1="290" y1="95" x2="290" y2="110"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="question-header">
+      
+            <div class="card" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 35px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); font-family: system-ui, -apple-system, sans-serif;">
+    <div class="question-header" style="background-color: #edf2f7; padding: 18px 25px; font-size: 20px; font-weight: 700; color: #1a365d; border-bottom: 1px solid #e2e8f0;">
+        प्रश्न 5: निम्नलिखित यौगिकों का IUPAC नामकरण कीजिए, इनकी पूर्ण आबंध संरचना (Full Structure) बनाइए तथा वैज्ञानिक तर्क दीजिए:
+    </div>
+    
+    <div class="answer-body" style="padding: 25px; line-height: 1.7; color: #2d3748;">
+        
+        <div class="compound-block" style="margin-bottom: 40px; border-bottom: 2px dashed #edf2f7; padding-bottom: 30px;">
+            <div class="sub-heading" style="color: #2b6cb0; font-size: 22px; font-weight: bold; margin-bottom: 10px;">(i) $\text{CH}_3-\text{CH}_2-\text{Br}$</div>
+            <p style="margin: 5px 0;"><strong>IUPAC नाम:</strong> <span style="background-color: #ebf8ff; color: #2b6cb0; padding: 4px 12px; border-radius: 6px; font-weight: bold; font-size: 16px;">ब्रोमोएथेन (Bromoethane)</span></p>
+            
+            <p style="margin: 15px 0 5px 0; font-weight: bold; color: #4a5568;">पूर्ण आबंध संरचना (Full Structure):</p>
+            <div class="svg-wrapper" style="background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 20px; margin: 10px 0; display: flex; justify-content: center; align-items: center; overflow-x: auto;">
+                <svg width="560" height="300" viewBox="0 0 280 150" style="max-width: 100%; height: auto; display: block;">
+                    <g font-family="sans-serif" font-size="32" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="#2d3748">
+                        <text x="90" y="75" fill="#2b6cb0">C</text>
+                        <text x="160" y="75" fill="#2b6cb0">C</text>
+                        <text x="230" y="75" fill="#dd6b20">Br</text>
+                        
+                        <text x="30" y="75" fill="#4a5568">H</text>
+                        <text x="90" y="25" fill="#4a5568">H</text>
+                        <text x="90" y="125" fill="#4a5568">H</text>
+                        <text x="160" y="25" fill="#4a5568">H</text>
+                        <text x="160" y="125" fill="#4a5568">H</text>
+
+                        <line x1="45" y1="75" x2="75" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="105" y1="75" x2="145" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="175" y1="75" x2="210" y2="75" stroke="#718096" stroke-width="2"/>
+                        
+                        <line x1="90" y1="40" x2="90" y2="60" stroke="#718096" stroke-width="2"/>
+                        <line x1="90" y1="90" x2="90" y2="110" stroke="#718096" stroke-width="2"/>
+                        <line x1="160" y1="40" x2="160" y2="60" stroke="#718096" stroke-width="2"/>
+                        <line x1="160" y1="90" x2="160" y2="110" stroke="#718096" stroke-width="2"/>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="tark-box" style="margin-top: 15px;">
+                <strong style="color: #dd6b20; font-size: 16px;">वैज्ञानिक तर्क (IUPAC नियम):</strong>
+                <ul style="padding-left: 20px; margin: 5px 0;">
+                    <li><strong>मूल शब्द (Word Root):</strong> जनक श्रृंखला में कुल 2 कार्बन परमाणु जुड़े हैं, जिसके लिए मूल शब्द <strong>'एथ' (Eth)</strong> का प्रयोग किया जाता है।</li>
+                    <li><strong>प्राथमिक अनुलग्न (Primary Suffix):</strong> कार्बन-कार्बन के मध्य एकल आबंध (Single Bond) उपस्थित होने के कारण नाम के अंत में <strong>'एन' (ane)</strong> जुड़कर यह 'एथेन' बनता है।</li>
+                    <li><strong>पूर्वलग्न (Prefix):</strong> यहाँ प्रतिस्थापी समूह के रूप में हैलोजन तत्व ब्रोमीन ($\text{-Br}$) उपस्थित है, जिसे वर्णानुक्रम नियम के अनुसार मुख्य नाम से पहले <strong>'ब्रोमो' (Bromo)</strong> लिखा जाता है।</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="compound-block" style="margin-bottom: 40px; border-bottom: 2px dashed #edf2f7; padding-bottom: 30px;">
+            <div class="sub-heading" style="color: #2b6cb0; font-size: 22px; font-weight: bold; margin-bottom: 10px;">(ii) $\text{H}-\text{CHO}$ (या $\text{H}-\text{CH}=\text{O}$)</div>
+            <p style="margin: 5px 0;"><strong>IUPAC नाम:</strong> <span style="background-color: #ebf8ff; color: #2b6cb0; padding: 4px 12px; border-radius: 6px; font-weight: bold; font-size: 16px;">मेथेनैल (Methanal)</span></p>
+            
+            <p style="margin: 15px 0 5px 0; font-weight: bold; color: #4a5568;">पूर्ण आबंध संरचना (Full Structure):</p>
+            <div class="svg-wrapper" style="background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 20px; margin: 10px 0; display: flex; justify-content: center; align-items: center; overflow-x: auto;">
+                <svg width="440" height="300" viewBox="0 0 220 150" style="max-width: 100%; height: auto; display: block;">
+                    <g font-family="sans-serif" font-size="32" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="#2d3748">
+                        <text x="110" y="85" fill="#2b6cb0">C</text>
+                        <text x="110" y="25" fill="#c53030">O</text>
+                        <text x="40" y="115" fill="#4a5568">H</text>
+                        <text x="180" y="115" fill="#4a5568">H</text>
+
+                        <line x1="105" y1="40" x2="105" y2="70" stroke="#c53030" stroke-width="2"/>
+                        <line x1="115" y1="40" x2="115" y2="70" stroke="#c53030" stroke-width="2"/>
+                        
+                        <line x1="95" y1="95" x2="55" y2="110" stroke="#718096" stroke-width="2"/>
+                        <line x1="125" y1="95" x2="165" y2="110" stroke="#718096" stroke-width="2"/>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="tark-box" style="margin-top: 15px;">
+                <strong style="color: #dd6b20; font-size: 16px;">वैज्ञानिक तर्क (IUPAC नियम):</strong>
+                <ul style="padding-left: 20px; margin: 5px 0;">
+                    <li><strong>कार्बन की संख्या:</strong> इस कार्बनिक यौगिक की संरचना में केवल 1 कार्बन परमाणु शामिल है, इसलिए इसका मूल शब्द <strong>'मेथ' (Meth)</strong> निर्धारित होता है।</li>
+                    <li><strong>मुख्य क्रियात्मक समूह:</strong> इसमें फॉर्मिल समूह यानी एल्डिहाइड <strong>($\text{-CHO}$)</strong> उपस्थित है। एल्डिहाइड समूह के लिए IUPAC नियमावली के अनुसार द्वितीयक अनुलग्न के रूप में हमेशा <strong>'अल' (al)</strong> जोड़ा जाता है।</li>
+                    <li><strong>संधि विच्छेद नियम:</strong> मेथ + एन (एकल संयोजकता प्रकृति) + अल = <strong>मेथेनैल</strong>।</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="compound-block" style="margin-bottom: 10px;">
+            <div class="sub-heading" style="color: #2b6cb0; font-size: 22px; font-weight: bold; margin-bottom: 10px;">(iii) $\text{HC}\equiv\text{C}-\text{CH}_2-\text{CH}_2-\text{CH}_2-\text{CH}_3$</div>
+            <p style="margin: 5px 0;"><strong>IUPAC नाम:</strong> <span style="background-color: #ebf8ff; color: #2b6cb0; padding: 4px 12px; border-radius: 6px; font-weight: bold; font-size: 16px;">हेक्स-1-आइन (Hex-1-yne)</span></p>
+            
+            <p style="margin: 15px 0 5px 0; font-weight: bold; color: #4a5568;">पूर्ण आबंध संरचना (Full Structure):</p>
+            <div class="svg-wrapper" style="background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 20px; margin: 10px 0; display: flex; justify-content: center; align-items: center; overflow-x: auto;">
+                <svg width="1040" height="300" viewBox="0 0 520 150" style="max-width: 100%; height: auto; display: block;">
+                    <g font-family="sans-serif" font-size="32" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="#2d3748">
+                        <text x="90" y="75" fill="#2b6cb0">C</text>
+                        <text x="160" y="75" fill="#2b6cb0">C</text>
+                        <text x="230" y="75" fill="#2b6cb0">C</text>
+                        <text x="300" y="75" fill="#2b6cb0">C</text>
+                        <text x="370" y="75" fill="#4b5563">C</text>
+                        <text x="440" y="75" fill="#2b6cb0">C</text>
+                        
+                        <text x="30" y="75" fill="#4a5568">H</text>
+                        <text x="490" y="75" fill="#4a5568">H</text>
+                        
+                        <text x="230" y="25" fill="#4a5568">H</text>
+                        <text x="300" y="25" fill="#4a5568">H</text>
+                        <text x="370" y="25" fill="#4a5568">H</text>
+                        <text x="440" y="25" fill="#4a5568">H</text>
+                        
+                        <text x="230" y="125" fill="#4a5568">H</text>
+                        <text x="300" y="125" fill="#4a5568">H</text>
+                        <text x="370" y="125" fill="#4a5568">H</text>
+                        <text x="440" y="125" fill="#4a5568">H</text>
+
+                        <line x1="45" y1="75" x2="75" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="455" y1="75" x2="475" y2="75" stroke="#718096" stroke-width="2"/>
+
+                        <line x1="105" y1="69" x2="145" y2="69" stroke="#2b6cb0" stroke-width="2"/>
+                        <line x1="105" y1="75" x2="145" y2="75" stroke="#2b6cb0" stroke-width="2"/>
+                        <line x1="105" y1="81" x2="145" y2="81" stroke="#2b6cb0" stroke-width="2"/>
+
+                        <line x1="175" y1="75" x2="215" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="245" y1="75" x2="285" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="315" y1="75" x2="355" y2="75" stroke="#718096" stroke-width="2"/>
+                        <line x1="385" y1="75" x2="425" y2="75" stroke="#718096" stroke-width="2"/>
+
+                        <g stroke="#718096" stroke-width="2">
+                            <line x1="230" y1="40" x2="230" y2="60"/><line x1="230" y1="90" x2="230" y2="110"/>
+                            <line x1="300" y1="40" x2="300" y2="60"/><line x1="300" y1="90" x2="300" y2="110"/>
+                            <line x1="370" y1="40" x2="370" y2="60"/><line x1="370" y1="90" x2="370" y2="110"/>
+                            <line x1="440" y1="40" x2="440" y2="60"/><line x1="440" y1="90" x2="440" y2="110"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="tark-box" style="margin-top: 15px;">
+                <strong style="color: #dd6b20; font-size: 16px;">वैज्ञानिक तर्क (IUPAC नियम):</strong>
+                <ul style="padding-left: 20px; margin: 5px 0;">
+                    <li><strong>दीर्घ श्रृंखला नियम (Longest Chain):</strong> सीधी श्रृंखला में लगातार कुल 6 कार्बन परमाणु जुड़े हैं, जिसके लिए मूल शब्द <strong>'हेक्स' (Hex)</strong> प्रयुक्त होता है।</li>
+                    <li><strong>न्यूनतम लोकेन्ट नियम (Lowest Locant Rule):</strong> श्रृंखला का अंकन (Numbering) हमेशा उस छोर से शुरू किया जाता है जहाँ से असंतृप्त बंध (Double/Triple bond) को सबसे छोटा अंक प्राप्त हो।
+                        <br>• बाएँ से दाएँ गिनने पर त्रि-आबंध को <strong>1ला स्थान</strong> मिलता है (<span style="color: #2f855a; font-weight: bold;">जो कि बिल्कुल सही नियम है</span>)।
+                        <br>• दाएँ से बाएँ गिनने पर इसे 5वाँ स्थान मिलता जो कि पूर्णतः अमान्य है।
+                    </li>
+                    <li><strong>अनुलग्न प्रकार:</strong> त्रि-आबंध ($\equiv$) की उपस्थिति के कारण मुख्य नाम के अंत में अनुलग्न <strong>'आइन' (yne)</strong> जोड़ा जाता है। अतः इसका शुद्ध नाम <strong>हेक्स-1-आइन</strong> होगा।</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+    <div class="card">
+        <div class="question-header">
+            महत्वपूर्ण वैज्ञानिक परिभाषाएँ (Quick Revision Table)
+        </div>
+        <div class="answer-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>अवधारणा (Concept)</th>
+                        <th>सटीक परिभाषा (Definition)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>समावयव (Isomers)</strong></td>
+                        <td>ऐसे रासायनिक यौगिक जिनका अणु सूत्र (Molecular Formula) समान होता है, परंतु उनकी भौतिक और रासायनिक संरचनाएँ भिन्न होती हैं।</td>
+                    </tr>
+                    <tr>
+                        <td><strong>शृंखलन (Catenation)</strong></td>
+                        <td>कार्बन का स्वयं अपने ही परमाणुओं के साथ सहसंयोजक बंध द्वारा जुड़कर लंबी, शाखित या चक्रीय श्रृंखलाएं बनाने का विशिष्ट गुणधर्म।</td>
+                    </tr>
+                    <tr>
+                        <td><strong>चतुःसंयोजकता (Tetravalency)</strong></td>
+                        <td>कार्बन परमाणु के बाह्यतम कोश में 4 संयोजी इलेक्ट्रॉन होने के कारण इसकी संयोजकता 4 होती है, जिससे यह 4 सहसंयोजक आबंध बना सकता है।</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer">
+        <strong>यह संपूर्ण समाधान Class 10 NCERT बोर्ड परीक्षा पाठ्यक्रम के अनुरूप 100% सटीक और पूर्ण है।</strong>
+    </div>
+
+</div>
+
+</body>
+</html>
