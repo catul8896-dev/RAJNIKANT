@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Future Indefinite – Negative AV → PV · 50 New Q</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600;700&family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#08060f;
+  --surface:#100d1c;
+  --card:#150f28;
+  --border:rgba(180,80,255,.13);
+  --gold:#e8c97a;
+  --blue:#6e8fff;
+  --green:#00e88a;
+  --red:#ff4d6d;
+  --violet:#c084fc;
+  --pink:#f472b6;
+  --text:#e0d8ff;
+  --muted:#7060aa;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  font-family:'Hind',sans-serif;
+  color:var(--text);
+  padding:0 0 110px;
+}
+
+/* ══ HERO ══ */
+.hero{
+  background:linear-gradient(160deg,#06040e 0%,#110830 55%,#06040e 100%);
+  padding:52px 24px 42px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(180,80,255,.07),transparent);
+  pointer-events:none;
+}
+.hero-tag{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:rgba(240,130,255,.5);
+  margin-bottom:18px;display:inline-block;
+  border:1px solid rgba(180,80,255,.25);padding:4px 18px;border-radius:20px;
+  background:rgba(180,80,255,.07);
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,5vw,3.4rem);
+  font-weight:900;color:#fff;line-height:1.15;margin-bottom:10px;
+}
+.hero h1 .ac1{color:var(--red);}
+.hero h1 .ac2{color:var(--violet);}
+.hero-hindi{
+  font-family:'Noto Serif Devanagari',serif;
+  font-size:clamp(1rem,2.5vw,1.35rem);
+  color:rgba(255,255,255,.4);margin-top:8px;line-height:1.7;
+}
+.hero-note{
+  margin-top:18px;
+  display:inline-block;
+  background:rgba(255,77,109,.1);
+  border:1px solid rgba(255,77,109,.25);
+  border-radius:10px;padding:8px 22px;
+  font-family:'DM Mono',monospace;font-size:12px;
+  color:var(--red);letter-spacing:.5px;
+}
+.hero-pills{
+  display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px;
+}
+.hp{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;
+  padding:4px 14px;border-radius:20px;border:1px solid;}
+.hp-neg{background:rgba(255,77,109,.1);color:var(--red);border-color:rgba(255,77,109,.3);}
+.hp-av{background:rgba(110,143,255,.1);color:var(--blue);border-color:rgba(110,143,255,.3);}
+.hp-pv{background:rgba(0,232,138,.08);color:var(--green);border-color:rgba(0,232,138,.25);}
+.hp-new{background:rgba(232,201,122,.1);color:var(--gold);border-color:rgba(232,201,122,.3);}
+
+/* ══ FORMULA CARD ══ */
+.fwrap{
+  max-width:960px;margin:26px auto 0;padding:0 22px;
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+}
+.fc{border-radius:12px;padding:16px 20px;font-family:'DM Mono',monospace;font-size:40.5px;line-height:2;}
+.fc-av{background:rgba(110,143,255,.07);border:1px solid rgba(110,143,255,.18);}
+.fc-pv{background:rgba(0,232,138,.06);border:1px solid rgba(0,232,138,.15);}
+.fc-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:500;margin-bottom:8px;}
+.fc-av .fc-lbl{color:var(--blue);}
+.fc-pv .fc-lbl{color:var(--green);}
+.kw{padding:1px 5px;border-radius:3px;font-weight:500;}
+.kwb{background:rgba(110,143,255,.15);color:var(--blue);}
+.kwg{background:rgba(0,232,138,.12);color:var(--green);}
+.kwr{background:rgba(255,77,109,.12);color:var(--red);}
+
+/* KEY RULE BOX */
+.key-rule{
+  max-width:960px;margin:14px auto 0;padding:0 22px;
+}
+.kr-inner{
+  background:rgba(255,77,109,.07);
+  border:1.5px solid rgba(255,77,109,.2);
+  border-left:4px solid var(--red);
+  border-radius:0 10px 10px 0;
+  padding:14px 20px;
+  font-family:'Noto Serif Devanagari',serif;
+  font-size:15px;line-height:2;color:#f0c8d8;
+  display:flex;gap:12px;align-items:flex-start;
+}
+.kr-inner .ki{font-size:20px;flex-shrink:0;margin-top:2px;}
+
+/* meta */
+.meta{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  background:rgba(8,6,15,.9);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  margin-top:22px;
+}
+.mf{
+  padding:12px 18px;border-right:1px solid var(--border);
+  font-family:'DM Mono',monospace;font-size:11px;
+  display:flex;flex-direction:column;gap:3px;
+}
+.mf:last-child{border-right:none;}
+.mf label{color:var(--muted);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;}
+.mf span{color:rgba(255,255,255,.5);}
+
+/* score */
+.sc-bar{
+  max-width:960px;margin:14px auto 4px;padding:0 22px;
+  display:flex;align-items:center;gap:18px;
+  font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);
+}
+.sc-n{font-size:20px;font-weight:500;color:#fff;margin:0 3px;}
+
+/* ══ QUESTION LIST ══ */
+.qlist{max-width:960px;margin:12px auto 0;padding:0 22px;display:flex;flex-direction:column;gap:16px;}
+
+/* ══ CARD ══ */
+.qcard{
+  border-radius:14px;overflow:hidden;
+  border:1.5px solid rgba(180,80,255,.15);
+  transition:border-color .3s,box-shadow .3s;
+}
+.qcard.done{
+  border-color:rgba(0,232,138,.2);
+  box-shadow:0 0 24px rgba(0,232,138,.05);
+}
+
+/* question — BLUE */
+.qa{
+  background:linear-gradient(135deg,#060412 0%,#0c0620 100%);
+  padding:22px 28px 18px;
+  display:flex;align-items:flex-start;gap:16px;
+  border-bottom:1px solid rgba(110,143,255,.07);
+}
+.qnum{
+  font-family:'Playfair Display',serif;
+  font-size:50px;font-weight:900;
+  color:rgba(110,143,255,.2);
+  min-width:70px;flex-shrink:0;
+  line-height:1;padding-top:4px;
+  transition:color .3s;
+}
+.qcard.done .qnum{color:rgba(0,232,138,.15);}
+.qright{flex:1;}
+
+/* NEG badge */
+.neg-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 12px;border-radius:5px;
+  font-family:'DM Mono',monospace;font-size:10px;font-weight:500;
+  letter-spacing:.5px;margin-bottom:10px;
+  background:rgba(255,77,109,.1);
+  color:var(--red);
+  border:1px solid rgba(255,77,109,.25);
+}
+
+/* 50px BLUE sentence */
+.qsent{
+  font-size:50px;font-weight:700;
+  line-height:1.3;
+  color:var(--blue);
+  font-family:'Playfair Display',serif;
+}
+/* "will not / shall not" highlight */
+.qsent .nh{
+  color:var(--red);
+  font-style:italic;
+  text-decoration:underline;
+  text-decoration-style:wavy;
+  text-underline-offset:4px;
+}
+
+/* write lines */
+.wlines{
+  background:#050310;
+  padding:14px 28px 14px 114px;
+  border-bottom:1px solid rgba(110,143,255,.06);
+  display:flex;flex-direction:column;gap:11px;
+}
+.wl{
+  height:1px;
+  background:linear-gradient(90deg,rgba(110,143,255,.12),transparent);
+  position:relative;
+}
+.wl::after{
+  content:'write passive →';
+  position:absolute;right:0;top:-8px;
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(110,143,255,.1);
+}
+
+/* ══ ANSWER — BLACK + GREEN ══ */
+.aans{
+  display:none;
+  background:#000;
+  padding:18px 28px 20px 114px;
+  animation:revealUp .3s ease;
+}
+@keyframes revealUp{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+.albl{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(0,232,138,.45);margin-bottom:8px;
+  display:flex;align-items:center;gap:8px;
+}
+.albl::before{content:'';width:16px;height:1px;background:rgba(0,232,138,.3);}
+/* 50px GREEN */
+.atxt{
+  font-size:50px;font-weight:700;
+  color:var(--green);
+  font-family:'Playfair Display',serif;
+  line-height:1.3;
+}
+
+/* ══ HUD ══ */
+.hud{
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(6,4,12,.97);
+  backdrop-filter:blur(16px);
+  border-top:1px solid var(--border);
+  height:58px;display:flex;align-items:center;
+  padding:0 26px;gap:20px;
+  font-family:'DM Mono',monospace;z-index:400;
+}
+.hud-hint{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px;}
+.hud-key{
+  background:rgba(255,77,109,.12);border:1px solid rgba(255,77,109,.3);
+  color:var(--red);border-radius:5px;padding:2px 10px;font-size:11px;
+}
+.hud-prog-wrap{flex:1;max-width:220px;height:3px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;}
+.hud-prog{height:100%;background:linear-gradient(90deg,var(--red),var(--green));width:0%;transition:width .5s ease;}
+.hud-stats{display:flex;gap:24px;margin-left:auto;}
+.hud-stat{display:flex;flex-direction:column;align-items:center;}
+.hud-val{font-size:18px;font-weight:500;color:#fff;line-height:1;}
+.hud-lbl{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+
+/* print */
+@media print{
+  body{background:#fff;color:#000;}
+  .hud{display:none!important;}
+  .hero{background:#fff;border-bottom:2px solid #000;}
+  .hero h1,.hero h1 *{color:#000!important;}
+  .qcard{background:#fff;border:1px solid #bbb;break-inside:avoid;}
+  .qa{background:#fff;}
+  .qsent{color:#00c!important;}
+  .qnum{color:#ccc!important;}
+  .aans{display:none!important;}
+  .wlines{background:#fff;}
+  .wl{background:#ccc;}
+}
+@media(max-width:620px){
+  .fwrap{grid-template-columns:1fr;}
+  .qsent,.atxt{font-size:30px;}
+  .qnum{font-size:32px;min-width:50px;}
+  .wlines,.aans{padding-left:66px;}
+  .qlist,.fwrap,.key-rule,.sc-bar{padding:0 14px;}
+}
+b{font-size:40px}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">🆕 Brand New · Negative Version · Future Indefinite</div>
+  <h1>
+    <span class="ac1">Negative</span> Future Indefinite<br>
+    <span class="ac2">Active → Passive</span>
+  </h1>
+  <div class="hero-hindi">
+    नकारात्मक वाक्य · will not / shall not · 50 बिल्कुल नए प्रश्न
+  </div>
+  <div class="hero-note">⚠ सभी वाक्य पिछले worksheet से पूरी तरह अलग हैं</div>
+  <div class="hero-pills">
+    <span class="hp hp-neg">Negative Only</span>
+    <span class="hp hp-av">Active Voice</span>
+    <span class="hp hp-pv">Passive Voice</span>
+    <span class="hp hp-new">50 New Sentences</span>
+  </div>
+</div>
+
+<!-- FORMULAS -->
+<div class="fwrap">
+  <div class="fc fc-av">
+    <div class="fc-lbl">Active Voice — Negative</div>
+    Sub + <span class="kw kwr">will not</span> + V1 + Obj.<br>
+    I/We + <span class="kw kwr">shall not</span> + V1 + Obj.<br>
+    <span style="color:var(--muted);font-size:11px;">Short form: won't / shan't</span>
+  </div>
+  <div class="fc fc-pv">
+    <div class="fc-lbl">Passive Voice — Negative</div>
+    Obj + <span class="kw kwg">will not be</span> + V3 + by Sub.<br>
+    Obj + <span class="kw kwg">shall not be</span> + V3 + by Sub.<br>
+    <span style="color:var(--muted);font-size:11px;">Key: will not be + V3 (not been!)</span>
+  </div>
+</div>
+
+<!-- KEY RULE -->
+<div class="key-rule">
+  <div class="kr-inner">
+    <span class="ki">🔑</span>
+    <div>
+      <b style="color:var(--red);font-family:'DM Mono',monospace;font-size:42px;">याद रखो:</b><br>
+      Active Negative → <b>will not + V1</b> &nbsp;|&nbsp; Passive Negative → <b>will not be + V3</b><br>
+      "been" नहीं आएगा — सिर्फ <b>"be"</b> आएगा क्योंकि यह Future Indefinite है, Perfect नहीं।<br>
+      <b>I/We</b> के साथ → <b>shall not be</b> &nbsp;|&nbsp; बाकी सब → <b>will not be</b>
+    </div>
+  </div>
+</div>
+
+<!-- META -->
+<div class="meta">
+  <div class="mf"><label>School</label><span>Bright Future School</span></div>
+  <div class="mf"><label>Subject</label><span>English Grammar</span></div>
+  <div class="mf"><label>Topic</label><span>Future Indefinite Negative AV→PV</span></div>
+  <div class="mf"><label>Name</label><span>_______________________</span></div>
+  <div class="mf"><label>Class</label><span>____________</span></div>
+  <div class="mf"><label>Date</label><span>____________</span></div>
+</div>
+
+<!-- SCORE -->
+<div class="sc-bar">
+  Revealed: <span class="sc-n" id="scr">0</span> / 50 &nbsp;|&nbsp;
+  Remaining: <span class="sc-n" id="scl">50</span>
+</div>
+
+<!-- QUESTIONS -->
+<div class="qlist" id="qlist"></div>
+
+<!-- HUD -->
+<div class="hud">
+  <div class="hud-hint">Press <span class="hud-key">Enter ↵</span> to reveal answer</div>
+  <div class="hud-prog-wrap"><div class="hud-prog" id="hprog"></div></div>
+  <div class="hud-stats">
+    <div class="hud-stat"><div class="hud-val" id="hvd">0</div><div class="hud-lbl">Done</div></div>
+    <div class="hud-stat"><div class="hud-val" id="hvl">50</div><div class="hud-lbl">Left</div></div>
+  </div>
+</div>
+
+<script>
+/* 50 BRAND NEW Negative Future Indefinite sentences
+   All different from yesterday's worksheet */
+const DATA = [
+  // 1-10
+  {a:"The blacksmith <span class='nh'>will not</span> forge new horseshoes today.",          p:"New horseshoes <b>will not be forged</b> today by the blacksmith."},
+  {a:"The archaeologist <span class='nh'>will not</span> excavate the ancient site.",         p:"The ancient site <b>will not be excavated</b> by the archaeologist."},
+  {a:"The nurse <span class='nh'>will not</span> administer the vaccine before noon.",        p:"The vaccine <b>will not be administered</b> before noon by the nurse."},
+  {a:"The programmer <span class='nh'>will not</span> update the software this week.",        p:"The software <b>will not be updated</b> this week by the programmer."},
+  {a:"The mayor <span class='nh'>will not</span> inaugurate the new park tomorrow.",          p:"The new park <b>will not be inaugurated</b> tomorrow by the mayor."},
+  {a:"The surveyor <span class='nh'>will not</span> measure the forest land.",                p:"The forest land <b>will not be measured</b> by the surveyor."},
+  {a:"The violinist <span class='nh'>will not</span> perform the concert tonight.",           p:"The concert <b>will not be performed</b> tonight by the violinist."},
+  {a:"The geologist <span class='nh'>will not</span> analyse the rock samples.",              p:"The rock samples <b>will not be analysed</b> by the geologist."},
+  {a:"The captain <span class='nh'>will not</span> surrender the fortress to the enemy.",     p:"The fortress <b>will not be surrendered</b> to the enemy by the captain."},
+  {a:"The goldsmith <span class='nh'>will not</span> melt the old gold coins.",               p:"The old gold coins <b>will not be melted</b> by the goldsmith."},
+  // 11-20
+  {a:"The banker <span class='nh'>will not</span> approve the home loan.",                    p:"The home loan <b>will not be approved</b> by the banker."},
+  {a:"The zoologist <span class='nh'>will not</span> relocate the injured cheetah.",          p:"The injured cheetah <b>will not be relocated</b> by the zoologist."},
+  {a:"The typist <span class='nh'>will not</span> type the final agreement today.",           p:"The final agreement <b>will not be typed</b> today by the typist."},
+  {a:"The butcher <span class='nh'>will not</span> deliver the meat order tomorrow.",         p:"The meat order <b>will not be delivered</b> tomorrow by the butcher."},
+  {a:"The dyer <span class='nh'>will not</span> colour the fabric before Friday.",            p:"The fabric <b>will not be coloured</b> before Friday by the dyer."},
+  {a:"The sculptor <span class='nh'>will not</span> chisel the granite block this month.",    p:"The granite block <b>will not be chiselled</b> this month by the sculptor."},
+  {a:"The environmentalist <span class='nh'>will not</span> endorse the mining proposal.",    p:"The mining proposal <b>will not be endorsed</b> by the environmentalist."},
+  {a:"The novelist <span class='nh'>will not</span> dedicate the book to the publisher.",     p:"The book <b>will not be dedicated</b> to the publisher by the novelist."},
+  {a:"The customs officer <span class='nh'>will not</span> clear the imported goods today.",  p:"The imported goods <b>will not be cleared</b> today by the customs officer."},
+  {a:"The choreographer <span class='nh'>will not</span> rehearse the new dance routine.",    p:"The new dance routine <b>will not be rehearsed</b> by the choreographer."},
+  // 21-30
+  {a:"The cartographer <span class='nh'>will not</span> update the city map this year.",      p:"The city map <b>will not be updated</b> this year by the cartographer."},
+  {a:"The ornithologist <span class='nh'>will not</span> tag the migratory birds.",           p:"The migratory birds <b>will not be tagged</b> by the ornithologist."},
+  {a:"The welder <span class='nh'>will not</span> join the broken iron beams today.",         p:"The broken iron beams <b>will not be joined</b> today by the welder."},
+  {a:"The magistrate <span class='nh'>will not</span> summon the witnesses tomorrow.",        p:"The witnesses <b>will not be summoned</b> tomorrow by the magistrate."},
+  {a:"The dressmaker <span class='nh'>will not</span> embroider the silk blouse.",            p:"The silk blouse <b>will not be embroidered</b> by the dressmaker."},
+  {a:"The professor <span class='nh'>will not</span> publish the research findings yet.",     p:"The research findings <b>will not be published</b> yet by the professor."},
+  {a:"The diplomat <span class='nh'>will not</span> present the proposal to the UN.",         p:"The proposal <b>will not be presented</b> to the UN by the diplomat."},
+  {a:"The distiller <span class='nh'>will not</span> produce the new perfume line.",          p:"The new perfume line <b>will not be produced</b> by the distiller."},
+  {a:"The referee <span class='nh'>will not</span> reverse the offside decision.",            p:"The offside decision <b>will not be reversed</b> by the referee."},
+  {a:"The locksmith <span class='nh'>will not</span> duplicate the master key.",              p:"The master key <b>will not be duplicated</b> by the locksmith."},
+  // 31-40
+  {a:"The glassblower <span class='nh'>will not</span> shape the decorative vases today.",    p:"The decorative vases <b>will not be shaped</b> today by the glassblower."},
+  {a:"The astronomer <span class='nh'>will not</span> publish the telescope readings.",       p:"The telescope readings <b>will not be published</b> by the astronomer."},
+  {a:"The stevedore <span class='nh'>will not</span> unload the cargo ship tonight.",         p:"The cargo ship <b>will not be unloaded</b> tonight by the stevedore."},
+  {a:"The upholsterer <span class='nh'>will not</span> repair the antique sofa.",             p:"The antique sofa <b>will not be repaired</b> by the upholsterer."},
+  {a:"The meteorologist <span class='nh'>will not</span> broadcast the storm warning.",       p:"The storm warning <b>will not be broadcast</b> by the meteorologist."},
+  {a:"The mediator <span class='nh'>will not</span> resolve the labour dispute today.",       p:"The labour dispute <b>will not be resolved</b> today by the mediator."},
+  {a:"The curator <span class='nh'>will not</span> exhibit the rare manuscripts.",            p:"The rare manuscripts <b>will not be exhibited</b> by the curator."},
+  {a:"The seamstress <span class='nh'>will not</span> hem the velvet curtains tonight.",      p:"The velvet curtains <b>will not be hemmed</b> tonight by the seamstress."},
+  {a:"The foreman <span class='nh'>will not</span> supervise the night shift workers.",       p:"The night shift workers <b>will not be supervised</b> by the foreman."},
+  {a:"The pharmacist <span class='nh'>will not</span> dispense the controlled drugs.",        p:"The controlled drugs <b>will not be dispensed</b> by the pharmacist."},
+  // 41-50
+  {a:"The taxidermist <span class='nh'>will not</span> preserve the rare specimen.",          p:"The rare specimen <b>will not be preserved</b> by the taxidermist."},
+  {a:"The interpreter <span class='nh'>will not</span> translate the closing speech.",        p:"The closing speech <b>will not be translated</b> by the interpreter."},
+  {a:"The pyrotechnist <span class='nh'>will not</span> fire the fireworks at midnight.",     p:"The fireworks <b>will not be fired</b> at midnight by the pyrotechnist."},
+  {a:"The vintner <span class='nh'>will not</span> bottle the new harvest wine.",             p:"The new harvest wine <b>will not be bottled</b> by the vintner."},
+  {a:"The ferryman <span class='nh'>will not</span> cross the river in this storm.",          p:"The river <b>will not be crossed</b> in this storm by the ferryman."},
+  {a:"The calligrapher <span class='nh'>will not</span> inscribe the memorial plaque.",       p:"The memorial plaque <b>will not be inscribed</b> by the calligrapher."},
+  {a:"The groundskeeper <span class='nh'>will not</span> mow the cricket outfield today.",    p:"The cricket outfield <b>will not be mowed</b> today by the groundskeeper."},
+  {a:"The printmaker <span class='nh'>will not</span> reproduce the original woodblock.",     p:"The original woodblock <b>will not be reproduced</b> by the printmaker."},
+  {a:"The sommelier <span class='nh'>will not</span> recommend the vintage bottle tonight.",  p:"The vintage bottle <b>will not be recommended</b> tonight by the sommelier."},
+  {a:"The cartoonist <span class='nh'>will not</span> publish the satirical strip this week.", p:"The satirical strip <b>will not be published</b> this week by the cartoonist."},
+];
+
+/* build cards */
+const root = document.getElementById('qlist');
+DATA.forEach((item, i) => {
+  const card = document.createElement('div');
+  card.className = 'qcard';
+  card.id = `qc${i}`;
+  card.innerHTML = `
+    <div class="qa">
+      <div class="qnum">${String(i+1).padStart(2,'0')}</div>
+      <div class="qright">
+        <div class="neg-badge">✗ Negative — नकारात्मक (will not / shall not)</div>
+        <div class="qsent">${item.a}</div>
+      </div>
+    </div>
+    <div class="wlines">
+      <div class="wl"></div><div class="wl"></div>
+    </div>
+    <div class="aans" id="aa${i}">
+      <div class="albl">Passive Voice Answer</div>
+      <div class="atxt">${item.p}</div>
+    </div>`;
+  root.appendChild(card);
+});
+
+/* Enter key logic */
+let rev = 0;
+const tot = DATA.length;
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  e.preventDefault();
+  if (rev >= tot) return;
+  const aa = document.getElementById('aa' + rev);
+  const qc = document.getElementById('qc' + rev);
+  aa.style.display = 'block';
+  qc.classList.add('done');
+  aa.scrollIntoView({behavior:'smooth', block:'nearest'});
+  rev++;
+  const pct = Math.round(rev / tot * 100);
+  document.getElementById('scr').textContent  = rev;
+  document.getElementById('scl').textContent  = tot - rev;
+  document.getElementById('hvd').textContent  = rev;
+  document.getElementById('hvl').textContent  = tot - rev;
+  document.getElementById('hprog').style.width = pct + '%';
+  if (rev === tot) {
+    document.querySelector('.hud').innerHTML = `
+      <div style="width:100%;text-align:center;font-family:'DM Mono',monospace;
+        font-size:13px;color:#00e88a;letter-spacing:1px;">
+        🎉 All 50 Negative answers revealed! Excellent work!
+        <span style="background:rgba(0,232,138,.1);border:1px solid rgba(0,232,138,.3);
+          border-radius:20px;padding:3px 16px;margin-left:12px;font-size:12px;">50/50 ✅</span>
+      </div>`;
+  }
+});
+</script>
+</body>
+</html>
