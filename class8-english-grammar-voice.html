@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ============================================================ -->
+    <!-- SECTION 1: META TAGS & TITLE DECLARATION                     -->
+    <!-- Purpose: Character Encoding, Responsive Viewport & Meta      -->
+    <!-- ============================================================ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active & Passive Voice - Class 8 | Maa Sharda Classes</title>
+    
+    <!-- Lucide Vector Icons Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================ */
+        /* SECTION 2: CSS DESIGN SYSTEM & COLOR VARIABLES               -->
+        /* ============================================================ */
+        :root {
+            --bg-body: #07090e;
+            --bg-card: rgba(18, 24, 38, 0.8);
+            --bg-card-hover: rgba(28, 38, 62, 0.95);
+            --gold: #ffcc00;
+            --gold-glow: rgba(255, 204, 0, 0.35);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(255, 204, 0, 0.35);
+            --radius-lg: 20px;
+            --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+            --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: 
+                radial-gradient(circle at 10% 15%, rgba(255, 204, 0, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 45px 45px, 45px 45px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+        }
+
+        /* ============================================================ */
+        /* SECTION 3: TOP HEADER & BREADCRUMB NAVIGATION                -->
+        /* ============================================================ */
+        .header {
+            background: rgba(11, 15, 25, 0.9);
+            backdrop-filter: blur(14px);
+            padding: 18px 45px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .back-link {
+            background: rgba(255, 204, 0, 0.1);
+            color: var(--gold);
+            border: 1px solid var(--border-gold);
+            padding: 10px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            transition: var(--transition-smooth);
+        }
+
+        .back-link:hover {
+            background: var(--gold);
+            color: #000;
+            transform: translateX(-3px);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .header-title h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 26px;
+            color: var(--gold);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .breadcrumb {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .skeleton-link-btn {
+            background: rgba(255, 204, 0, 0.08);
+            border: 1px solid var(--border-gold);
+            color: var(--gold);
+            padding: 8px 16px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition-smooth);
+        }
+
+        .skeleton-link-btn:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        /* ============================================================ */
+        /* SECTION 4: CONTAINER & ACTION BUTTONS                        -->
+        /* ============================================================ */
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 35px 20px 60px 20px;
+            flex: 1;
+            width: 100%;
+        }
+
+        .admin-actions {
+            margin-bottom: 35px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .add-folder-btn {
+            background: linear-gradient(135deg, #ffcc00, #e6b800);
+            color: #000;
+            padding: 16px 36px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: 0 8px 25px rgba(255, 204, 0, 0.25);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .add-folder-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 30px var(--gold-glow);
+        }
+
+        /* ============================================================ */
+        /* SECTION 5: DAILY CONTENT UPDATE GRID                         -->
+        /* ============================================================ */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .date-folder {
+            background: linear-gradient(155deg, rgba(24, 30, 48, 0.9), rgba(12, 16, 26, 0.95));
+            border: 2px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 40px 20px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-card);
+            position: relative;
+        }
+
+        .date-folder:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px -5px rgba(255, 204, 0, 0.25);
+            background: linear-gradient(155deg, rgba(32, 42, 68, 0.95), rgba(16, 22, 36, 0.98));
+        }
+
+        .date-folder i {
+            color: var(--gold);
+            width: 65px;
+            height: 65px;
+            margin-bottom: 16px;
+            transition: var(--transition-smooth);
+        }
+
+        .date-folder:hover i {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 12px var(--gold));
+        }
+
+        .folder-date {
+            font-size: 14px;
+            color: var(--gold);
+            margin-bottom: 8px;
+            font-weight: 700;
+            background: rgba(255, 204, 0, 0.1);
+            padding: 3px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--border-gold);
+        }
+
+        .folder-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 34px;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        .folder-note-tag {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* ============================================================ */
+        /* SECTION 6: FOOTER NOTE                                       -->
+        /* ============================================================ */
+        .footer-note {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-muted);
+            font-size: 14px;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 15px 20px; flex-direction: column; gap: 15px; text-align: center; }
+            .header-left { flex-direction: column; }
+            .folder-title { font-size: 26px; }
+            .grid-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: TOP HEADER & BREADCRUMB NAVIGATION                -->
+<!-- ============================================================ -->
+<header class="header">
+    <div class="header-left">
+        <a href="class8-english-portal.html" class="back-link">
+            <i data-lucide="arrow-left"></i> BACK TO ENGLISH
+        </a>
+        <div class="header-title">
+            <h1>Active & Passive Voice</h1>
+            <div class="breadcrumb">Home > Class 8 > English > Voice Portal</div>
+        </div>
+    </div>
+    
+    <div class="header-right">
+        <a href="website-skeleton-layout.html" class="skeleton-link-btn">
+            <i data-lucide="network"></i> Skeleton Map
+        </a>
+    </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: CONTAINER & ACTION BUTTONS                        -->
+<!-- ============================================================ -->
+<div class="container">
+    
+    <!-- ADD NEW BUTTON -->
+    <div class="admin-actions">
+        <a href="javascript:void(0)" onclick="alert('नया टॉपिक जोड़ने की अनुमति केवल शिक्षक (रजनीकांत सर) के पास है!')" class="add-folder-btn">
+            <i data-lucide="folder-plus"></i>
+            ADD NEW TOPIC
+        </a>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: DAILY CONTENT UPDATE FOLDERS                      -->
+    <!-- ============================================================ -->
+    <div class="grid-container">
+        
+        <!-- Folder 1: PRESENT TENSE -->
+        <a href="class8-english-grammar-present-indefinite.html" class="date-folder">
+            <i data-lucide="folder-clock"></i>
+            <span class="folder-date">13 MAY 2026</span>
+            <span class="folder-title">PRESENT TENSE</span>
+            <span class="folder-note-tag">Hindi Guide & Active Rules</span>
+        </a>
+
+        <!-- Folder 2: PAST TENSE (Points to Categorized File class8-english-voice-past.html) -->
+        <a href="class8-english-voice-past.html" class="date-folder" target="_self" style="border-color: rgba(255, 204, 0, 0.45);">
+            <i data-lucide="folder-clock"></i>
+            <span class="folder-date">12 MAY 2026</span>
+            <span class="folder-title">PAST TENSE</span>
+            <span class="folder-note-tag" style="color: var(--gold);">Past Perfect & Daily Practice Sets</span>
+        </a>
+
+        <!-- Folder 3: FUTURE TENSE -->
+        <a href="javascript:void(0)" onclick="alert('फ्यूचर टेंस (Future Tense) के वॉइस रूल्स जल्द ही अपलोड किए जाएंगे!')" class="date-folder">
+            <i data-lucide="folder-clock"></i>
+            <span class="folder-date">11 MAY 2026</span>
+            <span class="folder-title">FUTURE TENSE</span>
+            <span class="folder-note-tag">Rules in Preparation</span>
+        </a>
+
+        <!-- Folder 4: BASIC RULES -->
+        <a href="javascript:void(0)" onclick="alert('वॉइस के बेसिक नियम (Subject-Object conversion, Verb 3rd form rules) जल्द ही प्रदर्शित होंगे!')" class="date-folder">
+            <i data-lucide="folder-clock"></i>
+            <span class="folder-date">10 MAY 2026</span>
+            <span class="folder-title">BASIC RULES</span>
+            <span class="folder-note-tag">Core Fundamentals</span>
+        </a>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6: FOOTER NOTE                                       -->
+    <!-- ============================================================ -->
+    <div class="footer-note">
+        <strong>Maa Sharda Classes</strong> • Active & Passive Voice Master Series • Mentored by <strong>Rajnikant Chauhan Sir</strong>
+    </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: JAVASCRIPT INITIALIZATION                         -->
+<!-- ============================================================ -->
+<script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+</script>
+
+</body>
+</html>

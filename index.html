@@ -1,213 +1,955 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- ============================================================ -->
+    <!-- SECTION 1: META & TITLE DECLARATION                          -->
+    <!-- Purpose: Character Encoding, Responsive Viewport & SEO       -->
+    <!-- ============================================================ -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maa Sharda Classes</title>
+    <title>Maa Sharda Study Vault | Dedicated to Education</title>
+    
+    <!-- Lucide Vector Icons Library -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts for Modern Educational Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            background-color: #000;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: white;
+        /* ============================================================ */
+        /* SECTION 2: CORE DESIGN SYSTEM & COLOR VARIABLES               -->
+        /* ============================================================ */
+        :root {
+            --bg-body: #07090e;
+            --bg-surface: #0e131f;
+            --bg-card: rgba(18, 24, 38, 0.75);
+            --bg-card-hover: rgba(28, 38, 62, 0.95);
+            --gold: #ffcc00;
+            --gold-light: #ffe066;
+            --gold-glow: rgba(255, 204, 0, 0.3);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(255, 204, 0, 0.3);
+            --accent-green: #10b981;
+            --accent-blue: #38bdf8;
+            --accent-pink: #f43f5e;
+            --accent-purple: #a855f7;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+            --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Professional Header Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: 
+                radial-gradient(circle at 10% 15%, rgba(255, 204, 0, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 45px 45px, 45px 45px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+        }
+
+        /* ============================================================ */
+        /* SECTION 3: TOP HEADER & BRANDING BAR                         -->
+        /* ============================================================ */
         .header {
-            background-color: #111;
-            padding: 20px 50px;
+            background: rgba(11, 15, 25, 0.88);
+            backdrop-filter: blur(14px);
+            padding: 18px 50px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 2px solid #ffcc00; /* Gold accent for education */
-            margin-bottom: 40px;
+            border-bottom: 2px solid var(--border-gold);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 18px;
         }
 
         .logo-icon {
-            background: #ffcc00;
+            background: linear-gradient(135deg, #ffcc00, #e6b800);
             color: #000;
-            padding: 10px;
-            border-radius: 50%;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 0 20px var(--gold-glow);
         }
 
         .brand-name {
-            font-size: 32px;
-            font-weight: bold;
-            color: #ffcc00;
+            font-family: 'Outfit', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 1px;
+            line-height: 1.1;
         }
 
         .slogan {
-            font-size: 14px;
-            color: #888;
+            font-size: 13px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
             display: block;
+            margin-top: 3px;
         }
 
-        /* Main Content Grid */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Prominent Skeleton Map Button */
+        .skeleton-nav-btn {
+            background: rgba(255, 204, 0, 0.12);
+            border: 1.5px solid var(--gold);
+            color: var(--gold);
+            padding: 10px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-smooth);
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.15);
+        }
+
+        .skeleton-nav-btn:hover {
+            background: var(--gold);
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px var(--gold-glow);
+        }
+
+        .admin-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ============================================================ */
+        /* SECTION 4: HERO BANNER & SKELETON PREVIEW FLOW               -->
+        /* ============================================================ */
         .container {
-            max-width: 1300px;
+            max-width: 1340px;
             margin: 0 auto;
-            padding: 0 20px 40px 20px;
+            padding: 30px 20px 60px 20px;
+            flex: 1;
+            width: 100%;
         }
 
+        .hero-section {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 204, 0, 0.1);
+            border: 1px solid var(--border-gold);
+            color: var(--gold);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(30px, 4.5vw, 48px);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title span {
+            color: var(--gold);
+            background: linear-gradient(135deg, #ffcc00, #ffb300);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 780px;
+            margin: 0 auto 25px auto;
+        }
+
+        /* Quick Search Bar */
+        .search-container {
+            max-width: 580px;
+            margin: 0 auto 35px auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            background: rgba(18, 24, 38, 0.85);
+            border: 1.5px solid var(--border-subtle);
+            border-radius: 14px;
+            padding: 16px 20px 16px 50px;
+            font-size: 16px;
+            color: #fff;
+            outline: none;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .search-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            pointer-events: none;
+        }
+
+        /* Inline Skeleton Architecture Preview Box */
+        .skeleton-preview-box {
+            background: linear-gradient(145deg, rgba(16, 22, 36, 0.9), rgba(10, 14, 24, 0.9));
+            border: 1.5px solid var(--border-gold);
+            border-radius: var(--radius-lg);
+            padding: 24px 30px;
+            margin-bottom: 45px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .preview-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .preview-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .preview-title i {
+            color: var(--gold);
+        }
+
+        /* Flow diagram pills connected with arrows */
+        .flow-diagram-strip {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 15px 0;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .flow-node-step {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            padding: 12px 18px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .flow-node-step.active-step {
+            border-color: var(--gold);
+            background: rgba(255, 204, 0, 0.08);
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: var(--gold);
+            color: #000;
+            font-weight: 800;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .step-info strong {
+            display: block;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .step-info span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .flow-arrow-icon {
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* ============================================================ */
+        /* SECTION 5: CATEGORY SECTION HEADINGS                         -->
+        /* ============================================================ */
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 35px 0 20px 0;
+            border-left: 4px solid var(--gold);
+            padding-left: 15px;
+        }
+
+        .category-header h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .category-badge {
+            font-size: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* ============================================================ */
+        /* SECTION 6: GRID CONTAINER & REPLICATED BUTTONS               -->
+        /* ============================================================ */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 22px;
         }
 
         .folder-button {
-            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
-            border: 1px solid #333;
+            background: linear-gradient(155deg, rgba(24, 30, 48, 0.9), rgba(12, 16, 26, 0.95));
+            border: 1.5px solid var(--border-subtle);
             color: white;
             text-decoration: none;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 50px 20px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            padding: 45px 20px;
+            transition: var(--transition-smooth);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        /* Ambient glow on hover */
+        .folder-button::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-lg);
+            opacity: 0;
+            transition: var(--transition-smooth);
+            background: radial-gradient(circle at 50% 20%, var(--gold-glow), transparent 70%);
+            pointer-events: none;
         }
 
         .folder-button:hover {
-            border-color: #ffcc00;
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 204, 0, 0.2);
+            border-color: var(--gold);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px -5px rgba(255, 204, 0, 0.25);
+            background: linear-gradient(155deg, rgba(32, 42, 68, 0.95), rgba(16, 22, 36, 0.98));
+        }
+
+        .folder-button:hover::after {
+            opacity: 1;
+        }
+
+        /* Top status chip on active class cards */
+        .active-live-tag {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 6px #10b981;
+            animation: pulseDot 1.5s infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
         }
 
         .folder-button i {
-            margin-bottom: 20px;
-            width: 70px;
-            height: 70px;
-            color: #ffcc00; /* Gold icons for a premium look */
+            margin-bottom: 18px;
+            width: 65px;
+            height: 65px;
+            color: var(--gold);
+            transition: var(--transition-smooth);
+        }
+
+        .folder-button:hover i {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 12px var(--gold));
         }
 
         .folder-button span {
-            font-size: 40px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 34px;
             font-weight: 800;
             text-align: center;
+            letter-spacing: -0.5px;
         }
 
+        .folder-subtext {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        /* Specialty Card Variant Colors */
+        .folder-button.special-gk {
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+        .folder-button.special-gk i { color: var(--accent-blue); }
+        .folder-button.special-gk:hover { border-color: var(--accent-blue); }
+
+        .folder-button.special-reasoning {
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+        .folder-button.special-reasoning i { color: var(--accent-purple); }
+        .folder-button.special-reasoning:hover { border-color: var(--accent-purple); }
+
+        .folder-button.special-test {
+            border-color: rgba(244, 63, 94, 0.3);
+        }
+        .folder-button.special-test i { color: var(--accent-pink); }
+        .folder-button.special-test:hover { border-color: var(--accent-pink); }
+
+        .folder-button.special-result {
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        .folder-button.special-result i { color: var(--accent-green); }
+        .folder-button.special-result:hover { border-color: var(--accent-green); }
+
+        /* ============================================================ */
+        /* SECTION 7: MODAL NOTICE FOR UPCOMING CLASSES                -->
+        /* ============================================================ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: #111726;
+            border: 2px solid var(--border-gold);
+            border-radius: var(--radius-lg);
+            padding: 35px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 204, 0, 0.15);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px auto;
+        }
+
+        .modal-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .modal-card p {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .modal-close-btn {
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .modal-close-btn:hover {
+            box-shadow: 0 0 15px var(--gold-glow);
+            transform: scale(1.03);
+        }
+
+        /* ============================================================ */
+        /* SECTION 8: FOOTER & COPYRIGHT SECTION                        -->
+        /* ============================================================ */
+        .footer {
+            background: rgba(11, 15, 25, 0.95);
+            border-top: 1px solid var(--border-subtle);
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-brand {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+
+        .footer-note {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* ============================================================ */
+        /* SECTION 9: RESPONSIVE MEDIA QUERIES                          -->
+        /* ============================================================ */
         @media (max-width: 1024px) {
             .grid-container { grid-template-columns: repeat(2, 1fr); }
-            .brand-name { font-size: 24px; }
+            .header { padding: 18px 25px; }
+            .brand-name { font-size: 22px; }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
             .grid-container { grid-template-columns: 1fr; }
-            .header { flex-direction: column; text-align: center; }
+            .header { flex-direction: column; text-align: center; gap: 15px; padding: 15px; }
+            .logo-section { flex-direction: column; text-align: center; }
+            .folder-button { padding: 35px 20px; }
+            .folder-button span { font-size: 28px; }
+            .flow-diagram-strip { flex-direction: column; align-items: stretch; }
+            .flow-arrow-icon { transform: rotate(90deg); margin: 6px 0; }
         }
     </style>
 </head>
 <body>
 
+<!-- ============================================================ -->
+<!-- SECTION 3: TOP HEADER & BRANDING BAR                         -->
+<!-- ============================================================ -->
 <header class="header">
     <div class="logo-section">
         <div class="logo-icon">
-            <i data-lucide="graduation-cap" style="width: 40px; height: 40px;"></i>
+            <i data-lucide="graduation-cap" style="width: 32px; height: 32px;"></i>
         </div>
         <div>
             <div class="brand-name">Maa Sharda Study Vault</div>
-            <span class="slogan">Dedicated to Education</span>
+            <span class="slogan">Dedicated to Education • By Rajnikant Chauhan Sir</span>
         </div>
     </div>
-    <div class="contact-info" style="color: #888;">
-        Admin Portal
+    
+    <div class="header-actions">
+        <!-- Direct Link to Website Skeleton Architecture Map -->
+        <a href="website-skeleton-layout.html" class="skeleton-nav-btn">
+            <i data-lucide="network"></i>
+            <span>Website Skeleton Map (ढाँचा मैप)</span>
+        </a>
+
+        <div class="admin-badge">
+            <i data-lucide="shield-check" style="color: var(--gold); width: 16px; height: 16px;"></i>
+            <span>Admin Portal</span>
+        </div>
     </div>
 </header>
 
+<!-- ============================================================ -->
+<!-- SECTION 4: MAIN VAULT WORKSPACE & SEARCH                     -->
+<!-- ============================================================ -->
 <div class="container">
-    <div class="grid-container">
-        <!-- Replicated buttons from your drawing -->
-        <a href="class1.html" class="folder-button">
+    
+    <div class="hero-section">
+        <div class="hero-tag">
+            <i data-lucide="sparkles" style="width: 15px; height: 15px;"></i> All-in-One Digital Learning Hub
+        </div>
+        <h2 class="hero-title">शिक्षा के प्रति <span>समर्पित डिजिटल वॉल्ट</span></h2>
+        <p class="hero-desc">
+            कक्षा 1 से 12 तक के सभी विषय, विशेष सामान्य ज्ञान (GK) प्रैक्टिस, रीजनिंग तथा ऑनलाइन टेस्ट की त्वरित पहुँच।
+        </p>
+
+        <!-- Live Instant Search Bar -->
+        <div class="search-container">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="text" id="classSearchInput" class="search-input" placeholder="Search class, subject or portal (उदा. Class 8, Class 10, GK)..." onkeyup="filterCards()">
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: WEBSITE SKELETON PREVIEW FLOW STRIP (ARROWS)      -->
+    <!-- Purpose: Visual skeleton flowchart showing "Kaun Sa Kahan Hai" -->
+    <!-- ============================================================ -->
+    <div class="skeleton-preview-box">
+        <div class="preview-header">
+            <div class="preview-title">
+                <i data-lucide="git-commit"></i>
+                <span>Website Navigation Flow (नेविगेशन ढाँचा एवं तीर संकेत):</span>
+            </div>
+            <a href="website-skeleton-layout.html" style="color: var(--gold); font-size: 13px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                विस्तृत डायग्राम देखें <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+            </a>
+        </div>
+        
+        <div class="flow-diagram-strip">
+            <!-- Step 1 -->
+            <div class="flow-node-step active-step">
+                <div class="step-num">1</div>
+                <div class="step-info">
+                    <strong>Main Study Vault</strong>
+                    <span>index.html (प्रवेश द्वार)</span>
+                </div>
+            </div>
+            
+            <div class="flow-arrow-icon">
+                <i data-lucide="arrow-right"></i>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flow-node-step">
+                <div class="step-num">2</div>
+                <div class="step-info">
+                    <strong>Class & Special Hubs</strong>
+                    <span>Class 8, Class 10, GK Portal</span>
+                </div>
+            </div>
+
+            <div class="flow-arrow-icon">
+                <i data-lucide="arrow-right"></i>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flow-node-step">
+                <div class="step-num">3</div>
+                <div class="step-info">
+                    <strong>Subjects & Chapters</strong>
+                    <span>English, Science, Tense, Voice</span>
+                </div>
+            </div>
+
+            <div class="flow-arrow-icon">
+                <i data-lucide="arrow-right"></i>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="flow-node-step">
+                <div class="step-num">4</div>
+                <div class="step-info">
+                    <strong>Daily Lessons & Tests</strong>
+                    <span>Worksheets, 50 Q&A, Days 1-38</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6: CATEGORY 1 - PRIMARY CLASSES (CLASS 1 - 4)        -->
+    <!-- ============================================================ -->
+    <div class="category-header">
+        <h3>🎒 Primary Section (कक्षा 1 - 4)</h3>
+        <span class="category-badge">Foundation Wing</span>
+    </div>
+
+    <div class="grid-container" id="gridRow1">
+        <a href="javascript:void(0)" onclick="handleUpcoming('Class 1')" class="folder-button card-item" data-title="class 1">
             <i data-lucide="folder"></i>
             <span>Class 1</span>
+            <div class="folder-subtext">Primary Basics</div>
         </a>
-        <a href="class2.html" class="folder-button">
+        <a href="javascript:void(0)" onclick="handleUpcoming('Class 2')" class="folder-button card-item" data-title="class 2">
             <i data-lucide="folder"></i>
             <span>Class 2</span>
+            <div class="folder-subtext">Elementary Learning</div>
         </a>
-        <a href="class3.html" class="folder-button">
+        <a href="javascript:void(0)" onclick="handleUpcoming('Class 3')" class="folder-button card-item" data-title="class 3">
             <i data-lucide="folder"></i>
             <span>Class 3</span>
+            <div class="folder-subtext">Skill Building</div>
         </a>
-        <a href="class4.html" class="folder-button">
+        <a href="javascript:void(0)" onclick="handleUpcoming('Class 4')" class="folder-button card-item" data-title="class 4">
             <i data-lucide="folder"></i>
             <span>Class 4</span>
+            <div class="folder-subtext">Intermediate Basics</div>
         </a>
-        
-        <!-- Row 2 -->
-        <a href="class5.html" class="folder-button">
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 7: CATEGORY 2 - MIDDLE SECTION (CLASS 5 - 8)         -->
+    <!-- ============================================================ -->
+    <div class="category-header">
+        <h3>📘 Middle Section (कक्षा 5 - 8)</h3>
+        <span class="category-badge">Middle Wing</span>
+    </div>
+
+    <div class="grid-container" id="gridRow2">
+        <a href="javascript:void(0)" onclick="handleUpcoming('Class 5')" class="folder-button card-item" data-title="class 5">
             <i data-lucide="folder"></i>
             <span>Class 5</span>
+            <div class="folder-subtext">Junior Middle</div>
         </a>
-        <a href="class6.html" class="folder-button">
+        <a href="javascript:void(0)" onclick="handleUpcoming('Class 6')" class="folder-button card-item" data-title="class 6">
             <i data-lucide="folder"></i>
             <span>Class 6</span>
+            <div class="folder-subtext">Subject Modules</div>
         </a>
-        <a href="class7.html" class="folder-button">
+        <a href="javascript:void(0)" onclick="handleUpcoming('Class 7')" class="folder-button card-item" data-title="class 7">
             <i data-lucide="folder"></i>
             <span>Class 7</span>
+            <div class="folder-subtext">Advanced Concepts</div>
         </a>
-        <a href="page8class.html" class="folder-button">
-            <i data-lucide="folder"></i>
+        
+        <!-- CLASS 8: ACTIVE LIVE PORTAL (Pointed to Categorized File) -->
+        <a href="class8-subjects-portal.html" class="folder-button card-item" data-title="class 8 english science maths" style="border-color: rgba(255, 204, 0, 0.5);">
+            <div class="active-live-tag">
+                <span class="live-dot"></span> Live Portal
+            </div>
+            <i data-lucide="folder-check"></i>
             <span>Class 8</span>
+            <div class="folder-subtext" style="color: var(--gold);">Active Voice, Tenses & Subjects</div>
         </a>
+    </div>
 
-        <!-- Row 3 -->
-        <a href="class9.html" class="folder-button">
+    <!-- ============================================================ -->
+    <!-- SECTION 8: CATEGORY 3 - SECONDARY & SENIOR (CLASS 9 - 12)    -->
+    <!-- ============================================================ -->
+    <div class="category-header">
+        <h3>🎓 High School & Senior Secondary (कक्षा 9 - 12)</h3>
+        <span class="category-badge">Board Wing</span>
+    </div>
+
+    <div class="grid-container" id="gridRow3">
+        <a href="javascript:void(0)" onclick="handleUpcoming('Class 9')" class="folder-button card-item" data-title="class 9">
             <i data-lucide="folder"></i>
             <span>Class 9</span>
+            <div class="folder-subtext">Secondary Prep</div>
         </a>
-        <a href="CLASS10/main-ui.html" class="folder-button">
-            <i data-lucide="folder"></i>
+        
+        <!-- CLASS 10: ACTIVE LIVE PORTAL -->
+        <a href="CLASS10/main-ui.html" class="folder-button card-item" data-title="class 10 science english board" style="border-color: rgba(255, 204, 0, 0.5);">
+            <div class="active-live-tag">
+                <span class="live-dot"></span> Live Portal
+            </div>
+            <i data-lucide="folder-check"></i>
             <span>Class 10</span>
-        </a>
-        <a href="class11.html" class="folder-button">
-            <i data-lucide="folder"></i>
-            <span>Class 11</span>
-        </a>
-        <a href="class12.html" class="folder-button">
-            <i data-lucide="folder"></i>
-            <span>Class 12</span>
+            <div class="folder-subtext" style="color: var(--gold);">Science, English Books & GS</div>
         </a>
 
-        <!-- Specialty Row -->
-        <a href="GK/GK_UI.html" class="folder-button">
+        <a href="javascript:void(0)" onclick="handleUpcoming('Class 11')" class="folder-button card-item" data-title="class 11">
+            <i data-lucide="folder"></i>
+            <span>Class 11</span>
+            <div class="folder-subtext">Senior Secondary</div>
+        </a>
+        <a href="javascript:void(0)" onclick="handleUpcoming('Class 12')" class="folder-button card-item" data-title="class 12">
+            <i data-lucide="folder"></i>
+            <span>Class 12</span>
+            <div class="folder-subtext">Board Exam Special</div>
+        </a>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 9: CATEGORY 4 - SPECIALTY & COMPETITIVE PORTALS     -->
+    <!-- ============================================================ -->
+    <div class="category-header">
+        <h3>🌟 Specialty & Practice Hubs (विशेष तैयारी अनुभाग)</h3>
+        <span class="category-badge">Exam & Skill Wing</span>
+    </div>
+
+    <div class="grid-container" id="gridRow4">
+        <!-- GK Daily Practice (Active Portal) -->
+        <a href="GK/GK_UI.html" class="folder-button special-gk card-item" data-title="gk class general knowledge practice">
+            <div class="active-live-tag">
+                <span class="live-dot"></span> Live Days 1-38
+            </div>
             <i data-lucide="globe"></i>
             <span>GK Class</span>
+            <div class="folder-subtext" style="color: var(--accent-blue);">डेली सामान्य ज्ञान क्विज</div>
         </a>
-        <a href="reasoning.html" class="folder-button">
+
+        <!-- Reasoning -->
+        <a href="javascript:void(0)" onclick="handleUpcoming('Reasoning Module')" class="folder-button special-reasoning card-item" data-title="reasoning mental ability">
             <i data-lucide="brain-circuit"></i>
             <span>Reasoning</span>
+            <div class="folder-subtext" style="color: var(--accent-purple);">तर्कशक्ति अभ्यास</div>
         </a>
-        <a href="test.html" class="folder-button">
+
+        <!-- Online Test -->
+        <a href="javascript:void(0)" onclick="handleUpcoming('Online Test Module')" class="folder-button special-test card-item" data-title="online test exam mock">
             <i data-lucide="clipboard-list"></i>
             <span>Online Test</span>
+            <div class="folder-subtext" style="color: var(--accent-pink);">लाइव टेस्ट सीरीज</div>
         </a>
-        <a href="result.html" class="folder-button">
+
+        <!-- Result -->
+        <a href="javascript:void(0)" onclick="handleUpcoming('Result Portal')" class="folder-button special-result card-item" data-title="result scorecard award">
             <i data-lucide="award"></i>
             <span>Result</span>
+            <div class="folder-subtext" style="color: var(--accent-green);">परीक्षा परिणाम एवं स्कोर</div>
         </a>
+    </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 10: NOTICE MODAL FOR UPCOMING MODULES                -->
+<!-- ============================================================ -->
+<div class="modal-overlay" id="upcomingModal" onclick="closeModal()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+        <div class="modal-icon">
+            <i data-lucide="clock" style="width: 32px; height: 32px;"></i>
+        </div>
+        <h3 id="modalTitle">Module Coming Soon</h3>
+        <p id="modalMessage">
+            इस कक्षा / विषय का डिजिटल अध्ययन पाठ्यक्रम रजनीकांत सर द्वारा तैयार किया जा रहा है। कृपया कक्षा 8, कक्षा 10 या GK पोर्टल का अध्ययन करें!
+        </p>
+        <button class="modal-close-btn" onclick="closeModal()">ठीक है (Understood)</button>
     </div>
 </div>
 
+<!-- ============================================================ -->
+<!-- SECTION 11: FOOTER & COPYRIGHT SECTION                       -->
+<!-- ============================================================ -->
+<footer class="footer">
+    <div class="footer-brand">Maa Sharda Classes • Educational Portal</div>
+    <div class="footer-note">स्थान: टुनटुन मोड़ मार्केट | शिक्षा के प्रति समर्पित • Mentored by Rajnikant Chauhan Sir</div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- SECTION 12: JAVASCRIPT INTERACTIONS & ICONS                   -->
+<!-- ============================================================ -->
 <script>
+    // Initialize Lucide vector icons
     lucide.createIcons();
+
+    // Instant Search / Filter logic
+    function filterCards() {
+        const query = document.getElementById('classSearchInput').value.toLowerCase().trim();
+        const cards = document.querySelectorAll('.card-item');
+
+        cards.forEach(card => {
+            const title = card.getAttribute('data-title') || '';
+            const textContent = card.innerText.toLowerCase();
+            if (title.includes(query) || textContent.includes(query)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Modal popup for upcoming classes
+    function handleUpcoming(moduleName) {
+        document.getElementById('modalTitle').innerText = `${moduleName} — प्रगति पर है`;
+        document.getElementById('modalMessage').innerText = `${moduleName} का अध्ययन सामग्री एवं डिजिटल टेस्ट रजनीकांत चौहान सर द्वारा संकलित किया जा रहा है। वर्तमान में Class 8, Class 10 एवं GK Class पूरी तरह सक्रिय हैं!`;
+        document.getElementById('upcomingModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('upcomingModal').style.display = 'none';
+    }
 </script>
 
 </body>

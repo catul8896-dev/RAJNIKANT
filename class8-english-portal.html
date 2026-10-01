@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ============================================================ -->
+    <!-- SECTION 1: META TAGS & TITLE DECLARATION                     -->
+    <!-- Purpose: Character Encoding, Responsive Viewport & Meta      -->
+    <!-- ============================================================ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 8 English - Maa Sharda Classes</title>
+    
+    <!-- Lucide Vector Icons Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================ */
+        /* SECTION 2: CSS DESIGN SYSTEM & COLOR VARIABLES               -->
+        /* ============================================================ */
+        :root {
+            --bg-body: #07090e;
+            --bg-card: rgba(18, 24, 38, 0.8);
+            --bg-card-hover: rgba(28, 38, 62, 0.95);
+            --gold: #ffcc00;
+            --gold-glow: rgba(255, 204, 0, 0.35);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(255, 204, 0, 0.35);
+            --radius-lg: 22px;
+            --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+            --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: 
+                radial-gradient(circle at 10% 15%, rgba(255, 204, 0, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 45px 45px, 45px 45px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+        }
+
+        /* ============================================================ */
+        /* SECTION 3: TOP HEADER & BREADCRUMB NAVIGATION                -->
+        /* ============================================================ */
+        .header {
+            background: rgba(11, 15, 25, 0.9);
+            backdrop-filter: blur(14px);
+            padding: 18px 45px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .back-btn {
+            background: rgba(255, 204, 0, 0.1);
+            color: var(--gold);
+            border: 1px solid var(--border-gold);
+            padding: 10px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            transition: var(--transition-smooth);
+        }
+
+        .back-btn:hover {
+            background: var(--gold);
+            color: #000;
+            transform: translateX(-3px);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .header-title h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 26px;
+            color: var(--gold);
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .breadcrumb {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .skeleton-link-btn {
+            background: rgba(255, 204, 0, 0.08);
+            border: 1px solid var(--border-gold);
+            color: var(--gold);
+            padding: 8px 16px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition-smooth);
+        }
+
+        .skeleton-link-btn:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        /* ============================================================ */
+        /* SECTION 4: CONTAINER & TOPIC GRID                            -->
+        /* ============================================================ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex: 1;
+            width: 100%;
+        }
+
+        .section-intro {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-intro h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 30px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .section-intro p {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        .interface-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        /* Folder Button Styling */
+        .folder-card {
+            background: linear-gradient(155deg, rgba(24, 30, 48, 0.9), rgba(12, 16, 26, 0.95));
+            border: 2px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 55px 25px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .folder-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px -5px rgba(255, 204, 0, 0.25);
+            background: linear-gradient(155deg, rgba(32, 42, 68, 0.95), rgba(16, 22, 36, 0.98));
+        }
+
+        .folder-card i {
+            color: var(--gold);
+            width: 85px;
+            height: 85px;
+            margin-bottom: 22px;
+            transition: var(--transition-smooth);
+        }
+
+        .folder-card:hover i {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 12px var(--gold));
+        }
+
+        .folder-card span {
+            font-family: 'Outfit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            text-align: center;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .folder-badge-tag {
+            font-size: 13px;
+            color: var(--gold);
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* "Add New" Special Button */
+        .add-new-card {
+            background: rgba(255, 204, 0, 0.04);
+            border: 2px dashed var(--gold);
+            border-radius: var(--radius-lg);
+            padding: 55px 25px;
+            text-decoration: none;
+            color: var(--gold);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .add-new-card:hover {
+            background: rgba(255, 204, 0, 0.12);
+            transform: scale(1.02);
+            box-shadow: 0 0 25px var(--gold-glow);
+        }
+
+        .add-new-card i {
+            width: 75px;
+            height: 75px;
+            margin-bottom: 20px;
+        }
+
+        .add-new-card span {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        /* ============================================================ */
+        /* SECTION 5: FOOTER NOTE                                       -->
+        /* ============================================================ */
+        .footer-note {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-muted);
+            font-size: 14px;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 25px;
+        }
+
+        .footer-note strong {
+            color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 15px 20px; flex-direction: column; gap: 15px; text-align: center; }
+            .header-left { flex-direction: column; }
+            .folder-card span { font-size: 28px; }
+            .interface-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: TOP HEADER & BREADCRUMB NAVIGATION                -->
+<!-- ============================================================ -->
+<header class="header">
+    <div class="header-left">
+        <a href="class8-subjects-portal.html" class="back-btn">
+            <i data-lucide="chevron-left"></i> BACK TO CLASS 8
+        </a>
+        <div class="header-title">
+            <h1>CLASS 8: ENGLISH</h1>
+            <div class="breadcrumb">Home > Class 8th > English Grammar & Literature</div>
+        </div>
+    </div>
+    
+    <div class="header-right">
+        <a href="website-skeleton-layout.html" class="skeleton-link-btn">
+            <i data-lucide="network"></i> Skeleton Map
+        </a>
+    </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: CONTAINER & TOPIC GRID                            -->
+<!-- ============================================================ -->
+<div class="container">
+    
+    <div class="section-intro">
+        <h2>अंग्रेजी व्याकरण एवं अभ्यास अनुभाग</h2>
+        <p>Active/Passive Voice और Tenses (काल) के अभ्यास सेट तथा इंटरैक्टिव वर्कशीट चुनें:</p>
+    </div>
+
+    <div class="interface-grid">
+        
+        <!-- ACTIVE & PASSIVE VOICE FOLDER (Points to Categorized File) -->
+        <a href="class8-english-grammar-voice.html" class="folder-card" target="_self">
+            <i data-lucide="folder-lock"></i>
+            <span>ACTIVE VOICE<br>PASSIVE VOICE</span>
+            <div class="folder-badge-tag">Present, Past, Future & Daily Sets</div>
+        </a>
+
+        <!-- TENSE (काल) FOLDER (Points to Categorized Hindi Guide & Worksheet File) -->
+        <a href="class8-english-grammar-present-indefinite.html" class="folder-card" target="_self">
+            <i data-lucide="calendar-check"></i>
+            <span>TENSE<br>काल</span>
+            <div class="folder-badge-tag">Present Indefinite Hindi Guide + Worksheet</div>
+        </a>
+
+        <!-- ADD NEW CONTENT BUTTON -->
+        <a href="javascript:void(0)" onclick="alert('नया टॉपिक जोड़ने का एडमिन फॉर्म रजनीकांत सर द्वारा संचालित किया जाएगा!')" class="add-new-card">
+            <i data-lucide="plus-circle"></i>
+            <span>ADD NEW TOPIC</span>
+            <div style="font-size: 13px; color: var(--gold); margin-top: 8px;">शिक्षक पोर्टल (Admin Only)</div>
+        </a>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: FOOTER NOTE                                       -->
+    <!-- ============================================================ -->
+    <div class="footer-note">
+        <strong>Maa Sharda Classes</strong> - English Digital Curriculum • Guided by <strong>Rajnikant Chauhan Sir</strong>
+    </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: JAVASCRIPT INITIALIZATION                         -->
+<!-- ============================================================ -->
+<script>
+    // Initialize Lucide vector icons
+    lucide.createIcons();
+</script>
+
+</body>
+</html>

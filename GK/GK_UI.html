@@ -1,132 +1,261 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MAA SHARDA CLASSES - GK Dashboard</title>
-<style>
-    :root {
-        --bg-dark: #0a0a0a;
-        --card-bg: #1e1e1e;
-        --gold: #ffcc00;
-        --white: #ffffff;
-        --green: #28a745;
-        --red: #dc3545;
-    }
+    <!-- ============================================================ -->
+    <!-- SECTION 1: META & CHARACTER ENCODING                         -->
+    <!-- Purpose: Mobile/TV Viewport & Encoding                       -->
+    <!-- ============================================================ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAA SHARDA CLASSES - GK Dashboard</title>
 
-    body {
-        font-family: 'Arial Black', sans-serif;
-        background-color: var(--bg-dark);
-        color: var(--white);
-        margin: 0;
-        padding: 40px;
-        text-align: center;
-    }
+    <style>
+        /* ============================================================ */
+        /* SECTION 2: COLOR VARIABLES & BASE STYLING                    -->
+        /* ============================================================ */
+        :root {
+            --bg-dark: #07090e;
+            --card-bg: #161c2b;
+            --gold: #ffcc00;
+            --white: #ffffff;
+            --green: #28a745;
+            --red: #dc3545;
+        }
 
-    header {
-        border-bottom: 4px solid var(--gold);
-        margin-bottom: 50px;
-        padding-bottom: 20px;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    h1 { font-size: 70px; color: var(--gold); margin: 0; }
-    p.subtitle { font-size: 30px; color: #ccc; }
+        body {
+            font-family: 'Arial Black', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--white);
+            padding: 20px 20px 60px 20px;
+            text-align: center;
+            min-height: 100vh;
+        }
 
-    /* मास्टर क्विज बटन स्टाइल */
-    .master-quiz-btn {
-        display: block;
-        width: 90%;
-        max-width: 1000px;
-        margin: 0 auto 50px auto;
-        background-color: var(--red);
-        color: var(--white);
-        text-decoration: none;
-        font-size: 50px;
-        font-weight: bold;
-        padding: 30px;
-        border: 6px solid var(--gold);
-        border-radius: 20px;
-        text-transform: uppercase;
-        animation: blink 1.5s infinite;
-    }
+        /* ── TOP UTILITY NAVIGATION BAR ── */
+        .top-nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #222;
+            max-width: 1240px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-    @keyframes blink { 50% { opacity: 0.8; transform: scale(1.02); } }
+        .nav-btn {
+            background: #111;
+            color: #ffcc00;
+            border: 2px solid #ffcc00;
+            padding: 10px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s ease;
+        }
 
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+        .nav-btn:hover {
+            background: #ffcc00;
+            color: #000;
+            transform: translateX(-3px);
+        }
 
-    .day-link {
-        display: block;
-        background-color: var(--card-bg);
-        color: var(--white);
-        text-decoration: none; 
-        font-size: 40px; 
-        font-weight: bold;
-        padding: 40px 20px;
-        border: 4px solid var(--gold);
-        border-radius: 20px;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 0px #000;
-        cursor: pointer;
-    }
+        .nav-skeleton-btn {
+            background: rgba(255, 204, 0, 0.1);
+            color: #ffcc00;
+            border: 2px dashed #ffcc00;
+            padding: 10px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s ease;
+        }
 
-    .day-link:hover {
-        background-color: var(--green);
-        transform: translateY(-5px);
-        box-shadow: 0 5px 0px #000;
-        border-color: var(--white);
-    }
-</style>
+        .nav-skeleton-btn:hover {
+            background: #ffcc00;
+            color: #000;
+        }
+
+        /* ============================================================ */
+        /* SECTION 3: HEADER & BRANDING                                 -->
+        /* ============================================================ */
+        header {
+            border-bottom: 4px solid var(--gold);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+        }
+
+        h1 { 
+            font-size: clamp(38px, 6vw, 68px); 
+            color: var(--gold); 
+            margin: 0; 
+            letter-spacing: 1px;
+        }
+
+        p.subtitle { 
+            font-size: clamp(20px, 3.5vw, 28px); 
+            color: #ccc; 
+            margin-top: 10px;
+        }
+
+        /* ============================================================ */
+        /* SECTION 4: MASTER QUIZ BUTTON                                -->
+        /* ============================================================ */
+        .master-quiz-btn {
+            display: block;
+            width: 95%;
+            max-width: 980px;
+            margin: 0 auto 40px auto;
+            background-color: var(--red);
+            color: var(--white);
+            text-decoration: none;
+            font-size: clamp(26px, 4vw, 42px);
+            font-weight: bold;
+            padding: 24px;
+            border: 5px solid var(--gold);
+            border-radius: 20px;
+            text-transform: uppercase;
+            animation: blink 1.6s infinite;
+            box-shadow: 0 10px 25px rgba(220, 53, 69, 0.5);
+        }
+
+        @keyframes blink { 
+            50% { opacity: 0.85; transform: scale(1.02); } 
+        }
+
+        /* ============================================================ */
+        /* SECTION 5: GRID CONTAINER & DAY CARDS                        -->
+        /* ============================================================ */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .day-link {
+            display: block;
+            background-color: var(--card-bg);
+            color: var(--white);
+            text-decoration: none; 
+            font-size: 32px; 
+            font-weight: bold;
+            padding: 35px 20px;
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+        }
+
+        .day-link:hover {
+            background-color: var(--green);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(40, 167, 69, 0.4);
+            border-color: var(--white);
+        }
+
+        /* ============================================================ */
+        /* SECTION 6: FOOTER                                            -->
+        /* ============================================================ */
+        footer {
+            margin-top: 60px;
+            color: #888;
+            font-size: 18px;
+            border-top: 1px solid #333;
+            padding-top: 25px;
+        }
+    </style>
 </head>
 <body>
 
+    <!-- ============================================================ -->
+    <!-- SECTION 2: TOP NAVIGATION BAR                                -->
+    <!-- ============================================================ -->
+    <div class="top-nav-bar">
+        <a href="../index.html" class="nav-btn">
+            ❮ Home Vault (मुख्य पोर्टल)
+        </a>
+        <a href="../website-skeleton-layout.html" class="nav-skeleton-btn">
+            🗺️ Website Skeleton Map (ढाँचा मैप)
+        </a>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 3: HEADER & BRANDING                                 -->
+    <!-- ============================================================ -->
     <header>
         <h1>माँ शारदा क्लासेस</h1>
-        <p class="subtitle">सामान्य ज्ञान (GK) डेली प्रैक्टिस पोर्टल</p>
+        <p class="subtitle">सामान्य ज्ञान (GK) डेली प्रैक्टिस पोर्टल • By Rajnikant Chauhan Sir</p>
     </header>
 
+    <!-- ============================================================ -->
+    <!-- SECTION 4: MASTER QUIZ BUTTON                                -->
+    <!-- ============================================================ -->
     <a href="./MASTER-GK/master-gkui.html" class="master-quiz-btn">🔥 MASTER QUIZ TEST (सभी दिन) 🔥</a>
 
+    <!-- ============================================================ -->
+    <!-- SECTION 5: GRID CONTAINER FOR DAYS 1 - 38                     -->
+    <!-- ============================================================ -->
     <div class="grid-container" id="quiz-dashboard"></div>
 
-    <footer style="margin-top:50px; color:#666;">
-        स्थान: टुनटुन मोड़ मार्केट | शिक्षा के प्रति समर्पित
+    <!-- ============================================================ -->
+    <!-- SECTION 6: FOOTER                                            -->
+    <!-- ============================================================ -->
+    <footer>
+        स्थान: टुनटुन मोड़ मार्केट | शिक्षा के प्रति समर्पित • All GK Days Catalogued
     </footer>
 
+    <!-- ============================================================ -->
+    <!-- SECTION 7: JAVASCRIPT DAY GENERATOR (DAYS 1 TO 38)           -->
+    <!-- ============================================================ -->
     <script>
         const START_DATE = "2026-05-14";
         const FOLDER_NAME = "DAYS-GK";
+        const TOTAL_GK_DAYS = 38; // 38 available daily GK test sets in archive
 
         const container = document.getElementById('quiz-dashboard');
         const today = new Date();
         const start = new Date(START_DATE);
         const timeDiff = today.getTime() - start.getTime();
-        const daysPassed = Math.floor(timeDiff / (1000 * 3600 * 24)) + 1;
+        let daysPassed = Math.floor(timeDiff / (1000 * 3600 * 24)) + 1;
+        
+        // Show up to the total available days (38)
+        let renderLimit = Math.min(Math.max(daysPassed, 1), TOTAL_GK_DAYS);
 
-        if (daysPassed > 0) {
-            for (let i = 1; i <= daysPassed; i++) {
-                let targetDate = new Date(START_DATE);
-                targetDate.setDate(targetDate.getDate() + (i - 1));
-                let mm = String(targetDate.getMonth() + 1).padStart(2, '0');
-                let dd = String(targetDate.getDate()).padStart(2, '0');
-                let yyyy = targetDate.getFullYear();
-                let displayDateStr = `${dd}.${mm}.${yyyy}`;      
+        for (let i = 1; i <= renderLimit; i++) {
+            let targetDate = new Date(START_DATE);
+            targetDate.setDate(targetDate.getDate() + (i - 1));
+            let mm = String(targetDate.getMonth() + 1).padStart(2, '0');
+            let dd = String(targetDate.getDate()).padStart(2, '0');
+            let yyyy = targetDate.getFullYear();
+            let displayDateStr = `${dd}.${mm}.${yyyy}`;      
 
-                let aTag = document.createElement('a');
-                aTag.className = 'day-link';
-                aTag.href = `${FOLDER_NAME}/day${i}x.html`;
-                
-                aTag.innerHTML = (i === daysPassed) ? 
-                    `DAY ${i} GK (TODAY) <br><span style="font-size:25px; color:#ffcc00;">${displayDateStr}</span>` : 
-                    `DAY ${i} GK <br><span style="font-size:25px; color:#ffcc00;">${displayDateStr}</span>`;
+            let aTag = document.createElement('a');
+            aTag.className = 'day-link';
+            aTag.href = `${FOLDER_NAME}/day${i}x.html`;
+            
+            aTag.innerHTML = (i === renderLimit) ? 
+                `DAY ${i} GK (LATEST) <br><span style="font-size:22px; color:#ffcc00;">${displayDateStr}</span>` : 
+                `DAY ${i} GK <br><span style="font-size:22px; color:#ffcc00;">${displayDateStr}</span>`;
 
-                container.appendChild(aTag);
-            }
+            container.appendChild(aTag);
         }
     </script>
 </body>

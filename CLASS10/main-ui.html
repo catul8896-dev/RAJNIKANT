@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <!-- ============================================================ -->
+    <!-- SECTION 1: META & CHARACTER ENCODING                         -->
+    <!-- Purpose: TV/Mobile Responsive Viewport & Meta                -->
+    <!-- ============================================================ -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maa Sharda Classes - Main Portal</title>
+    <title>Maa Sharda Classes - Class 10th Portal</title>
 
     <style>
-        /* [GLOBAL STRUCTURAL STYLES] */
+        /* ============================================================ */
+        /* SECTION 2: GLOBAL TV & SCREEN VISIBILITY STYLES              -->
+        /* ============================================================ */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -26,7 +32,60 @@
             padding: 20px;
         }
 
-        /* [HERO / WELCOME BANNER SECTION] */
+        /* ── TOP UTILITY NAVIGATION BAR ── */
+        .top-nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #222;
+        }
+
+        .nav-home-btn {
+            background: #111;
+            color: #ffcc00;
+            border: 2px solid #ffcc00;
+            padding: 10px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 26px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s ease;
+        }
+
+        .nav-home-btn:hover {
+            background: #ffcc00;
+            color: #000;
+            transform: translateX(-3px);
+        }
+
+        .nav-skeleton-btn {
+            background: rgba(255, 204, 0, 0.1);
+            color: #ffcc00;
+            border: 2px dashed #ffcc00;
+            padding: 10px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s ease;
+        }
+
+        .nav-skeleton-btn:hover {
+            background: #ffcc00;
+            color: #000;
+        }
+
+        /* ============================================================ */
+        /* SECTION 3: HERO / WELCOME BANNER SECTION                     -->
+        /* ============================================================ */
         .welcome-container {
             background: linear-gradient(145deg, #111111, #1a1a1a);
             border: 4px solid #ffcc00; /* माँ शारदा क्लासेस की पीली ब्रांडिंग लाइन */
@@ -62,7 +121,9 @@
             border: 2px solid #ffffff;
         }
 
-        /* [SUBJECT GRID SYSTEM - SINGLE ROW/COLUMN CONFIGURATION] */
+        /* ============================================================ */
+        /* SECTION 4: SUBJECT GRID SYSTEM                               -->
+        /* ============================================================ */
         .portal-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -130,11 +191,13 @@
             letter-spacing: 1px;
         }
 
-        /* [FOOTER UTILITIES] */
+        /* ============================================================ */
+        /* SECTION 5: FOOTER CREDITS                                    -->
+        /* ============================================================ */
         .footer-credit {
             text-align: center;
             margin-top: 50px;
-            color: #555555;
+            color: #888888;
             font-size: 24px;
             border-top: 2px solid #111111;
             padding-top: 20px;
@@ -153,6 +216,7 @@
             .welcome-container h1 { font-size: 36px; }
             .welcome-container p { font-size: 28px; }
             .teacher-badge { font-size: 26px; padding: 8px 20px; }
+            .nav-home-btn, .nav-skeleton-btn { font-size: 18px; padding: 8px 16px; }
             
             /* मोबाइल पर बटन्स पूरी चौड़ाई में एक के नीचे एक (Single Column Grid) सेट हो जाएंगे */
             .subject-grid {
@@ -169,12 +233,30 @@
 </head>
 <body>
 
+    <!-- ============================================================ -->
+    <!-- SECTION 2: TOP NAVIGATION BAR                                -->
+    <!-- ============================================================ -->
+    <div class="top-nav-bar">
+        <a href="../index.html" class="nav-home-btn">
+            ❮ Home Vault (मुख्य पोर्टल)
+        </a>
+        <a href="../website-skeleton-layout.html" class="nav-skeleton-btn">
+            🗺️ Website Skeleton Map (ढाँचा मैप)
+        </a>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 3: HERO / WELCOME BANNER SECTION                     -->
+    <!-- ============================================================ -->
     <div class="welcome-container">
-        <h1>Welcome to Maa Sharda Classes  Portal</h1>
+        <h1>Welcome to Maa Sharda Classes Portal</h1>
         <p>Class 10th Digital Learning Dashboard</p>
         <div class="teacher-badge">By: RAJNIKANT CHAUHAN SIR</div>
     </div>
 
+    <!-- ============================================================ -->
+    <!-- SECTION 4: SUBJECT GRID SYSTEM                               -->
+    <!-- ============================================================ -->
     <div class="portal-container">
         <div class="subject-grid">
             
@@ -195,7 +277,7 @@
                 <span>SCIENCE</span>
             </a>
 
-            <a href="maths_10.html" class="subject-card">
+            <a href="javascript:void(0)" onclick="alert('कक्षा 10 गणित (Maths) की सामग्री जल्द ही अपलोड होगी!')" class="subject-card">
                 <div class="icon">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <rect x="3" y="3" width="8" height="8"/>
@@ -218,15 +300,6 @@
                 <span>ENGLISH</span>
             </a>
 
-            <!-- <a href="gs_10.html" class="subject-card">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                    </svg>
-                </div>
-                <span>GS SERIES</span>
-            </a> -->
-
             <a href="./GK-PORTAL/gk-portal-10-ui.html" class="subject-card">
                 <div class="icon">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -237,7 +310,7 @@
                 <span>GS PORTAL</span>
             </a>
 
-            <a href="reasoning_10.html" class="subject-card">
+            <a href="javascript:void(0)" onclick="alert('कक्षा 10 रीजनिंग की सामग्री जल्द ही उपलब्ध होगी!')" class="subject-card">
                 <div class="icon">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.5 2A6.5 6.5 0 0116 8.5c0 1.92-.755 3.662-1.977 4.912A6.5 6.5 0 019.5 20a6.5 6.5 0 010-13A6.48 6.48 0 0112 8"/>
@@ -250,8 +323,11 @@
         </div>
     </div>
 
+    <!-- ============================================================ -->
+    <!-- SECTION 5: FOOTER CREDITS                                    -->
+    <!-- ============================================================ -->
     <div class="footer-credit">
-        Maa Sharda Classes © 2026 • Designed for High-Performance TV & Mobile Screens
+        Maa Sharda Classes © 2026 • स्थान: टुनटुन मोड़ मार्केट | Designed for High-Performance TV & Mobile Screens
     </div>
 
 </body>

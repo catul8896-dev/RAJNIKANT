@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <!-- ============================================================ -->
+    <!-- SECTION 1: META TAGS & TITLE                                 -->
+    <!-- Purpose: SEO, Responsive Viewport & Character Encoding       -->
+    <!-- ============================================================ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Skeleton & Architecture Diagram | Maa Sharda Classes</title>
+    
+    <!-- Lucide Icons Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts: Inter & Outfit for modern clean typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================ */
+        /* SECTION 2: CSS DESIGN SYSTEM & TOKENS                         */
+        /* ============================================================ */
+        :root {
+            --bg-canvas: #090d16;
+            --bg-card: rgba(18, 24, 38, 0.85);
+            --bg-card-hover: rgba(28, 38, 60, 0.95);
+            --gold: #ffcc00;
+            --gold-glow: rgba(255, 204, 0, 0.35);
+            --text-main: #f0f4fc;
+            --text-muted: #94a3b8;
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --border-gold: rgba(255, 204, 0, 0.35);
+            --accent-green: #10b981;
+            --accent-blue: #38bdf8;
+            --accent-pink: #f43f5e;
+            --accent-purple: #a855f7;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-canvas);
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(255, 204, 0, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            padding: 0 0 80px 0;
+            line-height: 1.6;
+        }
+
+        /* ============================================================ */
+        /* SECTION 3: TOP HEADER & NAVIGATION BAR                      */
+        /* ============================================================ */
+        .top-navbar {
+            background: rgba(11, 15, 25, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--border-gold);
+            padding: 18px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .nav-brand-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .back-home-btn {
+            background: rgba(255, 204, 0, 0.1);
+            color: var(--gold);
+            border: 1px solid var(--border-gold);
+            padding: 10px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.25s ease;
+        }
+
+        .back-home-btn:hover {
+            background: var(--gold);
+            color: #000;
+            transform: translateX(-3px);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .brand-text h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            color: var(--gold);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-text p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .action-chip {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ============================================================ */
+        /* SECTION 4: PAGE HERO & SKELETON INTRO                       */
+        /* ============================================================ */
+        .hero-banner {
+            max-width: 1320px;
+            margin: 30px auto 20px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 204, 0, 0.12);
+            border: 1px solid var(--border-gold);
+            color: var(--gold);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .hero-banner h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero-banner h2 span {
+            color: var(--gold);
+        }
+
+        .hero-banner p.subtitle {
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 820px;
+            margin: 0 auto 25px auto;
+        }
+
+        /* Interactive Filter Tabs */
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 10px 22px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--gold);
+            color: #fff;
+            background: rgba(255, 204, 0, 0.08);
+        }
+
+        .filter-btn.active {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            font-weight: 700;
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        /* ============================================================ */
+        /* SECTION 5: MAIN SKELETON DIAGRAM WORKSPACE                   */
+        /* ============================================================ */
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Visual Legend Box */
+        .legend-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 16px 24px;
+            margin-bottom: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .legend-items {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .indicator-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot-hub { background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+        .dot-class { background: var(--accent-blue); box-shadow: 0 0 8px var(--accent-blue); }
+        .dot-subject { background: var(--accent-purple); box-shadow: 0 0 8px var(--accent-purple); }
+        .dot-topic { background: var(--accent-pink); box-shadow: 0 0 8px var(--accent-pink); }
+        .dot-lesson { background: var(--accent-green); box-shadow: 0 0 8px var(--accent-green); }
+
+        /* ============================================================ */
+        /* SECTION 6: SKELETON TREE / FLOWCHART WITH CONNECTING ARROWS  */
+        /* ============================================================ */
+        .skeleton-tree {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            position: relative;
+        }
+
+        /* Architecture Level Section */
+        .arch-level {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: var(--shadow-card);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .arch-level:hover {
+            border-color: rgba(255, 204, 0, 0.3);
+        }
+
+        .level-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 22px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 14px;
+        }
+
+        .level-title-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .level-badge {
+            background: #000;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .level-title-group h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            color: #fff;
+            margin: 0;
+        }
+
+        .level-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Directional Down Arrow Connector */
+        .flow-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: -10px 0;
+            z-index: 10;
+        }
+
+        .arrow-bubble {
+            background: #000;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px var(--gold-glow);
+            animation: bounceArrow 2s infinite ease-in-out;
+        }
+
+        @keyframes bounceArrow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        .arrow-label {
+            font-size: 12px;
+            color: var(--gold);
+            font-weight: 700;
+            background: rgba(0,0,0,0.85);
+            padding: 3px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--border-gold);
+            margin-top: 4px;
+        }
+
+        /* Node Cards Grid */
+        .node-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* Single Skeleton Diagram Node Card */
+        .node-card {
+            background: rgba(13, 18, 30, 0.9);
+            border: 1.5px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .node-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-blue);
+        }
+
+        .node-card.cat-hub::before { background: var(--gold); }
+        .node-card.cat-class::before { background: var(--accent-blue); }
+        .node-card.cat-subject::before { background: var(--accent-purple); }
+        .node-card.cat-topic::before { background: var(--accent-pink); }
+        .node-card.cat-lesson::before { background: var(--accent-green); }
+
+        .node-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-gold);
+            box-shadow: 0 12px 25px -8px rgba(0, 0, 0, 0.8);
+            background: var(--bg-card-hover);
+        }
+
+        .node-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .node-icon-box {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            flex-shrink: 0;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .node-cat-tag {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-muted);
+        }
+
+        .node-body h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .node-body p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        /* File path indicator pill */
+        .node-path-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            padding: 7px 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+            color: #38bdf8;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            word-break: break-all;
+        }
+
+        .node-link-btn {
+            background: rgba(255, 204, 0, 0.1);
+            color: var(--gold);
+            border: 1px solid var(--border-gold);
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .node-link-btn:hover {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 0 12px var(--gold-glow);
+        }
+
+        /* Outgoing Arrow Indicator inside card */
+        .node-arrow-flow {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .node-arrow-flow strong {
+            color: var(--gold);
+        }
+
+        /* ============================================================ */
+        /* SECTION 7: SUMMARY DIRECTORY TABLE ("KAUN SA KAHAN HAI")     */
+        /* ============================================================ */
+        .directory-section {
+            margin-top: 50px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .directory-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .directory-table th {
+            background: rgba(0, 0, 0, 0.4);
+            color: var(--gold);
+            padding: 14px 18px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-gold);
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.8px;
+        }
+
+        .directory-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text-main);
+        }
+
+        .directory-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .code-tag {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 3px 8px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: monospace;
+            font-size: 12.5px;
+            color: #38bdf8;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .status-active {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        /* ============================================================ */
+        /* SECTION 8: FOOTER & INSTITUTION CREDITS                      */
+        /* ============================================================ */
+        .portal-footer {
+            margin-top: 60px;
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 30px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .portal-footer strong {
+            color: var(--gold);
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 900px) {
+            .top-navbar { padding: 15px 20px; flex-direction: column; text-align: center; }
+            .node-grid { grid-template-columns: 1fr; }
+            .legend-card { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 3: TOP HEADER & NAVIGATION BAR                      -->
+    <!-- ============================================================ -->
+    <header class="top-navbar">
+        <div class="nav-brand-group">
+            <a href="index.html" class="back-home-btn">
+                <i data-lucide="arrow-left"></i> Home Vault
+            </a>
+            <div class="brand-text">
+                <h1><i data-lucide="network"></i> Website Skeleton Architecture</h1>
+                <p>Maa Sharda Classes • Complete Structural Flow & Layout Diagram ("कौन सा कहाँ है")</p>
+            </div>
+        </div>
+        <div class="header-actions">
+            <div class="action-chip">
+                <i data-lucide="shield-check" style="color: var(--gold);"></i>
+                <span>Mentor: <strong>Rajnikant Chauhan Sir</strong></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4: PAGE HERO & SKELETON INTRO                       -->
+    <!-- ============================================================ -->
+    <section class="hero-banner">
+        <div class="badge-pill">
+            <i data-lucide="git-merge"></i> Full Website Sitemap & Directional Flow
+        </div>
+        <h2>वेबसाइट का संपूर्ण ढाँचा एवं <span>कनेक्शन मानचित्र (Diagram)</span></h2>
+        <p class="subtitle">
+            यह विजुअल डायग्राम दर्शाता है कि मुख्य पोर्टल से शुरू होकर कौन सा पेज किस श्रेणी (Category) में है, 
+            और तीर (Arrows) के माध्यम से कौन सा पेज कहाँ से जुड़ा हुआ है।
+        </p>
+
+        <!-- Category Filter Buttons -->
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterSkeleton('all', this)">
+                <i data-lucide="layout-grid"></i> All Levels (सभी स्तर)
+            </button>
+            <button class="filter-btn" onclick="filterSkeleton('class8', this)">
+                <i data-lucide="book-open"></i> Class 8 Flow (कक्षा 8)
+            </button>
+            <button class="filter-btn" onclick="filterSkeleton('class10', this)">
+                <i data-lucide="graduation-cap"></i> Class 10 Flow (कक्षा 10)
+            </button>
+            <button class="filter-btn" onclick="filterSkeleton('gk', this)">
+                <i data-lucide="globe"></i> GK Daily Portal (सामान्य ज्ञान)
+            </button>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: MAIN SKELETON DIAGRAM WORKSPACE                   -->
+    <!-- ============================================================ -->
+    <main class="container">
+        
+        <!-- Visual Legend Bar -->
+        <div class="legend-card">
+            <div style="font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px;">
+                <i data-lucide="info" style="color: var(--gold);"></i> रंग संकेत (Color Legend):
+            </div>
+            <div class="legend-items">
+                <div class="legend-item"><span class="indicator-dot dot-hub"></span> Level 1: Central Portal</div>
+                <div class="legend-item"><span class="indicator-dot dot-class"></span> Level 2: Classes / Divisions</div>
+                <div class="legend-item"><span class="indicator-dot dot-subject"></span> Level 3: Subject Hubs</div>
+                <div class="legend-item"><span class="indicator-dot dot-topic"></span> Level 4: Topics & Modules</div>
+                <div class="legend-item"><span class="indicator-dot dot-lesson"></span> Level 5: Daily Lessons & Worksheets</div>
+            </div>
+        </div>
+
+        <div class="skeleton-tree">
+
+            <!-- ---------------------------------------------------- -->
+            <!-- LEVEL 1: CENTRAL HUB (INDEX.HTML)                    -->
+            <!-- ---------------------------------------------------- -->
+            <div class="arch-level" id="level-1">
+                <div class="level-header">
+                    <div class="level-title-group">
+                        <span class="level-badge">LEVEL 1</span>
+                        <h3>🏛️ Main Central Hub (मुख्य द्वार)</h3>
+                    </div>
+                    <span class="level-desc">वेबसाइट का मुख्य प्रवेश पृष्ठ</span>
+                </div>
+                
+                <div class="node-grid">
+                    <div class="node-card cat-hub">
+                        <div>
+                            <div class="node-header">
+                                <div class="node-icon-box">
+                                    <i data-lucide="home"></i>
+                                </div>
+                                <span class="node-cat-tag">Master Entry</span>
+                            </div>
+                            <div class="node-body">
+                                <h4>Maa Sharda Study Vault</h4>
+                                <p>मुख्य पोर्टल जहां कक्षा 1 से 12 तक के वर्ग, GK पोर्टल, रीजनिंग एवं टेस्ट के मुख्य बटन्स स्थित हैं।</p>
+                                <div class="node-path-box">
+                                    <i data-lucide="file-code"></i> index.html
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="index.html" class="node-link-btn">
+                                <i data-lucide="external-link"></i> मुख्य पोर्टल खोलें
+                            </a>
+                            <div class="node-arrow-flow">
+                                <i data-lucide="corner-down-right"></i> Arrows Point To: <strong>Class 8, Class 10, GK Portal</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Directional Flow Arrow -->
+            <div class="flow-connector">
+                <div class="arrow-bubble">
+                    <i data-lucide="arrow-down"></i>
+                </div>
+                <span class="arrow-label">Navigation Path (दिशा)</span>
+            </div>
+
+            <!-- ---------------------------------------------------- -->
+            <!-- LEVEL 2: ACADEMIC DIVISIONS & CLASS PORTALS          -->
+            <!-- ---------------------------------------------------- -->
+            <div class="arch-level" id="level-2">
+                <div class="level-header">
+                    <div class="level-title-group">
+                        <span class="level-badge" style="border-color: var(--accent-blue); color: var(--accent-blue);">LEVEL 2</span>
+                        <h3>📚 Class & Subject Portals (वर्ग एवं विशेष अनुभाग)</h3>
+                    </div>
+                    <span class="level-desc">कक्षा स्तर के मुख्य डैशबोर्ड</span>
+                </div>
+
+                <div class="node-grid">
+                    
+                    <!-- Class 8 Subject Portal -->
+                    <div class="node-card cat-class" data-flow="class8">
+                        <div>
+                            <div class="node-header">
+                                <div class="node-icon-box">
+                                    <i data-lucide="folder"></i>
+                                </div>
+                                <span class="node-cat-tag">Class 8</span>
+                            </div>
+                            <div class="node-body">
+                                <h4>Class 8 Subjects Portal</h4>
+                                <p>कक्षा 8 के सभी विषयों (English, Maths, Science, GS, GK, Reasoning) का केंद्रीय चयन पृष्ठ।</p>
+                                <div class="node-path-box">
+                                    <i data-lucide="file-code"></i> class8-subjects-portal.html
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="class8-subjects-portal.html" class="node-link-btn">
+                                <i data-lucide="folder-open"></i> Class 8 Portal खोलें
+                            </a>
+                            <div class="node-arrow-flow">
+                                <i data-lucide="corner-down-right"></i> Leads to: <strong>Class 8 English Hub</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class 10 Dashboard -->
+                    <div class="node-card cat-class" data-flow="class10">
+                        <div>
+                            <div class="node-header">
+                                <div class="node-icon-box">
+                                    <i data-lucide="monitor"></i>
+                                </div>
+                                <span class="node-cat-tag">Class 10</span>
+                            </div>
+                            <div class="node-body">
+                                <h4>Class 10 Learning Dashboard</h4>
+                                <p>कक्षा 10वीं के छात्रों एवं टीवी स्क्रीन के लिए विशेष रूप से डिज़ाइन किया गया लर्निंग पोर्टल।</p>
+                                <div class="node-path-box">
+                                    <i data-lucide="file-code"></i> CLASS10/main-ui.html
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="CLASS10/main-ui.html" class="node-link-btn">
+                                <i data-lucide="folder-open"></i> Class 10 Dashboard खोलें
+                            </a>
+                            <div class="node-arrow-flow">
+                                <i data-lucide="corner-down-right"></i> Leads to: <strong>Science, English, GS Portals</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GK Daily Practice Portal -->
+                    <div class="node-card cat-class" data-flow="gk">
+                        <div>
+                            <div class="node-header">
+                                <div class="node-icon-box">
+                                    <i data-lucide="globe"></i>
+                                </div>
+                                <span class="node-cat-tag">GK Specialty</span>
+                            </div>
+                            <div class="node-body">
+                                <h4>GK Daily Practice Hub</h4>
+                                <p>सामान्य ज्ञान का दैनिक क्विज़ पोर्टल, जहां Day 1 से Day 38 तक के सभी प्रैक्टिस सेशन्स उपलब्ध हैं।</p>
+                                <div class="node-path-box">
+                                    <i data-lucide="file-code"></i> GK/GK_UI.html
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="GK/GK_UI.html" class="node-link-btn">
+                                <i data-lucide="folder-open"></i> GK Portal खोलें
+                            </a>
+                            <div class="node-arrow-flow">
+                                <i data-lucide="corner-down-right"></i> Leads to: <strong>Days 1-38 & Master Quiz</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Directional Flow Arrow -->
+            <div class="flow-connector">
+                <div class="arrow-bubble">
+                    <i data-lucide="arrow-down"></i>
+                </div>
+                <span class="arrow-label">Navigation Path (दिशा)</span>
+            </div>
+
+            <!-- ---------------------------------------------------- -->
+            <!-- LEVEL 3: SUBJECT HUBS (ENGLISH, SCIENCE, CHAPTERS)   -->
+            <!-- ---------------------------------------------------- -->
+            <div class="arch-level" id="level-3">
+                <div class="level-header">
+                    <div class="level-title-group">
+                        <span class="level-badge" style="border-color: var(--accent-purple); color: var(--accent-purple);">LEVEL 3</span>
+                        <h3>📖 Subject & Module Hubs (विषय केंद्र)</h3>
+                    </div>
+                    <span class="level-desc">विशिष्ट विषय एवं पाठ्यपुस्तक हब</span>
+                </div>
+
+                <div class="node-grid">
+
+                    <!-- Class 8 English Hub -->
+                    <div class="node-card cat-subject" data-flow="class8">
+                        <div>
+                            <div class="node-header">
+                                <div class="node-icon-box">
+                                    <i data-lucide="book"></i>
+                                </div>
+                                <span class="node-cat-tag">Class 8 English</span>
+                            </div>
+                            <div class="node-body">
+                                <h4>Class 8 English Hub</h4>
+                                <p>Active & Passive Voice, Tenses (काल) तथा नए टॉपिक्स जोड़ने का मुख्य पृष्ठ।</p>
+                                <div class="node-path-box">
+                                    <i data-lucide="file-code"></i> class8-english-portal.html
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="class8-english-portal.html" class="node-link-btn">
+                                <i data-lucide="book-open"></i> English Hub खोलें
+                            </a>
+                            <div class="node-arrow-flow">
+                                <i data-lucide="corner-down-right"></i> Leads to: <strong>Active/Passive Voice & Tenses</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class 10 Science Portal -->
+                    <div class="node-card cat-subject" data-flow="class10">
+                        <div>
+                            <div class="node-header">
+                                <div class="node-icon-box">
+                                    <i data-lucide="flask-conical"></i>
+                                </div>
+                                <span class="node-cat-tag">Class 10 Science</span>
+                            </div>
+                            <div class="node-body">
+                                <h4>Class 10 Science Interactive Portal</h4>
+                                <p>विज्ञान के अध्याय 1 से 4, IUPAC नामकरण, रासायनिक समीकरण तथा यूनिट टेस्ट का डायनामिक फ्रेम।</p>
+                                <div class="node-path-box">
+                                    <i data-lucide="file-code"></i> CLASS10/SCIENCE/Science-ui.html
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="CLASS10/SCIENCE/Science-ui.html" class="node-link-btn">
+                                <i data-lucide="flask-conical"></i> Science Portal खोलें
+                            </a>
+                            <div class="node-arrow-flow">
+                                <i data-lucide="corner-down-right"></i> Leads to: <strong>Chapter 4 Days 1-5 Worksheets</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class 10 English Text Book Portal -->
+                    <div class="node-card cat-subject" data-flow="class10">
+                        <div>
+                            <div class="node-header">
+                                <div class="node-icon-box">
+                                    <i data-lucide="book-marked"></i>
+                                </div>
+                                <span class="node-cat-tag">Class 10 English</span>
+                            </div>
+                            <div class="node-body">
+                                <h4>First Flight & Footprints Portal</h4>
+                                <p>चैप्टर 1 (A Letter to God), चैप्टर 2 (Long Walk to Freedom), ग्रामर तथा महत्वपूर्ण प्रश्नोत्तर।</p>
+                                <div class="node-path-box">
+                                    <i data-lucide="file-code"></i> CLASS10/ENGLISH/CHAPTERS/main-ui.html
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="CLASS10/ENGLISH/CHAPTERS/main-ui.html" class="node-link-btn">
+                                <i data-lucide="book-open"></i> Chapters Portal खोलें
+                            </a>
+                            <div class="node-arrow-flow">
+                                <i data-lucide="corner-down-right"></i> Leads to: <strong>Chapter 2 Day Sessions</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Directional Flow Arrow -->
+            <div class="flow-connector">
+                <div class="arrow-bubble">
+                    <i data-lucide="arrow-down"></i>
+                </div>
+                <span class="arrow-label">Navigation Path (दिशा)</span>
+            </div>
+
+            <!-- ---------------------------------------------------- -->
+            <!-- LEVEL 4: TOPIC / GRAMMAR BRANCHES                    -->
+            <!-- ---------------------------------------------------- -->
+            <div class="arch-level" id="level-4">
+                <div class="level-header">
+                    <div class="level-title-group">
+                        <span class="level-badge" style="border-color: var(--accent-pink); color: var(--accent-pink);">LEVEL 4</span>
+                        <h3>🎯 Topic & Grammar Branches (व्याकरण एवं विषय-शाखा)</h3>
+                    </div>
+                    <span class="level-desc">काल (Tenses) एवं वॉइस (AV & PV) का विभाजन</span>
+                </div>
+
+                <div class="node-grid">
+
+                    <!-- Active & Passive Voice Master Hub -->
+                    <div class="node-card cat-topic" data-flow="class8">
+                        <div>
+                            <div class="node-header">
+                                <div class="node-icon-box">
+                                    <i data-lucide="folder-lock"></i>
+                                </div>
+                                <span class="node-cat-tag">Grammar Hub</span>
+                            </div>
+                            <div class="node-body">
+                                <h4>Active & Passive Voice Hub</h4>
+                                <p>वॉइस का मुख्य संकलन (Present Tense, Past Tense, Future Tense, Basic Rules)।</p>
+                                <div class="node-path-box">
+                                    <i data-lucide="file-code"></i> class8-english-grammar-voice.html
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="class8-english-grammar-voice.html" class="node-link-btn">
+                                <i data-lucide="folder-open"></i> Voice Hub खोलें
+                            </a>
+                            <div class="node-arrow-flow">
+                                <i data-lucide="corner-down-right"></i> Leads to: <strong>Past Tense AV & PV</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Past Tense AV/PV Branch -->
+                    <div class="node-card cat-topic" data-flow="class8">
+                        <div>
+                            <div class="node-header">
+                                <div class="node-icon-box">
+                                    <i data-lucide="clock"></i>
+                                </div>
+                                <span class="node-cat-tag">Past Voice</span>
+                            </div>
+                            <div class="node-body">
+                                <h4>Past Tense: AV & PV</h4>
+                                <p>Past Indefinite, Past Continuous, Past Perfect तथा अन्य नियमों की सूची।</p>
+                                <div class="node-path-box">
+                                    <i data-lucide="file-code"></i> class8-english-voice-past.html
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="class8-english-voice-past.html" class="node-link-btn">
+                                <i data-lucide="folder-open"></i> Past Tense खोलें
+                            </a>
+                            <div class="node-arrow-flow">
+                                <i data-lucide="corner-down-right"></i> Leads to: <strong>Past Perfect Daily Lessons</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Past Perfect Daily Updates -->
+                    <div class="node-card cat-topic" data-flow="class8">
+                        <div>
+                            <div class="node-header">
+                                <div class="node-icon-box">
+                                    <i data-lucide="calendar"></i>
+                                </div>
+                                <span class="node-cat-tag">Daily Updates</span>
+                            </div>
+                            <div class="node-body">
+                                <h4>Past Perfect Daily Lessons</h4>
+                                <p>Day 1 से Day 8 तक के अभ्यास सत्र एवं रिवीजन टेस्ट का संग्रह।</p>
+                                <div class="node-path-box">
+                                    <i data-lucide="file-code"></i> class8-english-voice-past-perfect-days.html
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="class8-english-voice-past-perfect-days.html" class="node-link-btn">
+                                <i data-lucide="calendar"></i> Daily Lessons खोलें
+                            </a>
+                            <div class="node-arrow-flow">
+                                <i data-lucide="corner-down-right"></i> Leads to: <strong>Day 3 & WH-Family Worksheets</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Master GK Quiz -->
+                    <div class="node-card cat-topic" data-flow="gk">
+                        <div>
+                            <div class="node-header">
+                                <div class="node-icon-box">
+                                    <i data-lucide="flame"></i>
+                                </div>
+                                <span class="node-cat-tag">Mega Quiz</span>
+                            </div>
+                            <div class="node-body">
+                                <h4>Master GK Quiz (सभी दिन)</h4>
+                                <p>सभी दिनों के सामान्य ज्ञान का संयुक्त मेगा टेस्ट एवं समीक्षा पोर्टल।</p>
+                                <div class="node-path-box">
+                                    <i data-lucide="file-code"></i> GK/MASTER-GK/master-gkui.html
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="GK/MASTER-GK/master-gkui.html" class="node-link-btn">
+                                <i data-lucide="award"></i> Master Quiz खोलें
+                            </a>
+                            <div class="node-arrow-flow">
+                                <i data-lucide="corner-down-right"></i> Live MCQ Testing for all GK
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Directional Flow Arrow -->
+            <div class="flow-connector">
+                <div class="arrow-bubble">
+                    <i data-lucide="arrow-down"></i>
+                </div>
+                <span class="arrow-label">Navigation Path (दिशा)</span>
+            </div>
+
+            <!-- ---------------------------------------------------- -->
+            <!-- LEVEL 5: DAILY LESSONS & INTERACTIVE WORKSHEETS      -->
+            <!-- ---------------------------------------------------- -->
+            <div class="arch-level" id="level-5">
+                <div class="level-header">
+                    <div class="level-title-group">
+                        <span class="level-badge" style="border-color: var(--accent-green); color: var(--accent-green);">LEVEL 5</span>
+                        <h3>📝 Worksheets & Interactive Lessons (कार्यपत्रक एवं अभ्यास)</h3>
+                    </div>
+                    <span class="level-desc">50 प्रश्नों के इंटरैक्टिव प्रश्नोत्तर, फॉर्मूले एवं दैनिक क्विज़</span>
+                </div>
+
+                <div class="node-grid">
+
+                    <!-- Past Perfect Interrogative Worksheet -->
+                    <div class="node-card cat-lesson" data-flow="class8">
+                        <div>
+                            <div class="node-header">
+                                <div class="node-icon-box">
+                                    <i data-lucide="file-check"></i>
+                                </div>
+                                <span class="node-cat-tag">Day 3 Worksheet</span>
+                            </div>
+                            <div class="node-body">
+                                <h4>Past Perfect Yes/No Worksheet</h4>
+                                <p>50 प्रश्नों का संपूर्ण सेट। 'Enter' दबाने पर तुरंत उत्तर प्रदर्शित होता है। A4 प्रिंटेबल डिज़ाइन।</p>
+                                <div class="node-path-box">
+                                    <i data-lucide="file-code"></i> class8-english-voice-past-perfect-worksheet.html
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="class8-english-voice-past-perfect-worksheet.html" class="node-link-btn">
+                                <i data-lucide="file-text"></i> Worksheet खोलें
+                            </a>
+                            <div class="node-arrow-flow">
+                                <i data-lucide="check-circle-2"></i> <strong>Interactive (Enter key reveal) + Print Ready</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Present Indefinite Hindi Guide -->
+                    <div class="node-card cat-lesson" data-flow="class8">
+                        <div>
+                            <div class="node-header">
+                                <div class="node-icon-box">
+                                    <i data-lucide="languages"></i>
+                                </div>
+                                <span class="node-cat-tag">Tense Guide</span>
+                            </div>
+                            <div class="node-body">
+                                <h4>Present Indefinite Tense Guide</h4>
+                                <p>सरल हिंदी में काल की परिभाषा, पहचान, s/es के नियम, फॉर्मूला टेबल तथा व्यापक वर्कशीट।</p>
+                                <div class="node-path-box">
+                                    <i data-lucide="file-code"></i> class8-english-grammar-present-indefinite.html
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="class8-english-grammar-present-indefinite.html" class="node-link-btn">
+                                <i data-lucide="book-open"></i> Hindi Guide खोलें
+                            </a>
+                            <div class="node-arrow-flow">
+                                <i data-lucide="check-circle-2"></i> <strong>Complete Hindi Explanations + Exercises</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WH-Family Day 4 Worksheet -->
+                    <div class="node-card cat-lesson" data-flow="class8">
+                        <div>
+                            <div class="node-header">
+                                <div class="node-icon-box">
+                                    <i data-lucide="help-circle"></i>
+                                </div>
+                                <span class="node-cat-tag">Day 4 Lesson</span>
+                            </div>
+                            <div class="node-body">
+                                <h4>Past Perfect WH-Family (50 Q)</h4>
+                                <p>Why, What, Where, When, How आदि पर आधारित 50 विशेष इंटरैक्टिव प्रश्न एवं अभ्यास।</p>
+                                <div class="node-path-box">
+                                    <i data-lucide="file-code"></i> CLASS 8/ENGLISH/AV PV/PAST/PAST PERFECT/day4.html
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="CLASS 8/ENGLISH/AV PV/PAST/PAST PERFECT/day4.html" class="node-link-btn">
+                                <i data-lucide="file-text"></i> Day 4 Lesson खोलें
+                            </a>
+                            <div class="node-arrow-flow">
+                                <i data-lucide="check-circle-2"></i> <strong>50 WH-Family Voice Sentences</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Science Chapter 4 Days -->
+                    <div class="node-card cat-lesson" data-flow="class10">
+                        <div>
+                            <div class="node-header">
+                                <div class="node-icon-box">
+                                    <i data-lucide="atom"></i>
+                                </div>
+                                <span class="node-cat-tag">Chemistry Ch 4</span>
+                            </div>
+                            <div class="node-body">
+                                <h4>Carbon & Compounds: Days 1-5</h4>
+                                <p>IUPAC नामकरण (Naming), साइक्लो, नियो, आइसो, तथा आंसर की के साथ बोर्ड विशेष वर्कशीट।</p>
+                                <div class="node-path-box">
+                                    <i data-lucide="file-code"></i> CLASS10/SCIENCE/CHAPTERS/CHAPTER4/day1x.html
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="CLASS10/SCIENCE/CHAPTERS/CHAPTER4/day1x.html" class="node-link-btn">
+                                <i data-lucide="file-text"></i> Ch 4 Day 1 खोलें
+                            </a>
+                            <div class="node-arrow-flow">
+                                <i data-lucide="check-circle-2"></i> <strong>Board Exam Practice Sessions</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 7: DETAILED DIRECTORY TABLE ("KAUN SA KAHAN HAI")   -->
+        <!-- ============================================================ -->
+        <section class="directory-section">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                <div>
+                    <h3 style="font-family: 'Outfit', sans-serif; font-size: 22px; color: #fff;">
+                        📂 Directory Map: कौन सा पेज कहाँ है (Exact File Registry)
+                    </h3>
+                    <p style="font-size: 13px; color: var(--text-muted);">
+                        नीचे सभी मुख्य फाइलों की श्रेणी, नया व्यवस्थित नाम और पुराना नाम दिया गया है:
+                    </p>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="directory-table">
+                    <thead>
+                        <tr>
+                            <th>स्तर / श्रेणी (Category)</th>
+                            <th>व्यवस्थित फ़ाइल नाम (Categorized File)</th>
+                            <th>मूल फ़ाइल (Original File)</th>
+                            <th>विषय वस्तु (Description)</th>
+                            <th>कार्रवाई</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong style="color: var(--gold);">Level 1: Central Portal</strong></td>
+                            <td><span class="code-tag">index.html</span></td>
+                            <td><span class="code-tag">index.html</span></td>
+                            <td>मुख्य पोर्टल (All Classes 1-12, GK, Reasoning Hub)</td>
+                            <td><a href="index.html" style="color: var(--gold); text-decoration: none; font-weight: 700;">Open ➔</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: var(--accent-blue);">Level 2: Class 8 Portal</strong></td>
+                            <td><span class="code-tag">class8-subjects-portal.html</span></td>
+                            <td><span class="code-tag">page8class.html</span></td>
+                            <td>Class 8th Subjects Selection (English, Maths, Science...)</td>
+                            <td><a href="class8-subjects-portal.html" style="color: var(--accent-blue); text-decoration: none; font-weight: 700;">Open ➔</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: var(--accent-purple);">Level 3: Class 8 English</strong></td>
+                            <td><span class="code-tag">class8-english-portal.html</span></td>
+                            <td><span class="code-tag">class8engmain.html</span></td>
+                            <td>Class 8 English Subject Portal (Active/Passive, Tenses)</td>
+                            <td><a href="class8-english-portal.html" style="color: var(--accent-purple); text-decoration: none; font-weight: 700;">Open ➔</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: var(--accent-pink);">Level 4: Voice Module</strong></td>
+                            <td><span class="code-tag">class8-english-grammar-voice.html</span></td>
+                            <td><span class="code-tag">main_AV_PV.html</span></td>
+                            <td>Active & Passive Voice Main Rules & Tense Hub</td>
+                            <td><a href="class8-english-grammar-voice.html" style="color: var(--accent-pink); text-decoration: none; font-weight: 700;">Open ➔</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: var(--accent-pink);">Level 4: Past Voice</strong></td>
+                            <td><span class="code-tag">class8-english-voice-past.html</span></td>
+                            <td><span class="code-tag">pastavpvmain.html</span></td>
+                            <td>Past Tense AV & PV (Indefinite, Continuous, Perfect)</td>
+                            <td><a href="class8-english-voice-past.html" style="color: var(--accent-pink); text-decoration: none; font-weight: 700;">Open ➔</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: var(--accent-pink);">Level 4: Past Perfect Days</strong></td>
+                            <td><span class="code-tag">class8-english-voice-past-perfect-days.html</span></td>
+                            <td><span class="code-tag">day_pstprapvmn.html</span></td>
+                            <td>Past Perfect Daily Updates (Day 1 to Day 8)</td>
+                            <td><a href="class8-english-voice-past-perfect-days.html" style="color: var(--accent-pink); text-decoration: none; font-weight: 700;">Open ➔</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: var(--accent-green);">Level 5: Voice Worksheet</strong></td>
+                            <td><span class="code-tag">class8-english-voice-past-perfect-worksheet.html</span></td>
+                            <td><span class="code-tag">past_per_av_pv_d1.html</span></td>
+                            <td>Past Perfect Interrogative Worksheet (50 Questions)</td>
+                            <td><a href="class8-english-voice-past-perfect-worksheet.html" style="color: var(--accent-green); text-decoration: none; font-weight: 700;">Open ➔</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: var(--accent-green);">Level 5: Tense Guide</strong></td>
+                            <td><span class="code-tag">class8-english-grammar-present-indefinite.html</span></td>
+                            <td><span class="code-tag">present11april.html</span></td>
+                            <td>Present Indefinite Tense – Complete Hindi Guide + Exercises</td>
+                            <td><a href="class8-english-grammar-present-indefinite.html" style="color: var(--accent-green); text-decoration: none; font-weight: 700;">Open ➔</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: var(--accent-blue);">Level 2: Class 10 Portal</strong></td>
+                            <td><span class="code-tag">CLASS10/main-ui.html</span></td>
+                            <td><span class="code-tag">CLASS10/main-ui.html</span></td>
+                            <td>Class 10 Dashboard (Science, English, Maths, GS)</td>
+                            <td><a href="CLASS10/main-ui.html" style="color: var(--accent-blue); text-decoration: none; font-weight: 700;">Open ➔</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: var(--accent-purple);">Level 3: Class 10 Science</strong></td>
+                            <td><span class="code-tag">CLASS10/SCIENCE/Science-ui.html</span></td>
+                            <td><span class="code-tag">CLASS10/SCIENCE/Science-ui.html</span></td>
+                            <td>Class 10 Science Interactive Portal with MathJax</td>
+                            <td><a href="CLASS10/SCIENCE/Science-ui.html" style="color: var(--accent-purple); text-decoration: none; font-weight: 700;">Open ➔</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: var(--gold);">Level 2: GK Daily Hub</strong></td>
+                            <td><span class="code-tag">GK/GK_UI.html</span></td>
+                            <td><span class="code-tag">GK/GK_UI.html</span></td>
+                            <td>All-Classes GK Daily Practice (Days 1 to 38)</td>
+                            <td><a href="GK/GK_UI.html" style="color: var(--gold); text-decoration: none; font-weight: 700;">Open ➔</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 8: FOOTER & INSTITUTION CREDITS                      -->
+        <!-- ============================================================ -->
+        <footer class="portal-footer">
+            <p><strong>Maa Sharda Classes</strong> • स्थान: टुनटुन मोड़ मार्केट | शिक्षा के प्रति समर्पित</p>
+            <p style="margin-top: 6px; font-size: 13px;">Mentor & Direction: <strong>RAJNIKANT CHAUHAN SIR</strong> • All Structure Mapped & Categorized</p>
+        </footer>
+
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 9: JAVASCRIPT LOGIC & LUCIDE ICONS                   -->
+    <!-- ============================================================ -->
+    <script>
+        // Lucide Vector Icons Initialize
+        lucide.createIcons();
+
+        // Interactive Filter for Skeleton Nodes
+        function filterSkeleton(flowKey, btn) {
+            // Update active state on buttons
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const allNodes = document.querySelectorAll('.node-card');
+            allNodes.forEach(node => {
+                if (flowKey === 'all') {
+                    node.style.display = 'flex';
+                } else {
+                    const nodeFlow = node.getAttribute('data-flow');
+                    if (nodeFlow === flowKey || node.classList.contains('cat-hub')) {
+                        node.style.display = 'flex';
+                    } else {
+                        node.style.display = 'none';
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
