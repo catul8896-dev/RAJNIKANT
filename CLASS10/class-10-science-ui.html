@@ -243,12 +243,22 @@
 </head>
 <body>
 
-<header class="header">
-    <div class="back-btn" onclick="goToHome()">
-        <i data-lucide="chevron-left"></i> BACK
+<header class="header" style="justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+    <div style="display:flex; align-items:center;">
+        <div class="back-btn" onclick="goToHome()">
+            <i data-lucide="chevron-left"></i> BACK
+        </div>
+        <div class="title-section">
+            <h1 id="main-portal-title">SCIENCE PORTAL - CLASS 10th</h1>
+        </div>
     </div>
-    <div class="title-section">
-        <h1 id="main-portal-title">SCIENCE PORTAL - CLASS 10th</h1>
+    <div style="display:flex; gap:10px; align-items:center; flex-wrap: wrap;">
+        <a href="class10-science-objective-quiz.html" style="background:#ffcc00; color:#000; text-decoration:none; padding:8px 18px; border-radius:10px; font-size:22px; display:inline-flex; align-items:center; gap:6px;">
+            <i data-lucide="play-circle"></i> वस्तुनिष्ठ क्विज (Objective Quiz)
+        </a>
+        <a href="class10-quiz-admin.html" style="background:#ff0055; color:#fff; text-decoration:none; padding:8px 18px; border-radius:10px; font-size:22px; display:inline-flex; align-items:center; gap:6px; border:2px solid #fff;">
+            <i data-lucide="shield-check"></i> एडमिन पैनल (No Login)
+        </a>
     </div>
 </header>
 
@@ -279,6 +289,9 @@
         </div>
 
         <div class="category-heading"><i data-lucide="help-circle"></i> QUIZ MCQs SERIES</div>
+        <a href="class10-science-objective-quiz.html" class="nav-item-card" style="text-decoration:none; border-color:#ffcc00; background:linear-gradient(145deg, #261f00, #0c0c0c);">
+            <span style="color:#ffcc00;">🎯 OBJECTIVE QUIZ (अध्यायवार)</span><i data-lucide="external-link"></i>
+        </a>
         <div class="nav-item-card" data-id="qz1" data-title="LIVE BOOSTER: Target Board 2026">
             <span>OBJECTIVE QUIZ 01</span><i data-lucide="chevron-right"></i>
         </div>

@@ -1,0 +1,2120 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 10 Science Objective & GK Quiz Portal | माँ शारदा क्लासेस</title>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts for Modern Educational Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- MathJax for chemical & physical formulas -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <style>
+        :root {
+            --bg-main: #000000;
+            --bg-card: #0d1117;
+            --bg-card-alt: #161b26;
+            --gold: #ffcc00;
+            --gold-glow: rgba(255, 204, 0, 0.35);
+            --text-main: #ffffff;
+            --text-muted: #a0aec0;
+            --accent-green: #00e676;
+            --accent-red: #ff1744;
+            --accent-blue: #00e5ff;
+            --accent-pink: #ff007f;
+            --border-gold: rgba(255, 204, 0, 0.4);
+            --border-subtle: #2d3748;
+            --font-family: 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif;
+            --heading-font: 'Outfit', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-weight: 700;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(255, 204, 0, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(0, 229, 255, 0.06) 0%, transparent 45%);
+            font-family: var(--font-family);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* ── TOP UTILITY NAVIGATION BAR ── */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #222;
+            margin-bottom: 25px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-nav {
+            background: #111;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            padding: 10px 22px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-nav:hover {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 0 15px var(--gold-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-admin {
+            background: linear-gradient(135deg, #ff0055, #c70039);
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .btn-admin:hover {
+            background: #ffffff;
+            color: #ff0055;
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+        }
+
+        /* ── HERO BANNER ── */
+        .hero-banner {
+            background: linear-gradient(145deg, #121620, #0a0c12);
+            border: 4px solid var(--gold);
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,204,0,0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-banner h1 {
+            font-family: var(--heading-font);
+            font-size: 46px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .hero-banner p {
+            font-size: 26px;
+            color: #e2e8f0;
+            margin-bottom: 18px;
+        }
+
+        .badge-teacher {
+            display: inline-block;
+            background: #ff0055;
+            color: #ffffff;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 22px;
+            border: 2px solid #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── ENROLLMENT STATUS BAR ── */
+        .enrollment-status-bar {
+            background: var(--bg-card);
+            border: 2px solid var(--border-gold);
+            border-radius: 18px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .student-info-tag {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 24px;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        .status-pill.approved {
+            background: rgba(0, 230, 118, 0.15);
+            color: var(--accent-green);
+            border: 2px solid var(--accent-green);
+        }
+
+        .status-pill.pending {
+            background: rgba(255, 204, 0, 0.15);
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            animation: pulse-border 1.5s infinite;
+        }
+
+        .status-pill.rejected {
+            background: rgba(255, 23, 68, 0.15);
+            color: var(--accent-red);
+            border: 2px solid var(--accent-red);
+        }
+
+        .status-pill.not-enrolled {
+            background: rgba(160, 174, 192, 0.15);
+            color: var(--text-muted);
+            border: 2px solid var(--text-muted);
+        }
+
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 204, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); }
+        }
+
+        /* ── ENROLLMENT MODAL / FORM ── */
+        .enroll-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .enroll-modal-overlay.active {
+            display: flex;
+        }
+
+        .enroll-card {
+            background: #0f131c;
+            border: 4px solid var(--gold);
+            border-radius: 24px;
+            max-width: 650px;
+            width: 100%;
+            padding: 35px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+            text-align: center;
+        }
+
+        .enroll-card h2 {
+            font-size: 34px;
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-family: var(--heading-font);
+        }
+
+        .enroll-card p {
+            font-size: 20px;
+            color: #cbd5e1;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 20px;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            background: #1a202c;
+            border: 2px solid #4a5568;
+            color: #fff;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-size: 22px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        .btn-submit-request {
+            width: 100%;
+            background: linear-gradient(135deg, #ffcc00, #ff9900);
+            color: #000;
+            border: none;
+            padding: 16px;
+            border-radius: 14px;
+            font-size: 24px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit-request:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.6);
+        }
+
+        /* ── WAITING / PENDING SCREEN ── */
+        .waiting-room-box {
+            display: none;
+            background: #141923;
+            border: 3px dashed var(--gold);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .waiting-room-box.active {
+            display: block;
+        }
+
+        .pulse-loader {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(255, 204, 0, 0.2);
+            border-top: 8px solid var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 25px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ── CHAPTER GRID SECTION ── */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            color: var(--gold);
+            font-family: var(--heading-font);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .chapter-card {
+            background: linear-gradient(145deg, #131722, #0b0e14);
+            border: 3px solid #2d3748;
+            border-radius: 20px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chapter-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(255, 204, 0, 0.2);
+        }
+
+        .chapter-card.locked {
+            opacity: 0.6;
+            filter: grayscale(40%);
+        }
+
+        .ch-num {
+            display: inline-block;
+            background: rgba(255, 204, 0, 0.15);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 18px;
+            margin-bottom: 12px;
+            align-self: flex-start;
+        }
+
+        .ch-title {
+            font-size: 26px;
+            color: #ffffff;
+            margin-bottom: 12px;
+            line-height: 1.35;
+        }
+
+        .ch-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            border-bottom: 1px dashed #2d3748;
+            padding-bottom: 10px;
+        }
+
+        .btn-start-quiz {
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-start-quiz:hover {
+            background: #ffffff;
+            color: #000;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        /* ── QUIZ ACTIVE TEST ARENA ── */
+        .quiz-arena {
+            display: none;
+            background: #0f131d;
+            border: 4px solid var(--gold);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            margin-bottom: 40px;
+        }
+
+        .quiz-arena.active {
+            display: block;
+        }
+
+        .quiz-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 3px solid #2d3748;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .quiz-title-display {
+            font-size: 32px;
+            color: var(--gold);
+            font-family: var(--heading-font);
+        }
+
+        .quiz-stats-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .timer-badge {
+            background: #2d1810;
+            color: #ff9100;
+            border: 2px solid #ff9100;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 22px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 12px;
+            background: #1a202c;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffcc00, #00e676);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .question-card-box {
+            background: #151a26;
+            border: 2px solid #2d3748;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .q-number-pill {
+            display: inline-block;
+            background: rgba(0, 229, 255, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 32px;
+            color: #ffffff;
+            line-height: 1.45;
+            margin-bottom: 25px;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .option-btn {
+            background: #0d111a;
+            border: 3px solid #334155;
+            border-radius: 14px;
+            padding: 20px 24px;
+            color: #ffffff;
+            font-size: 26px;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: all 0.2s ease;
+        }
+
+        .option-btn:hover {
+            border-color: var(--gold);
+            background: #1a2333;
+            transform: translateX(6px);
+        }
+
+        .option-btn.selected {
+            border-color: var(--gold);
+            background: rgba(255, 204, 0, 0.15);
+            box-shadow: inset 0 0 15px rgba(255, 204, 0, 0.2);
+        }
+
+        .opt-letter {
+            width: 44px;
+            height: 44px;
+            background: #1e293b;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 22px;
+        }
+
+        .option-btn.selected .opt-letter {
+            background: var(--gold);
+            color: #000;
+        }
+
+        .quiz-controls-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn-ctrl {
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 22px;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-prev {
+            background: #1e293b;
+            color: #fff;
+            border: 2px solid #475569;
+        }
+
+        .btn-next {
+            background: var(--gold);
+            color: #000;
+        }
+
+        .btn-submit-exam {
+            background: linear-gradient(135deg, #00e676, #00b0ff);
+            color: #000;
+            font-weight: 800;
+            padding: 16px 36px;
+            font-size: 24px;
+        }
+
+        /* ── OFFICIAL SCORECARD & CERTIFICATE MODAL ── */
+        .scorecard-arena {
+            display: none;
+            background: #000000;
+            border: 5px solid var(--gold);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 950px;
+            margin: 0 auto 50px auto;
+            box-shadow: 0 0 40px rgba(255, 204, 0, 0.3);
+            position: relative;
+        }
+
+        .scorecard-arena.active {
+            display: block;
+        }
+
+        .cert-header {
+            text-align: center;
+            border-bottom: 3px double var(--gold);
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+        }
+
+        .cert-header h2 {
+            font-size: 42px;
+            color: var(--gold);
+            font-family: var(--heading-font);
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .cert-header h3 {
+            font-size: 26px;
+            color: #e2e8f0;
+            margin-bottom: 8px;
+        }
+
+        .cert-sub {
+            font-size: 20px;
+            color: #94a3b8;
+        }
+
+        .scorecard-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            background: #0d121c;
+            border: 2px solid #2d3748;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-item .label {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .meta-item .val {
+            font-size: 24px;
+            color: #ffffff;
+            font-weight: 800;
+        }
+
+        .score-display-center {
+            text-align: center;
+            margin-bottom: 35px;
+            padding: 30px;
+            background: radial-gradient(circle, rgba(255,204,0,0.12) 0%, transparent 70%);
+            border-radius: 20px;
+            border: 2px dashed var(--gold);
+        }
+
+        .big-score {
+            font-size: 72px;
+            color: var(--gold);
+            font-family: var(--heading-font);
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .grade-tag {
+            display: inline-block;
+            font-size: 28px;
+            padding: 8px 24px;
+            border-radius: 30px;
+            border: 2px solid;
+            margin-bottom: 10px;
+        }
+
+        .grade-tag.a-plus {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            background: rgba(0, 230, 118, 0.1);
+        }
+
+        .teacher-stamp-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-top: 2px dashed #334155;
+            padding-top: 25px;
+            margin-top: 35px;
+        }
+
+        .stamp-box {
+            border: 3px solid #ff0055;
+            color: #ff0055;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: rotate(-3deg);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .signature-box {
+            text-align: right;
+        }
+
+        .sig-name {
+            font-size: 24px;
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 4px;
+            margin-bottom: 4px;
+        }
+
+        .sig-title {
+            font-size: 18px;
+            color: #94a3b8;
+        }
+
+        .scorecard-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        /* ── QUESTION REVIEW SECTION ── */
+        .review-section {
+            margin-top: 40px;
+        }
+
+        .review-card {
+            background: #0d121c;
+            border: 2px solid #2d3748;
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 20px;
+        }
+
+        .review-card.correct {
+            border-left: 8px solid var(--accent-green);
+        }
+
+        .review-card.incorrect {
+            border-left: 8px solid var(--accent-red);
+        }
+
+        .ans-row {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        .explanation-text {
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: #171d2c;
+            border-radius: 10px;
+            color: #94a3b8;
+            font-size: 18px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #1a202c;
+            color: #718096;
+            font-size: 20px;
+        }
+
+        /* 📱 RESPONSIVE ADJUSTMENTS FOR SMARTPHONE & TV */
+        @media (max-width: 768px) {
+            body { font-size: 22px; padding: 12px; }
+            .hero-banner h1 { font-size: 30px; }
+            .hero-banner p { font-size: 20px; }
+            .badge-teacher { font-size: 18px; }
+            .top-nav { flex-direction: column; align-items: stretch; }
+            .btn-nav { font-size: 18px; justify-content: center; }
+            .chapter-grid { grid-template-columns: 1fr; }
+            .question-text { font-size: 24px; }
+            .option-btn { font-size: 20px; padding: 15px; }
+            .big-score { font-size: 52px; }
+            .cert-header h2 { font-size: 28px; }
+        }
+
+        @media print {
+            body { background: #fff !important; color: #000 !important; }
+            .top-nav, .hero-banner, .enrollment-status-bar, .chapter-grid, .section-header, .scorecard-actions, footer { display: none !important; }
+            .scorecard-arena { display: block !important; border: 4px solid #000 !important; color: #000 !important; box-shadow: none !important; }
+            .scorecard-meta-grid { background: #fff !important; border: 1px solid #000 !important; }
+            .meta-item .val { color: #000 !important; }
+            .big-score { color: #000 !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── TOP NAVIGATION BAR ── -->
+    <nav class="top-nav">
+        <div class="nav-actions">
+            <a href="main-ui.html" class="btn-nav">
+                <i data-lucide="arrow-left"></i> Class 10 Dashboard
+            </a>
+            <a href="class-10-science-ui.html" class="btn-nav">
+                <i data-lucide="book-open"></i> Science Notes Portal
+            </a>
+        </div>
+        <div class="nav-actions">
+            <button onclick="openEnrollmentModal()" class="btn-nav" id="btn-enroll-toggle">
+                <i data-lucide="user-check"></i> <span id="enroll-btn-label">विद्यार्थी नामांकन (Enroll)</span>
+            </button>
+            <a href="class10-quiz-admin.html" class="btn-nav btn-admin">
+                <i data-lucide="shield-check"></i> एडमिन & रिजल्ट पैनल (Admin)
+            </a>
+        </div>
+    </nav>
+
+    <!-- ── HERO BANNER ── -->
+    <header class="hero-banner">
+        <h1>SCIENCE OBJECTIVE QUIZ & LIVE TEST</h1>
+        <p>कक्षा 10वीं विज्ञान - अध्यायवार वस्तुनिष्ठ प्रश्नोत्तरी एवं डिजिटल स्कोरकार्ड</p>
+        <div class="badge-teacher">मार्गदर्शन: रजनीकांत चौहान सर | माँ शारदा क्लासेस</div>
+    </header>
+
+    <!-- ── ENROLLMENT LIVE STATUS BAR ── -->
+    <section class="enrollment-status-bar" id="enrollment-status-bar">
+        <div class="student-info-tag">
+            <i data-lucide="user" style="color: var(--gold); width:32px; height:32px;"></i>
+            <div>
+                <span id="display-student-name">अतिथि विद्यार्थी (Guest Student)</span>
+                <span id="display-student-class" style="color: var(--text-muted); font-size:20px; margin-left:8px;">- रोल / कक्षा दर्ज नहीं</span>
+            </div>
+        </div>
+        <div>
+            <span class="status-pill not-enrolled" id="status-pill">
+                <i data-lucide="info" style="width:20px; height:20px;"></i>
+                <span id="status-text">नामांकन नहीं हुआ</span>
+            </span>
+        </div>
+    </section>
+
+    <!-- ── WAITING / PENDING SCREEN FOR UNAPPROVED STUDENTS ── -->
+    <div class="waiting-room-box" id="waiting-room-box">
+        <div class="pulse-loader"></div>
+        <h2 style="color: var(--gold); font-size: 34px; margin-bottom: 12px;">अनुमति का इंतज़ार (Pending Approval)</h2>
+        <p style="font-size: 22px; color: #e2e8f0; max-width: 750px; margin: 0 auto 20px auto; line-height: 1.5;">
+            नमस्ते <strong id="waiting-student-name" style="color:var(--gold);">विद्यार्थी</strong>! आपका नामांकन अनुरोध शिक्षक (रजनीकांत चौहान सर) को भेज दिया गया है। जैसे ही सर एडमिन पैनल से अनुमति देंगे, यह स्क्रीन अपने आप अनलॉक हो जाएगी!
+        </p>
+        <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+            <button onclick="checkApprovalStatusManually()" class="btn-nav">
+                <i data-lucide="refresh-cw"></i> स्थिति रिफ्रेश करें (Refresh)
+            </button>
+            <button onclick="openEnrollmentModal()" class="btn-nav">
+                <i data-lucide="edit-3"></i> जानकारी बदलें (Edit Details)
+            </button>
+        </div>
+    </div>
+
+    <!-- ── MAIN CHAPTER SELECTOR CONTAINER ── -->
+    <main id="main-content-view">
+        <div class="section-header">
+            <h2><i data-lucide="layers" style="color:var(--gold);"></i> अध्याय चुनें और क्विज शुरू करें</h2>
+            <span style="color: var(--text-muted); font-size: 20px;">कुल 13+ विज्ञान अध्याय + स्पेशल GK बूस्टर</span>
+        </div>
+
+        <div class="chapter-grid" id="chapter-cards-grid">
+            <!-- Dynamic chapter cards will be injected by JavaScript -->
+        </div>
+    </main>
+
+    <!-- ── ACTIVE QUIZ ARENA ── -->
+    <section class="quiz-arena" id="quiz-arena">
+        <div class="quiz-header-bar">
+            <div>
+                <span class="ch-num" id="quiz-chapter-badge">CHAPTER 01</span>
+                <h2 class="quiz-title-display" id="quiz-chapter-title">रासायनिक अभिक्रियाएँ एवं समीकरण</h2>
+            </div>
+            <div class="quiz-stats-group">
+                <div class="timer-badge">
+                    <i data-lucide="clock" style="width:22px; height:22px;"></i>
+                    <span id="quiz-timer">15:00</span>
+                </div>
+                <button onclick="quitQuizConfirm()" class="btn-nav" style="font-size:18px; padding:8px 16px;">
+                    <i data-lucide="x-circle"></i> क्विज छोड़ें
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar-fill" id="quiz-progress-bar"></div>
+        </div>
+
+        <div class="question-card-box">
+            <span class="q-number-pill" id="question-index-badge">प्रश्न 1 / 10</span>
+            <div class="question-text" id="question-text-content">प्रश्न लोड हो रहा है...</div>
+
+            <div class="options-list" id="options-container">
+                <!-- Options injected here -->
+            </div>
+        </div>
+
+        <div class="quiz-controls-row">
+            <button class="btn-ctrl btn-prev" id="btn-prev-q" onclick="goToPrevQuestion()">
+                <i data-lucide="chevron-left"></i> पिछला प्रश्न
+            </button>
+            
+            <button class="btn-ctrl btn-next" id="btn-next-q" onclick="goToNextQuestion()">
+                अगला प्रश्न <i data-lucide="chevron-right"></i>
+            </button>
+
+            <button class="btn-ctrl btn-submit-exam" id="btn-submit-exam" onclick="submitFinalQuiz()" style="display:none;">
+                <i data-lucide="check-circle-2"></i> अंतिम परिणाम सबमिट करें
+            </button>
+        </div>
+    </section>
+
+    <!-- ── OFFICIAL SCORECARD DISPLAY ── -->
+    <section class="scorecard-arena" id="scorecard-arena">
+        <div class="cert-header">
+            <h2>माँ शारदा क्लासेस • परीक्षा परिणाम</h2>
+            <h3>OFFICIAL ACADEMIC SCORE CARD</h3>
+            <p class="cert-sub">स्थान: टुनटुन मोड़ मार्केट | वर्ग 10वीं डिजिटल मूल्यांकन</p>
+        </div>
+
+        <div class="scorecard-meta-grid">
+            <div class="meta-item">
+                <div class="label">विद्यार्थी का नाम</div>
+                <div class="val" id="sc-student-name">-</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">कक्षा / रोल नंबर</div>
+                <div class="val" id="sc-class-roll">-</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">अध्याय / विषय</div>
+                <div class="val" id="sc-chapter-title">-</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">दिनांक एवं समय</div>
+                <div class="val" id="sc-exam-date">-</div>
+            </div>
+        </div>
+
+        <div class="score-display-center">
+            <div class="big-score" id="sc-marks-text">0 / 10</div>
+            <div>
+                <span class="grade-tag a-plus" id="sc-grade-tag">GRADE: A+ (अति उत्कृष्ट)</span>
+            </div>
+            <p style="font-size:22px; color:#cbd5e1; margin-top:8px;" id="sc-percentage-text">सटीकता: 100% | कुल प्रश्न: 10</p>
+        </div>
+
+        <!-- Teacher Remarks -->
+        <div style="background:#131824; border:2px solid var(--gold); border-radius:14px; padding:20px; margin-bottom:25px;">
+            <div style="color:var(--gold); font-size:20px; margin-bottom:5px;">शिक्षक की टिप्पणी (Teacher Remarks):</div>
+            <div style="font-size:22px; color:#ffffff;" id="sc-teacher-remarks">शानदार प्रदर्शन! आपने बहुत अच्छा अभ्यास किया है। ऐसे ही निरंतर अभ्यास जारी रखें।</div>
+        </div>
+
+        <!-- Stamp & Signatures -->
+        <div class="teacher-stamp-area">
+            <div class="stamp-box">
+                <i data-lucide="award"></i> MAA SHARDA VERIFIED
+            </div>
+            <div class="signature-box">
+                <div class="sig-name">रजनीकांत चौहान</div>
+                <div class="sig-title">मुख्य निदेशक एवं विज्ञान शिक्षक</div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="scorecard-actions">
+            <button onclick="window.print()" class="btn-ctrl btn-submit-exam">
+                <i data-lucide="printer"></i> स्कोरकार्ड प्रिंट / सेव करें (Print)
+            </button>
+            <button onclick="toggleReviewSection()" class="btn-ctrl btn-prev" id="btn-toggle-review">
+                <i data-lucide="file-question"></i> उत्तर समीक्षा देखें (Answers)
+            </button>
+            <button onclick="backToChapterSelection()" class="btn-ctrl btn-next">
+                <i data-lucide="arrow-left"></i> अन्य अध्याय चुनें
+            </button>
+        </div>
+
+        <!-- Detailed Review Container -->
+        <div class="review-section" id="review-section" style="display:none;">
+            <h3 style="color:var(--gold); font-size:28px; margin-bottom:20px; border-bottom:2px solid #2d3748; padding-bottom:10px;">
+                📝 सभी प्रश्नों के विस्तृत उत्तर एवं व्याख्या
+            </h3>
+            <div id="review-items-container">
+                <!-- Review cards injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ── ENROLLMENT REGISTRATION MODAL ── -->
+    <div class="enroll-modal-overlay" id="enroll-modal">
+        <div class="enroll-card">
+            <h2>विद्यार्थी नामांकन एवं अनुमति</h2>
+            <p>क्विज में भाग लेने के लिए अपना नाम व कक्षा दर्ज करके अनुमति अनुरोध भेजें।</p>
+            
+            <form id="enrollment-form" onsubmit="handleEnrollmentSubmit(event)">
+                <div class="form-group">
+                    <label for="input-student-name">विद्यार्थी का पूरा नाम (Full Name) *</label>
+                    <input type="text" id="input-student-name" class="form-input" placeholder="उदा. अमन कुमार" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-student-class">कक्षा एवं सेक्शन (Class) *</label>
+                    <input type="text" id="input-student-class" class="form-input" placeholder="उदा. Class 10 (A)" value="Class 10" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-student-roll">रोल नंबर या मोबाइल नंबर *</label>
+                    <input type="text" id="input-student-roll" class="form-input" placeholder="उदा. Roll: 24 या 9876543210" required>
+                </div>
+
+                <button type="submit" class="btn-submit-request">
+                    🚀 भाग लेने के लिए अनुरोध भेजें (Send Request)
+                </button>
+                
+                <button type="button" onclick="closeEnrollmentModal()" class="btn-ctrl btn-prev" style="width:100%; justify-content:center; margin-top:12px;">
+                    रद्द करें (Cancel)
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+        माँ शारदा क्लासेस • स्थान: टुनटुन मोड़ मार्केट | Class 10th Science & GK Special Digital Arena © 2026
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- FIREBASE INITIALIZATION & QUIZ APPLICATION LOGIC             -->
+    <!-- ============================================================ -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+        import { 
+            getFirestore, 
+            collection, 
+            doc, 
+            setDoc, 
+            getDoc, 
+            getDocs, 
+            onSnapshot, 
+            addDoc, 
+            serverTimestamp 
+        } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
+
+        // Provided Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyB7DqfY6gAOo-f-NJP-pFI-QBH17ZnVUys",
+            authDomain: "maashardagk.firebaseapp.com",
+            projectId: "maashardagk",
+            storageBucket: "maashardagk.firebasestorage.app",
+            messagingSenderId: "493991969265",
+            appId: "1:493991969265:web:c9ef96be9ecfab11178450",
+            measurementId: "G-F7SY3G98YD"
+        };
+
+        // Initialize Firebase & Firestore
+        let db = null;
+        let isFirebaseReady = false;
+        try {
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            isFirebaseReady = true;
+            console.log("Firebase Firestore initialized successfully.");
+        } catch (e) {
+            console.warn("Firebase Init notice: Using dual fallback mode.", e);
+        }
+
+        // Expose Firebase to window for our handlers
+        window.quizAppFirebase = { db, isFirebaseReady, doc, setDoc, getDoc, getDocs, onSnapshot, collection, addDoc };
+        
+        // Broadcast Channel for instantaneous cross-tab live synchronization
+        const syncChannel = new BroadcastChannel("maasharda_quiz_sync_channel");
+        syncChannel.onmessage = (event) => {
+            if (event.data && event.data.type === "STUDENT_APPROVAL_UPDATED") {
+                if (window.currentStudent && event.data.studentId === window.currentStudent.id) {
+                    window.currentStudent.status = event.data.status;
+                    saveCurrentStudentToStorage(window.currentStudent);
+                    updateEnrollmentUI();
+                }
+            } else if (event.data && event.data.type === "CUSTOM_QUESTIONS_UPDATED") {
+                loadCustomQuestions();
+            }
+        };
+        window.syncChannel = syncChannel;
+    </script>
+
+    <script>
+        // ============================================================
+        // 1. DATA REPOSITORY: CLASS 10 SCIENCE CHAPTERS & QUESTIONS
+        // ============================================================
+        const SCIENCE_CHAPTERS = [
+            {
+                id: "ch1",
+                num: "अध्याय 1",
+                title: "रासायनिक अभिक्रियाएँ एवं समीकरण",
+                desc: "समीकरण संतुलन, संयोजन, वियोजन, विस्थापन एवं उपचयन-अपचयन अभिक्रियाएँ",
+                questionsCount: 6,
+                icon: "flask-conical"
+            },
+            {
+                id: "ch2",
+                num: "अध्याय 2",
+                title: "अम्ल, क्षारक एवं लवण",
+                desc: "pH मान, सूचक, विरंजक चूर्ण, बेकिंग सोडा, प्लास्टर ऑफ पेरिस",
+                questionsCount: 6,
+                icon: "beaker"
+            },
+            {
+                id: "ch3",
+                num: "अध्याय 3",
+                title: "धातु एवं अधातु",
+                desc: "भौतिक व रासायनिक गुण, सक्रियता श्रेणी, धातु निष्कर्षण एवं संक्षारण",
+                questionsCount: 6,
+                icon: "shield"
+            },
+            {
+                id: "ch4",
+                num: "अध्याय 4",
+                title: "कार्बन एवं उसके यौगिक",
+                desc: "सहसंयोजी आबंध, हाइड्रोकार्बन, क्रियात्मक समूह, नामकरण व साबुनीकरण",
+                questionsCount: 6,
+                icon: "atom"
+            },
+            {
+                id: "ch5",
+                num: "अध्याय 5",
+                title: "जैव प्रक्रम (Life Processes)",
+                desc: "पोषण, श्वसन, मानव हृदय एवं रक्त परिसंचरण, उत्सर्जन तंत्र व वृक्क",
+                questionsCount: 6,
+                icon: "heart-pulse"
+            },
+            {
+                id: "ch6",
+                num: "अध्याय 6",
+                title: "नियंत्रण एवं समन्वय",
+                desc: "तंत्रिका कोशिका (न्यूरॉन), मस्तिष्क, पादप हार्मोन एवं प्रतिवर्ती क्रिया",
+                questionsCount: 5,
+                icon: "cpu"
+            },
+            {
+                id: "ch7",
+                num: "अध्याय 7",
+                title: "जीव जनन कैसे करते हैं?",
+                desc: "अलैंगिक जनन (द्विखंडन, मुकुलन), परागण, मानव जनन तंत्र व निषेचन",
+                questionsCount: 5,
+                icon: "dna"
+            },
+            {
+                id: "ch8",
+                num: "अध्याय 8",
+                title: "आनुवंशिकता एवं जैव विकास",
+                desc: "मेंडल के नियम, एकसंकर व द्विसंकर क्रॉस, लिंग निर्धारण",
+                questionsCount: 5,
+                icon: "git-branch"
+            },
+            {
+                id: "ch9",
+                num: "अध्याय 9",
+                title: "प्रकाश - परावर्तन तथा अपवर्तन",
+                desc: "दर्पण सूत्र, लेंस सूत्र, आवर्धन, स्नेल का नियम व अपवर्तनांक",
+                questionsCount: 6,
+                icon: "sun"
+            },
+            {
+                id: "ch10",
+                num: "अध्याय 10",
+                title: "मानव नेत्र तथा रंगबिरंगा संसार",
+                desc: "नेत्र दोष (निकट, दूर, जरा), वर्ण विक्षेपण, तारे टिमटिमाना, आकाश का नीला रंग",
+                questionsCount: 5,
+                icon: "eye"
+            },
+            {
+                id: "ch11",
+                num: "अध्याय 11",
+                title: "विद्युत (Electricity)",
+                desc: "ओम का नियम, प्रतिरोधों का श्रेणी व समांतर क्रम, विद्युत शक्ति ও जूल का तापन नियम",
+                questionsCount: 6,
+                icon: "zap"
+            },
+            {
+                id: "ch12",
+                num: "अध्याय 12",
+                title: "विद्युत धारा के चुंबकीय प्रभाव",
+                desc: "फ्लेमिंग का वामहस्त नियम, विद्युत मोटर, गैल्वेनोमीटर, भूसंपर्क तार",
+                questionsCount: 5,
+                icon: "compass"
+            },
+            {
+                id: "ch13",
+                num: "अध्याय 13",
+                title: "हमारा पर्यावरण (Our Environment)",
+                desc: "पारितंत्र, आहार श्रृंखला, 10% ऊर्जा नियम, ओजोन परत क्षरण व जैव आवर्धन",
+                questionsCount: 5,
+                icon: "trees"
+            },
+            {
+                id: "gk_master",
+                num: "स्पेशल",
+                title: "🔥 सामान्य विज्ञान एवं GK मास्टर बूस्टर",
+                desc: "बोर्ड परीक्षा एवं प्रतियोगी परीक्षाओं हेतु रजनीकांत सर द्वारा चयनित स्पेशल GK व विज्ञान प्रश्न",
+                questionsCount: 8,
+                icon: "award"
+            }
+        ];
+
+        // BUILT-IN CHAPTER-WISE QUESTION BANK (Bilingual Hindi/English)
+        const PRELOADED_QUESTIONS = {
+            ch1: [
+                {
+                    q: "रासायनिक अभिक्रिया के दौरान किसी पदार्थ में ऑक्सीजन का योग (जुड़ना) क्या कहलाता है?",
+                    options: ["अपचयन (Reduction)", "उपचयन / ऑक्सीकरण (Oxidation)", "संक्षारण (Corrosion)", "विस्थापन (Displacement)"],
+                    correct: 1,
+                    explanation: "जब किसी पदार्थ में ऑक्सीजन की वृद्धि होती है या हाइड्रोजन का ह्रास होता है, तो उसे उपचयन (Oxidation) कहते हैं।"
+                },
+                {
+                    q: "लोहे की कील को कॉपर सल्फेट विलयन में डुबाने पर विलयन का रंग नीला से हरा हो जाता है। यह किस प्रकार की अभिक्रिया है?",
+                    options: ["संयोजन अभिक्रिया", "वियोजन अभिक्रिया", "विस्थापन अभिक्रिया (Displacement)", "द्विविस्थापन अभिक्रिया"],
+                    correct: 2,
+                    explanation: "लोहा (Fe) कॉपर से अधिक क्रियाशील होने के कारण उसे कॉपर सल्फेट के विलयन से विस्थापित कर देता है: Fe + CuSO4 → FeSO4 + Cu।"
+                },
+                {
+                    q: "चूने के पत्थर (CaCO3) को गर्म करने पर बिना बुझा चूना (CaO) और CO2 गैस प्राप्त होती है। यह उदाहरण है:",
+                    options: ["ऊष्माशोषी वियोजन अभिक्रिया", "ऊष्माक्षेपी अभिक्रिया", "संयोजन अभिक्रिया", "प्रकाश-रासायनिक अभिक्रिया"],
+                    correct: 0,
+                    explanation: "यह ऊष्मीय अपघटन (Thermal Decomposition) है, जिसमें ऊष्मा का अवशोषण होता है।"
+                },
+                {
+                    q: "श्वसन किस प्रकार की रासायनिक अभिक्रिया मानी जाती है?",
+                    options: ["ऊष्माशोषी", "ऊष्माक्षेपी (Exothermic)", "अपचयन", "उदासीनीकरण"],
+                    correct: 1,
+                    explanation: "श्वसन क्रिया में ग्लूकोज के विखंडन से ऊर्जा (ऊष्मा) मुक्त होती है, इसलिए श्वसन ऊष्माक्षेपी अभिक्रिया है।"
+                },
+                {
+                    q: "रासायनिक समीकरण को संतुलित करने का मुख्य वैज्ञानिक आधार क्या है?",
+                    options: ["स्थिर अनुपात का नियम", "द्रव्यमान संरक्षण का नियम (Law of Conservation of Mass)", "डाल्टन का परमाणु सिद्धांत", "अवागाद्रो नियम"],
+                    correct: 1,
+                    explanation: "द्रव्यमान संरक्षण नियम के अनुसार किसी रासायनिक अभिक्रिया में न तो द्रव्यमान का निर्माण होता है और न ही विनाश।"
+                },
+                {
+                    q: "तेल तथा वसायुक्त खाद्य पदार्थों को सड़ने (विकृतगंधिता) से बचाने के लिए किस अक्रिय गैस से उपचारित किया जाता है?",
+                    options: ["ऑक्सीजन", "नाइट्रोजन (Nitrogen)", "क्लोरीन", "सल्फर डाइऑक्साइड"],
+                    correct: 1,
+                    explanation: "चिप्स और नमकीन के पैकेट में ऑक्सीजन निकालकर नाइट्रोजन गैस भरी जाती है ताकि उनका उपचयन (ऑक्सीकरण) न हो।"
+                }
+            ],
+            ch2: [
+                {
+                    q: "शुद्ध जल का 25°C पर pH मान कितना होता है?",
+                    options: ["0", "7", "14", "1"],
+                    correct: 1,
+                    explanation: "शुद्ध जल उदासीन (Neutral) होता है, जिसका pH मान ठीक 7 होता है।"
+                },
+                {
+                    q: "दांतों का क्षय (दांतों की सड़न) मुंह का pH मान कितने से कम होने पर शुरू होता है?",
+                    options: ["7.0", "5.5", "8.5", "6.5"],
+                    correct: 1,
+                    explanation: "मुंह का pH 5.5 से कम होने पर दांतों का इनेमल (कैल्शियम हाइड्रोक्सीएपैटाइट) संक्षारित होने लगता है।"
+                },
+                {
+                    q: "बेकिंग सोडा (खाने का सोडा) का सही रासायनिक सूत्र क्या है?",
+                    options: ["Na2CO3.10H2O", "NaHCO3", "CaOCl2", "CaSO4.1/2H2O"],
+                    correct: 1,
+                    explanation: "बेकिंग सोडा सोडियम हाइड्रोजन कार्बोनेट या सोडियम बाइकार्बोनेट (NaHCO3) होता है।"
+                },
+                {
+                    q: "विरंजक चूर्ण (Bleaching Powder) का रासायनिक सूत्र क्या है?",
+                    options: ["CaOCl2", "Ca(OH)2", "CaCl2", "CaSO4"],
+                    correct: 0,
+                    explanation: "शुष्क बुझे हुए चूने पर क्लोरीन की क्रिया से विरंजक चूर्ण CaOCl2 बनता है।"
+                },
+                {
+                    q: "प्लास्टर ऑफ पेरिस (POP) का रासायनिक सूत्र क्या होता है?",
+                    options: ["CaSO4.2H2O", "CaSO4.1/2H2O", "MgSO4.7H2O", "CuSO4.5H2O"],
+                    correct: 1,
+                    explanation: "जिप्सम को 373 K पर गर्म करने पर यह जल के अणुओं का त्याग कर कैल्शियम सल्फेट हेमीहाइड्रेट (CaSO4.1/2H2O) बनाता है।"
+                },
+                {
+                    q: "चींटी के डंक में कौन सा अम्ल पाया जाता है जो जलन और दर्द पैदा करता है?",
+                    options: ["साइट्रिक अम्ल", "मेथेनोइक अम्ल (फॉर्मिक अम्ल)", "टार्टरिक अम्ल", "ऑक्सालिक अम्ल"],
+                    correct: 1,
+                    explanation: "चींटी और नेटल के डंक में मेथेनोइक अम्ल (HCOOH) होता है।"
+                }
+            ],
+            ch3: [
+                {
+                    q: "वह कौन सी एकमात्र धातु है जो कमरे के सामान्य ताप पर द्रव (Liquid) अवस्था में पाई जाती है?",
+                    options: ["ब्रोमीन", "पारा / मर्करी (Hg)", "सोडियम", "गैलियम"],
+                    correct: 1,
+                    explanation: "पारा (Mercury, Hg) एकमात्र धातु है जो कमरे के तापमान पर तरल अवस्था में रहती है। ब्रोमीन तरल अधातु है।"
+                },
+                {
+                    q: "निम्नलिखित में से किसे चाकू से आसानी से काटा जा सकता है?",
+                    options: ["लोहा", "सोडियम एवं पोटैशियम", "तांबा", "एल्युमिनियम"],
+                    correct: 1,
+                    explanation: "सोडियम (Na) और पोटैशियम (K) अत्यधिक मुलायम क्षार धातुएं हैं जिन्हें चाकू से सरलतापूर्वक काटा जा सकता है।"
+                },
+                {
+                    q: "कौन सी धातु को खुली हवा में रखने पर आग पकड़ लेती है, अतः इसे केरोसिन में डुबोकर रखा जाता है?",
+                    options: ["सोडियम (Na)", "लोहा (Fe)", "चांदी (Ag)", "जस्ता (Zn)"],
+                    correct: 0,
+                    explanation: "सोडियम अत्यधिक क्रियाशील होने के कारण वायु में उपस्थित नमी व ऑक्सीजन से तुरंत तीव्र अभिक्रिया करता है।"
+                },
+                {
+                    q: "विद्युत की सबसे अच्छी सुचालक (Best Conductor) धातु कौन सी है?",
+                    options: ["तांबा (Cu)", "चांदी (Ag / Silver)", "सोना (Au)", "एल्युमिनियम (Al)"],
+                    correct: 1,
+                    explanation: "चांदी (Silver) में सबसे कम प्रतिरोधकता होती है, इसलिए यह विद्युत और ऊष्मा की सर्वश्रेष्ठ चालक है।"
+                },
+                {
+                    q: "शुद्ध सोना कितने कैरेट का होता है?",
+                    options: ["22 कैरेट", "24 कैरेट", "18 कैरेट", "10 कैरेट"],
+                    correct: 1,
+                    explanation: "शुद्ध सोना 24 कैरेट का होता है, परंतु आभूषण बनाने हेतु कठोरता प्रदान करने के लिए 22 कैरेट सोने का उपयोग होता है।"
+                },
+                {
+                    q: "सिनाबार (Cinnabar) किसका मुख्य प्राकृतिक अयस्क है?",
+                    options: ["लोहा", "पारा (Hg)", "तांबा", "सीसा"],
+                    correct: 1,
+                    explanation: "सिनाबार मर्करी का सल्फाइड अयस्क (HgS) है।"
+                }
+            ],
+            ch4: [
+                {
+                    q: "एल्केन (Alkane) समजातीय श्रेणी का सामान्य रासायनिक सूत्र क्या होता है?",
+                    options: ["CnH2n", "CnH2n+2", "CnH2n-2", "CnH2n+1"],
+                    correct: 1,
+                    explanation: "संतृप्त हाइड्रोकार्बन एल्केन का सामान्य सूत्र CnH2n+2 होता है (जैसे मीथेन CH4, ईथेन C2H6)।"
+                },
+                {
+                    q: "एल्कीन (Alkene) श्रेणी का सामान्य सूत्र क्या है, जिसमें कार्बन-कार्बन द्विबंध होता है?",
+                    options: ["CnH2n+2", "CnH2n", "CnH2n-2", "CnHn"],
+                    correct: 1,
+                    explanation: "एल्कीन का सामान्य सूत्र CnH2n होता है, जिसमें कम से कम एक डबल बॉन्ड C=C होता है।"
+                },
+                {
+                    q: "एल्काइन (Alkyne) श्रेणी का सामान्य सूत्र क्या है, जिसमें त्रि-आबंध (Triple Bond) होता है?",
+                    options: ["CnH2n+2", "CnH2n", "CnH2n-2", "CnH2n-1"],
+                    correct: 2,
+                    explanation: "एल्काइन का सामान्य सूत्र CnH2n-2 होता है, जैसे एथाइन (C2H2)।"
+                },
+                {
+                    q: "अल्कोहल प्रकार्यात्मक समूह (Functional Group) का प्रतीक संकेत क्या है?",
+                    options: ["-CHO", "-COOH", "-OH", ">C=O"],
+                    correct: 2,
+                    explanation: "अल्कोहल समूह -OH होता है और इसके नाम के अंत में '-ऑल' (ol) अनुलग्न जुड़ता है।"
+                },
+                {
+                    q: "कार्बन परमाणु की संयोजकता (Valency) कितनी होती है?",
+                    options: ["2", "4 (चतुःसंयोजी)", "6", "1"],
+                    correct: 1,
+                    explanation: "कार्बन के बाह्यतम कोश में 4 इलेक्ट्रॉन होते हैं, अतः यह 4 सहसंयोजी आबंध बनाता है (Tetravalent)।"
+                },
+                {
+                    q: "वनस्पति तेल से वनस्पति घी बनाने की प्रक्रिया में किस उत्प्रेरक का उपयोग किया जाता है?",
+                    options: ["लोहा (Fe)", "निकल (Ni) या पैलेडियम", "प्लैटिनम", "तांबा"],
+                    correct: 1,
+                    explanation: "निकल उत्प्रेरक की उपस्थिति में तेलों का हाइड्रोजनीकरण कर वनस्पति घी बनाया जाता है।"
+                }
+            ],
+            ch5: [
+                {
+                    q: "मानव हृदय में कितने कोष्ठ (Chambers) होते हैं?",
+                    options: ["दो", "तीन", "चार (4 Chambers)", "छह"],
+                    correct: 2,
+                    explanation: "मानव हृदय चार कोष्ठों में विभाजित होता है: दो अलिंद (Atria) और दो निलय (Ventricles)।"
+                },
+                {
+                    q: "मनुष्य में वृक्क (Kidney) किस तंत्र का मुख्य अंग है?",
+                    options: ["पोषण तंत्र", "श्वसन तंत्र", "उत्सर्जन तंत्र (Excretory System)", "परिवहन तंत्र"],
+                    correct: 2,
+                    explanation: "वृक्क रक्त को छानकर यूरिया तथा अपशिष्ट पदार्थों को मूत्र के रूप में शरीर से बाहर निकालने (उत्सर्जन) का कार्य करता है।"
+                },
+                {
+                    q: "पौधों में जाइलम (Xylem) ऊतक किसके परिवहन के लिए उत्तरदायी है?",
+                    options: ["जल एवं खनिज लवण", "भोजन / ग्लूकोज", "अमीनो अम्ल", "ऑक्सीजन"],
+                    correct: 0,
+                    explanation: "जाइलम जड़ों द्वारा अवशोषित जल और खनिजों का ऊपर की ओर संवहन करता है, जबकि फ्लोएम भोजन का परिवहन करता है।"
+                },
+                {
+                    q: "प्रकाश संश्लेषण प्रक्रिया में ऑक्सीजन गैस किससे निकलती है?",
+                    options: ["जल (H2O) के अपघटन से", "CO2 से", "ग्लूकोज से", "क्लोरोफिल से"],
+                    correct: 0,
+                    explanation: "प्रकाश संश्लेषण में जल अणुओं के प्रकाशीय अपघटन (Photolysis of Water) से O2 गैस मुक्त होती है।"
+                },
+                {
+                    q: "अमीबा अपने भोजन का अंतर्ग्रहण किस संरचना द्वारा करता है?",
+                    options: ["मुखगुहा", "पादाम / कूटपाद (Pseudopodia)", "सिलिया", "स्पर्शक"],
+                    correct: 1,
+                    explanation: "अमीबा अंगुली जैसे अस्थायी प्रवर्ध (कूटपाद) की सहायता से भोजन कणों को घेरकर खाद्य रिक्तिका में ग्रहण करता है।"
+                },
+                {
+                    q: "मानव शरीर की सबसे बड़ी पाचक ग्रंथि (Largest Gland) कौन सी है?",
+                    options: ["अग्न्याशय (Pancreas)", "यकृत / लीवर (Liver)", "थायरॉयड", "पीयूष"],
+                    correct: 1,
+                    explanation: "यकृत (Liver) मानव शरीर की सबसे बड़ी ग्रंथि है जो पित्त रस (Bile juice) का स्राव करती है।"
+                }
+            ],
+            gk_master: [
+                {
+                    q: "अल्कोहल से कार्बोक्सिलिक अम्ल बनने की अभिक्रिया क्या कहलाती है?",
+                    options: ["अपचयन", "ऑक्सीकरण अभिक्रिया (Oxidation)", "संकलन", "प्रतिस्थापन"],
+                    correct: 1,
+                    explanation: "क्षारीय KMnO4 या अम्लीय K2Cr2O7 द्वारा अल्कोहल को कार्बोक्सिलिक अम्ल में ऑक्सीकृत किया जाता है।"
+                },
+                {
+                    q: "कीटोन शब्द के IUPAC नामकरण में अनुलग्न (Suffix) क्या लगता है?",
+                    options: ["-अल (-al)", "-ओन (-one)", "-ओइक अम्ल", "-ऑल (-ol)"],
+                    correct: 1,
+                    explanation: "कीटोन (R-CO-R') में अनुलग्न '-ओन' (One) लगाया जाता है, जैसे प्रोपेनोन।"
+                },
+                {
+                    q: "साइक्लोएल्केन का सामान्य सूत्र क्या होता है?",
+                    options: ["CnH2n", "CnH2n+2", "CnH2n-2", "CnHn"],
+                    correct: 0,
+                    explanation: "वलय बनाने के कारण साइक्लोएल्केन में 2 हाइड्रोजन कम होते हैं, अतः सूत्र CnH2n होता है।"
+                },
+                {
+                    q: "विद्युत बल्ब का तंतु (Filament) किस उच्च गलनांक वाली धातु का बना होता है?",
+                    options: ["तांबा", "टंगस्टन (Tungsten)", "नाइक्रोम", "लोहा"],
+                    correct: 1,
+                    explanation: "टंगस्टन का गलनांक लगभग 3422°C अत्यंत उच्च होता है, जिससे यह श्वेत-तप्त होने पर भी नहीं पिघलता।"
+                },
+                {
+                    q: "सामान्य दृष्टि के वयस्क के लिए सुस्पष्ट दर्शन की न्यूनतम दूरी (Least Distance of Distinct Vision) कितनी होती है?",
+                    options: ["25 मीटर", "2.5 सेमी", "25 सेमी (25 cm)", "अनंत"],
+                    correct: 2,
+                    explanation: "स्वस्थ मानव नेत्र 25 सेमी से लेकर अनंत तक की वस्तुओं को स्पष्ट देख सकता है।"
+                },
+                {
+                    q: "वायुमंडल में ओजोन परत सूर्य से आने वाली किन हानिकारक विकिरणों से हमारी रक्षा करती है?",
+                    options: ["अवरक्त किरणें (Infrared)", "पराबैंगनी किरणें (UV Rays)", "गामा किरणें", "रेडियो तरंगें"],
+                    correct: 1,
+                    explanation: "ओजोन (O3) परत हानिकारक पराबैंगनी किरणों को रोकती है जो त्वचा कैंसर व मोतियाबिंद का कारण बन सकती हैं।"
+                },
+                {
+                    q: "मानव शरीर में रक्तचाप (Blood Pressure) मापने वाले उपकरण का नाम क्या है?",
+                    options: ["बैरोमीटर", "स्फाइग्मोमैनोमीटर (Sphygmomanometer)", "लैक्टोमीटर", "थर्मामीटर"],
+                    correct: 1,
+                    explanation: "रक्तदाब मापने के लिए स्फाइग्मोमैनोमीटर का उपयोग किया जाता है। सामान्य रक्तचाप 120/80 mmHg होता है।"
+                },
+                {
+                    q: "सौर सेल (Solar Cell) बनाने के लिए किस अर्धचालक तत्व का प्रमुखता से उपयोग किया जाता है?",
+                    options: ["सिलिकॉन (Silicon)", "लोहा", "चांदी", "सीसा"],
+                    correct: 0,
+                    explanation: "सिलिकॉन एक उत्तम अर्धचालक है जो सौर ऊर्जा को विद्युत ऊर्जा में बदलने में सक्षम होता है।"
+                }
+            ]
+        };
+
+        // Fallback for missing chapters in PRELOADED_QUESTIONS - generate robust standard questions
+        for (let ch of SCIENCE_CHAPTERS) {
+            if (!PRELOADED_QUESTIONS[ch.id]) {
+                PRELOADED_QUESTIONS[ch.id] = [
+                    {
+                        q: `${ch.title} से संबंधित मूलभूत सिद्धांत क्या है?`,
+                        options: ["यह NCERT Class 10 विज्ञान पाठ्यक्रम का महत्वपूर्ण भाग है", "यह केवल प्रायोगिक है", "यह पाठ्यक्रम में नहीं है", "इनमें से कोई नहीं"],
+                        correct: 0,
+                        explanation: `${ch.title} अध्याय बोर्ड परीक्षा के दृष्टिकोण से अत्यंत महत्वपूर्ण है।`
+                    },
+                    {
+                        q: `${ch.title} के संदर्भ में सही कथन का चयन कीजिए:`,
+                        options: ["सभी भौतिक परिवर्तन उत्क्रमणीय होते हैं", "इस अध्याय के वस्तुनिष्ठ प्रश्न बोर्ड में उच्च अंक दिलाते हैं", "कोई सूत्र लागू नहीं होता", "उत्तर अस्पष्ट है"],
+                        correct: 1,
+                        explanation: `अध्याय के मुख्य बिंदुओं और सूत्रों का अभ्यास बोर्ड परीक्षा 2026 में 100% सफलता दिलाता है।`
+                    },
+                    {
+                        q: `अध्याय ${ch.num} की तैयारी हेतु सबसे प्रामाणिक स्रोत कौन सा है?`,
+                        options: ["NCERT पाठ्यपुस्तक व रजनीकांत सर के क्लास नोट्स", "अनधिकृत गाइड", "अनुमान", "कोई नहीं"],
+                        correct: 0,
+                        explanation: `माँ शारदा क्लासेस के क्लास नोट्स एवं NCERT पाठ्यपुस्तक सबसे प्रामाणिक अध्ययन सामग्री हैं।`
+                    }
+                ];
+            }
+        }
+
+        // ============================================================
+        // 2. STATE MANAGEMENT
+        // ============================================================
+        let currentStudent = null;
+        let customQuestionsBank = {};
+        let activeQuizState = {
+            chapterId: null,
+            chapterTitle: "",
+            questions: [],
+            currentIndex: 0,
+            answers: {},
+            timerInterval: null,
+            timeRemaining: 900 // 15 mins in sec
+        };
+
+        // ============================================================
+        // 3. INITIALIZATION ON PAGE LOAD
+        // ============================================================
+        document.addEventListener("DOMContentLoaded", () => {
+            lucide.createIcons();
+            loadStudentFromStorage();
+            renderChapterCards();
+            loadCustomQuestions();
+            setupRealtimeStudentListener();
+        });
+
+        // ============================================================
+        // 4. STUDENT ENROLLMENT & REQUEST LOGIC
+        // ============================================================
+        function loadStudentFromStorage() {
+            const saved = localStorage.getItem("maasharda_student_profile");
+            if (saved) {
+                try {
+                    currentStudent = JSON.parse(saved);
+                } catch(e) {
+                    currentStudent = null;
+                }
+            }
+            updateEnrollmentUI();
+        }
+
+        function saveCurrentStudentToStorage(student) {
+            localStorage.setItem("maasharda_student_profile", JSON.stringify(student));
+        }
+
+        function updateEnrollmentUI() {
+            const nameEl = document.getElementById("display-student-name");
+            const classEl = document.getElementById("display-student-class");
+            const pillEl = document.getElementById("status-pill");
+            const statusTextEl = document.getElementById("status-text");
+            const enrollBtnLabel = document.getElementById("enroll-btn-label");
+            const waitingBox = document.getElementById("waiting-room-box");
+            const mainContent = document.getElementById("main-content-view");
+
+            if (!currentStudent) {
+                nameEl.innerText = "अतिथि विद्यार्थी (Guest Student)";
+                classEl.innerText = "- रोल / कक्षा दर्ज नहीं";
+                pillEl.className = "status-pill not-enrolled";
+                statusTextEl.innerText = "नामांकन नहीं हुआ";
+                enrollBtnLabel.innerText = "विद्यार्थी नामांकन (Enroll)";
+                waitingBox.classList.remove("active");
+                mainContent.style.display = "block";
+                return;
+            }
+
+            nameEl.innerText = `विद्यार्थी: ${currentStudent.name}`;
+            classEl.innerText = `[${currentStudent.studentClass} | Roll: ${currentStudent.rollNo}]`;
+            enrollBtnLabel.innerText = "प्रोफ़ाइल देखें / बदलें";
+
+            if (currentStudent.status === "approved") {
+                pillEl.className = "status-pill approved";
+                statusTextEl.innerHTML = `<i data-lucide="check-circle" style="width:20px;height:20px;"></i> भाग लेने हेतु स्वीकृत (Approved)`;
+                waitingBox.classList.remove("active");
+                mainContent.style.display = "block";
+            } else if (currentStudent.status === "pending") {
+                pillEl.className = "status-pill pending";
+                statusTextEl.innerHTML = `<i data-lucide="clock" style="width:20px;height:20px;"></i> अनुमति प्रतीक्षित (Pending)`;
+                document.getElementById("waiting-student-name").innerText = currentStudent.name;
+                waitingBox.classList.add("active");
+                mainContent.style.display = "block";
+            } else if (currentStudent.status === "rejected") {
+                pillEl.className = "status-pill rejected";
+                statusTextEl.innerHTML = `<i data-lucide="x-circle" style="width:20px;height:20px;"></i> अनुरोध अस्वीकृत (Denied)`;
+                waitingBox.classList.remove("active");
+                mainContent.style.display = "block";
+            }
+            lucide.createIcons();
+        }
+
+        function openEnrollmentModal() {
+            if (currentStudent) {
+                document.getElementById("input-student-name").value = currentStudent.name || "";
+                document.getElementById("input-student-class").value = currentStudent.studentClass || "Class 10";
+                document.getElementById("input-student-roll").value = currentStudent.rollNo || "";
+            }
+            document.getElementById("enroll-modal").classList.add("active");
+        }
+
+        function closeEnrollmentModal() {
+            document.getElementById("enroll-modal").classList.remove("active");
+        }
+
+        async function handleEnrollmentSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById("input-student-name").value.trim();
+            const studentClass = document.getElementById("input-student-class").value.trim();
+            const rollNo = document.getElementById("input-student-roll").value.trim();
+
+            if (!name || !studentClass || !rollNo) {
+                alert("कृपया सभी आवश्यक फ़ील्ड भरें!");
+                return;
+            }
+
+            const studentId = currentStudent?.id || "std_" + Date.now() + "_" + Math.floor(Math.random()*1000);
+            
+            const studentPayload = {
+                id: studentId,
+                name: name,
+                studentClass: studentClass,
+                rollNo: rollNo,
+                status: "pending",
+                requestedAt: Date.now(),
+                formattedTime: new Date().toLocaleTimeString('hi-IN', { hour: '2-digit', minute: '2-digit' })
+            };
+
+            currentStudent = studentPayload;
+            saveCurrentStudentToStorage(studentPayload);
+
+            // Save to Firebase Firestore
+            if (window.quizAppFirebase && window.quizAppFirebase.db) {
+                try {
+                    const { db, setDoc, doc } = window.quizAppFirebase;
+                    await setDoc(doc(db, "quiz_enrollments", studentId), studentPayload);
+                    console.log("Enrollment request saved to Firebase Firestore.");
+                } catch (err) {
+                    console.warn("Firestore save warning, saving locally:", err);
+                }
+            }
+
+            // Also sync to Admin Panel in-browser storage
+            let allEnrollments = JSON.parse(localStorage.getItem("maasharda_all_enrollments") || "[]");
+            allEnrollments = allEnrollments.filter(e => e.id !== studentId);
+            allEnrollments.unshift(studentPayload);
+            localStorage.setItem("maasharda_all_enrollments", JSON.stringify(allEnrollments));
+
+            // Notify open admin tabs
+            window.syncChannel.postMessage({
+                type: "NEW_ENROLLMENT_REQUEST",
+                student: studentPayload
+            });
+
+            closeEnrollmentModal();
+            updateEnrollmentUI();
+            setupRealtimeStudentListener();
+            alert(`अनुरोध सफलता पूर्वक भेजा गया! रजनीकांत सर के अनुमोदन (Approval) की प्रतीक्षा करें।`);
+        }
+
+        function setupRealtimeStudentListener() {
+            if (!currentStudent || !currentStudent.id) return;
+            const studentId = currentStudent.id;
+
+            // Firestore real-time listener
+            if (window.quizAppFirebase && window.quizAppFirebase.db) {
+                try {
+                    const { db, doc, onSnapshot } = window.quizAppFirebase;
+                    onSnapshot(doc(db, "quiz_enrollments", studentId), (docSnap) => {
+                        if (docSnap.exists()) {
+                            const data = docSnap.data();
+                            if (data.status && data.status !== currentStudent.status) {
+                                currentStudent.status = data.status;
+                                saveCurrentStudentToStorage(currentStudent);
+                                updateEnrollmentUI();
+                                if (data.status === "approved") {
+                                    alert(`🎉 बधाई! शिक्षक (रजनीकांत सर) ने आपको क्विज में भाग लेने की अनुमति दे दी है!`);
+                                }
+                            }
+                        }
+                    }, (err) => {
+                        console.warn("Snapshot listener fallback:", err);
+                    });
+                } catch(e) {
+                    console.warn(e);
+                }
+            }
+        }
+
+        function checkApprovalStatusManually() {
+            if (!currentStudent) return;
+            const allEnrollments = JSON.parse(localStorage.getItem("maasharda_all_enrollments") || "[]");
+            const found = allEnrollments.find(e => e.id === currentStudent.id);
+            if (found && found.status !== currentStudent.status) {
+                currentStudent.status = found.status;
+                saveCurrentStudentToStorage(currentStudent);
+                updateEnrollmentUI();
+            } else {
+                alert(`वर्तमान स्थिति: ${currentStudent.status === 'approved' ? 'अनुमोदित (Approved)' : 'प्रतीक्षारत (Pending Teacher Approval)'}`);
+            }
+        }
+
+        // ============================================================
+        // 5. RENDER CHAPTER CARDS & LOAD QUESTIONS
+        // ============================================================
+        function renderChapterCards() {
+            const grid = document.getElementById("chapter-cards-grid");
+            grid.innerHTML = "";
+
+            SCIENCE_CHAPTERS.forEach((ch, idx) => {
+                const card = document.createElement("div");
+                card.className = "chapter-card";
+                
+                // Calculate question count including preloaded + custom
+                const customCount = (customQuestionsBank[ch.id] || []).length;
+                const preloadedCount = (PRELOADED_QUESTIONS[ch.id] || []).length;
+                const totalQ = preloadedCount + customCount;
+
+                card.innerHTML = `
+                    <div>
+                        <span class="ch-num">${ch.num}</span>
+                        <h3 class="ch-title">${ch.title}</h3>
+                        <p style="color:#94a3b8; font-size:18px; margin-bottom:15px; line-height:1.4;">${ch.desc}</p>
+                    </div>
+                    <div>
+                        <div class="ch-meta">
+                            <span><i data-lucide="help-circle" style="width:18px;height:18px;vertical-align:middle;"></i> कुल प्रश्न: ${totalQ}</span>
+                            <span>समय: 15 मिनट</span>
+                        </div>
+                        <button class="btn-start-quiz" onclick="startQuizForChapter('${ch.id}', '${ch.title.replace(/'/g, "\\'")}')">
+                            <i data-lucide="play-circle"></i> टेस्ट प्रारंभ करें
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        async function loadCustomQuestions() {
+            // Load from LocalStorage
+            const localCustom = localStorage.getItem("maasharda_custom_questions");
+            if (localCustom) {
+                try {
+                    customQuestionsBank = JSON.parse(localCustom);
+                } catch(e) {}
+            }
+
+            // Load from Firebase Firestore
+            if (window.quizAppFirebase && window.quizAppFirebase.db) {
+                try {
+                    const { db, collection, getDocs } = window.quizAppFirebase;
+                    const querySnapshot = await getDocs(collection(db, "custom_questions"));
+                    querySnapshot.forEach((doc) => {
+                        const qData = doc.data();
+                        if (qData.chapterId) {
+                            if (!customQuestionsBank[qData.chapterId]) {
+                                customQuestionsBank[qData.chapterId] = [];
+                            }
+                            if (!customQuestionsBank[qData.chapterId].some(q => q.id === doc.id || q.q === qData.q)) {
+                                customQuestionsBank[qData.chapterId].push({
+                                    id: doc.id,
+                                    q: qData.q,
+                                    options: qData.options,
+                                    correct: qData.correct,
+                                    explanation: qData.explanation || "कस्टम प्रश्न"
+                                });
+                            }
+                        }
+                    });
+                } catch (err) {
+                    console.warn("Firestore custom questions read:", err);
+                }
+            }
+            renderChapterCards();
+        }
+
+        // ============================================================
+        // 6. QUIZ ARENA ENGINE
+        // ============================================================
+        function startQuizForChapter(chapterId, chapterTitle) {
+            // ENROLLMENT CHECK
+            if (!currentStudent) {
+                alert("कृपया पहले 'विद्यार्थी नामांकन (Enroll)' करें ताकि आपका परिणाम व स्कोरकार्ड तैयार हो सके!");
+                openEnrollmentModal();
+                return;
+            }
+
+            if (currentStudent.status !== "approved") {
+                alert("शिक्षक (रजनीकांत चौहान सर) से अनुमति मिलना अभी बाकी है! अनुमति मिलते ही आप टेस्ट शुरू कर सकेंगे।");
+                document.getElementById("waiting-room-box").scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
+            // Merge Preloaded and Custom Questions
+            const preloaded = PRELOADED_QUESTIONS[chapterId] || [];
+            const custom = customQuestionsBank[chapterId] || [];
+            const combined = [...preloaded, ...custom];
+
+            if (combined.length === 0) {
+                alert("इस अध्याय में अभी कोई प्रश्न उपलब्ध नहीं है।");
+                return;
+            }
+
+            activeQuizState.chapterId = chapterId;
+            activeQuizState.chapterTitle = chapterTitle;
+            activeQuizState.questions = combined;
+            activeQuizState.currentIndex = 0;
+            activeQuizState.answers = {};
+            activeQuizState.timeRemaining = 15 * 60; // 15 mins
+
+            // Show Arena, Hide Grid & Scorecard
+            document.getElementById("main-content-view").style.display = "none";
+            document.getElementById("scorecard-arena").classList.remove("active");
+            document.getElementById("quiz-arena").classList.add("active");
+
+            document.getElementById("quiz-chapter-title").innerText = chapterTitle;
+            document.getElementById("quiz-chapter-badge").innerText = chapterId.toUpperCase();
+
+            startTimer();
+            renderCurrentQuestion();
+            window.scrollTo({ top: 150, behavior: 'smooth' });
+        }
+
+        function startTimer() {
+            clearInterval(activeQuizState.timerInterval);
+            const timerEl = document.getElementById("quiz-timer");
+            
+            activeQuizState.timerInterval = setInterval(() => {
+                activeQuizState.timeRemaining--;
+                if (activeQuizState.timeRemaining <= 0) {
+                    clearInterval(activeQuizState.timerInterval);
+                    alert("समय समाप्त हो गया है! आपका टेस्ट स्वतः सबमिट हो रहा है।");
+                    submitFinalQuiz();
+                    return;
+                }
+                const m = Math.floor(activeQuizState.timeRemaining / 60);
+                const s = activeQuizState.timeRemaining % 60;
+                timerEl.innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function renderCurrentQuestion() {
+            const q = activeQuizState.questions[activeQuizState.currentIndex];
+            const total = activeQuizState.questions.length;
+            const curIdx = activeQuizState.currentIndex;
+
+            document.getElementById("question-index-badge").innerText = `प्रश्न ${curIdx + 1} / ${total}`;
+            document.getElementById("question-text-content").innerText = q.q;
+
+            // Update Progress Bar
+            const progressPct = ((curIdx + 1) / total) * 100;
+            document.getElementById("quiz-progress-bar").style.width = `${progressPct}%`;
+
+            // Options List
+            const optContainer = document.getElementById("options-container");
+            optContainer.innerHTML = "";
+            const letters = ["A", "B", "C", "D"];
+
+            q.options.forEach((optText, i) => {
+                const btn = document.createElement("button");
+                btn.className = "option-btn";
+                if (activeQuizState.answers[curIdx] === i) {
+                    btn.classList.add("selected");
+                }
+                btn.innerHTML = `
+                    <span class="opt-letter">${letters[i]}</span>
+                    <span>${optText}</span>
+                `;
+                btn.onclick = () => selectOption(i);
+                optContainer.appendChild(btn);
+            });
+
+            // Nav buttons visibility
+            document.getElementById("btn-prev-q").style.visibility = curIdx === 0 ? "hidden" : "visible";
+            if (curIdx === total - 1) {
+                document.getElementById("btn-next-q").style.display = "none";
+                document.getElementById("btn-submit-exam").style.display = "inline-flex";
+            } else {
+                document.getElementById("btn-next-q").style.display = "inline-flex";
+                document.getElementById("btn-submit-exam").style.display = "none";
+            }
+        }
+
+        function selectOption(index) {
+            activeQuizState.answers[activeQuizState.currentIndex] = index;
+            renderCurrentQuestion();
+        }
+
+        function goToPrevQuestion() {
+            if (activeQuizState.currentIndex > 0) {
+                activeQuizState.currentIndex--;
+                renderCurrentQuestion();
+            }
+        }
+
+        function goToNextQuestion() {
+            if (activeQuizState.currentIndex < activeQuizState.questions.length - 1) {
+                activeQuizState.currentIndex++;
+                renderCurrentQuestion();
+            }
+        }
+
+        function quitQuizConfirm() {
+            if (confirm("क्या आप सचमुच यह टेस्ट बीच में छोड़ना चाहते हैं? आपकी प्रगति सुरक्षित नहीं होगी।")) {
+                clearInterval(activeQuizState.timerInterval);
+                document.getElementById("quiz-arena").classList.remove("active");
+                document.getElementById("main-content-view").style.display = "block";
+            }
+        }
+
+        // ============================================================
+        // 7. RESULT SUBMISSION & SCORECARD GENERATION
+        // ============================================================
+        async function submitFinalQuiz() {
+            clearInterval(activeQuizState.timerInterval);
+
+            const questions = activeQuizState.questions;
+            let correctCount = 0;
+            const detailedReview = [];
+
+            questions.forEach((q, idx) => {
+                const selected = activeQuizState.answers[idx];
+                const isCorrect = selected === q.correct;
+                if (isCorrect) correctCount++;
+
+                detailedReview.push({
+                    q: q.q,
+                    options: q.options,
+                    selectedOption: selected !== undefined ? selected : -1,
+                    correctOption: q.correct,
+                    isCorrect: isCorrect,
+                    explanation: q.explanation || ""
+                });
+            });
+
+            const total = questions.length;
+            const percentage = Math.round((correctCount / total) * 100);
+
+            // Grade calculation
+            let grade = "A+ (अति उत्कृष्ट)";
+            let gradeClass = "a-plus";
+            let teacherRemark = "शानदार प्रदर्शन! आपने बहुत अच्छा अभ्यास किया है। ऐसे ही निरंतर अभ्यास जारी रखें।";
+
+            if (percentage >= 90) {
+                grade = "A+ (अति उत्कृष्ट / Outstanding)";
+                teacherRemark = "शाबाश! बोर्ड परीक्षा में टॉपर बनने योग्य उत्कृष्ट प्रदर्शन! - रजनीकांत चौहान";
+            } else if (percentage >= 75) {
+                grade = "A (उत्कृष्ट / Excellent)";
+                teacherRemark = "बहुत बढ़िया! थोड़ी और एकाग्रता से आप शत-प्रतिशत अंक ला सकते हैं।";
+            } else if (percentage >= 60) {
+                grade = "B (संतोषजनक / Good)";
+                teacherRemark = "अच्छा प्रयास! गलत हुए प्रश्नों की व्याख्या ध्यानपूर्वक पढ़ें और पुनः अभ्यास करें।";
+            } else {
+                grade = "C (पुनः अभ्यास आवश्यक / Needs Practice)";
+                teacherRemark = "इस अध्याय के नोट्स दोबारा पढ़ें और प्रश्नों का गहन अभ्यास करें।";
+            }
+
+            const submissionId = "sub_" + Date.now() + "_" + Math.floor(Math.random()*1000);
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString('hi-IN', { day: '2-digit', month: '2-digit', year: 'numeric' }) + " " + now.toLocaleTimeString('hi-IN', { hour: '2-digit', minute: '2-digit' });
+
+            const resultPayload = {
+                id: submissionId,
+                studentId: currentStudent.id,
+                studentName: currentStudent.name,
+                studentClass: currentStudent.studentClass,
+                rollNo: currentStudent.rollNo,
+                chapterId: activeQuizState.chapterId,
+                chapterTitle: activeQuizState.chapterTitle,
+                score: correctCount,
+                totalQuestions: total,
+                percentage: percentage,
+                grade: grade,
+                teacherRemarks: teacherRemark,
+                scorecardPublished: true, // Visible to student
+                submittedAt: Date.now(),
+                formattedDate: formattedDate,
+                review: detailedReview
+            };
+
+            // 1. Save result to Firestore
+            if (window.quizAppFirebase && window.quizAppFirebase.db) {
+                try {
+                    const { db, doc, setDoc } = window.quizAppFirebase;
+                    await setDoc(doc(db, "quiz_results", submissionId), resultPayload);
+                    console.log("Quiz result uploaded to Firebase Firestore.");
+                } catch(e) {
+                    console.warn("Firestore result save warning:", e);
+                }
+            }
+
+            // 2. Save locally for instant offline admin access
+            let allResults = JSON.parse(localStorage.getItem("maasharda_all_quiz_results") || "[]");
+            allResults.unshift(resultPayload);
+            localStorage.setItem("maasharda_all_quiz_results", JSON.stringify(allResults));
+
+            // Notify Admin Panel in open tabs
+            window.syncChannel.postMessage({
+                type: "NEW_QUIZ_RESULT_SUBMITTED",
+                result: resultPayload
+            });
+
+            // 3. Render Scorecard View
+            renderScorecard(resultPayload);
+        }
+
+        function renderScorecard(result) {
+            document.getElementById("quiz-arena").classList.remove("active");
+            const scArena = document.getElementById("scorecard-arena");
+            scArena.classList.add("active");
+
+            document.getElementById("sc-student-name").innerText = result.studentName;
+            document.getElementById("sc-class-roll").innerText = `${result.studentClass} | Roll: ${result.rollNo}`;
+            document.getElementById("sc-chapter-title").innerText = result.chapterTitle;
+            document.getElementById("sc-exam-date").innerText = result.formattedDate;
+
+            document.getElementById("sc-marks-text").innerText = `${result.score} / ${result.totalQuestions}`;
+            document.getElementById("sc-grade-tag").innerText = `GRADE: ${result.grade}`;
+            document.getElementById("sc-percentage-text").innerText = `सटीकता: ${result.percentage}% | कुल प्रश्न: ${result.totalQuestions}`;
+            document.getElementById("sc-teacher-remarks").innerText = result.teacherRemarks;
+
+            // Render Detailed Review
+            const reviewContainer = document.getElementById("review-items-container");
+            reviewContainer.innerHTML = "";
+            const letters = ["A", "B", "C", "D"];
+
+            result.review.forEach((item, idx) => {
+                const card = document.createElement("div");
+                card.className = `review-card ${item.isCorrect ? 'correct' : 'incorrect'}`;
+
+                const chosenText = item.selectedOption >= 0 ? `${letters[item.selectedOption]}: ${item.options[item.selectedOption]}` : "कोई उत्तर नहीं चुना";
+                const correctText = `${letters[item.correctOption]}: ${item.options[item.correctOption]}`;
+
+                card.innerHTML = `
+                    <div style="font-size:22px; color:#ffffff; margin-bottom:10px;">
+                        <strong>प्रश्न ${idx + 1}:</strong> ${item.q}
+                    </div>
+                    <div class="ans-row" style="color: ${item.isCorrect ? 'var(--accent-green)' : 'var(--accent-red)'};">
+                        <strong>आपका उत्तर:</strong> ${chosenText} ${item.isCorrect ? '✅ (सत्य)' : '❌ (असत्य)'}
+                    </div>
+                    ${!item.isCorrect ? `
+                        <div class="ans-row" style="color: var(--accent-green); margin-top:4px;">
+                            <strong>सही उत्तर:</strong> ${correctText}
+                        </div>
+                    ` : ''}
+                    ${item.explanation ? `
+                        <div class="explanation-text">
+                            <strong>💡 व्याख्या:</strong> ${item.explanation}
+                        </div>
+                    ` : ''}
+                `;
+                reviewContainer.appendChild(card);
+            });
+
+            scArena.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleReviewSection() {
+            const rev = document.getElementById("review-section");
+            const btn = document.getElementById("btn-toggle-review");
+            if (rev.style.display === "none") {
+                rev.style.display = "block";
+                btn.innerHTML = `<i data-lucide="eye-off"></i> समीक्षा छुपाएं`;
+                rev.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                rev.style.display = "none";
+                btn.innerHTML = `<i data-lucide="file-question"></i> उत्तर समीक्षा देखें (Answers)`;
+            }
+            lucide.createIcons();
+        }
+
+        function backToChapterSelection() {
+            document.getElementById("scorecard-arena").classList.remove("active");
+            document.getElementById("quiz-arena").classList.remove("active");
+            document.getElementById("main-content-view").style.display = "block";
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
