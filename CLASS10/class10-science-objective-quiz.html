@@ -874,7 +874,7 @@
                 <i data-lucide="user-check"></i> <span id="enroll-btn-label">विद्यार्थी नामांकन (Enroll)</span>
             </button>
             <a href="class10-quiz-admin.html" class="btn-nav btn-admin">
-                <i data-lucide="shield-check"></i> एडमिन & रिजल्ट पैनल (Admin)
+                <i data-lucide="shield-check"></i> एडमिन & रिजल्ट पैनल (पासवर्ड: 101020)
             </a>
         </div>
     </nav>
@@ -910,6 +910,20 @@
         <p style="font-size: 22px; color: #e2e8f0; max-width: 750px; margin: 0 auto 20px auto; line-height: 1.5;">
             नमस्ते <strong id="waiting-student-name" style="color:var(--gold);">विद्यार्थी</strong>! आपका नामांकन अनुरोध शिक्षक (रजनीकांत चौहान सर) को भेज दिया गया है। जैसे ही सर एडमिन पैनल से अनुमति देंगे, यह स्क्रीन अपने आप अनलॉक हो जाएगी!
         </p>
+        
+        <!-- ── DIRECT TEACHER PIN UNLOCK OPTION ── -->
+        <div style="margin:20px auto; max-width:650px; background:rgba(255,204,0,0.08); border:2px dashed var(--gold); border-radius:18px; padding:20px;">
+            <div style="font-size:20px; color:var(--gold); margin-bottom:12px;">
+                💡 <strong>अनुरोध नहीं पहुँच रहा या तुरंत टेस्ट देना है?</strong>
+            </div>
+            <button type="button" onclick="openDirectUnlockModal()" class="btn-nav" style="background:linear-gradient(135deg, #ffcc00, #ff9900); color:#000; font-size:22px; font-weight:900; border:2px solid #fff; box-shadow:0 0 20px rgba(255,204,0,0.5); padding:14px 28px;">
+                <i data-lucide="key-round"></i> 🔑 शिक्षक मास्टर पिन से तुरंत अनलॉक करें (PIN: 101020)
+            </button>
+            <div style="font-size:16px; color:#94a3b8; margin-top:10px;">
+                रजनीकांत सर से मिला 6-अंकीय शिक्षक पिन (101020) दर्ज करके आप तुरंत टेस्ट शुरू कर सकते हैं।
+            </div>
+        </div>
+
         <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
             <button onclick="checkApprovalStatusManually()" class="btn-nav">
                 <i data-lucide="refresh-cw"></i> स्थिति रिफ्रेश करें (Refresh)
@@ -1075,10 +1089,50 @@
                     🚀 भाग लेने के लिए अनुरोध भेजें (Send Request)
                 </button>
                 
+                <div style="text-align:center; margin:16px 0; color:#94a3b8; font-size:18px;">
+                    ── अथवा अगर शिक्षक ने पिन दिया है ──
+                </div>
+
+                <button type="button" onclick="openDirectUnlockModal()" class="btn-nav" style="width:100%; justify-content:center; background:linear-gradient(135deg, #ffcc00, #ff9900); color:#000; font-size:20px; font-weight:900; border:2px solid #fff; padding:12px;">
+                    <i data-lucide="key-round"></i> 🔑 शिक्षक मास्टर पिन से तुरंत अनलॉक करें
+                </button>
+
                 <button type="button" onclick="closeEnrollmentModal()" class="btn-ctrl btn-prev" style="width:100%; justify-content:center; margin-top:12px;">
                     रद्द करें (Cancel)
                 </button>
             </form>
+        </div>
+    </div>
+
+    <!-- ── DIRECT TEACHER PIN UNLOCK MODAL ── -->
+    <div class="enroll-modal-overlay" id="direct-unlock-modal">
+        <div class="enroll-card" style="max-width:520px; border-color:var(--gold);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; border-bottom:2px solid #334155; padding-bottom:12px;">
+                <h3 style="color:var(--gold); font-size:28px; font-family:var(--heading-font); margin:0;">🔑 शिक्षक मास्टर पिन सत्यापन</h3>
+                <button type="button" onclick="closeDirectUnlockModal()" class="btn-ctrl btn-prev" style="padding:4px 12px; font-size:20px;">✕</button>
+            </div>
+            <p style="font-size:18px; color:#cbd5e1; margin-bottom:18px; line-height:1.5;">
+                यदि एडमिन पैनल से अनुरोध स्वीकृत नहीं हुआ है, तो शिक्षक (रजनीकांत सर) का 6-अंकीय पिन दर्ज करके अपनी स्क्रीन तुरंत अनलॉक करें:
+            </p>
+            <form onsubmit="handleDirectPinUnlock(event)">
+                <div class="form-group" style="margin-bottom:14px; text-align:left;">
+                    <label for="unlock-student-name">विद्यार्थी का नाम (Student Name):</label>
+                    <input type="text" id="unlock-student-name" class="form-input" placeholder="अपना नाम दर्ज करें" style="font-size:20px; padding:12px;">
+                </div>
+                <div class="form-group" style="margin-bottom:18px; text-align:left;">
+                    <label for="teacher-unlock-pin">शिक्षक मास्टर पिन (Teacher PIN):</label>
+                    <input type="password" id="teacher-unlock-pin" class="form-input" placeholder="••••••" maxlength="10" style="font-size:28px; letter-spacing:8px; text-align:center; color:var(--gold); font-family:monospace;" required>
+                </div>
+                <div id="unlock-pin-error" style="display:none; color:#ff5252; background:rgba(255,23,68,0.12); padding:10px; border-radius:10px; margin-bottom:15px; font-size:18px; border:1px solid rgba(255,23,68,0.3);">
+                    ❌ गलत शिक्षक पिन! कृपया सही पिन (101020) दर्ज करें।
+                </div>
+                <button type="submit" class="btn-submit-request" style="width:100%; justify-content:center; font-size:22px; padding:14px; background:linear-gradient(135deg, #00e676, #00b0ff); color:#000;">
+                    <i data-lucide="unlock"></i> 🔓 तुरंत परीक्षा अनलॉक करें
+                </button>
+            </form>
+            <div style="margin-top:14px; font-size:15px; color:#94a3b8;">
+                मास्टर पासवर्ड: <strong>101020</strong>
+            </div>
         </div>
     </div>
 
@@ -1134,13 +1188,17 @@
         const syncChannel = new BroadcastChannel("maasharda_quiz_sync_channel");
         syncChannel.onmessage = (event) => {
             if (event.data && event.data.type === "STUDENT_APPROVAL_UPDATED") {
-                if (window.currentStudent && event.data.studentId === window.currentStudent.id) {
-                    window.currentStudent.status = event.data.status;
-                    saveCurrentStudentToStorage(window.currentStudent);
-                    updateEnrollmentUI();
+                const cur = window.currentStudent;
+                if (cur && event.data.studentId === cur.id) {
+                    cur.status = event.data.status;
+                    if (window.saveCurrentStudentToStorage) window.saveCurrentStudentToStorage(cur);
+                    if (window.updateEnrollmentUI) window.updateEnrollmentUI();
+                    if (event.data.status === "approved") {
+                        alert("🎉 बधाई! शिक्षक (रजनीकांत चौहान सर) ने आपको क्विज में भाग लेने की अनुमति दे दी है!");
+                    }
                 }
             } else if (event.data && event.data.type === "CUSTOM_QUESTIONS_UPDATED") {
-                loadCustomQuestions();
+                if (window.loadCustomQuestions) window.loadCustomQuestions();
             }
         };
         window.syncChannel = syncChannel;
@@ -1539,7 +1597,10 @@
         // 2. STATE MANAGEMENT
         // ============================================================
         let currentStudent = null;
+        window.currentStudent = null;
         let customQuestionsBank = {};
+        const TEACHER_MASTER_PIN = "101020";
+
         let activeQuizState = {
             chapterId: null,
             chapterTitle: "",
@@ -1556,10 +1617,60 @@
         document.addEventListener("DOMContentLoaded", () => {
             lucide.createIcons();
             loadStudentFromStorage();
+            checkUrlAutoApproval();
             renderChapterCards();
             loadCustomQuestions();
             setupRealtimeStudentListener();
+            setupCrossTabStorageListener();
         });
+
+        // Auto-approval via URL parameter: ?pin=101020 or ?allow=true
+        function checkUrlAutoApproval() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const pinParam = urlParams.get("pin");
+            const allowParam = urlParams.get("allow");
+
+            if (pinParam === "101020" || allowParam === "true" || allowParam === "1") {
+                if (!currentStudent) {
+                    currentStudent = {
+                        id: "std_auto_" + Date.now(),
+                        name: "अधिकृत विद्यार्थी",
+                        studentClass: "Class 10",
+                        status: "approved",
+                        requestedAt: Date.now(),
+                        formattedTime: new Date().toLocaleTimeString('hi-IN', { hour: '2-digit', minute: '2-digit' })
+                    };
+                } else {
+                    currentStudent.status = "approved";
+                }
+                window.currentStudent = currentStudent;
+                saveCurrentStudentToStorage(currentStudent);
+                updateEnrollmentUI();
+            }
+        }
+
+        // Cross-tab and window local storage sync listener
+        function setupCrossTabStorageListener() {
+            window.addEventListener("storage", (event) => {
+                if (event.key === "maasharda_student_profile" || event.key === "maasharda_all_enrollments") {
+                    loadStudentFromStorage();
+                }
+            });
+
+            // Auto-check approval status every 2 seconds when pending
+            setInterval(() => {
+                if (currentStudent && currentStudent.status === "pending") {
+                    const allEnrollments = JSON.parse(localStorage.getItem("maasharda_all_enrollments") || "[]");
+                    const found = allEnrollments.find(e => e.id === currentStudent.id);
+                    if (found && found.status === "approved") {
+                        currentStudent.status = "approved";
+                        window.currentStudent = currentStudent;
+                        saveCurrentStudentToStorage(currentStudent);
+                        updateEnrollmentUI();
+                    }
+                }
+            }, 2000);
+        }
 
         // ============================================================
         // 4. STUDENT ENROLLMENT & REQUEST LOGIC
@@ -1573,10 +1684,13 @@
                     currentStudent = null;
                 }
             }
+            window.currentStudent = currentStudent;
             updateEnrollmentUI();
         }
 
         function saveCurrentStudentToStorage(student) {
+            currentStudent = student;
+            window.currentStudent = student;
             localStorage.setItem("maasharda_student_profile", JSON.stringify(student));
         }
 
@@ -1636,6 +1750,83 @@
             document.getElementById("enroll-modal").classList.remove("active");
         }
 
+        // ── DIRECT PIN UNLOCK MODAL HANDLERS ──
+        function openDirectUnlockModal() {
+            const nameInput = document.getElementById("unlock-student-name");
+            if (currentStudent && currentStudent.name) {
+                nameInput.value = currentStudent.name;
+            } else {
+                const enrollName = document.getElementById("input-student-name");
+                if (enrollName && enrollName.value) nameInput.value = enrollName.value;
+            }
+            document.getElementById("teacher-unlock-pin").value = "";
+            document.getElementById("unlock-pin-error").style.display = "none";
+            document.getElementById("direct-unlock-modal").classList.add("active");
+            document.getElementById("teacher-unlock-pin").focus();
+        }
+
+        function closeDirectUnlockModal() {
+            document.getElementById("direct-unlock-modal").classList.remove("active");
+        }
+
+        async function handleDirectPinUnlock(e) {
+            e.preventDefault();
+            const pin = document.getElementById("teacher-unlock-pin").value.trim();
+            const errorDiv = document.getElementById("unlock-pin-error");
+
+            if (pin !== TEACHER_MASTER_PIN) {
+                errorDiv.style.display = "block";
+                document.getElementById("teacher-unlock-pin").focus();
+                return;
+            }
+
+            errorDiv.style.display = "none";
+            const enteredName = document.getElementById("unlock-student-name").value.trim() || currentStudent?.name || "विद्यार्थी (Approved)";
+            const sClass = currentStudent?.studentClass || "Class 10";
+            const studentId = currentStudent?.id || "std_" + Date.now();
+
+            const studentPayload = {
+                id: studentId,
+                name: enteredName,
+                studentClass: sClass,
+                status: "approved",
+                requestedAt: currentStudent?.requestedAt || Date.now(),
+                formattedTime: new Date().toLocaleTimeString('hi-IN', { hour: '2-digit', minute: '2-digit' }),
+                unlockedVia: "MASTER_PIN_101020"
+            };
+
+            currentStudent = studentPayload;
+            window.currentStudent = studentPayload;
+            saveCurrentStudentToStorage(studentPayload);
+
+            // Sync to local enrollments
+            let allEnrollments = JSON.parse(localStorage.getItem("maasharda_all_enrollments") || "[]");
+            allEnrollments = allEnrollments.filter(e => e.id !== studentId);
+            allEnrollments.unshift(studentPayload);
+            localStorage.setItem("maasharda_all_enrollments", JSON.stringify(allEnrollments));
+
+            // Sync to Firebase if available
+            if (window.quizAppFirebase && window.quizAppFirebase.db) {
+                try {
+                    const { db, setDoc, doc } = window.quizAppFirebase;
+                    await setDoc(doc(db, "quiz_enrollments", studentId), studentPayload);
+                } catch(e) {}
+            }
+
+            // Broadcast to admin
+            if (window.syncChannel) {
+                window.syncChannel.postMessage({
+                    type: "NEW_ENROLLMENT_REQUEST",
+                    student: studentPayload
+                });
+            }
+
+            closeDirectUnlockModal();
+            closeEnrollmentModal();
+            updateEnrollmentUI();
+            alert("🎉 शिक्षक मास्टर पिन (101020) सफलतापूर्वक सत्यापित हुआ! अब आप सभी क्विज टेस्ट बिना किसी रोक-टोक खेल सकते हैं।");
+        }
+
         async function handleEnrollmentSubmit(e) {
             e.preventDefault();
             const name = document.getElementById("input-student-name").value.trim();
@@ -1658,6 +1849,7 @@
             };
 
             currentStudent = studentPayload;
+            window.currentStudent = studentPayload;
             saveCurrentStudentToStorage(studentPayload);
 
             // Save to Firebase Firestore
@@ -1678,15 +1870,17 @@
             localStorage.setItem("maasharda_all_enrollments", JSON.stringify(allEnrollments));
 
             // Notify open admin tabs
-            window.syncChannel.postMessage({
-                type: "NEW_ENROLLMENT_REQUEST",
-                student: studentPayload
-            });
+            if (window.syncChannel) {
+                window.syncChannel.postMessage({
+                    type: "NEW_ENROLLMENT_REQUEST",
+                    student: studentPayload
+                });
+            }
 
             closeEnrollmentModal();
             updateEnrollmentUI();
             setupRealtimeStudentListener();
-            alert(`अनुरोध सफलता पूर्वक भेजा गया! रजनीकांत सर के अनुमोदन (Approval) की प्रतीक्षा करें।`);
+            alert(`अनुरोध सफलता पूर्वक भेजा गया!\n\n💡 टिप: यदि शिक्षक स्क्रीन से अनुमति नहीं मिल पा रही है, तो 'शिक्षक मास्टर पिन से तुरंत अनलॉक करें' बटन दबाकर पिन 101020 दर्ज करें।`);
         }
 
         function setupRealtimeStudentListener() {
@@ -1702,6 +1896,7 @@
                             const data = docSnap.data();
                             if (data.status && data.status !== currentStudent.status) {
                                 currentStudent.status = data.status;
+                                window.currentStudent = currentStudent;
                                 saveCurrentStudentToStorage(currentStudent);
                                 updateEnrollmentUI();
                                 if (data.status === "approved") {
@@ -1724,12 +1919,26 @@
             const found = allEnrollments.find(e => e.id === currentStudent.id);
             if (found && found.status !== currentStudent.status) {
                 currentStudent.status = found.status;
+                window.currentStudent = currentStudent;
                 saveCurrentStudentToStorage(currentStudent);
                 updateEnrollmentUI();
+                alert(`🎉 बधाई! आपकी स्थिति अब '${found.status === 'approved' ? 'स्वीकृत (Approved)' : found.status}' हो गई है!`);
+            } else if (currentStudent.status === "approved") {
+                alert("✅ आप पहले से स्वीकृत (Approved) हैं! अध्याय चुनकर टेस्ट शुरू करें।");
+                updateEnrollmentUI();
             } else {
-                alert(`वर्तमान स्थिति: ${currentStudent.status === 'approved' ? 'अनुमोदित (Approved)' : 'प्रतीक्षारत (Pending Teacher Approval)'}`);
+                alert(`वर्तमान स्थिति: अनुमति प्रतीक्षारत (Pending Teacher Approval)\n\n💡 टिप: यदि शिक्षक का अनुरोध नहीं आ रहा है, तो 'शिक्षक मास्टर पिन से तुरंत अनलॉक करें' बटन दबाकर 101020 दर्ज करें।`);
             }
         }
+
+        // Expose to window for external/cross-script invocations
+        window.saveCurrentStudentToStorage = saveCurrentStudentToStorage;
+        window.updateEnrollmentUI = updateEnrollmentUI;
+        window.loadStudentFromStorage = loadStudentFromStorage;
+        window.openDirectUnlockModal = openDirectUnlockModal;
+        window.closeDirectUnlockModal = closeDirectUnlockModal;
+        window.handleDirectPinUnlock = handleDirectPinUnlock;
+        window.checkApprovalStatusManually = checkApprovalStatusManually;
 
         // ============================================================
         // 5. RENDER CHAPTER CARDS & LOAD QUESTIONS

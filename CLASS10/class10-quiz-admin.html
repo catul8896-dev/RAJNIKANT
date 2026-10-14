@@ -574,15 +574,262 @@
             .form-grid { grid-template-columns: 1fr; }
         }
 
-        @media print {
-            body { background: #fff !important; color: #000 !important; }
-            .top-nav, .tabs-header, .panel-heading-row button, .actions-cluster, footer { display: none !important; }
-            .control-panel-card { border: 2px solid #000 !important; }
-            table.admin-table th, table.admin-table td { color: #000 !important; border: 1px solid #999 !important; }
+        /* ── ADMIN LOCK SCREEN (PASSWORD 101020) ── */
+        .admin-lock-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 50% 25%, rgba(255, 204, 0, 0.15) 0%, transparent 55%),
+                radial-gradient(circle at 50% 85%, rgba(255, 23, 68, 0.1) 0%, transparent 55%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999999;
+            padding: 20px;
+        }
+
+        .lock-card {
+            background: #0b0f19;
+            border: 4px solid var(--gold);
+            border-radius: 28px;
+            max-width: 520px;
+            width: 100%;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(255, 204, 0, 0.25), 0 25px 60px rgba(0,0,0,0.95);
+            animation: fadeInLock 0.3s ease-out;
+        }
+
+        @keyframes fadeInLock {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .lock-icon-badge {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 16px auto;
+            border-radius: 50%;
+            background: rgba(255, 204, 0, 0.12);
+            border: 3px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            box-shadow: 0 0 25px var(--gold-glow);
+        }
+
+        .lock-icon-badge svg {
+            width: 42px;
+            height: 42px;
+        }
+
+        .lock-card h2 {
+            font-family: var(--heading-font);
+            font-size: 34px;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+
+        .lock-card p.lock-sub {
+            font-size: 19px;
+            color: #cbd5e1;
+            margin-bottom: 22px;
+            line-height: 1.4;
+        }
+
+        .pin-input-group {
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        .pin-input {
+            width: 100%;
+            padding: 16px 50px 16px 20px;
+            background: #151b2b;
+            border: 3px solid #334155;
+            border-radius: 16px;
+            color: var(--gold);
+            font-size: 32px;
+            letter-spacing: 8px;
+            text-align: center;
+            font-family: monospace;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .pin-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        .pin-toggle-btn {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 6px;
+        }
+
+        .pin-keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .keypad-btn {
+            background: #171f33;
+            border: 2px solid #2d3748;
+            color: #ffffff;
+            font-size: 26px;
+            font-weight: 800;
+            padding: 12px;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .keypad-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .keypad-btn.action-btn {
+            background: #25121b;
+            border-color: #ff1744;
+            color: #ff5252;
+        }
+
+        .keypad-btn.action-btn:hover {
+            background: #ff1744;
+            color: #fff;
+        }
+
+        .btn-unlock {
+            width: 100%;
+            background: linear-gradient(135deg, #ffcc00, #ff9900);
+            color: #000;
+            font-size: 24px;
+            font-weight: 900;
+            padding: 15px;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 10px 25px rgba(255, 204, 0, 0.4);
+            transition: all 0.2s;
+        }
+
+        .btn-unlock:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(255, 204, 0, 0.6);
+        }
+
+        .lock-remember-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 18px;
+            color: #94a3b8;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .lock-error-msg {
+            color: #ff5252;
+            font-size: 18px;
+            margin-top: 14px;
+            display: none;
+            background: rgba(255, 23, 68, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 23, 68, 0.3);
+        }
+
+        .shake-anim {
+            animation: shake 0.4s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
         }
     </style>
 </head>
 <body>
+
+    <!-- ── ADMIN SECURITY LOCK OVERLAY (PASSWORD: 101020) ── -->
+    <div class="admin-lock-overlay" id="admin-lock-overlay" style="display:flex;">
+        <div class="lock-card" id="lock-card-box">
+            <div class="lock-icon-badge">
+                <i data-lucide="shield-alert"></i>
+            </div>
+            <h2>माँ शारदा क्लासेस</h2>
+            <p class="lock-sub">
+                🛡️ शिक्षक एडमिन सुरक्षा सत्यापन (Admin Login)<br>
+                <span style="font-size:17px; color:var(--gold);">प्रशासक: रजनीकांत चौहान सर</span>
+            </p>
+
+            <form onsubmit="handleAdminLogin(event)">
+                <div class="pin-input-group">
+                    <input type="password" id="admin-pin-input" class="pin-input" placeholder="••••••" maxlength="10" autocomplete="off" autofocus>
+                    <button type="button" class="pin-toggle-btn" onclick="togglePinVisibility()" title="पासवर्ड देखें / छिपाएँ">
+                        <i data-lucide="eye" id="pin-eye-icon"></i>
+                    </button>
+                </div>
+
+                <!-- On-screen numeric keypad for smart TVs and touch displays -->
+                <div class="pin-keypad">
+                    <button type="button" class="keypad-btn" onclick="pressPinKey('1')">1</button>
+                    <button type="button" class="keypad-btn" onclick="pressPinKey('2')">2</button>
+                    <button type="button" class="keypad-btn" onclick="pressPinKey('3')">3</button>
+                    <button type="button" class="keypad-btn" onclick="pressPinKey('4')">4</button>
+                    <button type="button" class="keypad-btn" onclick="pressPinKey('5')">5</button>
+                    <button type="button" class="keypad-btn" onclick="pressPinKey('6')">6</button>
+                    <button type="button" class="keypad-btn" onclick="pressPinKey('7')">7</button>
+                    <button type="button" class="keypad-btn" onclick="pressPinKey('8')">8</button>
+                    <button type="button" class="keypad-btn" onclick="pressPinKey('9')">9</button>
+                    <button type="button" class="keypad-btn action-btn" onclick="clearPinKey()">C</button>
+                    <button type="button" class="keypad-btn" onclick="pressPinKey('0')">0</button>
+                    <button type="button" class="keypad-btn action-btn" onclick="backspacePinKey()">⌫</button>
+                </div>
+
+                <label class="lock-remember-row">
+                    <input type="checkbox" id="remember-admin-checkbox" style="width:20px; height:20px; accent-color:var(--gold);">
+                    <span>इस डिवाइस पर लॉगिन याद रखें</span>
+                </label>
+
+                <button type="submit" class="btn-unlock">
+                    <i data-lucide="unlock"></i> 🔓 एडमिन पैनल में प्रवेश करें
+                </button>
+                <div class="lock-error-msg" id="lock-error-msg">
+                    ❌ गलत पासवर्ड! कृपया सही एडमिन पासवर्ड (101020) दर्ज करें।
+                </div>
+            </form>
+            <div style="margin-top:18px; font-size:16px; color:#64748b;">
+                💡 पासवर्ड: <strong>101020</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── ADMIN MAIN PROTECTED WRAPPER ── -->
+    <div id="admin-main-wrapper" style="display:none; flex-direction:column; min-height:100vh; justify-content:space-between;">
 
     <!-- ── TOP UTILITY NAVIGATION ── -->
     <nav class="top-nav">
@@ -598,18 +845,21 @@
             <a href="class10-science-objective-quiz.html" class="btn-nav btn-student-view" target="_blank">
                 <i data-lucide="external-link"></i> विद्यार्थी क्विज स्क्रीन खोलें (Live Quiz)
             </a>
+            <button onclick="lockAdminPanel()" class="btn-nav" style="border-color:#ff1744; color:#ff1744; background:rgba(255,23,68,0.12);">
+                <i data-lucide="lock"></i> पैनल लॉक करें (Logout)
+            </button>
         </div>
     </nav>
 
     <!-- ── ADMIN HEADER BANNER ── -->
     <header class="admin-header">
         <h1>माँ शारदा क्लासेस • एडमिन & कंट्रोल पैनल</h1>
-        <p>बिना लॉगिन सीधा एक्सेस: विद्यार्थी अनुमति (Approval), लाइव रिजल्ट्स, स्कोरकार्ड व कस्टम GK प्रश्नोत्तरी</p>
+        <p>सुरक्षित शिक्षक पोर्टल (पासवर्ड: 101020): विद्यार्थी अनुमति (Approval), लाइव रिजल्ट्स, स्कोरकार्ड व कस्टम GK प्रश्नोत्तरी</p>
         
         <div class="admin-badge-strip">
-            <div class="live-pulse-badge">
+            <div class="live-pulse-badge" id="firebase-status-badge">
                 <span class="pulse-dot"></span>
-                <span>लाइव रियल-टाइम सिंक सक्रिय (Firebase Firestore)</span>
+                <span id="firebase-status-text">लाइव रियल-टाइम सिंक सक्रिय (Firebase Firestore)</span>
             </div>
             <div style="background:#ff0055; color:#fff; padding:8px 20px; border-radius:30px; font-size:20px; border:2px solid #fff;">
                 प्रशासक: रजनीकांत चौहान सर
@@ -692,6 +942,12 @@
                     विद्यार्थी नामांकन अनुरोध (Participation Requests)
                 </h2>
                 <div class="actions-cluster">
+                    <button class="btn-action" style="background:#00e676; color:#000; border:2px solid #fff;" onclick="openDirectAddStudentModal()">
+                        <i data-lucide="user-plus"></i> ➕ विद्यार्थी सीधे जोड़ें (Direct Add)
+                    </button>
+                    <button class="btn-action" style="background:#00e5ff; color:#000; border:2px solid #fff;" onclick="copyDirectAllowLink()">
+                        <i data-lucide="copy"></i> 📋 डायरेक्ट अनुमति लिंक कॉपी करें
+                    </button>
                     <label class="switch-label">
                         <input type="checkbox" id="auto-approve-toggle" class="switch-input" onchange="toggleAutoApprove(this)">
                         <span>ऑटो-अनुमति मोड (Auto-Approve All)</span>
@@ -705,8 +961,30 @@
                 </div>
             </div>
 
+            <!-- ── TROUBLESHOOTING & DIRECT ALLOW GUIDE BANNER ── -->
+            <div style="background:linear-gradient(135deg, rgba(255,204,0,0.12), rgba(255,100,0,0.08)); border:2px solid var(--gold); border-radius:18px; padding:22px; margin-bottom:25px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+                <div style="display:flex; align-items:center; gap:12px; color:var(--gold); font-size:24px; margin-bottom:12px;">
+                    <i data-lucide="alert-triangle" style="width:30px; height:30px;"></i>
+                    <strong>छात्र का अनुरोध यहाँ नहीं दिख रहा? तुरंत अनुमति देने के 4 आसान उपाय:</strong>
+                </div>
+                <div style="font-size:19px; color:#e2e8f0; line-height:1.7;">
+                    <p style="margin-bottom:8px;">
+                        🔹 <strong>उपाय 1 (छात्र के फोन से तुरंत अनलॉक):</strong> छात्र के मोबाइल स्क्रीन पर <strong>'🔑 शिक्षक मास्टर पिन से तुरंत अनलॉक करें'</strong> बटन दिया गया है। छात्र से कहें कि वह उस बटन पर क्लिक करके पिन <strong>101020</strong> दर्ज करे। छात्र की स्क्रीन तुरंत 100% अनलॉक हो जाएगी!
+                    </p>
+                    <p style="margin-bottom:8px;">
+                        🔹 <strong>उपाय 2 (डायरेक्ट लिंक भेजें):</strong> ऊपर दिए गए <strong>'📋 डायरेक्ट अनुमति लिंक कॉपी करें'</strong> बटन पर क्लिक करके लिंक कॉपी करें और छात्रों के WhatsApp ग्रुप में भेजें (लिंक में <code>?pin=101020</code> स्वतः लगा है)। छात्र लिंक खोलते ही बिना किसी अनुमति इंतज़ार के सीधे टेस्ट दे सकेंगे।
+                    </p>
+                    <p style="margin-bottom:8px;">
+                        🔹 <strong>उपाय 3 (यहाँ सीधे छात्र जोड़ें):</strong> ऊपर <strong>'➕ विद्यार्थी सीधे जोड़ें'</strong> बटन दबाकर छात्र का नाम यहाँ दर्ज करें। वह सीधे स्वीकृत सूची में शामिल हो जाएगा।
+                    </p>
+                    <p style="margin-bottom:0; color:#94a3b8; font-size:17px;">
+                        ⚙️ <strong>ऑनलाइन क्रॉस-डिवाइस क्लाउड सिंक नोट:</strong> यदि अलग-अलग मोबाइलों से रिक्वेस्ट यहाँ लाइव नहीं आ रही हैं, तो Google Firebase Console (<a href="https://console.firebase.google.com" target="_blank" style="color:var(--accent-blue);">console.firebase.google.com</a>) में जाकर 'maashardagk' प्रोजेक्ट में <strong>Firestore Database</strong> को <em>Create Database (Test Mode)</em> करके सक्षम (Enable) करें।
+                    </p>
+                </div>
+            </div>
+
             <p style="font-size:20px; color:#cbd5e1; margin-bottom:20px;">
-                जब कोई छात्र अपना नाम और कक्षा भरकर अनुरोध भेजेगा, तो उसका नाम यहाँ दिखाई देगा। <strong>"अनुमति दें (Allow)"</strong> पर क्लिक करते ही छात्र की स्क्रीन तुरंत अनलॉक हो जाएगी!
+                जब कोई छात्र अनुरोध भेजेगा, तो उसका नाम नीचे तालिका में दिखेगा। <strong>"अनुमति दें (Allow)"</strong> पर क्लिक करते ही छात्र की स्क्रीन अनलॉक हो जाएगी!
             </p>
 
             <div class="table-responsive">
@@ -928,10 +1206,40 @@
         </div>
     </div>
 
+    <!-- ── DIRECT ADD STUDENT MODAL ── -->
+    <div class="modal-overlay" id="direct-add-student-modal">
+        <div class="modal-card" style="max-width:550px;">
+            <div class="modal-header">
+                <h3>➕ नया विद्यार्थी सीधे जोड़ें व Allow करें</h3>
+                <button onclick="closeDirectAddStudentModal()" class="btn-action refresh" style="font-size:22px; padding:6px 14px;">✕</button>
+            </div>
+            <form onsubmit="handleDirectAddStudentSubmit(event)">
+                <div class="form-group" style="margin-bottom:18px;">
+                    <label for="direct-student-name" style="font-size:20px; color:#cbd5e1; display:block; margin-bottom:8px;">विद्यार्थी का नाम (Student Name):</label>
+                    <input type="text" id="direct-student-name" class="form-control" placeholder="उदा. राहुल कुमार" required style="font-size:22px; padding:12px;">
+                </div>
+                <div class="form-group" style="margin-bottom:25px;">
+                    <label for="direct-student-class" style="font-size:20px; color:#cbd5e1; display:block; margin-bottom:8px;">कक्षा / सेक्शन (Class / Section):</label>
+                    <input type="text" id="direct-student-class" class="form-control" value="Class 10" required style="font-size:22px; padding:12px;">
+                </div>
+                <div style="display:flex; gap:12px;">
+                    <button type="submit" class="btn-action approve-all" style="flex:1; justify-content:center; font-size:22px; padding:14px;">
+                        ✅ अनुमति देकर जोड़ें (Add & Allow)
+                    </button>
+                    <button type="button" onclick="closeDirectAddStudentModal()" class="btn-action refresh" style="font-size:22px; padding:14px;">
+                        रद्द करें
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- ── FOOTER ── -->
     <footer>
         माँ शारदा क्लासेस • स्थान: टुनटुन मोड़ मार्केट | Class 10 Science & GK Admin Management Engine © 2026
     </footer>
+
+    </div> <!-- ── END ADMIN MAIN PROTECTED WRAPPER ── -->
 
     <!-- ============================================================ -->
     <!-- FIREBASE MODULE & ADMIN SCRIPT                               -->
@@ -994,6 +1302,102 @@
 
     <script>
         // ============================================================
+        // 0. ADMIN AUTHENTICATION (PASSWORD: 101020)
+        // ============================================================
+        const ADMIN_PASSWORD = "101020";
+
+        function checkAdminAuth() {
+            const isSessionAuth = sessionStorage.getItem("maasharda_admin_authenticated") === "true";
+            const isRememberAuth = localStorage.getItem("maasharda_admin_remember") === "true";
+
+            if (isSessionAuth || isRememberAuth) {
+                document.getElementById("admin-lock-overlay").style.display = "none";
+                document.getElementById("admin-main-wrapper").style.display = "flex";
+                lucide.createIcons();
+            } else {
+                document.getElementById("admin-lock-overlay").style.display = "flex";
+                document.getElementById("admin-main-wrapper").style.display = "none";
+                const pinInput = document.getElementById("admin-pin-input");
+                if (pinInput) pinInput.focus();
+            }
+        }
+
+        function handleAdminLogin(e) {
+            if (e) e.preventDefault();
+            const pinInput = document.getElementById("admin-pin-input");
+            const errorMsg = document.getElementById("lock-error-msg");
+            const lockBox = document.getElementById("lock-card-box");
+            const rememberCheck = document.getElementById("remember-admin-checkbox");
+
+            const entered = pinInput.value.trim();
+
+            if (entered === ADMIN_PASSWORD) {
+                sessionStorage.setItem("maasharda_admin_authenticated", "true");
+                if (rememberCheck && rememberCheck.checked) {
+                    localStorage.setItem("maasharda_admin_remember", "true");
+                }
+                errorMsg.style.display = "none";
+                document.getElementById("admin-lock-overlay").style.display = "none";
+                document.getElementById("admin-main-wrapper").style.display = "flex";
+                lucide.createIcons();
+                loadAllLocalData();
+            } else {
+                if (lockBox) {
+                    lockBox.classList.add("shake-anim");
+                    setTimeout(() => lockBox.classList.remove("shake-anim"), 450);
+                }
+                errorMsg.style.display = "block";
+                pinInput.value = "";
+                pinInput.focus();
+            }
+        }
+
+        function pressPinKey(digit) {
+            const pinInput = document.getElementById("admin-pin-input");
+            if (pinInput.value.length < 10) {
+                pinInput.value += digit;
+            }
+            document.getElementById("lock-error-msg").style.display = "none";
+        }
+
+        function clearPinKey() {
+            const pinInput = document.getElementById("admin-pin-input");
+            pinInput.value = "";
+            document.getElementById("lock-error-msg").style.display = "none";
+            pinInput.focus();
+        }
+
+        function backspacePinKey() {
+            const pinInput = document.getElementById("admin-pin-input");
+            pinInput.value = pinInput.value.slice(0, -1);
+            document.getElementById("lock-error-msg").style.display = "none";
+            pinInput.focus();
+        }
+
+        function togglePinVisibility() {
+            const pinInput = document.getElementById("admin-pin-input");
+            const icon = document.getElementById("pin-eye-icon");
+            if (pinInput.type === "password") {
+                pinInput.type = "text";
+                icon.setAttribute("data-lucide", "eye-off");
+            } else {
+                pinInput.type = "password";
+                icon.setAttribute("data-lucide", "eye");
+            }
+            lucide.createIcons();
+        }
+
+        function lockAdminPanel() {
+            sessionStorage.removeItem("maasharda_admin_authenticated");
+            localStorage.removeItem("maasharda_admin_remember");
+            document.getElementById("admin-pin-input").value = "";
+            document.getElementById("lock-error-msg").style.display = "none";
+            document.getElementById("admin-lock-overlay").style.display = "flex";
+            document.getElementById("admin-main-wrapper").style.display = "none";
+            lucide.createIcons();
+        }
+
+        // ============================================================
         // 1. STATE & STORAGE
         // ============================================================
         let enrollmentsList = [];
@@ -1003,10 +1407,34 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             lucide.createIcons();
-            document.getElementById("auto-approve-toggle").checked = autoApproveMode;
+            checkAdminAuth();
+            const autoToggle = document.getElementById("auto-approve-toggle");
+            if (autoToggle) autoToggle.checked = autoApproveMode;
             populateChapterFilterDropdown();
             loadAllLocalData();
+            setupStorageSyncListener();
         });
+
+        // Cross-tab and window local storage sync listener
+        function setupStorageSyncListener() {
+            window.addEventListener("storage", (event) => {
+                if (event.key === "maasharda_all_enrollments") {
+                    reloadEnrollments();
+                } else if (event.key === "maasharda_all_quiz_results") {
+                    reloadResults();
+                }
+            });
+
+            // Polling interval every 3 seconds to catch changes across tabs
+            setInterval(() => {
+                const storedEnrollments = JSON.parse(localStorage.getItem("maasharda_all_enrollments") || "[]");
+                if (storedEnrollments.length !== enrollmentsList.length) {
+                    enrollmentsList = storedEnrollments;
+                    renderEnrollmentsTable();
+                    updateStatsCounts();
+                }
+            }, 3000);
+        }
 
         function switchTab(tabId) {
             document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
@@ -1061,15 +1489,36 @@
         }
 
         // ============================================================
-        // 2. FIRESTORE REAL-TIME LISTENERS
+        // 2. FIRESTORE REAL-TIME LISTENERS & STATUS BADGE
         // ============================================================
+        function updateFirebaseStatusBadge(isOnline, details) {
+            const badge = document.getElementById("firebase-status-badge");
+            const text = document.getElementById("firebase-status-text");
+            if (!badge || !text) return;
+
+            if (isOnline) {
+                badge.className = "live-pulse-badge";
+                text.innerText = "लाइव क्लाउड सिंक सक्रिय (Firebase Online)";
+            } else {
+                badge.className = "live-pulse-badge";
+                badge.style.borderColor = "#ffcc00";
+                badge.style.background = "rgba(255,204,0,0.15)";
+                badge.style.color = "#ffcc00";
+                text.innerHTML = `⚠️ ऑफलाइन / लोकल मोड सक्रिय (क्लाउड सिंक बंद)`;
+            }
+        }
+
         window.initFirestoreListeners = function() {
-            if (!window.adminFirebase || !window.adminFirebase.db) return;
+            if (!window.adminFirebase || !window.adminFirebase.db) {
+                updateFirebaseStatusBadge(false, "Firestore unavailable");
+                return;
+            }
             const { db, collection, onSnapshot } = window.adminFirebase;
 
             // 1. Listen to Enrollments
             try {
                 onSnapshot(collection(db, "quiz_enrollments"), (snapshot) => {
+                    updateFirebaseStatusBadge(true, "Connected");
                     const list = [];
                     snapshot.forEach(docSnap => {
                         list.push({ id: docSnap.id, ...docSnap.data() });
@@ -1089,8 +1538,14 @@
                         renderEnrollmentsTable();
                         updateStatsCounts();
                     }
-                }, (err) => console.warn("Enrollment snapshot error:", err));
-            } catch(e) { console.warn(e); }
+                }, (err) => {
+                    console.warn("Enrollment snapshot fallback:", err);
+                    updateFirebaseStatusBadge(false, err.message);
+                });
+            } catch(e) {
+                console.warn(e);
+                updateFirebaseStatusBadge(false, e.message);
+            }
 
             // 2. Listen to Quiz Results
             try {
@@ -1100,16 +1555,92 @@
                         res.push({ id: docSnap.id, ...docSnap.data() });
                     });
                     if (res.length > 0) {
-                        // Sort by submittedAt desc
                         res.sort((a,b) => (b.submittedAt || 0) - (a.submittedAt || 0));
                         resultsList = res;
                         localStorage.setItem("maasharda_all_quiz_results", JSON.stringify(res));
                         renderResultsTable();
                         updateStatsCounts();
                     }
-                }, (err) => console.warn("Results snapshot error:", err));
+                }, (err) => {
+                    console.warn("Results snapshot fallback:", err);
+                });
             } catch(e) { console.warn(e); }
         };
+
+        // ============================================================
+        // 2B. DIRECT ADD STUDENT & LINK SHARING
+        // ============================================================
+        function openDirectAddStudentModal() {
+            document.getElementById("direct-student-name").value = "";
+            document.getElementById("direct-student-class").value = "Class 10";
+            document.getElementById("direct-add-student-modal").classList.add("active");
+            document.getElementById("direct-student-name").focus();
+        }
+
+        function closeDirectAddStudentModal() {
+            document.getElementById("direct-add-student-modal").classList.remove("active");
+        }
+
+        async function handleDirectAddStudentSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById("direct-student-name").value.trim();
+            const studentClass = document.getElementById("direct-student-class").value.trim() || "Class 10";
+
+            if (!name) return;
+
+            const studentId = "std_direct_" + Date.now() + "_" + Math.floor(Math.random()*1000);
+            const studentPayload = {
+                id: studentId,
+                name: name,
+                studentClass: studentClass,
+                status: "approved",
+                requestedAt: Date.now(),
+                formattedTime: new Date().toLocaleTimeString('hi-IN', { hour: '2-digit', minute: '2-digit' }),
+                addedDirectlyByAdmin: true
+            };
+
+            enrollmentsList = enrollmentsList.filter(s => s.id !== studentId);
+            enrollmentsList.unshift(studentPayload);
+            localStorage.setItem("maasharda_all_enrollments", JSON.stringify(enrollmentsList));
+
+            if (window.adminFirebase && window.adminFirebase.db) {
+                try {
+                    const { db, doc, setDoc } = window.adminFirebase;
+                    await setDoc(doc(db, "quiz_enrollments", studentId), studentPayload);
+                } catch(err) {
+                    console.warn("Direct student firestore save fallback:", err);
+                }
+            }
+
+            if (window.syncChannel) {
+                window.syncChannel.postMessage({
+                    type: "STUDENT_APPROVAL_UPDATED",
+                    studentId: studentId,
+                    status: "approved"
+                });
+            }
+
+            renderEnrollmentsTable();
+            updateStatsCounts();
+            closeDirectAddStudentModal();
+            alert(`✅ विद्यार्थी '${name}' को सीधे जोड़कर सफलतापूर्वक स्वीकृत (Approved) कर दिया गया है!`);
+        }
+
+        function copyDirectAllowLink() {
+            const currentHref = window.location.href;
+            const quizUrl = currentHref.replace("class10-quiz-admin.html", "class10-science-objective-quiz.html");
+            const finalLink = quizUrl.split("?")[0] + "?pin=101020";
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(finalLink).then(() => {
+                    alert("📋 डायरेक्ट अनुमति लिंक कॉपी हो गया!\n\n" + finalLink + "\n\n👉 यह लिंक छात्रों के WhatsApp ग्रुप में भेजें। जो छात्र इस लिंक को खोलेंगे, वे बिना किसी इंतज़ार के सीधे टेस्ट दे सकेंगे!");
+                }).catch(() => {
+                    prompt("यह डायरेक्ट अनुमति लिंक कॉपी करके छात्रों को भेजें:", finalLink);
+                });
+            } else {
+                prompt("यह डायरेक्ट अनुमति लिंक कॉपी करके छात्रों को भेजें:", finalLink);
+            }
+        }
 
         // ============================================================
         // 3. ENROLLMENTS & APPROVAL ACTIONS
