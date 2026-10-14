@@ -715,7 +715,6 @@
                         <tr>
                             <th>विद्यार्थी का नाम</th>
                             <th>कक्षा / सेक्शन</th>
-                            <th>रोल / मोबाइल</th>
                             <th>अनुरोध समय</th>
                             <th>वर्तमान स्थिति</th>
                             <th>कार्यवाही (Action)</th>
@@ -723,7 +722,7 @@
                     </thead>
                     <tbody id="enrollments-tbody">
                         <tr>
-                            <td colspan="6" style="text-align:center; padding:30px; color:#94a3b8;">
+                            <td colspan="5" style="text-align:center; padding:30px; color:#94a3b8;">
                                 कोई नया नामांकन अनुरोध नहीं है।
                             </td>
                         </tr>
@@ -769,7 +768,7 @@
                     <thead>
                         <tr>
                             <th>विद्यार्थी</th>
-                            <th>कक्षा / रोल</th>
+                            <th>कक्षा (Class)</th>
                             <th>अध्याय / टेस्ट</th>
                             <th>प्राप्तांक (Score)</th>
                             <th>प्रतिशत / ग्रेड</th>
@@ -1144,7 +1143,6 @@
                 tr.innerHTML = `
                     <td><strong>${student.name}</strong></td>
                     <td>${student.studentClass || "Class 10"}</td>
-                    <td>${student.rollNo || "-"}</td>
                     <td>${student.formattedTime || "अभी"}</td>
                     <td>${statusBadge}</td>
                     <td>
@@ -1264,7 +1262,7 @@
 
                 tr.innerHTML = `
                     <td><strong>${res.studentName}</strong></td>
-                    <td>${res.studentClass || "Class 10"} | Roll: ${res.rollNo}</td>
+                    <td>${res.studentClass || "Class 10"}</td>
                     <td><span style="color:var(--gold);">${res.chapterTitle}</span></td>
                     <td><strong style="font-size:22px; color:var(--accent-green);">${res.score} / ${res.totalQuestions}</strong></td>
                     <td>${res.percentage}% (${res.grade || "A"})</td>
@@ -1326,7 +1324,7 @@
                 <div style="background:#0a0d14; border:3px solid var(--gold); border-radius:18px; padding:25px; margin-bottom:25px;">
                     <div style="text-align:center; border-bottom:2px dashed var(--gold); padding-bottom:15px; margin-bottom:20px;">
                         <h2 style="color:var(--gold); font-size:32px;">माँ शारदा क्लासेस • डिजिटल स्कोरकार्ड</h2>
-                        <p style="color:#94a3b8; font-size:20px;">विद्यार्थी मूल्यांकन: ${res.studentName} | ${res.studentClass} (Roll: ${res.rollNo})</p>
+                        <p style="color:#94a3b8; font-size:20px;">विद्यार्थी मूल्यांकन: ${res.studentName} | ${res.studentClass}</p>
                     </div>
 
                     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-bottom:20px;">
@@ -1583,7 +1581,7 @@
                         <span style="font-size:36px; min-width:50px;">${rankDisplay}</span>
                         <div style="text-align:left;">
                             <div style="font-size:26px; color:#ffffff; font-weight:800;">${item.studentName}</div>
-                            <div style="font-size:18px; color:#94a3b8;">${item.studentClass} | Roll: ${item.rollNo}</div>
+                            <div style="font-size:18px; color:#94a3b8;">कक्षा: ${item.studentClass}</div>
                         </div>
                     </div>
                     <div style="text-align:right;">
@@ -1619,9 +1617,9 @@
                 alert("एक्सपोर्ट करने के लिए कोई परिणाम उपलब्ध नहीं है।");
                 return;
             }
-            let csv = "विद्यार्थी का नाम,कक्षा,रोल नंबर,अध्याय,प्राप्तांक,कुल प्रश्न,प्रतिशत,दिनांक\n";
+            let csv = "विद्यार्थी का नाम,कक्षा,अध्याय,प्राप्तांक,कुल प्रश्न,प्रतिशत,दिनांक\n";
             resultsList.forEach(r => {
-                csv += `"${r.studentName}","${r.studentClass}","${r.rollNo}","${r.chapterTitle}",${r.score},${r.totalQuestions},${r.percentage}%,"${r.formattedDate}"\n`;
+                csv += `"${r.studentName}","${r.studentClass}","${r.chapterTitle}",${r.score},${r.totalQuestions},${r.percentage}%,"${r.formattedDate}"\n`;
             });
 
             const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });

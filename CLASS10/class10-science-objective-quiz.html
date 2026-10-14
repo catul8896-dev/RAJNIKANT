@@ -892,7 +892,7 @@
             <i data-lucide="user" style="color: var(--gold); width:32px; height:32px;"></i>
             <div>
                 <span id="display-student-name">अतिथि विद्यार्थी (Guest Student)</span>
-                <span id="display-student-class" style="color: var(--text-muted); font-size:20px; margin-left:8px;">- रोल / कक्षा दर्ज नहीं</span>
+                <span id="display-student-class" style="color: var(--text-muted); font-size:20px; margin-left:8px;">- कक्षा दर्ज नहीं</span>
             </div>
         </div>
         <div>
@@ -992,7 +992,7 @@
                 <div class="val" id="sc-student-name">-</div>
             </div>
             <div class="meta-item">
-                <div class="label">कक्षा / रोल नंबर</div>
+                <div class="label">कक्षा (Class)</div>
                 <div class="val" id="sc-class-roll">-</div>
             </div>
             <div class="meta-item">
@@ -1069,11 +1069,6 @@
                 <div class="form-group">
                     <label for="input-student-class">कक्षा एवं सेक्शन (Class) *</label>
                     <input type="text" id="input-student-class" class="form-input" placeholder="उदा. Class 10 (A)" value="Class 10" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="input-student-roll">रोल नंबर या मोबाइल नंबर *</label>
-                    <input type="text" id="input-student-roll" class="form-input" placeholder="उदा. Roll: 24 या 9876543210" required>
                 </div>
 
                 <button type="submit" class="btn-submit-request">
@@ -1606,7 +1601,7 @@
             }
 
             nameEl.innerText = `विद्यार्थी: ${currentStudent.name}`;
-            classEl.innerText = `[${currentStudent.studentClass} | Roll: ${currentStudent.rollNo}]`;
+            classEl.innerText = `[कक्षा: ${currentStudent.studentClass}]`;
             enrollBtnLabel.innerText = "प्रोफ़ाइल देखें / बदलें";
 
             if (currentStudent.status === "approved") {
@@ -1633,7 +1628,6 @@
             if (currentStudent) {
                 document.getElementById("input-student-name").value = currentStudent.name || "";
                 document.getElementById("input-student-class").value = currentStudent.studentClass || "Class 10";
-                document.getElementById("input-student-roll").value = currentStudent.rollNo || "";
             }
             document.getElementById("enroll-modal").classList.add("active");
         }
@@ -1646,10 +1640,9 @@
             e.preventDefault();
             const name = document.getElementById("input-student-name").value.trim();
             const studentClass = document.getElementById("input-student-class").value.trim();
-            const rollNo = document.getElementById("input-student-roll").value.trim();
 
-            if (!name || !studentClass || !rollNo) {
-                alert("कृपया सभी आवश्यक फ़ील्ड भरें!");
+            if (!name || !studentClass) {
+                alert("कृपया अपना नाम और कक्षा भरें!");
                 return;
             }
 
@@ -1659,7 +1652,6 @@
                 id: studentId,
                 name: name,
                 studentClass: studentClass,
-                rollNo: rollNo,
                 status: "pending",
                 requestedAt: Date.now(),
                 formattedTime: new Date().toLocaleTimeString('hi-IN', { hour: '2-digit', minute: '2-digit' })
@@ -2050,7 +2042,7 @@
             scArena.classList.add("active");
 
             document.getElementById("sc-student-name").innerText = result.studentName;
-            document.getElementById("sc-class-roll").innerText = `${result.studentClass} | Roll: ${result.rollNo}`;
+            document.getElementById("sc-class-roll").innerText = result.studentClass;
             document.getElementById("sc-chapter-title").innerText = result.chapterTitle;
             document.getElementById("sc-exam-date").innerText = result.formattedDate;
 
